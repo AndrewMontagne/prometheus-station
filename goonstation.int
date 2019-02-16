@@ -1,10 +1,13 @@
 // BEGIN_INTERNALS
 /*
-MAP_ICON_TYPE: 0
-WINDOW: maps\trunkmap.dmm
+MAP_ZOOM: 1.000
+LAST_COMPILE_TIME: 1550274770
+DIR: code code\defines code\defines\area code\defines\obj code\FEA code\game code\game\machinery code\game\machinery\atmoalter code\game\machinery\doors code\game\objects code\game\objects\devices code\modules code\modules\mob code\modules\mob\living code\modules\mob\living\carbon code\modules\mob\living\carbon\human code\WorkInProgress maps 
 UPDATE_OBJ_TREE: ON
-DIR: maps 
-FILE: maps\trunkmap.dmm
 AUTO_FILE_DIR: ON
+MAP_ICON_TYPE: 0
+LAST_COMPILE_VERSION: 512.1464
+WINDOW: maps\trunkmap.dmm;code\game\machinery\doors\door.dm;code\modules\mob\mob.dm;code\game\throwing.dm;code\game\machinery\doors\airlock.dm;code\defines\obj\weapon.dm;code\game\objects\devices\flashlight.dm;code\WorkInProgress\KeelinsStuff.dm;code\game\turf.dm;code\modules\mob\living\carbon\human\human.dm;code\FEA\FEA_fire.dm;code\defines\area\Space Station 13 areas.dm;code\game\supplyshuttle.dm
+FILE: code\game\objects\devices\flashlight.dm
 */
 // END_INTERNALS
