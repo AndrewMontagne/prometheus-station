@@ -1,0 +1,6 @@
+/data/logs
+/data/player_saves
+*.dmb
+*.rsc
+*.int
+*.lk
