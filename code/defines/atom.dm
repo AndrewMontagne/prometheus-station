@@ -118,3 +118,8 @@ obj
 	return
 ////////////
 
+/atom/proc/SetLuminosity(var/lum)
+	lum = 0
+
+/atom/proc/SetOpacity(var/opac)
+	opac = 0

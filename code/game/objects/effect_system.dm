@@ -755,11 +755,8 @@ steam.start() -- spawns the effect
 	New()
 		..()
 		update_nearby_tiles(1)
-		spawn(1)
-			sd_NewOpacity(1)
 
 	Del()
-		sd_NewOpacity(0)
 		density = 0
 		update_nearby_tiles(1)
 		..()

@@ -21,14 +21,12 @@ var/supply_shuttle_points = 50
 	name = "supply shuttle"
 	icon_state = "shuttle3"
 	luminosity = 1
-	sd_lighting = 0
 	requires_power = 0
 
 /area/supply/dock //DO NOT TURN THE SD_LIGHTING STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	name = "supply shuttle"
 	icon_state = "shuttle3"
 	luminosity = 1
-	sd_lighting = 0
 	requires_power = 0
 
 //SUPPLY PACKS

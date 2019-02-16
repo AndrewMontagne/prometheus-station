@@ -640,7 +640,7 @@
 
 			if (src.stuttering) src.stuttering--
 
-			if (src.eye_blind)
+			if (src.eye_blind == 1)
 				src.eye_blind--
 				src.blinded = 1
 
@@ -751,10 +751,10 @@
 			src.client.screen -= src.hud_used.vimpaired
 
 			if ((src.blind && src.stat != 2))
-				if ((src.blinded))
-					src.blind.layer = 18
+				if (0) //(src.blinded)
+					src.blind.invisibility = 0
 				else
-					src.blind.layer = 0
+					src.blind.invisibility = 101
 
 					if (src.disabilities & 1 && !istype(src.glasses, /obj/item/clothing/glasses/regular) )
 						src.client.screen += src.hud_used.vimpaired

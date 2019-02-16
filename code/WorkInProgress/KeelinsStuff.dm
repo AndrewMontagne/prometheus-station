@@ -19,7 +19,6 @@
 	name = "Keelin's private beach"
 	icon_state = "null"
 	luminosity = 1
-	sd_lighting = 0
 	requires_power = 0
 	var/sound/mysound = null
 
@@ -439,22 +438,10 @@
 						if(!istype(M,/mob)) continue
 						M.loc = X
 
-					var/area/AR = X.loc
-
-					if(AR.sd_lighting)
-						X.opacity = !X.opacity
-						X.sd_SetOpacity(!X.opacity)
-
 					toupdate += X
 
 					if(turftoleave)
 						var/turf/ttl = new turftoleave(T)
-
-						var/area/AR2 = ttl.loc
-
-						if(AR2.sd_lighting)
-							ttl.opacity = !ttl.opacity
-							ttl.sd_SetOpacity(!ttl.opacity)
 
 						fromupdate += ttl
 
@@ -487,4 +474,3 @@
 
 	for(var/obj/O in doors)
 		O:update_nearby_tiles(1)
-

@@ -63,10 +63,12 @@
 //These are shuttle areas, they must contain two areas in a subgroup if you want to move a shuttle from one
 //place to another. Look at escape shuttle for example.
 
+/area
+	luminosity = 1
+
 /area/shuttle //DO NOT TURN THE SD_LIGHTING STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	requires_power = 0
-	luminosity = 1
-	sd_lighting = 0
+
 
 /area/shuttle/arrival
 	name = "Arrival Shuttle"
@@ -467,7 +469,6 @@
 /area/solar
 	requires_power = 0
 	luminosity = 1
-	sd_lighting = 0
 
 /area/solar/fore
 	name = "Fore Solar Array"
