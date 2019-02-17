@@ -35,6 +35,4 @@
 	src.next_move = 1
 	src.sight |= SEE_SELF
 	src.logged_in = 1
-	if (!src.client.changes)
-		src.changes()
 	..()

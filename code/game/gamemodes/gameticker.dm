@@ -89,6 +89,9 @@ var/global/datum/controller/gameticker/ticker
 			if (S.name != "AI")
 				del(S)
 
+		for(var/mob/new_player/P in world)
+			P.reconfigure_window_to_join()
+
 		//Start master_controller.process()
 		world << "<FONT color='blue'><B>Enjoy the game!</B></FONT>"
 

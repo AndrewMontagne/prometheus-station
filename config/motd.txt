@@ -1,3 +1,10 @@
-<h1>Welcome to Goon Station 13!</h1>
-
-Sup~
+<style>
+body {
+  font-family: Tahoma, sans-serif;
+  text-align: center;
+}
+</style>
+<h1>Welcome to Andrew Station 13!</h1>
+<p>
+  Hey, guess what? We can display the MOTD here!
+</p>
