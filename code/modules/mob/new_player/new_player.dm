@@ -51,22 +51,6 @@
 		reconfigure_window_to_join()
 	winset(src, "loginwindow", "is-visible=true;")
 	src << browse("<html><body>[join_motd]</body></html>", "window=loginwindow")
-/*
-	var/output = "<HR><B>New Player Options</B><BR>"
-	output += "<HR><br><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A><BR><BR>"
-	//if(istester(src.key))
-	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
-		if(!ready)
-			output += "<a href='byond://?src=\ref[src];ready=1'>Declare Ready</A><BR>"
-		else
-			output += "You are ready.<BR>"
-	else
-		output += "<a href='byond://?src=\ref[src];late_join=1'>Join Game!</A><BR>"
-
-	output += "<BR><a href='byond://?src=\ref[src];observe=1'>Observe</A><BR>"
-
-	src << browse(output,"window=playersetup;size=250x200;can_close=0")
-	*/
 
 /mob/new_player/proc/reconfigure_window_to_join()
 	ready = 0
