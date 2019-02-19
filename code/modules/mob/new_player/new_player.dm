@@ -1,6 +1,6 @@
 /obj/screen/splash
 	icon = 'icons/misc/fullscreen.dmi'
-	icon_state = "nouveau"
+	icon_state = "title"
 	screen_loc = "SOUTHWEST"
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 	name = "Splash Screen"
