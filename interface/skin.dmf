@@ -120,7 +120,7 @@ window "loginwindow"
 		size = 475x375
 		anchor1 = none
 		anchor2 = none
-		background-color = #1d2e29
+		background-color = #383838
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
@@ -148,8 +148,7 @@ window "loginwindow"
 		anchor1 = 0,100
 		anchor2 = none
 		text-color = #ffffff
-		background-color = #406459
-		border = line
+		background-color = #40628a
 		saved-params = "is-checked"
 		text = "Edit Preferences"
 		command = "showpreferences"
@@ -160,8 +159,7 @@ window "loginwindow"
 		anchor1 = 0,100
 		anchor2 = none
 		text-color = #ffffff
-		background-color = #406459
-		border = line
+		background-color = #40628a
 		saved-params = "is-checked"
 		text = "Observe Round"
 		command = "toggleobserve"
@@ -171,6 +169,7 @@ window "loginwindow"
 		size = 459x311
 		anchor1 = 2,2
 		anchor2 = 98,83
+		background-color = none
 		border = sunken
 		saved-params = ""
 		auto-format = false
@@ -182,7 +181,7 @@ window "mainwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = #1d2e29
+		background-color = #383838
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Space Station 13"
@@ -195,7 +194,7 @@ window "mainwindow"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #1d2e29
+		background-color = #383838
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -233,7 +232,7 @@ window "outputwindow"
 		size = 640x427
 		anchor1 = none
 		anchor2 = none
-		background-color = #1d2e29
+		background-color = #383838
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -248,7 +247,7 @@ window "outputwindow"
 		anchor1 = 0,100
 		anchor2 = 100,100
 		text-color = #ffffff
-		background-color = #406459
+		background-color = #272727
 		is-default = true
 		border = sunken
 		saved-params = "command"
@@ -259,7 +258,7 @@ window "outputwindow"
 		anchor1 = 100,100
 		anchor2 = none
 		text-color = #ffffff
-		background-color = #406459
+		background-color = #40628a
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
@@ -281,7 +280,7 @@ window "rpane"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = #1d2e29
+		background-color = #383838
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -295,7 +294,7 @@ window "rpane"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #1d2e29
+		background-color = #383838
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
@@ -306,7 +305,7 @@ window "rpane"
 		anchor1 = none
 		anchor2 = none
 		text-color = #ffffff
-		background-color = #406459
+		background-color = #40628a
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
@@ -321,7 +320,7 @@ window "rpane"
 		anchor1 = none
 		anchor2 = none
 		text-color = #ffffff
-		background-color = #406459
+		background-color = #40628a
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Browser"
@@ -335,7 +334,7 @@ window "rpane"
 		anchor1 = none
 		anchor2 = none
 		text-color = #ffffff
-		background-color = #406459
+		background-color = #40628a
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Info"
@@ -383,12 +382,12 @@ window "infowindow"
 		anchor1 = 0,0
 		anchor2 = 100,100
 		text-color = #ffffff
-		background-color = #406459
+		background-color = #272727
 		is-default = true
 		saved-params = ""
 		highlight-color = #00aa00
 		tab-text-color = #ffffff
-		tab-background-color = #1d2e29
+		tab-background-color = #383838
 		allow-html = false
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,0:rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=false rpane.rpanewindow.pos=0,0 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""

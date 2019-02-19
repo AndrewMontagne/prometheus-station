@@ -3,7 +3,7 @@ body
 {
 	font-family: Verdana, sans-serif;
 	color: white;
-	background-color: rgb(64,100,89);
+	background-color: #202020;
 }
 
 h1, h2, h3, h4, h5, h6

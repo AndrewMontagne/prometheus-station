@@ -1,3 +1,10 @@
+/obj/screen/splash
+	icon = 'icons/misc/fullscreen.dmi'
+	icon_state = "nouveau"
+	screen_loc = "SOUTHWEST"
+	mouse_over_pointer = MOUSE_INACTIVE_POINTER
+	name = "Splash Screen"
+
 /mob/new_player
 	anchored = 1
 
@@ -9,11 +16,18 @@
 	density = 0
 	stat = 2
 	canmove = 0
+	sight = BLIND
+	var/global/obj/screen/splash/splashscreen
 
 	anchored = 1	//  don't get pushed around
 
 /mob/new_player/Login()
 	..()
+
+	if(isnull(splashscreen))
+		splashscreen = new /obj/screen/splash()
+
+	client.screen += splashscreen
 
 	if(!preferences)
 		preferences = new
@@ -41,6 +55,10 @@
 
 /mob/new_player/Logout()
 	ready = 0
+
+	if(!isnull(client))
+		client.screen -= splashscreen
+
 	..()
 	return
 
