@@ -1,3 +1,6 @@
+///world
+//	map_format = SIDE_MAP
+
 /world/proc/load_mode()
 	var/text = file2text("data/mode.txt")
 	if (text)

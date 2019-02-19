@@ -2,9 +2,12 @@
 body {
   font-family: Tahoma, sans-serif;
   text-align: center;
+  color: white;
+  background-color: rgb(64,100,89);
 }
 </style>
 <h1>Welcome to Andrew Station 13!</h1>
+<img src="postcardsmall.jpg" alt="Goon Station 13" />
 <p>
   Hey, guess what? We can display the MOTD here!
 </p>

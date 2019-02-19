@@ -2,6 +2,8 @@ client/script = {"<style>
 body
 {
 	font-family: Verdana, sans-serif;
+	color: white;
+	background-color: rgb(64,100,89);
 }
 
 h1, h2, h3, h4, h5, h6
@@ -10,15 +12,8 @@ h1, h2, h3, h4, h5, h6
 	font-family: Georgia, Verdana, sans-serif;
 }
 
-.motd
-{
-	color: #638500;
-	font-family: Verdana, sans-serif;
-}
-
 .motd h1, .motd h2, .motd h3, .motd h4, .motd h5, .motd h6
 {
-	color: #638500;
 	text-decoration: underline;
 }
 
@@ -90,10 +85,5 @@ h1, h2, h3, h4, h5, h6
 .alert
 {
 	color: #ff0000;
-}
-
-h1.alert, h2.alert
-{
-	color: #000000;
 }
 </style>"}
