@@ -18,6 +18,7 @@
 	canmove = 0
 	sight = BLIND
 	var/global/obj/screen/splash/splashscreen
+	var/global/lobby_music_track = pick('music/robocop.ogg','music/tintin.ogg')
 
 	anchored = 1	//  don't get pushed around
 
@@ -26,6 +27,8 @@
 
 	if(isnull(splashscreen))
 		splashscreen = new /obj/screen/splash()
+
+	src << sound(lobby_music_track, repeat = 0, wait = 0, channel=1337)
 
 	client.screen += splashscreen
 
@@ -38,8 +41,7 @@
 		mind.current = src
 
 	new_player_panel()
-	var/starting_loc = pick(newplayer_start)
-	src.loc = starting_loc
+
 	src.sight |= SEE_TURFS
 	var/list/watch_locations = list()
 	for(var/obj/landmark/landmark in world)
@@ -322,118 +324,4 @@
 	src << browse(null, "window=latechoices") //closes late choices window
 	src << browse(null, "window=playersetup") //closes the player setup window
 	winset(src, "loginwindow", "is-visible=false;")
-
-/*
-/obj/begin/verb/enter()
-	log_game("[usr.key] entered as [usr.real_name]")
-
-	if (ticker)
-		for (var/mob/living/silicon/ai/A in world)
-			if (!A.stat)
-				A.say("[usr.real_name] has arrived on the station!")
-				break
-
-		usr << "<B>Game mode is [master_mode].</B>"
-
-	var/mob/living/carbon/human/H = usr
-
-//find spawn points for normal game modes
-
-	if(!(ticker && ticker.mode.name == "ctf"))
-		var/list/L = list()
-		var/area/A = locate(/area/arrival/start)
-		for(var/turf/T in A)
-			L += T
-
-		while(!L.len)
-			usr << "\blue <B>You were unable to enter because the arrival shuttle has been destroyed! The game will reattempt to spawn you in 30 seconds!</B>"
-			sleep(300)
-			for(var/turf/T in A)
-				L += T
-		H << "\blue Now teleporting."
-		H.loc = pick(L)
-
-//for capture the flag
-
-	else if(ticker && ticker.mode.name == "ctf")
-		if(H.client.team == "Red")
-			var/obj/R = locate("landmark*Red-Spawn")
-			H << "\blue Now teleporting."
-			H.loc = R.loc
-		else if(H.client.team == "Green")
-			var/obj/G = locate("landmark*Green-Spawn")
-			H << "\blue Now teleporting."
-			H.loc = G.loc
-
-//error check
-
-	else
-		usr << "Invalid start please report this to the admins"
-
-//add to manifest
-
-	if(ticker)
-		//add to manifest
-		var/datum/data/record/G = new /datum/data/record(  )
-		var/datum/data/record/M = new /datum/data/record(  )
-		var/datum/data/record/S = new /datum/data/record(  )
-		var/obj/item/weapon/card/id/C = H.wear_id
-		if (C)
-			G.fields["rank"] = C.assignment
-		else
-			G.fields["rank"] = "Unassigned"
-		G.fields["name"] = H.real_name
-		G.fields["id"] = text("[]", add_zero(num2hex(rand(1, 1.6777215E7)), 6))
-		M.fields["name"] = G.fields["name"]
-		M.fields["id"] = G.fields["id"]
-		S.fields["name"] = G.fields["name"]
-		S.fields["id"] = G.fields["id"]
-		if (H.gender == "female")
-			G.fields["sex"] = "Female"
-		else
-			G.fields["sex"] = "Male"
-		G.fields["age"] = text("[]", H.age)
-		G.fields["fingerprint"] = text("[]", md5(H.dna.uni_identity))
-		G.fields["p_stat"] = "Active"
-		G.fields["m_stat"] = "Stable"
-		M.fields["b_type"] = text("[]", H.b_type)
-		M.fields["mi_dis"] = "None"
-		M.fields["mi_dis_d"] = "No minor disabilities have been declared."
-		M.fields["ma_dis"] = "None"
-		M.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
-		M.fields["alg"] = "None"
-		M.fields["alg_d"] = "No allergies have been detected in this patient."
-		M.fields["cdi"] = "None"
-		M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
-		M.fields["notes"] = "No notes."
-		S.fields["criminal"] = "None"
-		S.fields["mi_crim"] = "None"
-		S.fields["mi_crim_d"] = "No minor crime convictions."
-		S.fields["ma_crim"] = "None"
-		S.fields["ma_crim_d"] = "No minor crime convictions."
-		S.fields["notes"] = "No notes."
-		for(var/obj/datacore/D in world)
-			D.general += G
-			D.medical += M
-			D.security += S
-//DNA!
-		reg_dna[H.dna.unique_enzymes] = H.real_name
-//Other Stuff
-		if(ticker.mode.name == "sandbox")
-			H.CanBuild()
-
-*/
-/*
-	say(var/message)
-		message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
-
-		if (!message)
-			return
-
-		log_say("[src.key] : [message]")
-
-		if (src.muted)
-			return
-
-		. = src.say_dead(message)
-*/
+	src << sound(null, repeat = 0, wait = 0, channel = 1337)
