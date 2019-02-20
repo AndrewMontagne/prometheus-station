@@ -1,9 +1,9 @@
 # Auto detect text files and perform LF normalization
-* text=eol=lf
+* text=eol=crlf
 
-*.dm text eol=lf
-*.dmm text eol=lf
-*.dme text eol=lf
+*.dm text eol=crlf
+*.dmm text eol=crlf
+*.dme text eol=crlf
 *.png binary
 *.jpg binary
 *.dmi binary
