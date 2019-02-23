@@ -85,7 +85,7 @@
 	var/oldlum = luminosity
 
 	//luminosity = on * brightness
-	SetLuminosity(on * brightness)		// *DAL*
+	set_light(on * brightness)		// *DAL*
 
 	// if the state changed, inc the switching counter
 	if(oldlum != luminosity)
@@ -99,7 +99,7 @@
 				status = LIGHT_BURNED
 				icon_state = "[base_state]-burned"
 				on = 0
-				SetLuminosity(0)
+				set_light(0)
 
 
 

@@ -69,19 +69,19 @@
 
 	using = new src.h_type(src) //Right hud bar
 	using.dir = SOUTH
-	using.screen_loc = "EAST+1,SOUTH to EAST+1,NORTH"
+	using.screen_loc = "EAST,SOUTH+1 to EAST,NORTH"
 	using.layer = 19
 	src.adding += using
 
 	using = new src.h_type(src) //Lower hud bar
 	using.dir = EAST
-	using.screen_loc = "WEST,SOUTH-1 to EAST,SOUTH-1"
+	using.screen_loc = "WEST,SOUTH to EAST-1,SOUTH"
 	using.layer = 19
 	src.adding += using
 
 	using = new src.h_type(src) //Corner Button
 	using.dir = NORTHWEST
-	using.screen_loc = "EAST+1,SOUTH-1"
+	using.screen_loc = "EAST,SOUTH"
 	using.layer = 19
 	src.adding += using
 

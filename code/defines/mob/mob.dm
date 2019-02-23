@@ -3,6 +3,7 @@
 	layer = 4.0
 	animate_movement = 2
 	glide_size = 16
+	see_invisible = 20
 	var/datum/mind/mind
 
 	var/uses_hud = 0

@@ -60,7 +60,6 @@
 					src.sight |= SEE_MOBS
 					src.sight |= SEE_OBJS
 					src.see_in_dark = 8
-					src.see_invisible = 2
 
 					if (src:aiRestorePowerRoutine==2)
 						src << "Alert cancelled. Power has been restored without our assistance."
@@ -90,7 +89,6 @@
 					src.sight = src.sight&~SEE_MOBS
 					src.sight = src.sight&~SEE_OBJS
 					src.see_in_dark = 0
-					src.see_invisible = 0
 
 					if ((!loc.power_equip) || istype(T, /turf/space))
 						if (src:aiRestorePowerRoutine==0)

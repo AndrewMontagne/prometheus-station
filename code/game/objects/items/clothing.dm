@@ -148,23 +148,23 @@ DEATH COMMANDO GAS MASK
 
 			isHeld = 0
 			if (lastHolder != null)
-				//lastHolder.SetLuminosity(0)
+				//lastHolder.set_light(0)
 				lastHolder = null
 
 		if (isHeld == 1)
 			//if (holder != lastHolder && lastHolder != null)
-				//lastHolder.SetLuminosity(0)
-			//holder.SetLuminosity(1)
+				//lastHolder.set_light(0)
+			//holder.set_light(1)
 			lastHolder = holder
 
-		//SetLuminosity(1)
+		//set_light(1)
 		sleep(10)
 
 	if (lastHolder != null)
-		//lastHolder.SetLuminosity(0)
+		//lastHolder.set_light(0)
 		lastHolder = null
 
-	//SetLuminosity(0)
+	//set_light(0)
 
 
 /obj/item/clothing/mask/cigarette/dropped(mob/user as mob)

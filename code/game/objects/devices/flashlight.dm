@@ -5,22 +5,22 @@
 	icon_state = "flight[on]"
 
 	if(on)
-		user.SetLuminosity(user.luminosity + FLASHLIGHT_LUM)
+		user.set_light(user.luminosity + FLASHLIGHT_LUM)
 	else
-		user.SetLuminosity(user.luminosity - FLASHLIGHT_LUM)
+		user.set_light(user.luminosity - FLASHLIGHT_LUM)
 
 
 /obj/item/device/flashlight/pickup(mob/user)
 	if(on)
-		src.SetLuminosity(0)
-		user.SetLuminosity(user.luminosity + FLASHLIGHT_LUM)
+		src.set_light(0)
+		user.set_light(user.luminosity + FLASHLIGHT_LUM)
 
 
 
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.luminosity - FLASHLIGHT_LUM)
-		src.SetLuminosity(FLASHLIGHT_LUM)
+		user.set_light(user.luminosity - FLASHLIGHT_LUM)
+		src.set_light(FLASHLIGHT_LUM)
 
 /obj/item/clothing/head/helmet/hardhat/attack_self(mob/user)
 	on = !on
@@ -28,18 +28,18 @@
 	item_state = "hardhat[on]"
 
 	if(on)
-		user.SetLuminosity(user.luminosity + FLASHLIGHT_LUM)
+		user.set_light(user.luminosity + FLASHLIGHT_LUM)
 	else
-		user.SetLuminosity(user.luminosity - FLASHLIGHT_LUM)
+		user.set_light(user.luminosity - FLASHLIGHT_LUM)
 
 /obj/item/clothing/head/helmet/hardhat/pickup(mob/user)
 	if(on)
-		src.SetLuminosity(0)
-		user.SetLuminosity(user.luminosity + FLASHLIGHT_LUM)
+		src.set_light(0)
+		user.set_light(user.luminosity + FLASHLIGHT_LUM)
 
 
 
 /obj/item/clothing/head/helmet/hardhat/dropped(mob/user)
 	if(on)
-		user.SetLuminosity(user.luminosity - FLASHLIGHT_LUM)
-		src.SetLuminosity(FLASHLIGHT_LUM)
+		user.set_light(user.luminosity - FLASHLIGHT_LUM)
+		src.set_light(FLASHLIGHT_LUM)

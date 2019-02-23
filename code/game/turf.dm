@@ -118,7 +118,7 @@
 	W.icon_old = old_icon
 	if(old_icon) W.icon_state = old_icon
 	W.opacity = 1
-	W.SetOpacity(0)
+	W.set_opacity(0)
 	W.levelupdate()
 	return W
 

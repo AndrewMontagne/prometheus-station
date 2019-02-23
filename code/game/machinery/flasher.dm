@@ -24,17 +24,17 @@
 
 /obj/machinery/flasher/New()
 	sleep(4)
-	src.SetLuminosity(2)
+	src.set_light(2)
 
 /obj/machinery/flasher/power_change()
 	if ( powered() )
 		stat &= ~NOPOWER
 		icon_state = "[base_state]1"
-		src.SetLuminosity(2)
+		src.set_light(2)
 	else
 		stat |= ~NOPOWER
 		icon_state = "[base_state]1-p"
-		src.SetLuminosity(0)
+		src.set_light(0)
 
 //Don't want to render prison breaks impossible
 /obj/machinery/flasher/attackby(obj/item/weapon/W as obj, mob/user as mob)

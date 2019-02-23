@@ -21,7 +21,7 @@
 			luminosity = 1
 		else
 			luminosity = 1
-			//SetLuminosity(0)		// *DAL*
+			//set_light(0)		// *DAL*
 
 
 	/*spawn(5)

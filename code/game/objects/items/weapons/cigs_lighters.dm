@@ -43,7 +43,7 @@ ZIPPO
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text("\red Without even breaking stride, [] flips open and lights the [] in one smooth movement.", user, src), 1)
 
-			user.SetLuminosity(user.luminosity + ZIPPO_LUM)
+			user.set_light(user.luminosity + ZIPPO_LUM)
 			spawn(0)
 				process()
 		else
@@ -53,7 +53,7 @@ ZIPPO
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text("\red You hear a quiet click, as [] shuts off the [] without even looking what they're doing. Wow.", user, src), 1)
 
-			user.SetLuminosity(user.luminosity - ZIPPO_LUM)
+			user.set_light(user.luminosity - ZIPPO_LUM)
 	else
 		return ..()
 	return
@@ -75,12 +75,12 @@ ZIPPO
 
 /obj/item/weapon/zippo/pickup(mob/user)
 	if(lit)
-		src.SetLuminosity(0)
-		user.SetLuminosity(user.luminosity + ZIPPO_LUM)
+		src.set_light(0)
+		user.set_light(user.luminosity + ZIPPO_LUM)
 
 
 
 /obj/item/weapon/zippo/dropped(mob/user)
 	if(lit)
-		user.SetLuminosity(user.luminosity - ZIPPO_LUM)
-		src.SetLuminosity(ZIPPO_LUM)
+		user.set_light(user.luminosity - ZIPPO_LUM)
+		src.set_light(ZIPPO_LUM)

@@ -26,6 +26,7 @@
 	icon = 'space.dmi'
 	name = "space"
 	icon_state = "placeholder"
+	dynamic_lighting = 0
 
 	temperature = TCMB
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT

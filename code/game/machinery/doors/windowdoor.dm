@@ -81,7 +81,7 @@
 	sleep(10)
 
 	src.density = 0
-	src.SetOpacity(0)
+	src.set_opacity(0)
 	update_nearby_tiles()
 
 	if(operating == 1) //emag again
@@ -98,7 +98,7 @@
 
 	src.density = 1
 	if (src.visible)
-		src.SetOpacity(1)
+		src.set_opacity(1)
 	update_nearby_tiles()
 
 	sleep(10)

@@ -1,7 +1,6 @@
 /mob/dead/observer/New(mob/corpse)
 	src.invisibility = 10
 	src.sight |= SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
-	src.see_invisible = 15
 	src.see_in_dark = 100
 	src.verbs += /mob/dead/observer/proc/dead_tele
 
@@ -170,5 +169,3 @@
 				L+=T
 
 	usr.loc = pick(L)
-
-

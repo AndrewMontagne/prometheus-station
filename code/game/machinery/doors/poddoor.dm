@@ -9,7 +9,7 @@
 			src.icon_state = "pdoor0"
 			sleep(15)
 			src.density = 0
-			src.SetOpacity(0)
+			src.set_opacity(0)
 			src.operating = 0
 			return
 	return
@@ -25,7 +25,7 @@
 	src.icon_state = "pdoor0"
 	sleep(10)
 	src.density = 0
-	src.SetOpacity(0)
+	src.set_opacity(0)
 	update_nearby_tiles()
 
 	if(operating == 1) //emag again
@@ -43,7 +43,7 @@
 	src.icon_state = "pdoor1"
 	src.density = 1
 	if (src.visible)
-		src.SetOpacity(1)
+		src.set_opacity(1)
 	update_nearby_tiles()
 
 	sleep(10)

@@ -117,9 +117,3 @@ obj
 		src.moved_recently = 1
 	return
 ////////////
-
-/atom/proc/SetLuminosity(var/lum)
-	lum = 0
-
-/atom/proc/SetOpacity(var/opac)
-	opac = 0

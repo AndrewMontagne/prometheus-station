@@ -34,7 +34,7 @@
 				src.density = 0
 				update_icon()
 
-				src.SetOpacity(0)
+				src.set_opacity(0)
 				src.operating = 0
 				return
 		else //close it up again
@@ -46,7 +46,7 @@
 				sleep(15)
 				update_icon()
 
-				src.SetOpacity(1)
+				src.set_opacity(1)
 				src.operating = 0
 				return
 	return

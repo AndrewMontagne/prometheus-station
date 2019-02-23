@@ -169,7 +169,7 @@
 	src.density = 0
 	update_icon()
 
-	src.SetOpacity(0)
+	src.set_opacity(0)
 	update_nearby_tiles()
 
 	if(operating == 1) //emag again
@@ -193,7 +193,7 @@
 	update_icon()
 
 	if (src.visible && (!istype(src, /obj/machinery/door/airlock/glass)))
-		src.SetOpacity(1)
+		src.set_opacity(1)
 	if(operating == 1)
 		operating = 0
 	update_nearby_tiles()

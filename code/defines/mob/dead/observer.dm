@@ -9,3 +9,4 @@
 	anchored = 1	//  don't get pushed around
 	var/mob/corpse = null	//	observer mode
 	var/datum/hud/living/carbon/hud = null // hud
+	see_invisible = 19

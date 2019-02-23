@@ -47,7 +47,7 @@
 				for(var/mob/M in viewers(user))
 					if(M == user) continue
 					M << "[user] detaches the power sink from the cable."
-				SetLuminosity(0)
+				set_light(0)
 				icon_state = "powersink0"
 				return
 		else
@@ -80,7 +80,7 @@
 			var/datum/powernet/PN = attached.get_powernet()
 			if(PN)
 				if(!luminosity)
-					SetLuminosity(12)
+					set_light(12)
 
 
 				// found a powernet, so drain up to max power from it

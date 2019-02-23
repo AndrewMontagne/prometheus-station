@@ -12,7 +12,6 @@
 	src.sight |= SEE_OBJS
 
 	src.see_in_dark = 8
-	src.see_invisible = 2
 	src.updateicon()
 
 	var/tod = time2text(world.realtime,"hh:mm:ss") //weasellos time of death patch

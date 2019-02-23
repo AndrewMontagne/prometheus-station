@@ -418,13 +418,13 @@
 
 /obj/item/device/pda/pickup(mob/user)
 	if (src.fon)
-		src.SetLuminosity(0)
-		user.SetLuminosity(user.luminosity + src.f_lum)
+		src.set_light(0)
+		user.set_light(user.luminosity + src.f_lum)
 
 /obj/item/device/pda/dropped(mob/user)
 	if (src.fon)
-		user.SetLuminosity(user.luminosity - src.f_lum)
-		src.SetLuminosity(src.f_lum)
+		user.set_light(user.luminosity - src.f_lum)
+		src.set_light(src.f_lum)
 
 /obj/item/device/pda/New()
 	..()
@@ -1004,11 +1004,11 @@ Code:
 
 			if (usr.contents.Find(src))
 				if (src.fon)
-					usr.SetLuminosity(usr.luminosity + src.f_lum)
+					usr.set_light(usr.luminosity + src.f_lum)
 				else
-					usr.SetLuminosity(usr.luminosity - src.f_lum)
+					usr.set_light(usr.luminosity - src.f_lum)
 			else
-				src.SetLuminosity(src.fon * src.f_lum)
+				src.set_light(src.fon * src.f_lum)
 
 			src.updateUsrDialog()
 

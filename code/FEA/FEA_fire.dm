@@ -135,11 +135,11 @@ obj
 		New()
 			..()
 			dir = pick(cardinal)
-			SetLuminosity(3)
+			set_light(3)
 
 		Del()
 			loc:active_hotspot = null
-			src.SetLuminosity(0)
+			src.set_light(0)
 			loc = null
 
 
