@@ -126,7 +126,7 @@ def mapmerge(filepath):
             out.write('// Merged from ' + filepath + ' at ' + datetime.datetime.now().strftime("%c") + '\n\n')
 
             for tile in sortedtiles:
-                out.write('"' + tile['newhash'] + '" = (' + tile['data'] + ') \\\\ ' + str(tile['count']) + ' uses.\n')
+                out.write('"' + tile['newhash'] + '" = (' + tile['data'] + ')\n')
             print('.', end='', flush=True)
 
             for map, maptiles in maps.items():
