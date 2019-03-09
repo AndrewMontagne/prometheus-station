@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys, os, re, hashlib, datetime
 
 def listchunks(l, n):
@@ -32,7 +34,7 @@ def mapmerge(filepath):
     PARSE_MAP_BODY = 3
     state = PARSE_TILES
 
-    tilesRegex = re.compile('"([^"]+)" = (.+)')
+    tilesRegex = re.compile('"([^"]+)" = \((.+)\)')
     mapHeaderRegex = re.compile('\(([^)]+)\) = {"')
 
     print('Merging ' + filepath, end='')
@@ -44,10 +46,14 @@ def mapmerge(filepath):
             line = fp.readline()
             if line is '':
                 break
+
+            if line[:2] == '//' or line[:1] == '#':
+                continue
             line = line.rstrip()
 
             if line is '' or line is '"}':
-                state = PARSE_MAP_HEADER
+                if len(tiles) > 0:
+                    state = PARSE_MAP_HEADER
                 continue
 
             elif state == PARSE_TILES:
@@ -62,7 +68,7 @@ def mapmerge(filepath):
                 if hashLength is 0:
                     hashLength = len(oldhash)
                 data = match.group(2)
-                tiles[oldhash] = {"oldhash" : oldhash, "data": data}
+                tiles[oldhash] = {"oldhash" : oldhash, "data": data, "count": 0}
 
             elif state == PARSE_MAP_HEADER:
                 match = mapHeaderRegex.match(line)
@@ -81,11 +87,16 @@ def mapmerge(filepath):
                 if mapwidth == 0:
                     mapwidth = len(line) // hashLength
                 if len(line) > hashLength:
-                    maps[currentMap].extend([line[i:i+hashLength] for i in range(0, len(line), hashLength)])
+                    split = [line[i:i+hashLength] for i in range(0, len(line), hashLength)]
+                    for hsh in split:
+                        tiles[hsh]['count'] += 1
+                    maps[currentMap].extend(split)
 
         # HASH TILES
+        sortedtiles = sorted(tiles.values(), key= lambda i: i['count'], reverse=True)
         newhashes = set()
-        for oldhash, tile in tiles.items():
+        oldtonew = {}
+        for tile in sortedtiles:
             data = tile['data']
             while True:
                 md5 = hashlib.sha1(data.encode('utf-8')).hexdigest()
@@ -94,6 +105,7 @@ def mapmerge(filepath):
                     break
                 data += 'a'
             newhashes.add(newhash)
+            oldtonew[tile['oldhash']] = newhash
             tile['newhash'] = newhash
 
         print('.', end='', flush=True)
@@ -103,7 +115,7 @@ def mapmerge(filepath):
             max = len(maptiles)
             for i in range(0, max):
                 oldtile =  maptiles[i]
-                newtile = tiles[oldtile]['newhash']
+                newtile = oldtonew[oldtile]
                 if oldtile is not newtile:
                     maptiles[i] = newtile
 
@@ -113,8 +125,8 @@ def mapmerge(filepath):
         with open(filepath, 'w') as out:
             out.write('// Merged from ' + filepath + ' at ' + datetime.datetime.now().strftime("%c") + '\n\n')
 
-            for oldhash, tile in tiles.items():
-                out.write('"' + tile['newhash'] + '" = ' + tile['data'] + '\n')
+            for tile in sortedtiles:
+                out.write('"' + tile['newhash'] + '" = (' + tile['data'] + ') \\\\ ' + str(tile['count']) + ' uses.\n')
             print('.', end='', flush=True)
 
             for map, maptiles in maps.items():
