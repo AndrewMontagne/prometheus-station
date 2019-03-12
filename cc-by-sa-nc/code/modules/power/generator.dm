@@ -28,7 +28,7 @@
 		if(lastgenlev != 0)
 			overlays += image('power.dmi', "teg-op[lastgenlev]")
 
-#define GENRATE 800		// generator output coefficient from Q
+// #define GENRATE 800		// generator output coefficient from Q
 
 /obj/machinery/power/generator/process()
 

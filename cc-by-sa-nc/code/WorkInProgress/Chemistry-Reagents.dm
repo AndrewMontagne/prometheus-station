@@ -315,7 +315,7 @@ datum
 			id = "fluorine"
 			description = "A highly-reactive chemical element."
 			reagent_state = GAS
-			on_mob_life(var/mob.M)
+			on_mob_life(var/mob/M)
 				if(!M) M = holder.my_atom
 				M:toxloss++
 				..()
