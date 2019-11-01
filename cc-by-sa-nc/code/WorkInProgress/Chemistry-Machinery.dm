@@ -1,6 +1,6 @@
-// #define SOLID 1
-// #define LIQUID 2
-// #define GAS 3
+#define SOLID 1
+#define LIQUID 2
+#define GAS 3
 
 /obj/machinery/chem_dispenser/
 	name = "chem dispenser"
@@ -229,3 +229,7 @@
 		user << browse("<TITLE>Chemmaster 3000</TITLE>Chemmaster menu:<BR><BR>[dat]", "window=chem_master;size=575x400")
 		onclose(user, "chem_master")
 		return
+
+#undef SOLID
+#undef LIQUID
+#undef GAS
