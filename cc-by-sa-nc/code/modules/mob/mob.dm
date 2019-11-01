@@ -1564,14 +1564,14 @@
 
 
 		if (isturf(src.mob.loc))
-			src.move_delay = world.time
+			src.move_delay = world.time + src.mob.base_movement_delay
 			if ((j_pack && j_pack < 1))
 				src.move_delay += 5
 			switch(src.mob.m_intent)
 				if("run")
 					if (src.mob.drowsyness > 0)
 						src.move_delay += 6
-					src.move_delay += 1
+					src.move_delay += 2
 				if("face")
 					src.mob.dir = direct
 					return

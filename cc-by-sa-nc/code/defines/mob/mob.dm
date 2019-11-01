@@ -23,6 +23,7 @@
 	var/obj/screen/bodytemp = null
 	var/obj/screen/healths = null
 	var/obj/screen/throw_icon = null
+	var/base_movement_delay = 1
 
 	var/list/obj/hallucination/hallucinations = list()
 
