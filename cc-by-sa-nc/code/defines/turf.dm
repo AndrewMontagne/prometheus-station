@@ -95,7 +95,7 @@
 
 /turf/simulated/floor/grid
 	icon = 'floors.dmi'
-	icon_state = "circuit"
+	icon_state = "bcircuit"
 
 /turf/simulated/wall/r_wall
 	name = "r wall"
