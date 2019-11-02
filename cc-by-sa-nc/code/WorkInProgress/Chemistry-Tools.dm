@@ -485,100 +485,99 @@
 	amount_per_transfer_from_this = 5
 	var/mode = "d"
 
-	New()
+/obj/item/weapon/reagent_containers/syringe/New()
 		var/datum/reagents/R = new/datum/reagents(15)
 		reagents = R
 		R.maximum_volume = 15
 		R.my_atom = src
 
-	on_reagent_change()
-		update_icon()
+/obj/item/weapon/reagent_containers/syringe/on_reagent_change()
+	update_icon()
 
-	pickup(mob/user)
-		..()
-		update_icon()
+/obj/item/weapon/reagent_containers/syringe/pickup(mob/user)
+	..()
+	update_icon()
 
-	dropped(mob/user)
-		..()
-		update_icon()
+/obj/item/weapon/reagent_containers/syringe/dropped(mob/user)
+	..()
+	update_icon()
 
-	attack_self(mob/user as mob)
-		switch(mode)
-			if("d")
-				mode = "i"
-			if("i")
-				mode = "d"
-		update_icon()
+/obj/item/weapon/reagent_containers/syringe/attack_self(mob/user as mob)
+	switch(mode)
+		if("d")
+			mode = "i"
+		if("i")
+			mode = "d"
+	update_icon()
 
-	attack_hand()
-		..()
-		update_icon()
+/obj/item/weapon/reagent_containers/syringe/attack_hand()
+	..()
+	update_icon()
 
-	attack_paw()
-		return attack_hand()
+/obj/item/weapon/reagent_containers/syringe/attack_paw()
+	return attack_hand()
 
-	attackby(obj/item/I as obj, mob/user as mob)
-		return
+/obj/item/weapon/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
+	return
 
-	afterattack(obj/target, mob/user , flag)
-		if(!target.reagents) return
+/obj/item/weapon/reagent_containers/syringe/afterattack(obj/target, mob/user , flag)
+	if(!target.reagents) return
 
-		switch(mode)
-			if("d")
-				if(ismob(target)) return //Blood?
+	switch(mode)
+		if("d")
+			if(ismob(target)) return //Blood?
 
-				if(!target.reagents.total_volume)
-					user << "\red [target] is empty."
-					return
+			if(!target.reagents.total_volume)
+				user << "\red [target] is empty."
+				return
 
-				if(reagents.total_volume >= reagents.maximum_volume)
-					user << "\red The syringe is full."
-					return
+			if(reagents.total_volume >= reagents.maximum_volume)
+				user << "\red The syringe is full."
+				return
 
-				if(!target.is_open_container() && !istype(target,/obj/reagent_dispensers))
-					user << "\red You cannot directly remove reagents from this object."
-					return
+			if(!target.is_open_container() && !istype(target,/obj/reagent_dispensers))
+				user << "\red You cannot directly remove reagents from this object."
+				return
 
-				target.reagents.trans_to(src, 5)
+			target.reagents.trans_to(src, 5)
 
-				user << "\blue You fill the syringe with 5 units of the solution."
+			user << "\blue You fill the syringe with 5 units of the solution."
 
-			if("i")
-				if(!reagents.total_volume)
-					user << "\red The Syringe is empty."
-					return
+		if("i")
+			if(!reagents.total_volume)
+				user << "\red The Syringe is empty."
+				return
 
-				if(target.reagents.total_volume >= target.reagents.maximum_volume)
-					user << "\red [target] is full."
-					return
+			if(target.reagents.total_volume >= target.reagents.maximum_volume)
+				user << "\red [target] is full."
+				return
 
-				if(!target.is_open_container() && !ismob(target) && !istype(target,/obj/item/weapon/reagent_containers/food))
-					user << "\red You cannot directly fill this object."
-					return
+			if(!target.is_open_container() && !ismob(target) && !istype(target,/obj/item/weapon/reagent_containers/food))
+				user << "\red You cannot directly fill this object."
+				return
 
-				if(ismob(target) && target != user)
-					for(var/mob/O in viewers(world.view, user))
-						O.show_message(text("\red <B>[] is trying to inject []!</B>", user, target), 1)
-					if(!do_mob(user, target)) return
-					for(var/mob/O in viewers(world.view, user))
-						O.show_message(text("\red [] injects [] with the syringe!", user, target), 1)
-					src.reagents.reaction(target, INGEST)
-				if(ismob(target) && target == user)
-					src.reagents.reaction(target, INGEST)
+			if(ismob(target) && target != user)
+				for(var/mob/O in viewers(world.view, user))
+					O.show_message(text("\red <B>[] is trying to inject []!</B>", user, target), 1)
+				if(!do_mob(user, target)) return
+				for(var/mob/O in viewers(world.view, user))
+					O.show_message(text("\red [] injects [] with the syringe!", user, target), 1)
+				src.reagents.reaction(target, INGEST)
+			if(ismob(target) && target == user)
+				src.reagents.reaction(target, INGEST)
 
-				spawn(5)
-					src.reagents.trans_to(target, 5)
-					user << "\blue You inject 5 units of the solution. The syringe now contains [src.reagents.total_volume] units."
-		return
+			spawn(5)
+				src.reagents.trans_to(target, 5)
+				user << "\blue You inject 5 units of the solution. The syringe now contains [src.reagents.total_volume] units."
+	return
 
-	proc
-		update_icon()
-			var/rounded_vol = round(reagents.total_volume,5)
-			if(ismob(loc))
-				icon_state = "[mode][rounded_vol]"
-			else
-				icon_state = "[rounded_vol]"
-			item_state = "syringe_[rounded_vol]"
+/obj/item/weapon/reagent_containers/syringe/update_icon()
+	var/rounded_vol = round(reagents.total_volume,5)
+	if(ismob(loc))
+		icon_state = "[mode][rounded_vol]"
+	else
+		icon_state = "[rounded_vol]"
+	item_state = "syringe_[rounded_vol]"
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Syringes. END

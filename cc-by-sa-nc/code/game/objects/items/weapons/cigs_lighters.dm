@@ -5,7 +5,7 @@ ZIPPO
 
 
 */
-/obj/item/weapon/cigpacket/proc/update_icon()
+/obj/item/weapon/cigpacket/update_icon()
 	return
 
 /obj/item/weapon/cigpacket/update_icon()

@@ -109,7 +109,7 @@
 		src.icon_state = "reader_broken"
 		stat |= BROKEN
 
-/obj/machinery/at_indicator/proc/update_icon()
+/obj/machinery/at_indicator/update_icon()
 	if(stat & (BROKEN|NOPOWER))
 		icon_state = "reader_broken"
 		return
@@ -188,7 +188,7 @@ obj/machinery/computer/airtunnel/attack_ai(user as mob)
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/airtunnel/proc/update_icon()
+/obj/machinery/computer/airtunnel/update_icon()
 	if(stat & BROKEN)
 		icon_state = "broken"
 		return

@@ -478,7 +478,7 @@
 /turf/simulated/floor/blob_act()
 	return
 
-turf/simulated/floor/proc/update_icon()
+/turf/simulated/floor/update_icon()
 
 
 /turf/simulated/floor/attack_paw(mob/user as mob)

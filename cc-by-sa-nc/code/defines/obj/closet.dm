@@ -2,10 +2,10 @@
 	desc = "It's a closet!"
 	name = "Closet"
 	icon = 'closet.dmi'
-	icon_state = "closed"
+	icon_state = "generic"
 	density = 1
-	var/icon_closed = "closed"
-	var/icon_opened = "open"
+	var/icon_closed = "generic_door"
+	var/icon_opened = "generic_open"
 	var/opened = 0
 	var/welded = 0
 	flags = FPRINT
@@ -26,8 +26,8 @@
 	desc = "A bulky (yet mobile) closet. Comes prestocked with a gasmask and o2 tank for emergencies."
 	name = "Emergency Closet"
 	icon_state = "emergency"
-	icon_closed = "emergency"
-	icon_opened = "emergencyopen"
+	icon_closed = "emergency_door"
+	icon_opened = "emergency_open"
 
 /obj/closet/jcloset
 	desc = "A bulky (yet mobile) closet. Comes with janitor's clothes and biohazard gear."
@@ -41,22 +41,22 @@
 	desc = "A burial receptacle for the dearly departed."
 	name = "coffin"
 	icon_state = "coffin"
-	icon_closed = "coffin"
+	icon_closed = "coffin_door"
 	icon_opened = "coffin_open"
 
 /obj/closet/l3closet
 	desc = "A bulky (yet mobile) closet. Comes prestocked with level 3 biohazard gear for emergencies."
 	name = "Level 3 Biohazard Suit"
 	icon_state = "bio"
-	icon_closed = "bio"
-	icon_opened = "bioopen"
+	icon_closed = "bio_door"
+	icon_opened = "bio_open"
 
 /obj/closet/syndicate
 	desc = "Why is this here?"
 	name = "Weapons Closet"
 	icon_state = "syndicate"
-	icon_closed = "syndicate"
-	icon_opened = "syndicateopen"
+	icon_closed = "syndicate_door"
+	icon_opened = "syndicate_open"
 
 /obj/closet/syndicate/personal
 	desc = "Gear preperations closet."
@@ -66,24 +66,24 @@
 
 /obj/closet/thunderdome
 	desc = "Everything you need!"
-	icon_state = "syndicate"
-	icon_closed = "syndicate"
-	icon_opened = "syndicateopen"
+	icon_state = "generic"
+	icon_closed = "black_door"
+	icon_opened = "generic_open"
 	desc = "Thunderdome closet."
 	anchored = 1
 
 /obj/closet/thunderdome/tdred
 	desc = "Everything you need!"
-	icon_state = "syndicate"
-	icon_closed = "syndicate"
-	icon_opened = "syndicateopen"
+	icon_state = "generic"
+	icon_closed = "red_door"
+	icon_opened = "generic_open"
 	desc = "Thunderdome closet."
 
 /obj/closet/thunderdome/tdgreen
 	desc = "Everything you need!"
-	icon_state = "syndicate1"
-	icon_closed = "syndicate1"
-	icon_opened = "syndicate1open"
+	icon_state = "generic"
+	icon_closed = "green_door"
+	icon_opened = "generic_open"
 	desc = "Thunderdome closet."
 
 /obj/closet/malf/suits
@@ -95,13 +95,11 @@
 /obj/closet/wardrobe
 	desc = "A bulky (yet mobile) wardrobe closet. Comes prestocked with 6 changes of clothes."
 	name = "Wardrobe"
-	icon_state = "blue"
-	icon_closed = "blue"
+	icon_closed = "blue_door"
 
 /obj/closet/wardrobe/black
 	name = "Black Wardrobe"
-	icon_state = "black"
-	icon_closed = "black"
+	icon_closed = "black_door"
 
 /obj/closet/wardrobe/chaplain_black
 	name = "Chaplain Wardrobe"
@@ -110,33 +108,29 @@
 
 /obj/closet/wardrobe/green
 	name = "Green Wardrobe"
-	icon_state = "green"
-	icon_closed = "green"
+	icon_closed = "green_door"
 
 /obj/closet/wardrobe/mixed
 	name = "Mixed Wardrobe"
-	icon_state = "mixed"
-	icon_closed = "mixed"
+	icon_closed = "mixed_door"
 
 /obj/closet/wardrobe/orange
 	name = "Prisoners Wardrobe"
-	icon_state = "orange"
-	icon_closed = "orange"
+	icon_state = "prisoner"
+	icon_closed = "prisoner_door"
+	icon_opened = "prisoner_open"
 
 /obj/closet/wardrobe/pink
 	name = "Pink Wardrobe"
-	icon_state = "pink"
-	icon_closed = "pink"
+	icon_closed = "pink_door"
 
 /obj/closet/wardrobe/red
 	name = "Red Wardrobe"
-	icon_state = "red"
-	icon_closed = "red"
+	icon_closed = "red_door"
 
 /obj/closet/wardrobe/forensics_red
 	name = "Forensics Wardrobe"
-	icon_state = "red"
-	icon_closed = "red"
+	icon_closed = "green_door"
 
 
 /obj/closet/wardrobe/white

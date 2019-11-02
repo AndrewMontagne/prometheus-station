@@ -221,7 +221,7 @@ obj/machinery/atmospherics/pipe
 
 			var/turf/T = src.loc			// hide if turf is not intact
 			hide(T.intact)
-			//update_icon()
+			update_icon()
 
 		disconnect(obj/machinery/atmospherics/reference)
 			if(reference == node1)

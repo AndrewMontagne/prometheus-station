@@ -1,3 +1,7 @@
+/obj/closet/New()
+	. = ..()
+	update_icon()
+
 /obj/closet/alter_health()
 	return get_turf(src)
 
@@ -40,9 +44,8 @@
 		return 0
 
 	src.dump_contents()
-
-	src.icon_state = src.icon_opened
 	src.opened = 1
+	update_icon()
 	playsound(src.loc, 'click.ogg', 15, 1, -3)
 	return 1
 
@@ -69,8 +72,8 @@
 			M.client.eye = src
 
 		M.loc = src
-	src.icon_state = src.icon_closed
 	src.opened = 0
+	update_icon()
 	playsound(src.loc, 'click.ogg', 15, 1, -3)
 	return 1
 
@@ -78,6 +81,14 @@
 	if (src.opened)
 		return src.close()
 	return src.open()
+
+/obj/closet/update_icon()
+	src.overlays = 0
+
+	if (src.opened)
+		overlays += image(icon, icon_opened)
+	else
+		overlays += image(icon, icon_closed)
 
 // this should probably use dump_contents()
 /obj/closet/ex_act(severity)

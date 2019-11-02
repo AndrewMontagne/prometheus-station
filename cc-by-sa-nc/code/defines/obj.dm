@@ -600,6 +600,7 @@
 	anchored = 1.0
 
 /obj/stool/chair
+	icon = 'chairs.dmi'
 	name = "chair"
 	icon_state = "chair"
 	var/status = 0.0

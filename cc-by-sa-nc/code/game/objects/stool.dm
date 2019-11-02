@@ -105,8 +105,8 @@
 /obj/stool/chair/e_chair/New()
 
 	src.overl = new /atom/movable/overlay( src.loc )
-	src.overl.icon = 'objects.dmi'
-	src.overl.icon_state = "e_chairo0"
+	src.overl.icon = icon
+	src.overl.icon_state = "e_chair_over"
 	src.overl.layer = 5
 	src.overl.name = "electrified chair"
 	src.overl.master = src

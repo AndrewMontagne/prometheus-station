@@ -21,3 +21,5 @@
 	if(istype(M) && M.client && M.machine == src)
 		src.attack_self(M)
 
+/datum/proc/update_icon()
+	return null

@@ -72,7 +72,7 @@
 // new damage icon system
 // adjusted to set damage_state to brute/burn code only (without r_name0 as before)
 
-/datum/organ/external/proc/update_icon()
+/datum/organ/external/update_icon()
 
 	var/n_is = src.damage_state_text()
 	if (n_is != src.damage_state)
