@@ -66,7 +66,7 @@
 	using.layer = 20
 	src.adding += using
 	move_intent = using
-
+/*
 	using = new src.h_type(src) //Right hud bar
 	using.dir = SOUTH
 	using.screen_loc = "EAST,SOUTH+1 to EAST,NORTH"
@@ -84,7 +84,7 @@
 	using.screen_loc = "EAST,SOUTH"
 	using.layer = 19
 	src.adding += using
-
+*/
 	using = new src.h_type( src )
 	using.name = "arrowleft"
 	using.icon_state = "s_arrow"
@@ -508,7 +508,7 @@
 	mymob.zone_sel = new /obj/screen/zone_sel( null )
 	mymob.zone_sel.overlays = null
 	mymob.zone_sel.overlays += image("icon" = 'zone_sel.dmi', "icon_state" = text("[]", mymob.zone_sel.selecting))
-
+	mymob.zone_sel.screen_loc = ui_zonesel
 	mymob.client.screen = null
 
 	//, mymob.i_select, mymob.m_select

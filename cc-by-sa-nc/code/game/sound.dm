@@ -17,7 +17,7 @@
 
 	if (vary)
 		S.frequency = rand(32000, 55000)
-	for (var/mob/M in range(world.view+extrarange, source))
+	for (var/mob/M in range(22+extrarange, source))
 		if (M.client)
 			if(isturf(source))
 				var/dx = source.x - M.x

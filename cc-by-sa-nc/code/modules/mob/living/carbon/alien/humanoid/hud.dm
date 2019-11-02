@@ -292,6 +292,7 @@
 
 
 	mymob.zone_sel = new /obj/screen/zone_sel( null )
+	mymob.zone_sel.screen_loc = ui_zonesel
 	mymob.zone_sel.overlays = null
 	mymob.zone_sel.overlays += image("icon" = 'zone_sel.dmi', "icon_state" = text("[]", mymob.zone_sel.selecting))
 

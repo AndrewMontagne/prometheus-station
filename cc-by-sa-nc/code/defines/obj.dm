@@ -575,7 +575,6 @@
 	icon = 'zone_sel.dmi'
 	icon_state = "blank"
 	var/selecting = "chest"
-	screen_loc = "EAST,NORTH"
 
 /obj/shut_controller
 	name = "shut controller"

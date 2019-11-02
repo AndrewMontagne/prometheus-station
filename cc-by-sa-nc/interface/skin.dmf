@@ -113,33 +113,6 @@ menu "menu"
 		saved-params = "is-checked"
 
 
-window "datawindow"
-	elem "datawindow"
-		type = MAIN
-		pos = 281,0
-		size = 640x480
-		anchor1 = none
-		anchor2 = none
-		background-color = none
-		saved-params = "pos;size;is-minimized;is-maximized"
-		titlebar = false
-		statusbar = false
-		can-close = false
-		can-minimize = false
-		can-resize = false
-		is-pane = true
-	elem "child1"
-		type = CHILD
-		pos = 0,0
-		size = 640x480
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = #383838
-		saved-params = "splitter"
-		left = "inventorywindow"
-		right = "infowindow"
-		is-vert = true
-
 window "infowindow"
 	elem "infowindow"
 		type = MAIN
@@ -147,14 +120,8 @@ window "infowindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Info"
-		titlebar = false
-		statusbar = false
-		can-close = false
-		can-minimize = false
-		can-resize = false
 		is-pane = true
 	elem "info"
 		type = INFO
@@ -170,8 +137,6 @@ window "infowindow"
 		tab-text-color = #ffffff
 		tab-background-color = #383838
 		allow-html = false
-		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,0:rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=datawindow\""
-		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=false rpane.rpanewindow.pos=0,0 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
 
 window "inventorywindow"
 	elem "inventorywindow"
@@ -180,7 +145,6 @@ window "inventorywindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -270,7 +234,7 @@ window "mainwindow"
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Space Station 13"
-		icon = 'icons\\ss13_64.png'
+		statusbar = false
 		macro = "macro"
 		menu = "menu"
 	elem "mainvsplit"
@@ -281,6 +245,7 @@ window "mainwindow"
 		anchor2 = 100,100
 		background-color = #383838
 		saved-params = "splitter"
+		left = "lpane"
 		right = "rpane"
 		is-vert = true
 
@@ -307,9 +272,7 @@ window "mapwindow"
 		text-color = #000000
 		is-default = true
 		saved-params = "icon-size"
-		on-show = ".winset\"mainwindow.mainvsplit.left=mapwindow\""
-		on-hide = ".winset\"mainwindow.mainvsplit.left=\""
-
+		
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
@@ -392,73 +355,35 @@ window "rpane"
 		anchor2 = 100,100
 		background-color = #383838
 		saved-params = "splitter"
-		left = "datawindow"
+		left = "infowindow"
 		right = "outputwindow"
 		is-vert = false
-	elem "textb"
-		type = BUTTON
-		pos = 2,2
-		size = 60x20
-		anchor1 = none
-		anchor2 = none
-		text-color = #ffffff
-		background-color = #40628a
-		is-visible = false
-		saved-params = "is-checked"
-		text = "Text"
-		command = ".winset \"rpanewindow.left=;\""
-		is-checked = true
-		group = "rpanemode"
-		button-type = pushbox
-	elem "browseb"
-		type = BUTTON
-		pos = 67,2
-		size = 60x20
-		anchor1 = none
-		anchor2 = none
-		text-color = #ffffff
-		background-color = #40628a
-		is-visible = false
-		saved-params = "is-checked"
-		text = "Browser"
-		command = ".winset \"rpanewindow.left=browserwindow\""
-		group = "rpanemode"
-		button-type = pushbox
-	elem "infob"
-		type = BUTTON
-		pos = 132,2
-		size = 60x20
-		anchor1 = none
-		anchor2 = none
-		text-color = #ffffff
-		background-color = #40628a
-		is-visible = false
-		saved-params = "is-checked"
-		text = "Info"
-		command = ".winset \"rpanewindow.left=datawindow\""
-		group = "rpanemode"
-		button-type = pushbox
+		splitter = 40
 
-window "browserwindow"
-	elem "browserwindow"
+window "lpane"
+	elem "lpane"
 		type = MAIN
 		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = #383838
 		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "Browser"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
 		is-pane = true
-	elem "browser"
-		type = BROWSER
+	elem "lpanewindow"
+		type = CHILD
 		pos = 0,0
-		size = 640x499
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #ffffff
-		is-default = true
-		saved-params = ""
-		show-history = true
-		on-show = ".winset\"rpane.infob.is-visible=true?rpane.infob.pos=130,0;rpane.textb.is-visible=true;rpane.browseb.is-visible=true;rpane.browseb.is-checked=true;rpane.rpanewindow.pos=0,30;rpane.rpanewindow.size=0x0;rpane.rpanewindow.left=browserwindow\""
-		on-hide = ".winset\"rpane.browseb.is-visible=false;rpane.infob.is-visible=true?rpane.infob.is-checked=true rpane.infob.pos=65,0 rpane.rpanewindow.left=infowindow:rpane.rpanewindow.left=textwindow rpane.textb.is-visible=false rpane.rpanewindow.pos=0,0 rpane.rpanewindow.size=0x0\""
-
+		background-color = #383838
+		saved-params = "splitter"
+		left = "inventorywindow"
+		right = "mapwindow"
+		is-vert = true
+		splitter = 10

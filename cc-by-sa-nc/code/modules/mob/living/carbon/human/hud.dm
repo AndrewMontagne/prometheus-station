@@ -65,7 +65,7 @@
 	using.layer = 20
 	src.adding += using
 	move_intent = using
-
+/*
 	using = new src.h_type(src) //Right hud bar
 	using.dir = SOUTH
 	using.screen_loc = "EAST,SOUTH+1 to EAST,NORTH"
@@ -77,7 +77,7 @@
 	using.screen_loc = "WEST,SOUTH to EAST-1,SOUTH"
 	using.layer = 19
 	src.adding += using
-
+*/
 	using = new src.h_type(src) //Corner Button
 	using.dir = NORTHWEST
 	using.screen_loc = "EAST,SOUTH"
@@ -510,6 +510,7 @@
 */
 
 	mymob.zone_sel = new /obj/screen/zone_sel( null )
+	mymob.zone_sel.screen_loc = ui_zonesel
 	mymob.zone_sel.overlays = null
 	mymob.zone_sel.overlays += image("icon" = 'zone_sel.dmi', "icon_state" = text("[]", mymob.zone_sel.selecting))
 
