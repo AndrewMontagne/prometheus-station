@@ -154,7 +154,7 @@ def mapmerge(filepath):
 
         # OUTPUT MAPS
 
-        if len(sortedtiles) < 1000:
+        if len(sortedtiles) < 10:
             die("This does not appear to be a *.dmm!")
 
         with open(filepath, 'w') as out:
