@@ -19,6 +19,9 @@
 	else
 		icon_state = "psiphon:0"
 
+	if(connected_port)
+		overlays += image('atmos.dmi', "siphon-connector")
+
 	return
 
 /obj/machinery/portable_atmospherics/pump/process()

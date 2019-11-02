@@ -10,7 +10,7 @@
 
 	var/canister_skin = "blue"
 	var/filled = 0.5
-	pressure_resistance = 7*ONE_ATMOSPHERE
+	pressure_resistance = 5.1*ONE_ATMOSPHERE
 	var/temperature_resistance = 1000 + T0C
 	volume = 1000
 
@@ -46,19 +46,15 @@
 
 	else
 		icon_state = "[canister_skin]"
-		if(holding)
-			overlays += image('atmos.dmi', "can-oT")
+		if(connected_port)
+			overlays += image('atmos.dmi', "can-connector")
 
 		var/tank_pressure = air_contents.return_pressure()
 
-		if (tank_pressure < 10)
-			overlays += image('atmos.dmi', "can-o0")
-		else if (tank_pressure < ONE_ATMOSPHERE)
-			overlays += image('atmos.dmi', "can-o1")
-		else if (tank_pressure < 15*ONE_ATMOSPHERE)
-			overlays += image('atmos.dmi', "can-o2")
-		else
-			overlays += image('atmos.dmi', "can-o3")
+		if (tank_pressure > 10)
+			var/ratio = tank_pressure / (ONE_ATMOSPHERE * 5)
+			ratio = min(round(ratio, 1), 10)
+			overlays += image('atmos.dmi', "can-o[ratio]")
 	return
 
 /obj/machinery/portable_atmospherics/canister/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)

@@ -52,6 +52,8 @@
 			if(network && !network.gases.Find(air_contents))
 				network.gases += air_contents
 
+			update_icon()
+
 			return 1
 
 		disconnect()
@@ -66,6 +68,8 @@
 
 			connected_port.connected_device = null
 			connected_port = null
+
+			update_icon()
 
 			return 1
 
