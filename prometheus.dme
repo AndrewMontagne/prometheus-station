@@ -493,6 +493,7 @@
 #include "cc-by-sa-nc\code\WorkInProgress\recycling\scrap.dm"
 #include "cc-by-sa-nc\interface\skin.dmf"
 #include "cc-by-sa-nc\maps\trunkmap.dmm"
+#include "closed-source\modules\map_pane\map_pane.dm"
 #include "lib\GoonLights\helpers\area.dm"
 #include "lib\GoonLights\helpers\atom.dm"
 #include "lib\GoonLights\helpers\dview.dm"

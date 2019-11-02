@@ -1654,7 +1654,8 @@
 	src.authorize()
 	src.goonauth()
 	src.beta_tester_auth()
-
+	spawn(10) src.init_map_panes()
+	
 	src.update_world()
 
 //new admin bit - Nannek
