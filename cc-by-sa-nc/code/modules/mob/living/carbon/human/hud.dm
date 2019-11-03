@@ -78,11 +78,6 @@
 	using.layer = 19
 	src.adding += using
 */
-	using = new src.h_type(src) //Corner Button
-	using.dir = NORTHWEST
-	using.screen_loc = "EAST,SOUTH"
-	using.layer = 19
-	src.adding += using
 
 	using = new src.h_type( src )
 	using.name = "arrowleft"
@@ -518,7 +513,7 @@
 
 	//, mymob.i_select, mymob.m_select
 	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.toxin, mymob.bodytemp, mymob.internals, mymob.fire, mymob.hands, mymob.healths, mymob.pullin, mymob.blind, mymob.flash, mymob.rest, mymob.sleep) //, mymob.mach )
-	mymob.client.screen += src.adding + src.other
+	mymob.client.screen += src.adding + src.other + mymob.base_hud()
 
 	//if(istype(mymob,/mob/living/carbon/monkey)) mymob.client.screen += src.mon_blo
 

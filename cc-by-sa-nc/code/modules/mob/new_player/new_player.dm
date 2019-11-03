@@ -1,7 +1,7 @@
 /obj/screen/splash
-	icon = 'icons/misc/fullscreen.dmi'
-	icon_state = "title"
-	screen_loc = "SOUTHWEST"
+	icon = 'icons/misc/splash.dmi'
+	icon_state = "ss13"
+	screen_loc = "CENTER:-88,CENTER:-16"
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 	name = "Splash Screen"
 
@@ -24,6 +24,10 @@
 
 /mob/new_player/Login()
 	..()
+
+	x = 50
+	y = 50
+	z = 2
 
 	if(isnull(splashscreen))
 		splashscreen = new /obj/screen/splash()

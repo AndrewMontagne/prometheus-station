@@ -25,8 +25,9 @@
 /turf/space
 	icon = 'space.dmi'
 	name = "space"
-	icon_state = "placeholder"
+	icon_state = "0"
 	dynamic_lighting = 0
+	plane =  -95
 
 	temperature = TCMB
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
@@ -34,7 +35,7 @@
 
 /turf/space/New()
 	icon = 'space.dmi'
-	icon_state = "[pick(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25)]"
+	icon_state = "[pick(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25)]"
 
 /turf/simulated
 	name = "station"

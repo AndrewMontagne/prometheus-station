@@ -1892,6 +1892,13 @@
 		stat(null, "([x], [y], [z])")
 		stat(null, "CPU: [world.cpu]")
 
+/mob/proc/base_hud()
+    var/list/basehud = list()
+
+    basehud += client.get_parallax()
+
+    return basehud
+
 /client/proc/station_explosion_cinematic()
 	if(src.mob)
 		var/mob/M = src.mob
