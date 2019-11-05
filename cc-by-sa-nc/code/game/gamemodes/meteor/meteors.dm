@@ -57,7 +57,7 @@
 	var/turf/pickedstart = locate(startx, starty, 1)
 	var/turf/pickedgoal = locate(endx, endy, 1)
 
-	if (!istype(pickedstart, /turf/space) || locate(/obj/shield in pickedstart) || pickedstart.loc.name != "Space" ) //FUUUCK, should never happen.
+	if (!istype(pickedstart, /turf/space) || locate(/obj/shield) in pickedstart || pickedstart.loc.name != "Space" ) //FUUUCK, should never happen.
 		goto AGAIN
 
 	var/obj/meteor/M

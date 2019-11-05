@@ -194,7 +194,7 @@
 			if ((G.state == 3 && get_dir(src, A) == src.dir))
 				safe = G.affecting
 		if (istype(src.r_hand, /obj/item/weapon/grab))
-			var/obj/item/weapon.grab/G = src.r_hand
+			var/obj/item/weapon/grab/G = src.r_hand
 			if ((G.state == 3 && get_dir(src, A) == src.dir))
 				safe = G.affecting
 		if (safe)
