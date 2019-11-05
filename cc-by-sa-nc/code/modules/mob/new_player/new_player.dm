@@ -35,6 +35,7 @@
 	src << sound(lobby_music_track, repeat = 0, wait = 0, channel=1337)
 
 	client.screen += splashscreen
+	client.screen += base_hud()
 
 	if(!preferences)
 		preferences = new
