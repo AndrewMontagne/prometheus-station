@@ -1,4 +1,4 @@
-/proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num)
+/proc/playsound(var/atom/source, soundin, vol as num, vary, range as num)
 	//Frequency stuff only works with 45kbps oggs.
 
 	switch(soundin)
@@ -13,15 +13,18 @@
 	var/sound/S = sound(soundin)
 	S.wait = 0 //No queue
 	S.channel = 0 //Any channel
-	S.volume = vol
 
+	range += 15
+	
 	if (vary)
 		S.frequency = rand(32000, 55000)
-	for (var/mob/M in range(22+extrarange, source))
+	for (var/mob/M in viewers(range, source))
 		if (M.client)
-			if(isturf(source))
-				var/dx = source.x - M.x
-				S.pan = max(-100, min(100, dx/8.0 * 100))
+			var/dx = source.x - M.x
+			var/dy = source.y - M.y
+			var/dist = sqrt((abs(dx) ** 2) + (abs(dy) ** 2))
+			S.pan = max(-100, min(100, dx/8.0 * 100))
+			S.volume = vol * (1 - (dist / range))
 			M << S
 
 /mob/proc/playsound_local(var/atom/source, soundin, vol as num, vary, extrarange as num)
