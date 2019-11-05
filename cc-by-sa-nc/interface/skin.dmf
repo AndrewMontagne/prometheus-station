@@ -39,94 +39,82 @@ macro "macro"
 		name = "SHIFT+F2+REP"
 		command = ".screenshot"
 
-
-menu "menu"
-	elem 
-		name = "&File"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "&Quick screenshot\tF2"
-		command = ".screenshot auto"
-		category = "&File"
-		saved-params = "is-checked"
-	elem 
-		name = "&Save screenshot as...\tShift+F2"
-		command = ".screenshot"
-		category = "&File"
-		saved-params = "is-checked"
-	elem "reconnect"
-		name = "Reconnect"
-		command = ".reconnect"
-		category = "&File"
-		saved-params = "is-checked"
-	elem 
-		name = "&Quit"
-		command = ".quit"
-		category = "&File"
-		saved-params = "is-checked"
-	elem 
-		name = "&Icons"
-		command = ""
-		saved-params = "is-checked"
-	elem "stretch"
-		name = "&Stretch to fit"
-		command = ".winset \"mapwindow.map.icon-size=0\""
-		category = "&Icons"
-		is-checked = true
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon32"
-		name = "&32x32"
-		command = ".winset \"mapwindow.map.icon-size=32\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem "icon64"
-		name = "&64x64"
-		command = ".winset \"mapwindow.map.icon-size=64\""
-		category = "&Icons"
-		can-check = true
-		group = "size"
-		saved-params = "is-checked"
-	elem 
-		name = ""
-		command = ""
-		category = "&Icons"
-		saved-params = "is-checked"
-	elem "textmode"
-		name = "&Text"
-		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
-		category = "&Icons"
-		can-check = true
-		saved-params = "is-checked"
-	elem 
-		name = "&Help"
-		command = ""
-		saved-params = "is-checked"
-	elem 
-		name = "&Admin help\tF1"
-		command = "adminhelp"
-		category = "&Help"
-		saved-params = "is-checked"
-
-
 window "infowindow"
 	elem "infowindow"
 		type = MAIN
 		pos = 281,0
-		size = 640x480
+		size = 480x320
 		anchor1 = none
 		anchor2 = none
+		background-color = #383838
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Info"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
 		is-pane = true
+	elem "button4"
+		type = BUTTON
+		pos = 288,4
+		size = 88x20
+		anchor1 = 60,0
+		anchor2 = 78,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Button 4"
+		command = ""
+	elem "button3"
+		type = BUTTON
+		pos = 192,4
+		size = 88x20
+		anchor1 = 40,0
+		anchor2 = 58,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Button 3"
+		command = ""
+	elem "button2"
+		type = BUTTON
+		pos = 96,4
+		size = 88x20
+		anchor1 = 20,0
+		anchor2 = 38,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Button 2"
+		command = ""
+	elem "button1"
+		type = BUTTON
+		pos = 384,4
+		size = 88x20
+		anchor1 = 80,0
+		anchor2 = 98,0
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #ff0000
+		saved-params = "is-checked"
+		text = "Help"
+		command = ""
+	elem "inputbutton"
+		type = BUTTON
+		pos = 0,4
+		size = 88x20
+		anchor1 = 0,0
+		anchor2 = 18,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Button 1"
+		command = ""
 	elem "info"
 		type = INFO
-		pos = 0,0
-		size = 640x480
+		pos = 0,32
+		size = 472x288
 		anchor1 = 0,0
 		anchor2 = 100,100
 		text-color = #ffffff
@@ -272,7 +260,7 @@ window "mapwindow"
 		text-color = #000000
 		is-default = true
 		saved-params = "icon-size"
-		
+
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
@@ -387,3 +375,4 @@ window "lpane"
 		right = "mapwindow"
 		is-vert = true
 		splitter = 10
+
