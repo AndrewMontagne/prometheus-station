@@ -505,7 +505,6 @@
 #include "lib\GoonLights\Lighting\lighting_atom.dm"
 #include "lib\GoonLights\Lighting\lighting_corner.dm"
 #include "lib\GoonLights\Lighting\lighting_overlay.dm"
-#include "lib\GoonLights\Lighting\lighting_process.dm"
 #include "lib\GoonLights\Lighting\lighting_setup.dm"
 #include "lib\GoonLights\Lighting\lighting_source.dm"
 #include "lib\GoonLights\Lighting\lighting_turf.dm"

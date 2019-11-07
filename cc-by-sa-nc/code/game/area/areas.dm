@@ -20,7 +20,7 @@
 			power_environ = 1
 			luminosity = 1
 		else
-			luminosity = 1
+			luminosity = 0
 			//set_light(0)		// *DAL*
 
 

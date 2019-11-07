@@ -19,9 +19,12 @@
 		lighting_process()
 
 /proc/lighting_process()
+	update_lights(lighting_update_lights)
 	lighting_update_lights_old = lighting_update_lights
 	lighting_update_lights = list()
-	for(var/datum/light_source/L in lighting_update_lights_old)
+
+/proc/update_lights(list/lights)
+	for(var/datum/light_source/L in lights)
 		if(L.check() || L.destroyed || L.force_update)
 			L.remove_lum()
 			if(!L.destroyed)

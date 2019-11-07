@@ -233,6 +233,13 @@
 
 	update_gen++
 
+/datum/light_source/proc/instant_update()
+	var/old_needs_update = needs_update
+	var/old_applied = applied
+	update_lights(list(src))
+	needs_update = old_needs_update
+	applied = old_applied
+
 /datum/light_source/proc/remove_lum()
 	applied = FALSE
 

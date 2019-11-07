@@ -27,8 +27,10 @@
 	update_overlay()
 
 /atom/movable/lighting_overlay/Destroy()
+	#ifndef LIGHTING_INSTANT_UPDATES
 	global.lighting_update_overlays     -= src
 	global.lighting_update_overlays_old -= src
+	#endif
 
 	var/turf/T = loc
 	if(istype(T))
@@ -36,6 +38,8 @@
 		T.luminosity = 1
 
 	..()
+
+#define OVERLAY_ANIMATION_TICKS 2
 
 /atom/movable/lighting_overlay/proc/update_overlay()
 	var/turf/T = loc
@@ -66,11 +70,19 @@
 
 	var/max = max(cr.cache_mx, cg.cache_mx, cb.cache_mx, ca.cache_mx)
 
+	var/turf_is_dark = max < LIGHTING_SOFT_THRESHOLD //T.get_lumcount() < 0.1
+	if(!turf_is_dark)
+		T.luminosity = TRUE
+
 	animate(src, color = list(
 		cr.cache_r, cr.cache_g, cr.cache_b, 0,
 		cg.cache_r, cg.cache_g, cg.cache_b, 0,
 		cb.cache_r, cb.cache_g, cb.cache_b, 0,
 		ca.cache_r, ca.cache_g, ca.cache_b, 0,
 		0, 0, 0, 1
-	), 2, 1, QUAD_EASING)
-	luminosity = max > LIGHTING_SOFT_THRESHOLD
+	), OVERLAY_ANIMATION_TICKS, 1, QUAD_EASING)
+	
+	if(turf_is_dark)
+		spawn(OVERLAY_ANIMATION_TICKS) T.luminosity = FALSE
+
+

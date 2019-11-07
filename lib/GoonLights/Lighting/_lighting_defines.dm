@@ -1,8 +1,8 @@
 //#define LIGHTING_INSTANT_UPDATES   // Uncomment to use instant updates. NOTE: These are WiP and much more laggy than interval-based updating.
 
 #ifndef LIGHTING_INSTANT_UPDATES
-#define LIGHTING_INTERVAL       5    // Frequency, in 1/10ths of a second, of the lighting process.
-//#include "lighting_process.dm"
+#define LIGHTING_INTERVAL       10    // Frequency, in 1/10ths of a second, of the lighting process.
+#include "lighting_process.dm"
 #endif
 
 #define LIGHTING_FALLOFF        1    // Type of falloff to use for lighting; 1 for circular, 2 for square.

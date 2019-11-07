@@ -38,6 +38,11 @@
 		else
 			light = new/datum/light_source(src, .)
 
+/mob/Move(NewLoc,Dir=0,step_x=0,step_y=0)
+	. = ..(NewLoc, Dir, step_x, step_y)
+	if(light)
+		spawn(2) light.instant_update()
+
 // Incase any lighting vars are on in the typepath we turn the light on in New().
 /atom/New()
 	. = ..()
