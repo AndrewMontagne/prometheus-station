@@ -2,7 +2,7 @@
 	anchored = 0
 	density = 1
 	icon = 'atmos.dmi'
-	icon_state = "sheater0"
+	icon_state = "sheater-off"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
 	var/obj/item/weapon/cell/cell
@@ -25,8 +25,10 @@
 	update_icon()
 		if(open)
 			icon_state = "sheater-open"
+		else if(on)
+			icon_state = "sheater-heat"
 		else
-			icon_state = "sheater[on]"
+			icon_state = "sheater-off"
 		return
 
 	examine()
