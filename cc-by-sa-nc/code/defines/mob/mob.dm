@@ -5,7 +5,7 @@
 	glide_size = 16
 	see_invisible = 20
 	var/datum/mind/mind
-	sight = SEE_BLACKNESS | SEE_OBJS | SEE_TURFS | SEE_SELF | SEE_PIXELS
+	sight = SEE_BLACKNESS | SEE_SELF
 
 	var/uses_hud = 0
 	var/obj/screen/flash = null
