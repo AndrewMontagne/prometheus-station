@@ -14,6 +14,8 @@ if sys.version_info < (3, 5):
     print("Python 3.5 or newer is required!")
     exit(-1)
 
+sys.path.append("../../mit/tools")
+
 if len(sys.argv) <= 1:
     print('Usage: Drag one or more *.dmm files onto this batch file to mapmerge them!')
 else:

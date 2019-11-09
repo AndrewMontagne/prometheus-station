@@ -5,3 +5,4 @@
 *.int
 *.lk
 /.idea/
+__pycache__

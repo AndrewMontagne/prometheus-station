@@ -11,7 +11,7 @@ clean:
 
 mapmerge:
 	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
-	@python3 ./cc-by-sa-nc/maps/mapmerge.py ./cc-by-sa-nc/maps/*.dmm
+	@python3 ./mit/tools/mapmerge.py ./cc-by-sa-nc/maps/*.dmm
 
 build: mapmerge
 	@echo -e '\n${INV} ###   BUILD   ### ${NC}\n'
