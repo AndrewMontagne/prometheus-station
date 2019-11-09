@@ -1,7 +1,7 @@
 /mob/living/silicon/robot
 	name = "Robot"
 	voice_name = "synthesized voice"
-	icon = 'robots.dmi'//
+	icon = 'cc-by-sa-nc/icons/mob/robots.dmi'//
 	icon_state = "robot"
 	health = 300
 

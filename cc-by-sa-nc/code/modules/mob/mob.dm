@@ -608,7 +608,7 @@
 		return
 
 	overlays = null
-	overlays += image("icon" = 'zone_sel.dmi', "icon_state" = text("[]", selecting))
+	overlays += image("icon" = 'cc-by-sa-nc/icons/mob/zone_sel.dmi', "icon_state" = text("[]", selecting))
 
 	return
 
@@ -1139,7 +1139,7 @@
 
 /mob/verb/help()
 	set name = "Help"
-	src << browse('help.html', "window=help")
+	src << browse('cc-by-sa-nc/icons/help.html', "window=help")
 	return
 
 /mob/verb/abandon_mob()
@@ -1189,10 +1189,10 @@
 /mob/verb/changes()
 	set name = "Changelog"
 	if (src.client)
-		src << browse_rsc('postcardsmall.jpg')
-		src << browse_rsc('somerights20.png')
-		src << browse_rsc('88x31.png')
-		src << browse('changelog.html', "window=changes;size=400x650")
+		src << browse_rsc('cc-by-sa-nc/icons/postcardsmall.jpg')
+		src << browse_rsc('cc-by-sa-nc/icons/somerights20.png')
+		src << browse_rsc('cc-by-sa-nc/icons/88x31.png')
+		src << browse('cc-by-sa-nc/icons/changelog.html', "window=changes;size=400x650")
 		src.client.changes = 1
 
 /mob/verb/succumb()
@@ -1763,7 +1763,7 @@
 	if(ishuman(src))
 		animation = new(src.loc)
 		animation.icon_state = "blank"
-		animation.icon = 'mob.dmi'
+		animation.icon = 'cc-by-sa-nc/icons/mob/mob.dmi'
 		animation.master = src
 		flick("gibbed", animation)
 
@@ -1914,7 +1914,7 @@
 				else
 					boom.icon_state = "start"
 		sleep(40)
-		M << sound('explosionfar.ogg')
+		M << sound('cc-by-sa-nc/sound/effects/explosionfar.ogg')
 		boom.icon_state = "end"
 		flick("explode", boom)
 		sleep(40)

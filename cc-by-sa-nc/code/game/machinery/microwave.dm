@@ -241,10 +241,10 @@ Please clean it before use!</TT><BR>
 						src.monkeymeat_amount = 0
 						src.donkpocket_amount = 0
 						sleep(40) // Half way through
-						playsound(src.loc, 'splat.ogg', 50, 1) // Play a splat sound
+						playsound(src.loc, 'cc-by-sa-nc/sound/effects/splat.ogg', 50, 1) // Play a splat sound
 						icon_state = "mwbloody1" // Make it look dirty!!
 						sleep(40) // Then at the end let it finish normally
-						playsound(src.loc, 'ding.ogg', 50, 1)
+						playsound(src.loc, 'cc-by-sa-nc/sound/machines/ding.ogg', 50, 1)
 						for(var/mob/V in viewers(src, null))
 							V.show_message(text("\red The microwave gets covered in muck!"))
 						src.dirty = 1 // Make it dirty so it can't be used util cleaned
@@ -281,7 +281,7 @@ Please clean it before use!</TT><BR>
 						src.updateUsrDialog()
 						sleep(80)
 						src.icon_state = "mw"
-						playsound(src.loc, 'ding.ogg', 50, 1)
+						playsound(src.loc, 'cc-by-sa-nc/sound/machines/ding.ogg', 50, 1)
 						src.operating = 0
 
 			if(operation == 2) // If dispose was pressed, empty the microwave
@@ -307,7 +307,7 @@ Please clean it before use!</TT><BR>
 
 				spawn(cook_time) //After the cooking time
 					if(!isnull(src.being_cooked))
-						playsound(src.loc, 'ding.ogg', 50, 1)
+						playsound(src.loc, 'cc-by-sa-nc/sound/machines/ding.ogg', 50, 1)
 						if(istype(src.being_cooked, /obj/item/weapon/reagent_containers/food/snacks/humanburger))
 							src.being_cooked.name = humanmeat_name + src.being_cooked.name
 							src.being_cooked:job = humanmeat_job

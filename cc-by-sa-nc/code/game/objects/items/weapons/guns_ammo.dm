@@ -175,7 +175,7 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 	if (src.bullets < 1)
 		user.show_message("\red *click* *click*", 2)
 		return
-	playsound(user, 'Gunshot.ogg', 100, 1)
+	playsound(user, 'cc-by-sa-nc/sound/weapons/Gunshot.ogg', 100, 1)
 	src.bullets--
 	for(var/mob/O in viewers(user, null))
 		O.show_message(text("\red <B>[] fires a revolver at []!</B>", user, target), 1, "\red You hear a gunshot", 2)
@@ -291,7 +291,7 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 	if (src.bullets < 1)
 		user.show_message("\red *click* *click*", 2)
 		return
-	playsound(user, 'Gunshot.ogg', 100, 1)
+	playsound(user, 'cc-by-sa-nc/sound/weapons/Gunshot.ogg', 100, 1)
 	src.bullets--
 	for(var/mob/O in viewers(user, null))
 		O.show_message(text("\red <B>[] fires the detectives revolver at []!</B>", user, target), 1, "\red You hear a gunshot", 2)
@@ -407,7 +407,7 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 		user << "\red *click* *click*"
 		return
 
-	playsound(user, 'Laser.ogg', 50, 1)
+	playsound(user, 'cc-by-sa-nc/sound/weapons/Laser.ogg', 50, 1)
 	src.charges--
 	update_icon()
 
@@ -484,7 +484,7 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 		user << "\red *click* *click*";
 		return
 
-	playsound(user, 'Taser.ogg', 50, 1)
+	playsound(user, 'cc-by-sa-nc/sound/weapons/Taser.ogg', 50, 1)
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user
 		R.cell.charge -= 20
@@ -609,7 +609,7 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 		user << "\red *click* *click*";
 		return
 
-	playsound(user, 'Genhit.ogg', 20, 1)
+	playsound(user, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 20, 1)
 	src.charges--
 	var/turf/T = user.loc
 	var/turf/U = (istype(target, /atom/movable) ? target.loc : target)
@@ -683,7 +683,7 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 		user << "\red *click* *click*";
 		return
 
-	playsound(user, 'Taser.ogg', 50, 1)
+	playsound(user, 'cc-by-sa-nc/sound/weapons/Taser.ogg', 50, 1)
 	src.charges--
 	update_icon()
 
@@ -800,7 +800,7 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 			user << "\red *click* *click*";
 			return
 
-		playsound(user, 'Taser.ogg', 50, 1)
+		playsound(user, 'cc-by-sa-nc/sound/weapons/Taser.ogg', 50, 1)
 		src.charges--
 		update_icon()
 

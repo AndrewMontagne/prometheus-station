@@ -1,6 +1,6 @@
 /obj/item/assembly
 	name = "assembly"
-	icon = 'assemblies.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/assemblies.dmi'
 	item_state = "assembly"
 	var/status = 0.0
 	throwforce = 10

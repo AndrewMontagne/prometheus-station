@@ -2,13 +2,13 @@
 
 /area/New()
 
-	src.icon = 'alert.dmi'
+	src.icon = 'cc-by-sa-nc/icons/effects/alert.dmi'
 	spawn(1)
 	//world.log << "New: [src] [tag]"
 		master = src
 		related = list(src)
 
-		src.icon = 'alert.dmi'
+		src.icon = 'cc-by-sa-nc/icons/effects/alert.dmi'
 		src.layer = 10
 
 		if(name == "Space")			// override defaults for space

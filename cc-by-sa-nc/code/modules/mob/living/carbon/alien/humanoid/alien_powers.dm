@@ -46,7 +46,7 @@ Also perhaps only queens can do that?
 		spawn(0)
 			var/obj/overlay/A = new /obj/overlay( usr.loc )
 			A.icon_state = "cbbolt"
-			A.icon = 'projectiles.dmi'
+			A.icon = 'cc-by-sa-nc/icons/obj/projectiles.dmi'
 			A.name = "acid"
 			A.anchored = 0
 			A.density = 0
@@ -55,7 +55,7 @@ Also perhaps only queens can do that?
 			for(i=0, i<20, i++)
 				var/obj/overlay/B = new /obj/overlay( A.loc )
 				B.icon_state = "cbbolt"
-				B.icon = 'projectiles.dmi'
+				B.icon = 'cc-by-sa-nc/icons/obj/projectiles.dmi'
 				B.name = "acid"
 				B.anchored = 1
 				B.density = 0

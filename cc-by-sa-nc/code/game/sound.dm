@@ -2,13 +2,13 @@
 	//Frequency stuff only works with 45kbps oggs.
 
 	switch(soundin)
-		if ("shatter") soundin = pick('Glassbr1.ogg','Glassbr2.ogg','Glassbr3.ogg')
-		if ("explosion") soundin = pick('Explosion1.ogg','Explosion2.ogg')
-		if ("sparks") soundin = pick('sparks1.ogg','sparks2.ogg','sparks3.ogg','sparks4.ogg')
-		if ("rustle") soundin = pick('rustle1.ogg','rustle2.ogg','rustle3.ogg','rustle4.ogg','rustle5.ogg')
-		if ("punch") soundin = pick('punch1.ogg','punch2.ogg','punch3.ogg','punch4.ogg')
-		if ("clownstep") soundin = pick('clownstep1.ogg','clownstep2.ogg')
-		if ("swing_hit") soundin = pick('genhit1.ogg', 'genhit2.ogg', 'genhit3.ogg')
+		if ("shatter") soundin = pick('cc-by-sa-nc/sound/effects/Glassbr1.ogg','cc-by-sa-nc/sound/effects/Glassbr2.ogg','cc-by-sa-nc/sound/effects/Glassbr3.ogg')
+		if ("explosion") soundin = pick('cc-by-sa-nc/sound/effects/Explosion1.ogg','cc-by-sa-nc/sound/effects/Explosion2.ogg')
+		if ("sparks") soundin = pick('cc-by-sa-nc/sound/effects/sparks1.ogg','cc-by-sa-nc/sound/effects/sparks2.ogg','cc-by-sa-nc/sound/effects/sparks3.ogg','cc-by-sa-nc/sound/effects/sparks4.ogg')
+		if ("rustle") soundin = pick('cc-by-sa-nc/sound/misc/rustle1.ogg','cc-by-sa-nc/sound/misc/rustle2.ogg','cc-by-sa-nc/sound/misc/rustle3.ogg','cc-by-sa-nc/sound/misc/rustle4.ogg','cc-by-sa-nc/sound/misc/rustle5.ogg')
+		if ("punch") soundin = pick('cc-by-sa-nc/sound/weapons/punch1.ogg','cc-by-sa-nc/sound/weapons/punch2.ogg','cc-by-sa-nc/sound/weapons/punch3.ogg','cc-by-sa-nc/sound/weapons/punch4.ogg')
+		if ("clownstep") soundin = pick('cc-by-sa-nc/sound/misc/clownstep1.ogg','cc-by-sa-nc/sound/misc/clownstep2.ogg')
+		if ("swing_hit") soundin = pick('cc-by-sa-nc/sound/weapons/genhit1.ogg', 'cc-by-sa-nc/sound/weapons/genhit2.ogg', 'cc-by-sa-nc/sound/weapons/genhit3.ogg')
 
 	var/sound/S = sound(soundin)
 	S.wait = 0 //No queue
@@ -31,13 +31,13 @@
 	if(!src.client)
 		return
 	switch(soundin)
-		if ("shatter") soundin = pick('Glassbr1.ogg','Glassbr2.ogg','Glassbr3.ogg')
-		if ("explosion") soundin = pick('Explosion1.ogg','Explosion2.ogg')
-		if ("sparks") soundin = pick('sparks1.ogg','sparks2.ogg','sparks3.ogg','sparks4.ogg')
-		if ("rustle") soundin = pick('rustle1.ogg','rustle2.ogg','rustle3.ogg','rustle4.ogg','rustle5.ogg')
-		if ("punch") soundin = pick('punch1.ogg','punch2.ogg','punch3.ogg','punch4.ogg')
-		if ("clownstep") soundin = pick('clownstep1.ogg','clownstep2.ogg')
-		if ("swing_hit") soundin = pick('genhit1.ogg', 'genhit2.ogg', 'genhit3.ogg')
+		if ("shatter") soundin = pick('cc-by-sa-nc/sound/effects/Glassbr1.ogg','cc-by-sa-nc/sound/effects/Glassbr2.ogg','cc-by-sa-nc/sound/effects/Glassbr3.ogg')
+		if ("explosion") soundin = pick('cc-by-sa-nc/sound/effects/Explosion1.ogg','cc-by-sa-nc/sound/effects/Explosion2.ogg')
+		if ("sparks") soundin = pick('cc-by-sa-nc/sound/effects/sparks1.ogg','cc-by-sa-nc/sound/effects/sparks2.ogg','cc-by-sa-nc/sound/effects/sparks3.ogg','cc-by-sa-nc/sound/effects/sparks4.ogg')
+		if ("rustle") soundin = pick('cc-by-sa-nc/sound/misc/rustle1.ogg','cc-by-sa-nc/sound/misc/rustle2.ogg','cc-by-sa-nc/sound/misc/rustle3.ogg','cc-by-sa-nc/sound/misc/rustle4.ogg','cc-by-sa-nc/sound/misc/rustle5.ogg')
+		if ("punch") soundin = pick('cc-by-sa-nc/sound/weapons/punch1.ogg','cc-by-sa-nc/sound/weapons/punch2.ogg','cc-by-sa-nc/sound/weapons/punch3.ogg','cc-by-sa-nc/sound/weapons/punch4.ogg')
+		if ("clownstep") soundin = pick('cc-by-sa-nc/sound/misc/clownstep1.ogg','cc-by-sa-nc/sound/misc/clownstep2.ogg')
+		if ("swing_hit") soundin = pick('cc-by-sa-nc/sound/weapons/genhit1.ogg', 'cc-by-sa-nc/sound/weapons/genhit2.ogg', 'cc-by-sa-nc/sound/weapons/genhit3.ogg')
 
 	var/sound/S = sound(soundin)
 	S.wait = 0 //No queue
@@ -54,16 +54,16 @@
 client/verb/Toggle_Soundscape()
 	usr:client:no_ambi = !usr:client:no_ambi
 	if(usr:client:no_ambi)
-		usr << sound('shipambience.ogg', repeat = 0, wait = 0, volume = 0, channel = 2)
+		usr << sound('cc-by-sa-nc/sound/ambience/shipambience.ogg', repeat = 0, wait = 0, volume = 0, channel = 2)
 	else
-		usr << sound('shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = 2)
+		usr << sound('cc-by-sa-nc/sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = 2)
 	usr << "Toggled ambience sound."
 	return
 
 
 /area/Entered(A)
 	var/sound = null
-	sound = 'ambigen1.ogg'
+	sound = 'cc-by-sa-nc/sound/ambience/ambigen1.ogg'
 
 	if (ismob(A))
 
@@ -73,14 +73,14 @@ client/verb/Toggle_Soundscape()
 
 		if (A && A:client && !A:client:ambience_playing && !A:client:no_ambi) // Constant background noises
 			A:client:ambience_playing = 1
-			A << sound('shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = 2)
+			A << sound('cc-by-sa-nc/sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = 2)
 
 		switch(src.name)
-			if ("Chapel") sound = pick('ambicha1.ogg','ambicha2.ogg','ambicha3.ogg','ambicha4.ogg')
-			if ("Morgue") sound = pick('ambimo1.ogg','ambimo2.ogg')
-			if ("Engine Control") sound = pick('ambieng1.ogg')
-			if ("Atmospherics") sound = pick('ambiatm1.ogg')
-			else sound = pick('ambigen1.ogg','ambigen2.ogg','ambigen3.ogg','ambigen4.ogg','ambigen5.ogg','ambigen6.ogg','ambigen7.ogg','ambigen8.ogg','ambigen9.ogg','ambigen10.ogg','ambigen11.ogg','ambigen12.ogg','ambigen13.ogg','ambigen14.ogg')
+			if ("Chapel") sound = pick('cc-by-sa-nc/sound/ambience/ambicha1.ogg','cc-by-sa-nc/sound/ambience/ambicha2.ogg','cc-by-sa-nc/sound/ambience/ambicha3.ogg','cc-by-sa-nc/sound/ambience/ambicha4.ogg')
+			if ("Morgue") sound = pick('cc-by-sa-nc/sound/ambience/ambimo1.ogg','cc-by-sa-nc/sound/ambience/ambimo2.ogg')
+			if ("Engine Control") sound = pick('cc-by-sa-nc/sound/ambience/ambieng1.ogg')
+			if ("Atmospherics") sound = pick('cc-by-sa-nc/sound/ambience/ambiatm1.ogg')
+			else sound = pick('cc-by-sa-nc/sound/ambience/ambigen1.ogg','cc-by-sa-nc/sound/ambience/ambigen2.ogg','cc-by-sa-nc/sound/ambience/ambigen3.ogg','cc-by-sa-nc/sound/ambience/ambigen4.ogg','cc-by-sa-nc/sound/ambience/ambigen5.ogg','cc-by-sa-nc/sound/ambience/ambigen6.ogg','cc-by-sa-nc/sound/ambience/ambigen7.ogg','cc-by-sa-nc/sound/ambience/ambigen8.ogg','cc-by-sa-nc/sound/ambience/ambigen9.ogg','cc-by-sa-nc/sound/ambience/ambigen10.ogg','cc-by-sa-nc/sound/ambience/ambigen11.ogg','cc-by-sa-nc/sound/ambience/ambigen12.ogg','cc-by-sa-nc/sound/ambience/ambigen13.ogg','cc-by-sa-nc/sound/ambience/ambigen14.ogg')
 
 		if (prob(35))
 			if(A && A:client && !A:client:played)

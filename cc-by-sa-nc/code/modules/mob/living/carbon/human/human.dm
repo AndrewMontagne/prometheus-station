@@ -51,9 +51,9 @@
 			g = "m"
 
 		if(!src.stand_icon)
-			src.stand_icon = new /icon('human.dmi', "body_[g]_s")
+			src.stand_icon = new /icon('cc-by-sa-nc/icons/mob/human.dmi', "body_[g]_s")
 		if(!src.lying_icon)
-			src.lying_icon = new /icon('human.dmi', "body_[g]_l")
+			src.lying_icon = new /icon('cc-by-sa-nc/icons/mob/human.dmi', "body_[g]_l")
 		src.icon = src.stand_icon
 
 		src << "\blue Your icons have been generated!"
@@ -88,7 +88,7 @@
 								M << "\red <B>[src] accidentally bumps into [tmob] with the [W.name]."
 						tmob.weakened = max(4, tmob.weakened)
 						tmob.stunned = max(4, tmob.stunned)
-					playsound(src.loc, 'Egloves.ogg', 50, 1, -1)
+					playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Egloves.ogg', 50, 1, -1)
 					W:charges--
 					return
 		if(istype(tmob, /mob/living/carbon/human) && tmob.mutations & 32)
@@ -825,16 +825,16 @@
 		fat = "fat"
 
 	if (src.mutations & 8)
-		src.overlays += image("icon" = 'genetics.dmi', "icon_state" = "hulk[fat][!src.lying ? "_s" : "_l"]")
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/genetics.dmi', "icon_state" = "hulk[fat][!src.lying ? "_s" : "_l"]")
 
 	if (src.mutations & 2)
-		src.overlays += image("icon" = 'genetics.dmi', "icon_state" = "fire[fat][!src.lying ? "_s" : "_l"]")
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/genetics.dmi', "icon_state" = "fire[fat][!src.lying ? "_s" : "_l"]")
 
 	if (src.mutations & 1)
-		src.overlays += image("icon" = 'genetics.dmi', "icon_state" = "telekinesishead[fat][!src.lying ? "_s" : "_l"]")
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/genetics.dmi', "icon_state" = "telekinesishead[fat][!src.lying ? "_s" : "_l"]")
 
 	if (src.mutantrace)
-		src.overlays += image("icon" = 'genetics.dmi', "icon_state" = "[mutantrace][fat][!src.lying ? "_s" : "_l"]")
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/genetics.dmi', "icon_state" = "[mutantrace][fat][!src.lying ? "_s" : "_l"]")
 		if(src.face_standing)
 			del(src.face_standing)
 		if(src.face_lying)
@@ -872,7 +872,7 @@
 	//if (src.zone_sel)
 	//	src.zone_sel.overlays = null
 	//	src.zone_sel.overlays += src.body_standing
-	//	src.zone_sel.overlays += image("icon" = 'zone_sel.dmi', "icon_state" = text("[]", src.zone_sel.selecting))
+	//	src.zone_sel.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/zone_sel.dmi', "icon_state" = text("[]", src.zone_sel.selecting))
 
 	if (src.lying)
 		src.icon = src.lying_icon
@@ -907,15 +907,15 @@
 			if (!t1)
 				t1 = src.icon_state
 			if (src.mutations & 32)
-				src.overlays += image("icon" = 'uniform_fat.dmi', "icon_state" = "[t1][!src.lying ? "_s" : "_l"]", "layer" = MOB_LAYER)
+				src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/uniform_fat.dmi', "icon_state" = "[t1][!src.lying ? "_s" : "_l"]", "layer" = MOB_LAYER)
 			else
-				src.overlays += image("icon" = 'uniform.dmi', "icon_state" = text("[][]",t1, (!(src.lying) ? "_s" : "_l")), "layer" = MOB_LAYER)
+				src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/uniform.dmi', "icon_state" = text("[][]",t1, (!(src.lying) ? "_s" : "_l")), "layer" = MOB_LAYER)
 			if (src.w_uniform.blood_DNA)
-				var/icon/stain_icon = icon('blood.dmi', "uniformblood[!src.lying ? "" : "2"]")
+				var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "uniformblood[!src.lying ? "" : "2"]")
 				src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 
 	if (src.wear_id)
-		src.overlays += image("icon" = 'mob.dmi', "icon_state" = "id[!src.lying ? null : "2"]", "layer" = MOB_LAYER)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mob.dmi', "icon_state" = "id[!src.lying ? null : "2"]", "layer" = MOB_LAYER)
 
 	if (src.client)
 		src.client.screen -= src.hud_used.intents
@@ -930,30 +930,30 @@
 		var/t1 = src.gloves.item_state
 		if (!t1)
 			t1 = src.gloves.icon_state
-		src.overlays += image("icon" = 'hands.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/hands.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 		if (src.gloves.blood_DNA)
-			var/icon/stain_icon = icon('blood.dmi', "bloodyhands[!src.lying ? "" : "2"]")
+			var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "bloodyhands[!src.lying ? "" : "2"]")
 			src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 	else if (src.blood_DNA)
-		var/icon/stain_icon = icon('blood.dmi', "bloodyhands[!src.lying ? "" : "2"]")
+		var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "bloodyhands[!src.lying ? "" : "2"]")
 		src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 	// Glasses
 	if (src.glasses)
 		var/t1 = src.glasses.icon_state
-		src.overlays += image("icon" = 'eyes.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/eyes.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 	// Ears
 	if (src.ears)
 		var/t1 = src.ears.icon_state
-		src.overlays += image("icon" = 'ears.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/ears.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 	// Shoes
 	if (src.shoes)
 		var/t1 = src.shoes.icon_state
-		src.overlays += image("icon" = 'feet.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/feet.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 		if (src.shoes.blood_DNA)
-			var/icon/stain_icon = icon('blood.dmi', "shoesblood[!src.lying ? "" : "2"]")
+			var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "shoesblood[!src.lying ? "" : "2"]")
 			src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)	// Radio
 /*	if (src.w_radio)
-		src.overlays += image("icon" = 'ears.dmi', "icon_state" = "headset[!src.lying ? "" : "2"]", "layer" = MOB_LAYER) */
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/ears.dmi', "icon_state" = "headset[!src.lying ? "" : "2"]", "layer" = MOB_LAYER) */
 
 	if(src.client) src.hud_used.other_update() //Update the screenloc of the items on the 'other' inventory bar
 											   //to hide / show them.
@@ -961,10 +961,10 @@
 	if (src.wear_mask)
 		if (istype(src.wear_mask, /obj/item/clothing/mask))
 			var/t1 = src.wear_mask.icon_state
-			src.overlays += image("icon" = 'mask.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
+			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mask.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 			if (!istype(src.wear_mask, /obj/item/clothing/mask/cigarette))
 				if (src.wear_mask.blood_DNA)
-					var/icon/stain_icon = icon('blood.dmi', "maskblood[!src.lying ? "" : "2"]")
+					var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "maskblood[!src.lying ? "" : "2"]")
 					src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 			src.wear_mask.screen_loc = ui_mask
 
@@ -1003,15 +1003,15 @@
 				c:layer = initial(c:layer)
 		if (istype(src.wear_suit, /obj/item/clothing/suit))
 			var/t1 = src.wear_suit.icon_state
-			src.overlays += image("icon" = 'suit.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
+			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/suit.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 		if (src.wear_suit.blood_DNA)
 			var/icon/stain_icon = null
 			if (istype(src.wear_suit, /obj/item/clothing/suit/armor/vest || /obj/item/clothing/suit/wcoat || /obj/item/clothing/suit/armor/a_i_a_ptank))
-				stain_icon = icon('blood.dmi', "armorblood[!src.lying ? "" : "2"]")
+				stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "armorblood[!src.lying ? "" : "2"]")
 			else if (istype(src.wear_suit, /obj/item/clothing/suit/det_suit || /obj/item/clothing/suit/labcoat))
-				stain_icon = icon('blood.dmi', "coatblood[!src.lying ? "" : "2"]")
+				stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "coatblood[!src.lying ? "" : "2"]")
 			else
-				stain_icon = icon('blood.dmi', "suitblood[!src.lying ? "" : "2"]")
+				stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "suitblood[!src.lying ? "" : "2"]")
 			src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 		src.wear_suit.screen_loc = ui_oclothing
 		if (istype(src.wear_suit, /obj/item/clothing/suit/straight_jacket))
@@ -1030,10 +1030,10 @@
 	// Head
 	if (src.head)
 		var/t1 = src.head.icon_state
-		var/icon/head_icon = icon('head.dmi', text("[][]", t1, (!( src.lying ) ? null : "2")))
+		var/icon/head_icon = icon('cc-by-sa-nc/icons/mob/head.dmi', text("[][]", t1, (!( src.lying ) ? null : "2")))
 		src.overlays += image("icon" = head_icon, "layer" = MOB_LAYER)
 		if (src.head.blood_DNA)
-			var/icon/stain_icon = icon('blood.dmi', "helmetblood[!src.lying ? "" : "2"]")
+			var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "helmetblood[!src.lying ? "" : "2"]")
 			src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 		src.head.screen_loc = ui_head
 
@@ -1042,7 +1042,7 @@
 		var/t1 = src.belt.item_state
 		if (!t1)
 			t1 = src.belt.icon_state
-		src.overlays += image("icon" = 'belt.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/belt.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 		src.belt.screen_loc = ui_belt
 
 	if ((src.wear_mask && !(src.wear_mask.see_face)) || (src.head && !(src.head.see_face))) // can't see the face
@@ -1067,27 +1067,27 @@
 
 	if (src.back)
 		var/t1 = src.back.icon_state
-		src.overlays += image("icon" = 'back.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/back.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 		src.back.screen_loc = ui_back
 
 	if (src.handcuffed)
 		src.pulling = null
 		if (!src.lying)
-			src.overlays += image("icon" = 'mob.dmi', "icon_state" = "handcuff1", "layer" = MOB_LAYER)
+			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mob.dmi', "icon_state" = "handcuff1", "layer" = MOB_LAYER)
 		else
-			src.overlays += image("icon" = 'mob.dmi', "icon_state" = "handcuff2", "layer" = MOB_LAYER)
+			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mob.dmi', "icon_state" = "handcuff2", "layer" = MOB_LAYER)
 
 	if (src.client)
 		src.client.screen -= src.contents
 		src.client.screen += src.contents
 
 	if (src.r_hand)
-		src.overlays += image("icon" = 'items_righthand.dmi', "icon_state" = src.r_hand.item_state ? src.r_hand.item_state : src.r_hand.icon_state, "layer" = MOB_LAYER+1)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/items_righthand.dmi', "icon_state" = src.r_hand.item_state ? src.r_hand.item_state : src.r_hand.icon_state, "layer" = MOB_LAYER+1)
 
 		src.r_hand.screen_loc = ui_rhand
 
 	if (src.l_hand)
-		src.overlays += image("icon" = 'items_lefthand.dmi', "icon_state" = src.l_hand.item_state ? src.l_hand.item_state : src.l_hand.icon_state, "layer" = MOB_LAYER+1)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/items_lefthand.dmi', "icon_state" = src.l_hand.item_state ? src.l_hand.item_state : src.l_hand.icon_state, "layer" = MOB_LAYER+1)
 
 		src.l_hand.screen_loc = ui_lhand
 
@@ -1110,7 +1110,7 @@
 		src.invisibility = 0
 
 	if (shielded)
-		src.overlays += image("icon" = 'mob.dmi', "icon_state" = "shield", "layer" = MOB_LAYER)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mob.dmi', "icon_state" = "shield", "layer" = MOB_LAYER)
 
 	for (var/mob/M in viewers(1, src))
 		if ((M.client && M.machine == src))
@@ -1254,7 +1254,7 @@
 			G.affecting = src
 			src.grabbed_by += G
 			G.synch()
-			playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			for(var/mob/O in viewers(src, null))
 				O.show_message(text("\red [] has grabbed [] passively!", M, src), 1)
 		else
@@ -1295,7 +1295,7 @@
 								if (prob(50))
 									if (src.weakened < 5)
 										src.weakened = 5
-									playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+									playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 									for(var/mob/O in viewers(src, null))
 										O.show_message(text("\red <B>[] has knocked down []!</B>", M, src), 1, "\red You hear someone fall.", 2)
 								else
@@ -1388,7 +1388,7 @@
 			if (src.paralysis >= 3) src.paralysis -= 3
 			if (src.stunned >= 3) src.stunned -= 3
 			if (src.weakened >= 3) src.weakened -= 3
-			playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			for(var/mob/O in viewers(src, null))
 				O.show_message(text("\blue [] shakes [] trying to wake [] up!", M, src, src), 1)
 		else
@@ -1422,7 +1422,7 @@
 			G.affecting = src
 			src.grabbed_by += G
 			G.synch()
-			playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 			for(var/mob/O in viewers(src, null))
 				O.show_message(text("\red [] has grabbed [] passively!", M, src), 1)
 		else
@@ -1471,7 +1471,7 @@
 								if (prob(50))
 									if (src.weakened < 5)
 										src.weakened = 5
-									playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+									playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 									for(var/mob/O in viewers(src, null))
 										O.show_message(text("\red <B>[] has knocked down []!</B>", M, src), 1, "\red You hear someone fall.", 2)
 								else
@@ -1506,7 +1506,7 @@
 
 					src.updatehealth()
 				else
-					playsound(src.loc, 'punchmiss.ogg', 25, 1, -1)
+					playsound(src.loc, 'cc-by-sa-nc/sound/weapons/punchmiss.ogg', 25, 1, -1)
 					for(var/mob/O in viewers(src, null))
 						O.show_message(text("\red <B>[] has attempted to punch []!</B>", M, src), 1)
 					return
@@ -1517,17 +1517,17 @@
 					var/randn = rand(1, 100)
 					if (randn <= 25)
 						src.weakened = 2
-						playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+						playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 						for(var/mob/O in viewers(src, null))
 							O.show_message(text("\red <B>[] has pushed down []!</B>", M, src), 1)
 					else
 						if (randn <= 60)
 							src.drop_item()
-							playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+							playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 							for(var/mob/O in viewers(src, null))
 								O.show_message(text("\red <B>[] has disarmed []!</B>", M, src), 1)
 						else
-							playsound(src.loc, 'punchmiss.ogg', 25, 1, -1)
+							playsound(src.loc, 'cc-by-sa-nc/sound/weapons/punchmiss.ogg', 25, 1, -1)
 							for(var/mob/O in viewers(src, null))
 								O.show_message(text("\red <B>[] has attempted to disarm []!</B>", M, src), 1)
 	return
@@ -1554,28 +1554,28 @@
 	else if (src.gender == FEMALE)
 		g = "f"
 
-	src.stand_icon = new /icon('human.dmi', "blank")
-	src.lying_icon = new /icon('human.dmi', "blank")
+	src.stand_icon = new /icon('cc-by-sa-nc/icons/mob/human.dmi', "blank")
+	src.lying_icon = new /icon('cc-by-sa-nc/icons/mob/human.dmi', "blank")
 
 	var/husk = (src.mutations & 64)
 	var/obese = (src.mutations & 32)
 
 	if (husk)
-		src.stand_icon.Blend(new /icon('human.dmi', "husk_s"), ICON_OVERLAY)
-		src.lying_icon.Blend(new /icon('human.dmi', "husk_l"), ICON_OVERLAY)
+		src.stand_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "husk_s"), ICON_OVERLAY)
+		src.lying_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "husk_l"), ICON_OVERLAY)
 	else if(obese)
-		src.stand_icon.Blend(new /icon('human.dmi', "fatbody_s"), ICON_OVERLAY)
-		src.lying_icon.Blend(new /icon('human.dmi', "fatbody_l"), ICON_OVERLAY)
+		src.stand_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "fatbody_s"), ICON_OVERLAY)
+		src.lying_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "fatbody_l"), ICON_OVERLAY)
 	else
-		src.stand_icon.Blend(new /icon('human.dmi', "chest_[g]_s"), ICON_OVERLAY)
-		src.lying_icon.Blend(new /icon('human.dmi', "chest_[g]_l"), ICON_OVERLAY)
+		src.stand_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "chest_[g]_s"), ICON_OVERLAY)
+		src.lying_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "chest_[g]_l"), ICON_OVERLAY)
 
 		for (var/part in list("head", "arm_left", "arm_right", "hand_left", "hand_right", "leg_left", "leg_right", "foot_left", "foot_right"))
-			src.stand_icon.Blend(new /icon('human.dmi', "[part]_s"), ICON_OVERLAY)
-			src.lying_icon.Blend(new /icon('human.dmi', "[part]_l"), ICON_OVERLAY)
+			src.stand_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "[part]_s"), ICON_OVERLAY)
+			src.lying_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "[part]_l"), ICON_OVERLAY)
 
-		src.stand_icon.Blend(new /icon('human.dmi', "groin_[g]_s"), ICON_OVERLAY)
-		src.lying_icon.Blend(new /icon('human.dmi', "groin_[g]_l"), ICON_OVERLAY)
+		src.stand_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "groin_[g]_s"), ICON_OVERLAY)
+		src.lying_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "groin_[g]_l"), ICON_OVERLAY)
 
 	// Skin tone
 	if (src.s_tone >= 0)
@@ -1587,8 +1587,8 @@
 
 	if (src.underwear > 0)
 		if(!obese)
-			src.stand_icon.Blend(new /icon('human.dmi', "underwear[src.underwear]_[g]_s"), ICON_OVERLAY)
-			src.lying_icon.Blend(new /icon('human.dmi', "underwear[src.underwear]_[g]_l"), ICON_OVERLAY)
+			src.stand_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "underwear[src.underwear]_[g]_s"), ICON_OVERLAY)
+			src.lying_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "underwear[src.underwear]_[g]_l"), ICON_OVERLAY)
 
 /mob/living/carbon/human/proc/update_face()
 	del(src.face_standing)
@@ -1603,23 +1603,23 @@
 	else if (src.gender == FEMALE)
 		g = "f"
 
-	var/icon/eyes_s = new/icon("icon" = 'human_face.dmi', "icon_state" = "eyes_s")
-	var/icon/eyes_l = new/icon("icon" = 'human_face.dmi', "icon_state" = "eyes_l")
+	var/icon/eyes_s = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "eyes_s")
+	var/icon/eyes_l = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "eyes_l")
 	eyes_s.Blend(rgb(src.r_eyes, src.g_eyes, src.b_eyes), ICON_ADD)
 	eyes_l.Blend(rgb(src.r_eyes, src.g_eyes, src.b_eyes), ICON_ADD)
 
-	var/icon/hair_s = new/icon("icon" = 'human_face.dmi', "icon_state" = "[src.hair_icon_state]_s")
-	var/icon/hair_l = new/icon("icon" = 'human_face.dmi', "icon_state" = "[src.hair_icon_state]_l")
+	var/icon/hair_s = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "[src.hair_icon_state]_s")
+	var/icon/hair_l = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "[src.hair_icon_state]_l")
 	hair_s.Blend(rgb(src.r_hair, src.g_hair, src.b_hair), ICON_ADD)
 	hair_l.Blend(rgb(src.r_hair, src.g_hair, src.b_hair), ICON_ADD)
 
-	var/icon/facial_s = new/icon("icon" = 'human_face.dmi', "icon_state" = "[src.face_icon_state]_s")
-	var/icon/facial_l = new/icon("icon" = 'human_face.dmi', "icon_state" = "[src.face_icon_state]_l")
+	var/icon/facial_s = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "[src.face_icon_state]_s")
+	var/icon/facial_l = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "[src.face_icon_state]_l")
 	facial_s.Blend(rgb(src.r_facial, src.g_facial, src.b_facial), ICON_ADD)
 	facial_l.Blend(rgb(src.r_facial, src.g_facial, src.b_facial), ICON_ADD)
 
-	var/icon/mouth_s = new/icon("icon" = 'human_face.dmi', "icon_state" = "mouth_[g]_s")
-	var/icon/mouth_l = new/icon("icon" = 'human_face.dmi', "icon_state" = "mouth_[g]_l")
+	var/icon/mouth_s = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "mouth_[g]_s")
+	var/icon/mouth_l = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "mouth_[g]_l")
 
 	eyes_s.Blend(hair_s, ICON_OVERLAY)
 	eyes_l.Blend(hair_l, ICON_OVERLAY)
@@ -2271,15 +2271,15 @@
 		src.bruteloss += O.brute_dam
 		src.fireloss += O.burn_dam
 
-		var/icon/DI = new /icon('dam_human.dmi', O.damage_state)			// the damage icon for whole human
-		DI.Blend(new /icon('dam_mask.dmi', O.icon_name), ICON_MULTIPLY)		// mask with this organ's pixels
+		var/icon/DI = new /icon('cc-by-sa-nc/icons/mob/dam_human.dmi', O.damage_state)			// the damage icon for whole human
+		DI.Blend(new /icon('cc-by-sa-nc/icons/mob/dam_mask.dmi', O.icon_name), ICON_MULTIPLY)		// mask with this organ's pixels
 
 //		world << "[O.icon_name] [O.damage_state] \icon[DI]"
 
 		body_standing += DI
 
-		DI = new /icon('dam_human.dmi', "[O.damage_state]-2")				// repeat for lying icons
-		DI.Blend(new /icon('dam_mask.dmi', "[O.icon_name]2"), ICON_MULTIPLY)
+		DI = new /icon('cc-by-sa-nc/icons/mob/dam_human.dmi', "[O.damage_state]-2")				// repeat for lying icons
+		DI.Blend(new /icon('cc-by-sa-nc/icons/mob/dam_mask.dmi', "[O.icon_name]2"), ICON_MULTIPLY)
 
 //		world << "[O.r_name]2 [O.d_i_state]-2 \icon[DI]"
 

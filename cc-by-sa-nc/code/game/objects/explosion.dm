@@ -5,7 +5,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 
 		defer_powernet_rebuild = 1
 
-		playsound(epicenter.loc, 'explosionfar.ogg', 100, 1, round(devastation_range*2,1) )
+		playsound(epicenter.loc, 'cc-by-sa-nc/sound/effects/explosionfar.ogg', 100, 1, round(devastation_range*2,1) )
 		playsound(epicenter.loc, "explosion", 100, 1, round(devastation_range,1) )
 
 		if(heavy_impact_range > 1)

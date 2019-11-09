@@ -1,7 +1,7 @@
 /proc/getbrokeninhands()
-	var/icon/IL = new('items_lefthand.dmi')
+	var/icon/IL = new('cc-by-sa-nc/icons/mob/items_lefthand.dmi')
 	var/list/Lstates = IL.IconStates()
-	var/icon/IR = new('items_righthand.dmi')
+	var/icon/IR = new('cc-by-sa-nc/icons/mob/items_righthand.dmi')
 	var/list/Rstates = IR.IconStates()
 
 

@@ -71,7 +71,7 @@
 
 /obj/meteor
 	name = "meteor"
-	icon = 'meteor.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/meteor.dmi'
 	icon_state = "flaming"
 	density = 1
 	anchored = 1.0
@@ -96,7 +96,7 @@
 				shake_camera(M, 3, 1)
 		if (A)
 			A.meteorhit(src)
-			playsound(src.loc, 'meteorimpact.ogg', 40, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/misc/meteorimpact.ogg', 40, 1)
 		if (--src.hits <= 0)
 			if(prob(15) && !istype(A, /obj/grille))
 				explosion(loc, 0, 1, 2, 3)

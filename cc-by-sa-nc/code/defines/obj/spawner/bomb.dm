@@ -1,6 +1,6 @@
 /obj/spawner/bomb
 	name = "bomb"
-	icon = 'screen1.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/screen1.dmi'
 	icon_state = "x"
 	var/btype = 0  //0 = radio, 1= prox, 2=time
 	var/explosive = 1	// 0= firebomb
@@ -24,7 +24,7 @@
 
 /obj/spawner/newbomb
 	name = "bomb"
-	icon = 'screen1.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/screen1.dmi'
 	icon_state = "x"
 	var/btype = 0 // 0=radio, 1=prox, 2=time
 	var/btemp1 = 1500

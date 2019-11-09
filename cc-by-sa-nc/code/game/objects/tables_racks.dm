@@ -105,10 +105,10 @@
 
 	if (istype(W, /obj/item/weapon/wrench))
 		user << "\blue Now dissembling table"
-		playsound(src.loc, 'Ratchet.ogg', 50, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 50, 1)
 		sleep(50)
 		new /obj/item/weapon/table_parts( src.loc )
-		playsound(src.loc, 'Deconstruct.ogg', 50, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/items/Deconstruct.ogg', 50, 1)
 		//SN src = null
 		del(src)
 		return
@@ -131,13 +131,13 @@
 	if (istype(W, /obj/item/weapon/weldingtool))
 		if(src.status == 2)
 			user << "\blue Now weakening the reinforced table"
-			playsound(src.loc, 'Welder.ogg', 50, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 50, 1)
 			sleep(50)
 			user << "\blue Table weakened"
 			src.status = 1
 		else
 			user << "\blue Now strengthening the reinforced table"
-			playsound(src.loc, 'Welder.ogg', 50, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 50, 1)
 			sleep(50)
 			user << "\blue Table strengthened"
 			src.status = 2
@@ -146,10 +146,10 @@
 	if (istype(W, /obj/item/weapon/wrench))
 		if(src.status == 1)
 			user << "\blue Now dissembling the reinforced table"
-			playsound(src.loc, 'Ratchet.ogg', 50, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 50, 1)
 			sleep(50)
 			new /obj/item/weapon/table_parts/reinforced( src.loc )
-			playsound(src.loc, 'Deconstruct.ogg', 50, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Deconstruct.ogg', 50, 1)
 			del(src)
 			return
 	user.drop_item()
@@ -200,7 +200,7 @@
 /obj/rack/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/wrench))
 		new /obj/item/weapon/rack_parts( src.loc )
-		playsound(src.loc, 'Ratchet.ogg', 50, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 50, 1)
 		//SN src = null
 		del(src)
 		return

@@ -43,7 +43,7 @@
 		O.place = "handcuff"
 		M.requests += O
 		spawn( 0 )
-			playsound(src.loc, 'handcuffs.ogg', 30, 1, -2)
+			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/handcuffs.ogg', 30, 1, -2)
 			O.process()
 			return
 	else
@@ -56,7 +56,7 @@
 		O.place = "handcuff"
 		M.requests += O
 		spawn( 0 )
-			playsound(src.loc, 'handcuffs.ogg', 30, 1, -2)
+			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/handcuffs.ogg', 30, 1, -2)
 			O.process()
 			return
 	return
@@ -83,7 +83,7 @@
 		var/obj/o = target
 		o.reagents.trans_to(src, 50)
 		user << "\blue Extinguisher refilled"
-		playsound(src.loc, 'zzzt.ogg', 50, 1, -6)
+		playsound(src.loc, 'cc-by-sa-nc/sound/effects/zzzt.ogg', 50, 1, -6)
 		return
 
 	if (!safety)
@@ -95,7 +95,7 @@
 
 		src.last_use = world.time
 
-		playsound(src.loc, 'spray.ogg', 75, 1, -3)
+		playsound(src.loc, 'cc-by-sa-nc/sound/effects/spray.ogg', 75, 1, -3)
 
 		var/direction = get_dir(src,target)
 

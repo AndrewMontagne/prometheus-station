@@ -1,7 +1,7 @@
 /obj/screen/space
     screen_loc = "SOUTH, WEST"
     plane = -90
-    icon = 'space.dmi'
+    icon = 'cc-by-sa-nc/icons/turf/space.dmi'
     icon_state = "animate"
     name = "space"
     mouse_opacity = 0

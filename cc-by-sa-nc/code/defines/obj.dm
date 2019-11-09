@@ -19,7 +19,7 @@
 		initialize()
 
 /obj/blob
-		icon = 'blob.dmi'
+		icon = 'cc-by-sa-nc/icons/mob/blob.dmi'
 		icon_state = "bloba0"
 		var/health = 30
 		density = 1
@@ -33,7 +33,7 @@
 
 /obj/mark
 		var/mark = ""
-		icon = 'mark.dmi'
+		icon = 'cc-by-sa-nc/icons/misc/mark.dmi'
 		icon_state = "blank"
 		anchored = 1
 		layer = 99
@@ -42,7 +42,7 @@
 /obj/shieldgen
 		name = "shield generator"
 		desc = "Used to seal minor hull breaches."
-		icon = 'objects.dmi'
+		icon = 'cc-by-sa-nc/icons/obj/objects.dmi'
 		icon_state = "shieldoff"
 		var/active = 0
 		var/health = 100
@@ -55,7 +55,7 @@
 /obj/shieldwallgen
 		name = "shieldwall thing"
 		desc = "dont know"
-		icon = 'wizard.dmi'
+		icon = 'cc-by-sa-nc/icons/obj/wizard.dmi'
 		icon_state = "dontknow"
 		var/active = 0
 		var/range = 1
@@ -67,7 +67,7 @@
 /obj/shield
 		name = "shield"
 		desc = "An energy shield."
-		icon = 'effects.dmi'
+		icon = 'cc-by-sa-nc/icons/effects/effects.dmi'
 		icon_state = "shieldsparkles"
 		density = 1
 		opacity = 0
@@ -76,7 +76,7 @@
 /obj/shieldwall
 		name = "shield"
 		desc = "An energy shield."
-		icon = 'effects.dmi'
+		icon = 'cc-by-sa-nc/icons/effects/effects.dmi'
 		icon_state = "test"
 		density = 1
 		opacity = 0
@@ -92,7 +92,7 @@
 
 /obj/bhole
 	name = "black hole"
-	icon = 'objects.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/objects.dmi'
 	desc = "FUCK FUCK FUCK AAAHHH"
 	icon_state = "bhole2"
 	opacity = 0
@@ -108,7 +108,7 @@
 
 /obj/beam/a_laser
 	name = "a laser"
-	icon = 'projectiles.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/projectiles.dmi'
 	icon_state = "laser"
 	density = 1
 	var/yo = null
@@ -120,7 +120,7 @@
 
 /obj/beam/i_beam
 	name = "i beam"
-	icon = 'projectiles.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/projectiles.dmi'
 	icon_state = "ibeam"
 	var/obj/beam/i_beam/next = null
 	var/obj/item/device/infra/master = null
@@ -133,20 +133,20 @@
 /obj/bedsheetbin
 	name = "linen bin"
 	desc = "A bin for containing bedsheets."
-	icon = 'items.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/items.dmi'
 	icon_state = "bedbin"
 	var/amount = 23.0
 	anchored = 1.0
 
 /obj/begin
 	name = "begin"
-	icon = 'stationobjs.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi'
 	icon_state = "begin"
 	anchored = 1.0
 
 /obj/bullet
 	name = "bullet"
-	icon = 'projectiles.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/projectiles.dmi'
 	icon_state = "bullet"
 	density = 1
 	var/yo = null
@@ -197,7 +197,7 @@
 /obj/grille
 	desc = "A piece of metal with evenly spaced gridlike holes in it. Blocks large object but lets small items, gas, or energy beams through."
 	name = "grille"
-	icon = 'structures.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/structures.dmi'
 	icon_state = "grille"
 	density = 1
 	var/health = 10.0
@@ -209,7 +209,7 @@
 /obj/securearea
 	desc = "A warning sign which reads 'SECURE AREA'"
 	name = "SECURE AREA"
-	icon = 'decals.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/decals.dmi'
 	icon_state = "securearea"
 	anchored = 1.0
 	opacity = 0
@@ -236,7 +236,7 @@
 
 /obj/item
 	name = "item"
-	icon = 'items.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/items.dmi'
 	var/icon_old = null
 	var/abstract = 0.0
 	var/force = null
@@ -254,7 +254,7 @@
 	var/obj/item/master = null
 
 /obj/item/device
-	icon = 'device.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/device.dmi'
 
 /obj/item/device/detective_scanner
 	name = "Scanner"
@@ -399,7 +399,7 @@
 
 /obj/landmark
 	name = "landmark"
-	icon = 'screen1.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/screen1.dmi'
 	icon_state = "x2"
 	anchored = 1.0
 
@@ -408,14 +408,14 @@
 
 /obj/laser
 	name = "laser"
-	icon = 'projectiles.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/projectiles.dmi'
 	var/damage = 0.0
 	var/range = 10.0
 
 /obj/lattice
 	desc = "A lightweight support lattice."
 	name = "lattice"
-	icon = 'structures.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/structures.dmi'
 	icon_state = "lattice"
 	density = 0
 	anchored = 1.0
@@ -433,7 +433,7 @@
 
 /obj/m_tray
 	name = "morgue tray"
-	icon = 'stationobjs.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi'
 	icon_state = "morguet"
 	density = 1
 	layer = 2.0
@@ -442,7 +442,7 @@
 
 /obj/c_tray
 	name = "crematorium tray"
-	icon = 'stationobjs.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi'
 	icon_state = "cremat"
 	density = 1
 	layer = 2.0
@@ -459,7 +459,7 @@
 	var/netnum = 0
 	name = "power cable"
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
-	icon = 'power_cond.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/power_cond.dmi'
 	icon_state = "0-1"
 	var/d1 = 0
 	var/d2 = 1
@@ -467,12 +467,12 @@
 
 /obj/manifest
 	name = "manifest"
-	icon = 'screen1.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/screen1.dmi'
 	icon_state = "x"
 
 /obj/morgue
 	name = "morgue"
-	icon = 'stationobjs.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi'
 	icon_state = "morgue1"
 	density = 1
 	var/obj/m_tray/connected = null
@@ -481,7 +481,7 @@
 /obj/crematorium
 	name = "crematorium"
 	desc = "A human incinerator."
-	icon = 'stationobjs.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi'
 	icon_state = "crema1"
 	density = 1
 	var/obj/c_tray/connected = null
@@ -496,7 +496,7 @@
 	density = 1
 	anchored = 1
 	layer = 3
-	icon = 'weapons.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/weapons.dmi'
 	icon_state = "uglymine"
 	var/triggerproc = "explode" //name of the proc thats called when the mine is triggered
 	var/triggered = 0
@@ -531,7 +531,7 @@
 
 /obj/portal
 	name = "portal"
-	icon = 'stationobjs.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi'
 	icon_state = "portal"
 	density = 1
 	var/failchance = 5
@@ -545,7 +545,7 @@
 
 /obj/rack
 	name = "rack"
-	icon = 'objects.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/objects.dmi'
 	icon_state = "rack"
 	density = 1
 	flags = FPRINT
@@ -553,7 +553,7 @@
 
 /obj/screen
 	name = "screen"
-	icon = 'screen1.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/screen1.dmi'
 	layer = 20.0
 	var/id = 0.0
 	var/obj/master
@@ -572,7 +572,7 @@
 
 /obj/screen/zone_sel
 	name = "Damage Zone"
-	icon = 'zone_sel.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/zone_sel.dmi'
 	icon_state = "blank"
 	var/selecting = "chest"
 
@@ -583,13 +583,13 @@
 
 /obj/landmark/start
 	name = "start"
-	icon = 'screen1.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/screen1.dmi'
 	icon_state = "x"
 	anchored = 1.0
 
 /obj/stool
 	name = "stool"
-	icon = 'objects.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/objects.dmi'
 	icon_state = "stool"
 	flags = FPRINT
 	pressure_resistance = 3*ONE_ATMOSPHERE
@@ -600,7 +600,7 @@
 	anchored = 1.0
 
 /obj/stool/chair
-	icon = 'chairs.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/chairs.dmi'
 	name = "chair"
 	icon_state = "chair"
 	var/status = 0.0
@@ -616,7 +616,7 @@
 
 /obj/table
 	name = "table"
-	icon = 'structures.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/structures.dmi'
 	icon_state = "table"
 	density = 1
 	anchored = 1.0
@@ -633,7 +633,7 @@
 /obj/mopbucket
 	desc = "Fill it with water, but don't forget a mop!"
 	name = "mop bucket"
-	icon = 'janitor.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/janitor.dmi'
 	icon_state = "mopbucket"
 	density = 1
 	flags = FPRINT
@@ -642,7 +642,7 @@
 
 /obj/kitchenspike
 	name = "a meat spike"
-	icon = 'kitchen.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/kitchen.dmi'
 	icon_state = "spike"
 	desc = "A spike for collecting meat from animals"
 	density = 1
@@ -652,7 +652,7 @@
 
 /obj/displaycase
 	name = "Display Case"
-	icon = 'stationobjs.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi'
 	icon_state = "glassbox1"
 	desc = "A display case for prized possessions."
 	density = 1
@@ -663,7 +663,7 @@
 
 obj/item/brain
 	name = "brain"
-	icon = 'surgery.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/surgery.dmi'
 	icon_state = "brain2"
 	flags = TABLEPASS
 	force = 1.0
@@ -682,7 +682,7 @@ obj/item/brain
 
 /obj/noticeboard
 	name = "Notice Board"
-	icon = 'stationobjs.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi'
 	icon_state = "nboard00"
 	flags = FPRINT
 	desc = "A board for pinning important notices upon."
@@ -692,7 +692,7 @@ obj/item/brain
 
 /obj/deskclutter
 	name = "desk clutter"
-	icon = 'items.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/items.dmi'
 	icon_state = "deskclutter"
 	desc = "Some clutter the detective has accumalated over the years..."
 	anchored = 1
@@ -704,7 +704,7 @@ obj/item/brain
 // TODO: robust mixology system! (and merge with beakers, maybe)
 /obj/item/weapon/glass
 	name = "empty glass"
-	icon = 'kitchen.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/kitchen.dmi'
 	icon_state = "glass_empty"
 	item_state = "beaker"
 	flags = FPRINT | TABLEPASS | OPENCONTAINER

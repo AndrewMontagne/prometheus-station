@@ -1,14 +1,14 @@
 /obj/item/weapon/storage/utilitybelt
 	name = "utility belt"
 	desc = "Can hold various tools."
-	icon = 'old_or_unused.dmi'
+	icon = 'cc-by-sa-nc/icons/misc/old_or_unused.dmi'
 	icon_state = "utilitybelt"
 	item_state = "utility"
 	can_hold = list("/obj/item/weapon/crowbar","/obj/item/weapon/screwdriver","/obj/item/weapon/weldingtool","/obj/item/weapon/wirecutters","/obj/item/weapon/wrench","/obj/item/device/multitool","/obj/item/device/flashlight","/obj/item/weapon/cable_coil")
 	flags = FPRINT | TABLEPASS | ONBELT
 
 /obj/item/weapon/storage
-	icon = 'storage.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/storage.dmi'
 	name = "storage"
 	var/list/can_hold = new/list()
 	var/obj/screen/storage/boxes = null
@@ -24,7 +24,7 @@
 /obj/item/weapon/storage/pill_bottle
 	name = "Pill bottle"
 	icon_state = "pill_canister"
-	icon = 'chemical.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/chemical.dmi'
 	item_state = "contsolid"
 	can_hold = list("/obj/item/weapon/reagent_containers/pill")
 
@@ -128,7 +128,7 @@
 
 /obj/item/weapon/storage/toolbox
 	name = "toolbox"
-	icon = 'storage.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/storage.dmi'
 	icon_state = "red"
 	item_state = "toolbox_red"
 	flags = FPRINT | TABLEPASS| CONDUCT

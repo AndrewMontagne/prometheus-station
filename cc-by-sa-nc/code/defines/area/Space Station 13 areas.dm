@@ -19,7 +19,7 @@
 	var/party = null
 	level = null
 	name = "Space"
-	icon = 'areas.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/areas.dmi'
 	icon_state = "unknown"
 	layer = 10
 	mouse_opacity = 0
@@ -428,7 +428,7 @@
 /area/medical/medbay
 	name = "Medbay"
 	icon_state = "medbay"
-	music = 'signal.ogg'
+	music = 'cc-by-sa-nc/sound/machines/signal.ogg'
 
 
 /area/medical/research

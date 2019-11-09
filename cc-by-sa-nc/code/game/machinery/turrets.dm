@@ -37,7 +37,7 @@
 
 /obj/machinery/turret
 	name = "turret"
-	icon = 'turrets.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/turrets.dmi'
 	icon_state = "grey_target_prism"
 	var/raised = 0
 	var/enabled = 1
@@ -55,7 +55,7 @@
 
 /obj/machinery/turretcover
 	name = "pop-up turret cover"
-	icon = 'turrets.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/turrets.dmi'
 	icon_state = "turretCover"
 	anchored = 1
 	layer = 3.5
@@ -215,7 +215,7 @@
 
 /obj/machinery/turretid
 	name = "Turret deactivation control"
-	icon = 'device.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/device.dmi'
 	icon_state = "motion3"
 	anchored = 1
 	density = 0

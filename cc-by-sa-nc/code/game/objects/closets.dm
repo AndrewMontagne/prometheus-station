@@ -46,7 +46,7 @@
 	src.dump_contents()
 	src.opened = 1
 	update_icon()
-	playsound(src.loc, 'click.ogg', 15, 1, -3)
+	playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
 	return 1
 
 /obj/closet/proc/close()
@@ -74,7 +74,7 @@
 		M.loc = src
 	src.opened = 0
 	update_icon()
-	playsound(src.loc, 'click.ogg', 15, 1, -3)
+	playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
 	return 1
 
 /obj/closet/proc/toggle()

@@ -50,7 +50,7 @@ datum/preferences
 		else if (src.gender == FEMALE)
 			g = "f"
 
-		src.preview_icon = new /icon('human.dmi', "body_[g]_s")
+		src.preview_icon = new /icon('cc-by-sa-nc/icons/mob/human.dmi', "body_[g]_s")
 
 		// Skin tone
 		if (src.s_tone >= 0)
@@ -59,9 +59,9 @@ datum/preferences
 			src.preview_icon.Blend(rgb(-src.s_tone,  -src.s_tone,  -src.s_tone), ICON_SUBTRACT)
 
 		if (src.underwear > 0)
-			src.preview_icon.Blend(new /icon('human.dmi', "underwear[src.underwear]_[g]_s"), ICON_OVERLAY)
+			src.preview_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "underwear[src.underwear]_[g]_s"), ICON_OVERLAY)
 
-		var/icon/eyes_s = new/icon("icon" = 'human_face.dmi', "icon_state" = "eyes_s")
+		var/icon/eyes_s = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "eyes_s")
 		eyes_s.Blend(rgb(src.r_eyes, src.g_eyes, src.b_eyes), ICON_ADD)
 
 		var/h_style_r = null
@@ -116,13 +116,13 @@ datum/preferences
 			else
 				f_style_r = "bald"
 
-		var/icon/hair_s = new/icon("icon" = 'human_face.dmi', "icon_state" = "[h_style_r]_s")
+		var/icon/hair_s = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "[h_style_r]_s")
 		hair_s.Blend(rgb(src.r_hair, src.g_hair, src.b_hair), ICON_ADD)
 
-		var/icon/facial_s = new/icon("icon" = 'human_face.dmi', "icon_state" = "[f_style_r]_s")
+		var/icon/facial_s = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "[f_style_r]_s")
 		facial_s.Blend(rgb(src.r_facial, src.g_facial, src.b_facial), ICON_ADD)
 
-		var/icon/mouth_s = new/icon("icon" = 'human_face.dmi', "icon_state" = "mouth_[g]_s")
+		var/icon/mouth_s = new/icon("icon" = 'cc-by-sa-nc/icons/mob/human_face.dmi', "icon_state" = "mouth_[g]_s")
 
 		eyes_s.Blend(hair_s, ICON_OVERLAY)
 		eyes_s.Blend(mouth_s, ICON_OVERLAY)

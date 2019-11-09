@@ -180,7 +180,7 @@
 		if (src.paralysis >= 3) src.paralysis -= 3
 		if (src.stunned >= 3) src.stunned -= 3
 		if (src.weakened >= 3) src.weakened -= 3
-		playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 		for(var/mob/O in viewers(src, null))
 			if ((O.client && !( O.blinded )))
 				O.show_message(text("\blue [] shakes [src.name] trying to wake him up!", M), 1)
@@ -205,7 +205,7 @@
 				src.bruteloss += damage
 				src.updatehealth()
 			else
-				playsound(src.loc, 'punchmiss.ogg', 25, 1, -1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/weapons/punchmiss.ogg', 25, 1, -1)
 				for(var/mob/O in viewers(src, null))
 					if ((O.client && !( O.blinded )))
 						O.show_message(text("\red <B>[] has attempted to punch [src.name]!</B>", M), 1)
@@ -223,20 +223,20 @@
 				G.affecting = src
 				src.grabbed_by += G
 				G.synch()
-				playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				for(var/mob/O in viewers(src, null))
 					O.show_message(text("\red [] has grabbed [src.name] passively!", M), 1)
 			else
 				if (!( src.paralysis ))
 					if (prob(25))
 						src.paralysis = 2
-						playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+						playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 						for(var/mob/O in viewers(src, null))
 							if ((O.client && !( O.blinded )))
 								O.show_message(text("\red <B>[] has pushed down [src.name]!</B>", M), 1)
 					else
 						drop_item()
-						playsound(src.loc, 'thudswoosh.ogg', 50, 1, -1)
+						playsound(src.loc, 'cc-by-sa-nc/sound/weapons/thudswoosh.ogg', 50, 1, -1)
 						for(var/mob/O in viewers(src, null))
 							if ((O.client && !( O.blinded )))
 								O.show_message(text("\red <B>[] has disarmed [src.name]!</B>", M), 1)
@@ -270,28 +270,28 @@
 			var/t1 = src.wear_mask.item_state
 			if (!( t1 ))
 				t1 = src.wear_mask.icon_state
-			src.overlays += image("icon" = 'monkey.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = src.layer)
+			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/monkey.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = src.layer)
 		src.wear_mask.screen_loc = ui_mask
 	if (src.r_hand)
-		src.overlays += image("icon" = 'items_righthand.dmi', "icon_state" = src.r_hand.item_state ? src.r_hand.item_state : src.r_hand.icon_state, "layer" = src.layer)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/items_righthand.dmi', "icon_state" = src.r_hand.item_state ? src.r_hand.item_state : src.r_hand.icon_state, "layer" = src.layer)
 		src.r_hand.screen_loc = ui_rhand
 
 	if (src.l_hand)
-		src.overlays += image("icon" = 'items_lefthand.dmi', "icon_state" = src.l_hand.item_state ? src.l_hand.item_state : src.l_hand.icon_state, "layer" = src.layer)
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/items_lefthand.dmi', "icon_state" = src.l_hand.item_state ? src.l_hand.item_state : src.l_hand.icon_state, "layer" = src.layer)
 		src.l_hand.screen_loc = ui_lhand
 
 	if (src.back)
 		if (!( src.lying ))
-			src.overlays += image("icon" = 'monkey.dmi', "icon_state" = "back", "layer" = src.layer)
+			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/monkey.dmi', "icon_state" = "back", "layer" = src.layer)
 		else
-			src.overlays += image("icon" = 'monkey.dmi', "icon_state" = "back2", "layer" = src.layer)
+			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/monkey.dmi', "icon_state" = "back2", "layer" = src.layer)
 		src.back.screen_loc = ui_back
 	if (src.handcuffed)
 		src.pulling = null
 		if (!( src.lying ))
-			src.overlays += image("icon" = 'monkey.dmi', "icon_state" = "handcuff1", "layer" = src.layer)
+			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/monkey.dmi', "icon_state" = "handcuff1", "layer" = src.layer)
 		else
-			src.overlays += image("icon" = 'monkey.dmi', "icon_state" = "handcuff2", "layer" = src.layer)
+			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/monkey.dmi', "icon_state" = "handcuff2", "layer" = src.layer)
 	if (src.client)
 		src.client.screen -= src.contents
 		src.client.screen += src.contents

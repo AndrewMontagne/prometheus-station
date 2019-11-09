@@ -40,7 +40,7 @@
 
 	// station explosion cinematic
 	src.station_explosion = new src.h_type( src )
-	src.station_explosion.icon = 'station_explosion.dmi'
+	src.station_explosion.icon = 'cc-by-sa-nc/icons/effects/station_explosion.dmi'
 	src.station_explosion.icon_state = "start"
 	src.station_explosion.layer = 20
 	src.station_explosion.mouse_opacity = 0
@@ -358,7 +358,7 @@
 */
 
 	mymob.toxin = new /obj/screen( null )
-	mymob.toxin.icon = 'screen1.dmi'
+	mymob.toxin.icon = 'cc-by-sa-nc/icons/mob/screen1.dmi'
 	mymob.toxin.icon_state = "tox0"
 	mymob.toxin.name = "toxin"
 	mymob.toxin.screen_loc = ui_toxin
@@ -507,7 +507,7 @@
 	mymob.zone_sel = new /obj/screen/zone_sel( null )
 	mymob.zone_sel.screen_loc = ui_zonesel
 	mymob.zone_sel.overlays = null
-	mymob.zone_sel.overlays += image("icon" = 'zone_sel.dmi', "icon_state" = text("[]", mymob.zone_sel.selecting))
+	mymob.zone_sel.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/zone_sel.dmi', "icon_state" = text("[]", mymob.zone_sel.selecting))
 
 	mymob.client.screen = null
 

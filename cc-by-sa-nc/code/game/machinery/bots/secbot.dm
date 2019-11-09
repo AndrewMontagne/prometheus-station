@@ -1,7 +1,7 @@
 /obj/machinery/bot/secbot
 	name = "Securitron"
 	desc = "A little security robot.  He looks less than thrilled."
-	icon = 'aibots.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/aibots.dmi'
 	icon_state = "secbot0"
 	layer = 5.0
 	density = 1
@@ -61,7 +61,7 @@
 /obj/item/weapon/secbot_assembly
 	name = "helmet/signaler assembly"
 	desc = "Some sort of bizarre assembly."
-	icon = 'aibots.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/aibots.dmi'
 	icon_state = "helmet_signaler"
 	item_state = "helmet"
 	var/build_step = 0
@@ -229,7 +229,7 @@ Auto Patrol: []"},
 
 				if (target)		// make sure target exists
 					if (get_dist(src, src.target) <= 1)		// if right next to perp
-						playsound(src.loc, 'Egloves.ogg', 50, 1, -1)
+						playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Egloves.ogg', 50, 1, -1)
 						src.icon_state = "secbot-c"
 						spawn(2)
 							src.icon_state = "secbot[src.on]"
@@ -274,7 +274,7 @@ Auto Patrol: []"},
 					return
 
 				if (!src.target.handcuffed && !src.arrest_type)
-					playsound(src.loc, 'handcuffs.ogg', 30, 1, -2)
+					playsound(src.loc, 'cc-by-sa-nc/sound/weapons/handcuffs.ogg', 30, 1, -2)
 					mode = SECBOT_ARREST
 					for(var/mob/O in viewers(src, null))
 						O.show_message("\red <B>[src] is trying to put handcuffs on [src.target]!</B>", 1)
@@ -293,7 +293,7 @@ Auto Patrol: []"},
 							src.last_found = world.time
 							src.frustration = 0
 
-							playsound(src.loc, pick('bgod.ogg', 'biamthelaw.ogg', 'bsecureday.ogg', 'bradio.ogg', 'binsult.ogg', 'bcreep.ogg'), 50, 0)
+							playsound(src.loc, pick('cc-by-sa-nc/sound/voice/bgod.ogg', 'cc-by-sa-nc/sound/voice/biamthelaw.ogg', 'cc-by-sa-nc/sound/voice/bsecureday.ogg', 'cc-by-sa-nc/sound/voice/bradio.ogg', 'cc-by-sa-nc/sound/voice/binsult.ogg', 'cc-by-sa-nc/sound/voice/bcreep.ogg'), 50, 0)
 		//					var/arrest_message = pick("Have a secure day!","I AM THE LAW.", "God made tomorrow for the crooks we don't catch today.","You can't outrun a radio.")
 		//					src.speak(arrest_message)
 
@@ -578,7 +578,7 @@ Auto Patrol: []"},
 				src.target = C
 				src.oldtarget_name = C.name
 				src.speak("Level [src.threatlevel] infraction alert!")
-				playsound(src.loc, pick('bcriminal.ogg', 'bjustice.ogg', 'bfreeze.ogg'), 50, 0)
+				playsound(src.loc, pick('cc-by-sa-nc/sound/voice/bcriminal.ogg', 'cc-by-sa-nc/sound/voice/bjustice.ogg', 'cc-by-sa-nc/sound/voice/bfreeze.ogg'), 50, 0)
 				src.visible_message("<b>[src]</b> points at [C.name]!")
 				mode = SECBOT_HUNT
 				spawn(0)
@@ -700,7 +700,7 @@ Auto Patrol: []"},
 
 		var/obj/item/weapon/secbot_assembly/Sa = new /obj/item/weapon/secbot_assembly(Tsec)
 		Sa.build_step = 1
-		Sa.overlays += image('aibots.dmi', "hs_hole")
+		Sa.overlays += image('cc-by-sa-nc/icons/obj/aibots.dmi', "hs_hole")
 		Sa.created_name = src.name
 		new /obj/item/device/prox_sensor(Tsec)
 
@@ -752,13 +752,13 @@ Auto Patrol: []"},
 		if ((W:welding) && (W:get_fuel() >= 1))
 			W:use_fuel(1)
 			src.build_step++
-			src.overlays += image('aibots.dmi', "hs_hole")
+			src.overlays += image('cc-by-sa-nc/icons/obj/aibots.dmi', "hs_hole")
 			user << "You weld a hole in [src]!"
 
 	else if ((istype(W, /obj/item/device/prox_sensor)) && (src.build_step == 1))
 		src.build_step++
 		user << "You add the prox sensor to [src]!"
-		src.overlays += image('aibots.dmi', "hs_eye")
+		src.overlays += image('cc-by-sa-nc/icons/obj/aibots.dmi', "hs_eye")
 		src.name = "helmet/signaler/prox sensor assembly"
 		del(W)
 
@@ -766,7 +766,7 @@ Auto Patrol: []"},
 		src.build_step++
 		user << "You add the robot arm to [src]!"
 		src.name = "helmet/signaler/prox sensor/robot arm assembly"
-		src.overlays += image('aibots.dmi', "hs_arm")
+		src.overlays += image('cc-by-sa-nc/icons/obj/aibots.dmi', "hs_arm")
 		del(W)
 
 	else if ((istype(W, /obj/item/weapon/baton)) && (src.build_step >= 3))

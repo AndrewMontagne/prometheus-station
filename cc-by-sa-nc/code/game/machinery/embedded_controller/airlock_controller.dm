@@ -175,7 +175,7 @@ datum/computer/file/embedded_program/airlock_controller
 
 
 obj/machinery/embedded_controller/radio/airlock_controller
-	icon = 'airlock_machines.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
 
 	name = "Airlock Console"

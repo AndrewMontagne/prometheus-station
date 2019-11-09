@@ -1,5 +1,5 @@
 obj/machinery/atmospherics/mixer
-	icon = 'mixer.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/atmospherics/mixer.dmi'
 	icon_state = "intact_off"
 	density = 1
 

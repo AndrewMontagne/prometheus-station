@@ -89,7 +89,7 @@ obj/machinery/door/airlock
 			set_frequency(frequency)
 
 obj/machinery/airlock_sensor
-	icon = 'airlock_machines.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_sensor_off"
 	name = "Airlock Sensor"
 
@@ -156,7 +156,7 @@ obj/machinery/airlock_sensor
 			set_frequency(frequency)
 
 obj/machinery/access_button
-	icon = 'airlock_machines.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/airlock_machines.dmi'
 	icon_state = "access_button_standby"
 	name = "Access Button"
 

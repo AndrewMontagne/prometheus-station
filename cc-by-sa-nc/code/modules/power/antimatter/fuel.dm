@@ -1,7 +1,7 @@
 /obj/item/weapon/fuel
 	name = "Magnetic Storage Ring"
 	desc = "A magnetic storage ring."
-	icon = 'items.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/items.dmi'
 	icon_state = "rcdammo"
 	opacity = 0
 	density = 0

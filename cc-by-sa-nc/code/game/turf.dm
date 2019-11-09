@@ -151,7 +151,7 @@
 					M.pulling = null
 					step(M, M.dir)
 					M << "\blue You slipped on the wet floor!"
-					playsound(src.loc, 'slip.ogg', 50, 1, -3)
+					playsound(src.loc, 'cc-by-sa-nc/sound/misc/slip.ogg', 50, 1, -3)
 					M.stunned = 8
 					M.weakened = 5
 				else
@@ -166,7 +166,7 @@
 				spawn(4) step(M, M.dir)
 				M.bruteloss += 5
 				M << "\blue You slipped on the floor!"
-				playsound(src.loc, 'slip.ogg', 50, 1, -3)
+				playsound(src.loc, 'cc-by-sa-nc/sound/misc/slip.ogg', 50, 1, -3)
 				M.weakened = 10
 
 	..()
@@ -206,7 +206,7 @@
 /turf/simulated/wall/proc/dismantle_wall(devastated=0)
 	if(istype(src,/turf/simulated/wall/r_wall))
 		if(!devastated)
-			playsound(src.loc, 'Welder.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 100, 1)
 			new /obj/structure/girder/reinforced(src)
 			new /obj/item/weapon/sheet/r_metal( src )
 		else
@@ -215,7 +215,7 @@
 			new /obj/item/weapon/sheet/r_metal( src )
 	else
 		if(!devastated)
-			playsound(src.loc, 'Welder.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 100, 1)
 			new /obj/structure/girder(src)
 			new /obj/item/weapon/sheet/metal( src )
 			new /obj/item/weapon/sheet/metal( src )
@@ -277,7 +277,7 @@
 			return
 
 	user << "\blue You push the wall but nothing happens!"
-	playsound(src.loc, 'Genhit.ogg', 25, 1)
+	playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 25, 1)
 	src.add_fingerprint(user)
 	return
 
@@ -297,7 +297,7 @@
 			var/obj/overlay/O = new/obj/overlay( src )
 			O.name = "Thermite"
 			O.desc = "Looks hot."
-			O.icon = 'fire.dmi'
+			O.icon = 'cc-by-sa-nc/icons/effects/fire.dmi'
 			O.icon_state = "2"
 			O.anchored = 1
 			O.density = 1
@@ -315,7 +315,7 @@
 		W:use_fuel(5)
 
 		user << "\blue Now disassembling the outer wall plating."
-		playsound(src.loc, 'Welder.ogg', 100, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 100, 1)
 
 		sleep(100)
 
@@ -343,7 +343,7 @@
 			var/obj/overlay/O = new/obj/overlay( src )
 			O.name = "Thermite"
 			O.desc = "Looks hot."
-			O.icon = 'fire.dmi'
+			O.icon = 'cc-by-sa-nc/icons/effects/fire.dmi'
 			O.icon_state = "2"
 			O.anchored = 1
 			O.density = 1
@@ -357,7 +357,7 @@
 
 		if (src.d_state == 2)
 			user << "\blue Slicing metal cover."
-			playsound(src.loc, 'Welder.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 100, 1)
 			sleep(60)
 			if ((user.loc == T && user.equipped() == W))
 				src.d_state = 3
@@ -365,7 +365,7 @@
 
 		else if (src.d_state == 5)
 			user << "\blue Removing support rods."
-			playsound(src.loc, 'Welder.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 100, 1)
 			sleep(100)
 			if ((user.loc == T && user.equipped() == W))
 				src.d_state = 6
@@ -376,7 +376,7 @@
 		if (src.d_state == 4)
 			var/turf/T = user.loc
 			user << "\blue Detaching support rods."
-			playsound(src.loc, 'Ratchet.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 100, 1)
 			sleep(40)
 			if ((user.loc == T && user.equipped() == W))
 				src.d_state = 5
@@ -384,14 +384,14 @@
 
 	else if (istype(W, /obj/item/weapon/wirecutters))
 		if (src.d_state == 0)
-			playsound(src.loc, 'Wirecutter.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Wirecutter.ogg', 100, 1)
 			src.d_state = 1
 			new /obj/item/weapon/rods( src )
 
 	else if (istype(W, /obj/item/weapon/screwdriver))
 		if (src.d_state == 1)
 			var/turf/T = user.loc
-			playsound(src.loc, 'Screwdriver.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Screwdriver.ogg', 100, 1)
 			user << "\blue Removing support lines."
 			sleep(40)
 			if ((user.loc == T && user.equipped() == W))
@@ -403,7 +403,7 @@
 		if (src.d_state == 3)
 			var/turf/T = user.loc
 			user << "\blue Prying cover off."
-			playsound(src.loc, 'Crowbar.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Crowbar.ogg', 100, 1)
 			sleep(100)
 			if ((user.loc == T && user.equipped() == W))
 				src.d_state = 4
@@ -412,7 +412,7 @@
 		else if (src.d_state == 6)
 			var/turf/T = user.loc
 			user << "\blue Prying outer sheath off."
-			playsound(src.loc, 'Crowbar.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Crowbar.ogg', 100, 1)
 			sleep(100)
 			if ((user.loc == T && user.equipped() == W))
 				user << "\blue You removed the outer sheath."
@@ -509,7 +509,7 @@
 		return
 	if(istype(C, /obj/item/weapon/wrench))
 		user << "\blue Removing rods..."
-		playsound(src.loc, 'Ratchet.ogg', 80, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 80, 1)
 		if(do_after(user, 30))
 			new /obj/item/weapon/rods(src)
 			new /obj/item/weapon/rods(src)
@@ -576,7 +576,7 @@
 			new /obj/item/weapon/tile(src)
 
 		to_plating()
-		playsound(src.loc, 'Crowbar.ogg', 80, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/items/Crowbar.ogg', 80, 1)
 
 		return
 
@@ -588,7 +588,7 @@
 					ReplaceWithEngineFloor()
 					C:amount -= 2
 					if (C:amount <= 0) del(C) //wtf
-					playsound(src.loc, 'Deconstruct.ogg', 80, 1)
+					playsound(src.loc, 'cc-by-sa-nc/sound/items/Deconstruct.ogg', 80, 1)
 			else
 				user << "\red You need more rods."
 		else
@@ -598,7 +598,7 @@
 	if(istype(C, /obj/item/weapon/tile) && !intact)
 		restore_tile()
 		var/obj/item/weapon/tile/T = C
-		playsound(src.loc, 'Genhit.ogg', 50, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 50, 1)
 		if(--T.amount < 1)
 			del(T)
 			return
@@ -656,7 +656,7 @@
 
 	if (istype(C, /obj/item/weapon/rods))
 		user << "\blue Constructing support lattice ..."
-		playsound(src.loc, 'Genhit.ogg', 50, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 50, 1)
 		ReplaceWithLattice()
 		C:amount--
 
@@ -670,7 +670,7 @@
 		if(locate(/obj/lattice, src))
 			var/obj/lattice/L = locate(/obj/lattice, src)
 			del(L)
-			playsound(src.loc, 'Genhit.ogg', 50, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 50, 1)
 			C:build(src)
 			C:amount--
 

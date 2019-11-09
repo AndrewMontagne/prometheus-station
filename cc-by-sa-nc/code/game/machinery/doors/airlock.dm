@@ -57,7 +57,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 
 /obj/machinery/door/airlock
 	name = "Airlock"
-	icon = 'doorint.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/doors/doorint.dmi'
 	icon_state = "door_closed"
 
 	var/aiControlDisabled = 0 //If 1, AI control is disabled until the AI hacks back in and disables the lock. If 2, the AI has bypassed the lock. If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
@@ -78,37 +78,37 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 
 /obj/machinery/door/airlock/command
 	name = "Airlock"
-	icon = 'Doorcom.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/doors/Doorcom.dmi'
 	req_access = list(access_heads)
 
 /obj/machinery/door/airlock/security
 	name = "Airlock"
-	icon = 'Doorsec.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/doors/Doorsec.dmi'
 	req_access = list(access_security)
 
 
 /obj/machinery/door/airlock/engineering
 	name = "Airlock"
-	icon = 'Dooreng.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/doors/Dooreng.dmi'
 	req_access = list(access_engine)
 
 /obj/machinery/door/airlock/medical
 	name = "Airlock"
-	icon = 'Doormed.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/doors/doormed.dmi'
 	req_access = list(access_medical)
 
 /obj/machinery/door/airlock/maintenance
 	name = "Maintenance Access"
-	icon = 'Doormaint.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/doors/Doormaint.dmi'
 	req_access = list(access_maint_tunnels)
 
 /obj/machinery/door/airlock/external
 	name = "External Airlock"
-	icon = 'Doorext.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/doors/Doorext.dmi'
 
 /obj/machinery/door/airlock/glass
 	name = "Glass Airlock"
-	icon = 'Doorglass.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/doors/Doorglass.dmi'
 	opacity = 0
 
 /*
@@ -588,7 +588,7 @@ About the new airlock wires panel:
 	if (ishuman(user) && prob(40) && src.density)
 		var/mob/living/carbon/human/H = user
 		if(H.brainloss >= 60)
-			playsound(src.loc, 'bang.ogg', 25, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/effects/bang.ogg', 25, 1)
 			if(!istype(H.head, /obj/item/clothing/head/helmet))
 				for(var/mob/M in viewers(src, null))
 					M << "\red [user] headbutts the airlock."
@@ -901,7 +901,7 @@ About the new airlock wires panel:
 	if (src.welded || src.locked || (!src.arePowerSystemsOn()) || (stat & NOPOWER) || src.isWireCut(AIRLOCK_WIRE_OPEN_DOOR))
 		return 0
 	use_power(50)
-	playsound(src.loc, 'airlock.ogg', 30, 1)
+	playsound(src.loc, 'cc-by-sa-nc/sound/machines/airlock.ogg', 30, 1)
 	if (src.closeOther != null && istype(src.closeOther, /obj/machinery/door/airlock/) && !src.closeOther.density)
 		src.closeOther.close()
 	return ..()
@@ -910,7 +910,7 @@ About the new airlock wires panel:
 	if (src.welded || src.locked || (!src.arePowerSystemsOn()) || (stat & NOPOWER) || src.isWireCut(AIRLOCK_WIRE_OPEN_DOOR))
 		return
 	use_power(50)
-	playsound(src.loc, 'airlock.ogg', 30, 1)
+	playsound(src.loc, 'cc-by-sa-nc/sound/machines/airlock.ogg', 30, 1)
 	..()
 	return
 

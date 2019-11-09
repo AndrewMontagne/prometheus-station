@@ -2,7 +2,7 @@
 /obj/item/weapon/motherboard
 	name = "Computer mainboard"
 	desc = "A computer motherboard."
-	icon = 'module.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/module.dmi'
 	icon_state = "mainboard"
 	item_state = "electronic"
 	w_class = 3
@@ -12,7 +12,7 @@
 	density = 1
 	anchored = 0
 	name = "Computer-frame"
-	icon = 'computer_frame.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/computer_frame.dmi'
 	icon_state = "0"
 	var/state = 0
 	var/obj/item/weapon/motherboard/mainboard = null
@@ -24,13 +24,13 @@
 	switch(state)
 		if(0)
 			if(istype(P, /obj/item/weapon/wrench))
-				playsound(src.loc, 'Ratchet.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 50, 1)
 				if(do_after(user, 20))
 					user << "\blue You wrench the frame into place."
 					src.anchored = 1
 					src.state = 1
 			if(istype(P, /obj/item/weapon/weldingtool))
-				playsound(src.loc, 'Welder.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 50, 1)
 				if(do_after(user, 20))
 					user << "\blue You deconstruct the frame."
 					var/obj/item/weapon/sheet/metal/A = new /obj/item/weapon/sheet/metal( src.loc )
@@ -38,25 +38,25 @@
 					del(src)
 		if(1)
 			if(istype(P, /obj/item/weapon/wrench))
-				playsound(src.loc, 'Ratchet.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 50, 1)
 				if(do_after(user, 20))
 					user << "\blue You unfasten the frame."
 					src.anchored = 0
 					src.state = 0
 			if(istype(P, /obj/item/weapon/motherboard) && !mainboard)
-				playsound(src.loc, 'Deconstruct.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Deconstruct.ogg', 50, 1)
 				user << "\blue You place the mainboard inside the frame."
 				src.icon_state = "1"
 				src.mainboard = P
 				user.drop_item()
 				P.loc = src
 			if(istype(P, /obj/item/weapon/screwdriver) && mainboard)
-				playsound(src.loc, 'Screwdriver.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Screwdriver.ogg', 50, 1)
 				user << "\blue You screw the mainboard into place."
 				src.state = 2
 				src.icon_state = "2"
 			if(istype(P, /obj/item/weapon/crowbar) && mainboard)
-				playsound(src.loc, 'Crowbar.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Crowbar.ogg', 50, 1)
 				user << "\blue You remove the mainboard."
 				src.state = 1
 				src.icon_state = "0"
@@ -64,7 +64,7 @@
 				src.mainboard = null
 		if(2)
 			if(istype(P, /obj/item/weapon/screwdriver) && mainboard && (!peripherals.len))
-				playsound(src.loc, 'Screwdriver.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Screwdriver.ogg', 50, 1)
 				user << "\blue You unfasten the mainboard."
 				src.state = 1
 				src.icon_state = "1"
@@ -79,7 +79,7 @@
 					user << "\red There is no more room for peripheral cards."
 
 			if(istype(P, /obj/item/weapon/crowbar) && src.peripherals.len)
-				playsound(src.loc, 'Crowbar.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Crowbar.ogg', 50, 1)
 				user << "\blue You remove the peripheral boards."
 				for(var/obj/item/weapon/peripheral/W in src.peripherals)
 					W.loc = src.loc
@@ -87,7 +87,7 @@
 
 			if(istype(P, /obj/item/weapon/cable_coil))
 				if(P:amount >= 5)
-					playsound(src.loc, 'Deconstruct.ogg', 50, 1)
+					playsound(src.loc, 'cc-by-sa-nc/sound/items/Deconstruct.ogg', 50, 1)
 					if(do_after(user, 20))
 						P:amount -= 5
 						if(!P:amount) del(P)
@@ -96,7 +96,7 @@
 						src.icon_state = "3"
 		if(3)
 			if(istype(P, /obj/item/weapon/wirecutters))
-				playsound(src.loc, 'wirecutter.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Wirecutter.ogg', 50, 1)
 				user << "\blue You remove the cables."
 				src.state = 2
 				src.icon_state = "2"
@@ -113,14 +113,14 @@
 				user << "\blue You connect the drive to the cabling."
 
 			if(istype(P, /obj/item/weapon/crowbar) && src.hd)
-				playsound(src.loc, 'Crowbar.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Crowbar.ogg', 50, 1)
 				user << "\blue You remove the hard drive."
 				src.hd.loc = src.loc
 				src.hd = null
 
 			if(istype(P, /obj/item/weapon/sheet/glass))
 				if(P:amount >= 2)
-					playsound(src.loc, 'Deconstruct.ogg', 50, 1)
+					playsound(src.loc, 'cc-by-sa-nc/sound/items/Deconstruct.ogg', 50, 1)
 					if(do_after(user, 20))
 						P:amount -= 2
 						if(!P:amount) del(P)
@@ -129,14 +129,14 @@
 						src.icon_state = "4"
 		if(4)
 			if(istype(P, /obj/item/weapon/crowbar))
-				playsound(src.loc, 'Crowbar.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Crowbar.ogg', 50, 1)
 				user << "\blue You remove the glass panel."
 				src.state = 3
 				src.icon_state = "3"
 				var/obj/item/weapon/sheet/glass/A = new /obj/item/weapon/sheet/glass( src.loc )
 				A.amount = 2
 			if(istype(P, /obj/item/weapon/screwdriver))
-				playsound(src.loc, 'Screwdriver.ogg', 50, 1)
+				playsound(src.loc, 'cc-by-sa-nc/sound/items/Screwdriver.ogg', 50, 1)
 				user << "\blue You connect the monitor."
 				var/obj/machinery/computer2/C= new /obj/machinery/computer2( src.loc )
 				C.setup_drive_size = 0

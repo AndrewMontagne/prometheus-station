@@ -26,7 +26,7 @@
 		overlays = null
 
 		if(lastgenlev != 0)
-			overlays += image('power.dmi', "teg-op[lastgenlev]")
+			overlays += image('cc-by-sa-nc/icons/obj/power.dmi', "teg-op[lastgenlev]")
 
 // #define GENRATE 800		// generator output coefficient from Q
 

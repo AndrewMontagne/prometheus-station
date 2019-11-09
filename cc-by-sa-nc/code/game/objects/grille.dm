@@ -54,7 +54,7 @@
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
 				O << text("\red [] kicks the grille.", usr)
-		playsound(src.loc, 'grillehit.ogg', 80, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/effects/grillehit.ogg', 80, 1)
 		src.health -= 1
 
 /obj/grille/attack_paw(var/obj/M)
@@ -71,7 +71,7 @@
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
 				O << text("\red [] kicks the grille.", usr)
-		playsound(src.loc, 'grillehit.ogg', 80, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/effects/grillehit.ogg', 80, 1)
 		src.health -= 1
 
 /obj/grille/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
@@ -88,11 +88,11 @@
 /obj/grille/attackby(obj/item/weapon/W, mob/user)
 	if (istype(W, /obj/item/weapon/wirecutters))
 		if(!shock(user, 100))
-			playsound(src.loc, 'Wirecutter.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Wirecutter.ogg', 100, 1)
 			src.health = 0
 	else if ((istype(W, /obj/item/weapon/screwdriver) && (istype(src.loc, /turf/simulated) || src.anchored)))
 		if(!shock(user, 90))
-			playsound(src.loc, 'Screwdriver.ogg', 100, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/Screwdriver.ogg', 100, 1)
 			src.anchored = !( src.anchored )
 			user << (src.anchored ? "You have fastened the grille to the floor." : "You have unfastened the grill.")
 			for(var/mob/O in oviewers())
@@ -103,7 +103,7 @@
 
 	else						// anything else, chance of a shock
 		if(!shock(user, 70))
-			playsound(src.loc, 'grillehit.ogg', 80, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/effects/grillehit.ogg', 80, 1)
 			switch(W.damtype)
 				if("fire")
 					src.health -= W.force

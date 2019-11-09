@@ -6,7 +6,7 @@
 	name = "chem dispenser"
 	density = 1
 	anchored = 1
-	icon = 'chemical.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/chemical.dmi'
 	icon_state = "dispenser"
 	var/energy = 25
 	var/max_energy = 25
@@ -103,7 +103,7 @@
 	name = "CheMaster 3000"
 	density = 1
 	anchored = 1
-	icon = 'chemical.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/chemical.dmi'
 	icon_state = "mixer0"
 	var/beaker = null
 

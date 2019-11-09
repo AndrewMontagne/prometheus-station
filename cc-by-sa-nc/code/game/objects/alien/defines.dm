@@ -1,7 +1,7 @@
 /obj/alien
 	name = "alien thing"
 	desc = "theres something alien about this"
-	icon = 'alien.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/alien.dmi'
 
 /obj/alien/egg
 	desc = "It looks like a weird egg"

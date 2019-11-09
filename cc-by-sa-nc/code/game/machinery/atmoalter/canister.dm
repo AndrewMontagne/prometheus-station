@@ -1,6 +1,6 @@
 /obj/machinery/portable_atmospherics/canister
 	name = "canister"
-	icon = 'atmos.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/atmos.dmi'
 	density = 1
 	var/health = 100.0
 	flags = FPRINT | CONDUCT
@@ -47,14 +47,14 @@
 	else
 		icon_state = "[canister_skin]"
 		if(connected_port)
-			overlays += image('atmos.dmi', "can-connector")
+			overlays += image('cc-by-sa-nc/icons/obj/atmos.dmi', "can-connector")
 
 		var/tank_pressure = air_contents.return_pressure()
 
 		if (tank_pressure > 10)
 			var/ratio = tank_pressure / (ONE_ATMOSPHERE * 5)
 			ratio = min(round(ratio, 1), 10)
-			overlays += image('atmos.dmi', "can-o[ratio]")
+			overlays += image('cc-by-sa-nc/icons/obj/atmos.dmi', "can-o[ratio]")
 	return
 
 /obj/machinery/portable_atmospherics/canister/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -71,7 +71,7 @@
 		location.assume_air(air_contents)
 
 		src.destroyed = 1
-		playsound(src.loc, 'spray.ogg', 10, 1, -3)
+		playsound(src.loc, 'cc-by-sa-nc/sound/effects/spray.ogg', 10, 1, -3)
 		src.density = 0
 		update_icon()
 

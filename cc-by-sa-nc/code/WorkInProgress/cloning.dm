@@ -8,7 +8,7 @@
 	name = "cloning pod"
 	desc = "An electronically-lockable pod for growing organic tissue."
 	density = 1
-	icon = 'cloning.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/cloning.dmi'
 	icon_state = "pod_0"
 	req_access = list(access_medlab) //For premature unlocking.
 	var/mob/living/occupant
@@ -21,7 +21,7 @@
 
 /obj/machinery/computer/cloning
 	name = "Cloning console"
-	icon = 'computer.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/computer.dmi'
 	icon_state = "dna"
 	req_access = list(access_heads) //Only used for record deletion right now.
 	var/obj/machinery/dna_scannernew/scanner = null //Linked scanner. For scanning.
@@ -36,7 +36,7 @@
 //TO-DO: Make the genetics machine accept them.
 /obj/item/weapon/disk/data
 	name = "data disk"
-	icon = 'cloning.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/cloning.dmi'
 	icon_state = "datadisk0" //Gosh I hope syndies don't mistake them for the nuke disk.
 	item_state = "card-id"
 	w_class = 1.0
@@ -87,7 +87,7 @@
 			src.updateUsrDialog()
 			return
 	else if((istype(W, /obj/item/weapon/screwdriver)) && (src.stat & BROKEN))
-		playsound(src.loc, 'Screwdriver.ogg', 50, 1)
+		playsound(src.loc, 'cc-by-sa-nc/sound/items/Screwdriver.ogg', 50, 1)
 		if(do_after(user, 20))
 			user << "\blue The broken glass falls out."
 			var/obj/computerframe/A = new /obj/computerframe( src.loc )

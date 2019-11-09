@@ -75,7 +75,7 @@
 	if(!isnull(ticker) && ticker.current_state > GAME_STATE_PREGAME)
 		reconfigure_window_to_join()
 	winset(src, "loginwindow", "is-visible=true;")
-	src << browse_rsc('postcardsmall.jpg')
+	src << browse_rsc('cc-by-sa-nc/icons/postcardsmall.jpg')
 	src << browse("<html><body>[join_motd]</body></html>", "window=loginwindow")
 
 /mob/new_player/proc/reconfigure_window_to_join()

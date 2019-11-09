@@ -276,7 +276,7 @@ var/supply_shuttle_points = 50
 /obj/plasticflaps //HOW DO YOU CALL THOSE THINGS ANYWAY
 	name = "Plastic flaps"
 	desc = "I definitely cant get past those. no way."
-	icon = 'stationobjs.dmi' //Change this.
+	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi' //Change this.
 	icon_state = "plasticflaps"
 	density = 0
 	anchored = 1
@@ -307,7 +307,7 @@ var/supply_shuttle_points = 50
 
 /obj/machinery/computer/supplycomp
 	name = "Supply shuttle console"
-	icon = 'computer.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/computer.dmi'
 	icon_state = "comm"
 	req_access = list(access_cargo)
 	var/temp = null
@@ -315,13 +315,13 @@ var/supply_shuttle_points = 50
 
 /obj/machinery/computer/ordercomp
 	name = "Supply ordering console"
-	icon = 'computer.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/computer.dmi'
 	icon_state = "comm"
 	var/temp = null
 
 /obj/marker/supplymarker
 	icon_state = "X"
-	icon = 'mark.dmi'
+	icon = 'cc-by-sa-nc/icons/misc/mark.dmi'
 	name = "X"
 	invisibility = 101
 	anchored = 1

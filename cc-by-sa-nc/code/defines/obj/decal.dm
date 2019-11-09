@@ -1,13 +1,13 @@
 /obj/decal/ash
 	name = "Ashes"
 	desc = "Ashes to ashes, dust to dust."
-	icon = 'objects.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/objects.dmi'
 	icon_state = "ash"
 	anchored = 1
 
 /obj/decal/point
 	name = "point"
-	icon = 'screen1.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/screen1.dmi'
 	icon_state = "arrow"
 	layer = 16.0
 	anchored = 1
@@ -21,7 +21,7 @@
 	density = 0
 	anchored = 1
 	layer = 2
-	icon = 'blood.dmi'
+	icon = 'cc-by-sa-nc/icons/effects/blood.dmi'
 	icon_state = "floor1"
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7")
 	var/datum/disease/virus = null
@@ -41,7 +41,7 @@
 	density = 0
 	anchored = 0
 	layer = 2
-	icon = 'blood.dmi'
+	icon = 'cc-by-sa-nc/icons/effects/blood.dmi'
 	icon_state = "gibbl5"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 
@@ -60,7 +60,7 @@
 	density = 0
 	anchored = 0
 	layer = 2
-	icon = 'robots.dmi'
+	icon = 'cc-by-sa-nc/icons/mob/robots.dmi'
 	icon_state = "gib1"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gib7")
 
@@ -73,7 +73,7 @@
 	density = 0
 	anchored = 1
 	layer = 2
-	icon = 'oil.dmi'
+	icon = 'cc-by-sa-nc/icons/effects/oil.dmi'
 	icon_state = "floor1"
 	var/datum/disease/virus = null
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7")
@@ -87,7 +87,7 @@
 	density = 0
 	anchored = 1
 	layer = 2
-	icon = 'objects.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/objects.dmi'
 	icon_state = "shards"
 
 /obj/decal/cleanable/dirt
@@ -96,7 +96,7 @@
 	density = 0
 	anchored = 1
 	layer = 2
-	icon = 'old_or_unused.dmi'
+	icon = 'cc-by-sa-nc/icons/misc/old_or_unused.dmi'
 	icon_state = "dirt"
 
 /obj/decal/cleanable/greenglow
@@ -105,7 +105,7 @@
 	density = 0
 	anchored = 1
 	layer = 2
-	icon = 'effects.dmi'
+	icon = 'cc-by-sa-nc/icons/effects/effects.dmi'
 	icon_state = "greenglow"
 
 /obj/decal/cleanable/cobweb
@@ -114,7 +114,7 @@
 	density = 0
 	anchored = 1
 	layer = 3
-	icon = 'old_or_unused.dmi'
+	icon = 'cc-by-sa-nc/icons/misc/old_or_unused.dmi'
 	icon_state = "cobweb1"
 
 /obj/decal/cleanable/molten_item
@@ -123,7 +123,7 @@
 	density = 0
 	anchored = 1
 	layer = 3
-	icon = 'chemical.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/chemical.dmi'
 	icon_state = "molten"
 
 /obj/decal/cleanable/cobweb2
@@ -132,5 +132,5 @@
 	density = 0
 	anchored = 1
 	layer = 3
-	icon = 'old_or_unused.dmi'
+	icon = 'cc-by-sa-nc/icons/misc/old_or_unused.dmi'
 	icon_state = "cobweb2"

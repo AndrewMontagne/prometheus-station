@@ -1,5 +1,5 @@
 /obj/machinery/atmospherics/unary/vent_pump
-	icon = 'vent_pump.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/atmospherics/vent_pump.dmi'
 	icon_state = "off"
 
 	name = "Air Vent"

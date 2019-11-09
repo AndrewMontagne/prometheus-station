@@ -8,7 +8,7 @@
 /obj/machinery/disposal
 	name = "disposal unit"
 	desc = "A pneumatic waste disposal unit."
-	icon = 'disposal.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/pipes/disposal.dmi'
 	icon_state = "disposal"
 	anchored = 1
 	density = 1
@@ -221,7 +221,7 @@
 
 		// flush handle
 		if(flush)
-			overlays += image('disposal.dmi', "dispover-handle")
+			overlays += image('cc-by-sa-nc/icons/obj/pipes/disposal.dmi', "dispover-handle")
 
 		// only handle is shown if no power
 		if(stat & NOPOWER)
@@ -229,13 +229,13 @@
 
 		// 	check for items in disposal - occupied light
 		if(contents.len > 0)
-			overlays += image('disposal.dmi', "dispover-full")
+			overlays += image('cc-by-sa-nc/icons/obj/pipes/disposal.dmi', "dispover-full")
 
 		// charging and ready light
 		if(mode == 1)
-			overlays += image('disposal.dmi', "dispover-charge")
+			overlays += image('cc-by-sa-nc/icons/obj/pipes/disposal.dmi', "dispover-charge")
 		else if(mode == 2)
-			overlays += image('disposal.dmi', "dispover-ready")
+			overlays += image('cc-by-sa-nc/icons/obj/pipes/disposal.dmi', "dispover-ready")
 
 	// timed process
 	// charge the gas reservoir and perform flush if ready
@@ -296,7 +296,7 @@
 		air_contents = new()		// new empty gas resv.
 
 		sleep(10)
-		playsound(src, 'disposalflush.ogg', 50, 0, 0)
+		playsound(src, 'cc-by-sa-nc/sound/machines/disposalflush.ogg', 50, 0, 0)
 		sleep(5) // wait for animation to finish
 
 
@@ -322,7 +322,7 @@
 	proc/expel(var/obj/disposalholder/H)
 
 		var/turf/target
-		playsound(src, 'hiss.ogg', 50, 0, 0)
+		playsound(src, 'cc-by-sa-nc/sound/machines/hiss.ogg', 50, 0, 0)
 		for(var/atom/movable/AM in H)
 			target = get_offset_target_turf(src.loc, rand(5)-rand(5), rand(5)-rand(5))
 
@@ -446,7 +446,7 @@
 		for (var/mob/M in hearers(src.loc.loc))
 			M << "<FONT size=[max(0, 5 - get_dist(src, M))]>CLONG, clong!</FONT>"
 
-		playsound(src.loc, 'clang.ogg', 50, 0, 0)
+		playsound(src.loc, 'cc-by-sa-nc/sound/effects/clang.ogg', 50, 0, 0)
 
 	// called to vent all gas in holder to a location
 	proc/vent_gas(var/atom/location)
@@ -456,7 +456,7 @@
 // Disposal pipes
 
 /obj/disposalpipe
-	icon = 'disposal.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/pipes/disposal.dmi'
 	name = "disposal pipe"
 	desc = "An underfloor disposal pipe."
 	anchored = 1
@@ -577,7 +577,7 @@
 			else						// otherwise limit to 10 tiles
 				target = get_ranged_target_turf(T, direction, 10)
 
-			playsound(src, 'hiss.ogg', 50, 0, 0)
+			playsound(src, 'cc-by-sa-nc/sound/machines/hiss.ogg', 50, 0, 0)
 			for(var/atom/movable/AM in H)
 				AM.loc = T
 				AM.pipe_eject(direction)
@@ -589,7 +589,7 @@
 
 		else	// no specified direction, so throw in random direction
 
-			playsound(src, 'hiss.ogg', 50, 0, 0)
+			playsound(src, 'cc-by-sa-nc/sound/machines/hiss.ogg', 50, 0, 0)
 			for(var/atom/movable/AM in H)
 				target = get_offset_target_turf(T, rand(5)-rand(5), rand(5)-rand(5))
 
@@ -678,7 +678,7 @@
 			if(W.welding)
 				if(W.get_fuel() > 3)
 					W.use_fuel(3)
-					playsound(src.loc, 'Welder2.ogg', 100, 1)
+					playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder2.ogg', 100, 1)
 
 					// check if anything changed over 2 seconds
 					var/turf/uloc = user.loc
@@ -867,7 +867,7 @@
 /obj/disposaloutlet
 	name = "disposal outlet"
 	desc = "An outlet for the pneumatic disposal system."
-	icon = 'disposal.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/pipes/disposal.dmi'
 	icon_state = "outlet"
 	density = 1
 	anchored = 1
@@ -885,9 +885,9 @@
 	proc/expel(var/obj/disposalholder/H)
 
 		flick("outlet-open", src)
-		playsound(src, 'warning-buzzer.ogg', 50, 0, 0)
+		playsound(src, 'cc-by-sa-nc/sound/machines/warning-buzzer.ogg', 50, 0, 0)
 		sleep(20)	//wait until correct animation frame
-		playsound(src, 'hiss.ogg', 50, 0, 0)
+		playsound(src, 'cc-by-sa-nc/sound/machines/hiss.ogg', 50, 0, 0)
 
 
 		for(var/atom/movable/AM in H)

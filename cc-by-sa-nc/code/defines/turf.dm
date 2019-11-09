@@ -1,5 +1,5 @@
 /turf
-	icon = 'floors.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/floors.dmi'
 	var/intact = 1
 
 	level = 1.0
@@ -23,7 +23,7 @@
 		pathweight = 1
 
 /turf/space
-	icon = 'space.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/space.dmi'
 	name = "space"
 	icon_state = "0"
 	dynamic_lighting = 0
@@ -34,7 +34,7 @@
 	heat_capacity = 700000
 
 /turf/space/New()
-	icon = 'space.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/space.dmi'
 	icon_state = "black"
 
 /turf/simulated
@@ -62,7 +62,7 @@
 
 /turf/simulated/floor
 	name = "floor"
-	icon = 'floors.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/floors.dmi'
 	icon_state = "floor"
 	thermal_conductivity = 0.040
 	heat_capacity = 225000
@@ -95,12 +95,12 @@
 		name = "plating"
 
 /turf/simulated/floor/grid
-	icon = 'floors.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/floors.dmi'
 	icon_state = "bcircuit"
 
 /turf/simulated/wall/r_wall
 	name = "r wall"
-	icon = 'walls.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/walls.dmi'
 	icon_state = "r_wall"
 	opacity = 1
 	density = 1
@@ -108,7 +108,7 @@
 
 /turf/simulated/wall
 	name = "wall"
-	icon = 'walls.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/walls.dmi'
 	opacity = 1
 	density = 1
 	blocks_air = 1
@@ -118,7 +118,7 @@
 
 /turf/simulated/shuttle
 	name = "shuttle"
-	icon = 'shuttle.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/shuttle.dmi'
 	thermal_conductivity = 0.05
 	heat_capacity = 0
 
@@ -140,12 +140,12 @@
 
 /turf/unsimulated/floor
 	name = "floor"
-	icon = 'floors.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/floors.dmi'
 	icon_state = "Floor3"
 
 /turf/unsimulated/wall
 	name = "wall"
-	icon = 'walls.dmi'
+	icon = 'cc-by-sa-nc/icons/turf/walls.dmi'
 	icon_state = "riveted"
 	opacity = 1
 	density = 1

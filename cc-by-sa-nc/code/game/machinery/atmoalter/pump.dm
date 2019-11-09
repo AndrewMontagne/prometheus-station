@@ -1,7 +1,7 @@
 /obj/machinery/portable_atmospherics/pump
 	name = "Portable Air Pump"
 
-	icon = 'atmos.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/atmos.dmi'
 	icon_state = "psiphon:0"
 	density = 1
 
@@ -20,7 +20,7 @@
 		icon_state = "psiphon:0"
 
 	if(connected_port)
-		overlays += image('atmos.dmi', "siphon-connector")
+		overlays += image('cc-by-sa-nc/icons/obj/atmos.dmi', "siphon-connector")
 
 	return
 

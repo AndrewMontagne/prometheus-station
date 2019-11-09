@@ -83,7 +83,7 @@ datum
 					if(T:wet_overlay)
 						T:overlays -= T:wet_overlay
 						T:wet_overlay = null
-					T:wet_overlay = image('water.dmi',T,"wet_floor")
+					T:wet_overlay = image('cc-by-sa-nc/icons/effects/water.dmi',T,"wet_floor")
 					T:overlays += T:wet_overlay
 
 					spawn(800)
@@ -482,7 +482,7 @@ datum
 				if(istype(T, /turf/simulated/wall))
 					T:thermite = 1
 					T.overlays = null
-					T.overlays = image('effects.dmi',icon_state = "thermite")
+					T.overlays = image('cc-by-sa-nc/icons/effects/effects.dmi',icon_state = "thermite")
 				return
 
 		mutagen

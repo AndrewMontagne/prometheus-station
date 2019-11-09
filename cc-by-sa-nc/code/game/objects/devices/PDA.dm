@@ -5,7 +5,7 @@
 /obj/item/device/pda
 	name = "PDA"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
-	icon = 'pda.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/pda.dmi'
 	icon_state = "pda"
 	item_state = "electronic"
 	w_class = 2.0
@@ -89,7 +89,7 @@
 /obj/item/weapon/cartridge
 	name = "generic cartridge"
 	desc = "A data cartridge for portable microcomputers."
-	icon = 'pda.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/pda.dmi'
 	icon_state = "cart"
 	item_state = "electronic"
 	w_class = 1
@@ -1050,12 +1050,12 @@ Code:
 						A.show_message("<i>Intercepted message from <b>[P:owner]</b>: [t]</i>")
 
 				if (!P.silent)
-					playsound(P.loc, 'twobeep.ogg', 50, 1)
+					playsound(P.loc, 'cc-by-sa-nc/sound/machines/twobeep.ogg', 50, 1)
 					for (var/mob/O in hearers(3, P.loc))
 						O.show_message(text("\icon[P] *[P.ttone]*"))
 
 				P.overlays = null
-				P.overlays += image('pda.dmi', "pda-r")
+				P.overlays += image('cc-by-sa-nc/icons/obj/pda.dmi', "pda-r")
 
 		else if (href_list["settone"])
 			var/t = input(usr, "Please enter new ringtone", src.name, src.ttone) as text
@@ -1223,7 +1223,7 @@ Code:
 		else if (href_list["honk"])
 			if (last_honk && world.time < last_honk + 20)
 				return
-			playsound(src.loc, 'bikehorn.ogg', 50, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/bikehorn.ogg', 50, 1)
 			src.last_honk = world.time
 
 		//Toxins PDA signaler stuff
@@ -1268,7 +1268,7 @@ Code:
 
 		if ((src.honkamt > 0) && (prob(60)))
 			src.honkamt--
-			playsound(src.loc, 'bikehorn.ogg', 30, 1)
+			playsound(src.loc, 'cc-by-sa-nc/sound/items/bikehorn.ogg', 30, 1)
 
 		for (var/mob/M in viewers(1, src.loc))
 			if (M.client && M.machine == src)
@@ -1396,7 +1396,7 @@ Code:
 
 		M.pulling = null
 		M << "\blue You slipped on the PDA!"
-		playsound(src.loc, 'slip.ogg', 50, 1, -3)
+		playsound(src.loc, 'cc-by-sa-nc/sound/misc/slip.ogg', 50, 1, -3)
 		M.stunned = 8
 		M.weakened = 5
 
@@ -1453,12 +1453,12 @@ Code:
 	selected:tnote += "<i><b>&larr; From (AI) [usr.name]:</b></i><br>[t]<br>"
 
 	if (!selected:silent)
-		playsound(selected.loc, 'twobeep.ogg', 50, 1)
+		playsound(selected.loc, 'cc-by-sa-nc/sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(3, selected.loc))
 			O.show_message(text("\icon[selected] *[selected:ttone]*"))
 
 	selected.overlays = null
-	selected.overlays += image('pda.dmi', "pda-r")
+	selected.overlays += image('cc-by-sa-nc/icons/obj/pda.dmi', "pda-r")
 
 
 //Some spare PDAs in a box
@@ -1466,7 +1466,7 @@ Code:
 /obj/item/weapon/storage/PDAbox
 	name = "spare PDAs"
 	desc = "A box of spare PDA microcomputers."
-	icon = 'pda.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/pda.dmi'
 	icon_state = "pdabox"
 	item_state = "syringe_kit"
 
@@ -1498,7 +1498,7 @@ Code:
 /obj/item/weapon/integrated_uplink
 	name = "uplink module"
 	desc = "An electronic uplink system of unknown origin."
-	icon = 'module.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/module.dmi'
 	icon_state = "power_mod"
 	var/uses = 10
 	var/obj/item/device/pda/hostpda = null

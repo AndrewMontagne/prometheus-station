@@ -1,5 +1,5 @@
 /obj/machinery/atmospherics/unary/outlet_injector
-	icon = 'outlet_injector.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/atmospherics/outlet_injector.dmi'
 	icon_state = "off"
 
 	name = "Air Injector"

@@ -42,7 +42,7 @@
 
 	src.icon_state = src.icon_opened
 	src.opened = 1
-	playsound(src.loc, 'click.ogg', 15, 1, -3)
+	playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
 	return 1
 
 /obj/secure_closet/proc/close()
@@ -71,7 +71,7 @@
 		M.loc = src
 	src.icon_state = src.icon_closed
 	src.opened = 0
-	playsound(src.loc, 'click.ogg', 15, 1, -3)
+	playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
 	return 1
 
 /obj/secure_closet/proc/toggle()
@@ -224,7 +224,7 @@
 				M.client.eye = M.client.mob
 				M.client.perspective = MOB_PERSPECTIVE
 		src.icon_state = src.icon_opened
-		playsound(src.loc, 'click.ogg', 15, 1, -3)
+		playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
 		src.opened = 1
 	else if(src.opened)
 		if(!src.can_close())
@@ -241,7 +241,7 @@
 				M.client.eye = src
 			M.loc = src
 		src.icon_state = src.icon_closed
-		playsound(src.loc, 'click.ogg', 15, 1, -3)
+		playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
 		src.opened = 0
 	else
 		return src.attackby(null, user)

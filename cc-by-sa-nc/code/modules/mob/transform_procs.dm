@@ -19,7 +19,7 @@
 		del(src.organs[text("[]", t)])
 	var/atom/movable/overlay/animation = new /atom/movable/overlay( src.loc )
 	animation.icon_state = "blank"
-	animation.icon = 'mob.dmi'
+	animation.icon = 'cc-by-sa-nc/icons/mob/mob.dmi'
 	animation.master = src
 	flick("h2monkey", animation)
 	sleep(48)
@@ -214,7 +214,7 @@
 		del(src.organs[t])
 //	var/atom/movable/overlay/animation = new /atom/movable/overlay( src.loc )
 //	animation.icon_state = "blank"
-//	animation.icon = 'mob.dmi'
+//	animation.icon = 'cc-by-sa-nc/icons/mob/mob.dmi'
 //	animation.master = src
 //	flick("h2alien", animation)
 //	sleep(48)

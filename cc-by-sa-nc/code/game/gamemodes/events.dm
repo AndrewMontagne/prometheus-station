@@ -42,7 +42,7 @@
 						var/obj/portal/P = new /obj/portal( T )
 						P.target = picked
 						P.creator = null
-						P.icon = 'objects.dmi'
+						P.icon = 'cc-by-sa-nc/icons/obj/objects.dmi'
 						P.failchance = 0
 						P.icon_state = "anom"
 						P.name = "wormhole"

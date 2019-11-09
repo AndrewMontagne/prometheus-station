@@ -1,6 +1,6 @@
 /obj/item/weapon/pinpointer
 	name = "pinpointer"
-	icon = 'device.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/device.dmi'
 	icon_state = "pinoff"
 	flags = FPRINT | TABLEPASS| CONDUCT | ONBELT
 	w_class = 2.0

@@ -20,11 +20,11 @@ MOP
 
 	var/obj/decal/D = new/obj/decal(get_turf(src))
 	D.name = "chemicals"
-	D.icon = 'chemical.dmi'
+	D.icon = 'cc-by-sa-nc/icons/obj/chemical.dmi'
 	D.icon_state = "chempuff"
 	D.create_reagents(10)
 	src.reagents.trans_to(D, 10)
-	playsound(src.loc, 'zzzt.ogg', 50, 1, -6)
+	playsound(src.loc, 'cc-by-sa-nc/sound/effects/zzzt.ogg', 50, 1, -6)
 
 	spawn(0)
 		for(var/i=0, i<3, i++)
