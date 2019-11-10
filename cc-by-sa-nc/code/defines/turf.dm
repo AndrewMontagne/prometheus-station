@@ -27,7 +27,6 @@
 	name = "space"
 	icon_state = "0"
 	dynamic_lighting = 0
-	plane =  -95
 
 	temperature = TCMB
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT

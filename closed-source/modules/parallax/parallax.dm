@@ -1,25 +1,51 @@
+#define PLANE_SPACE -55
+#define PLANE_PARALLAX -50
+#define PLANE_GAME 10
+
+/atom
+    plane = PLANE_GAME
+
+/turf/space
+    plane = PLANE_SPACE
+
 /obj/screen/space
     screen_loc = "SOUTH, WEST"
-    plane = -90
+    plane = PLANE_PARALLAX
     icon = 'cc-by-sa-nc/icons/turf/space.dmi'
     icon_state = "animate"
     name = "space"
-    mouse_opacity = 0
+    mouse_opacity = 1
+    blend_mode = BLEND_ADD
+    var/width
+    var/height
 
+/mob/Move()
+    . = ..()
+
+    if (client && client.eye == src)
+        if (x < 12 || x > (world.maxx - 12) ||y < 12 || y > (world.maxy - 12))
+            client.parallax.plane = 1
+        else
+            client.parallax.plane = PLANE_PARALLAX
+
+
+
+/client
+    var/obj/screen/space/parallax = null
 
 /client/proc/get_parallax()
-    var/global/obj/screen/space/parallax = null
     if(isnull(parallax))
         parallax = new()
     return parallax
 
 /obj/screen/space/New()
     var/list/view_dims = splittext(world.view,"x")
-    var/width = world.view
-    var/height = world.view
     if(length(view_dims) == 2)
         width = text2num(view_dims[1])
         height = text2num(view_dims[2])
+    else
+        width = world.view
+        height = world.view
 
     var/icon/space1 = new(icon, "animate1")
     space1.Scale(width * 32, height * 32)
