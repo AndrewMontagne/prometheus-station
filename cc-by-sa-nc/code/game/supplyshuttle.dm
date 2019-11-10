@@ -366,8 +366,8 @@ var/supply_shuttle_points = 50
 
 	for(var/turf/T in get_area_turfs(shuttleat) )
 		if(locate(/mob/living) in T) return 0
-		for(var/atom/ATM in T)
-			if(locate(/mob/living) in ATM) return 0
+		for(var/atom/atom in T)
+			if(locate(/mob/living) in atom) return 0
 
 	return 1
 
