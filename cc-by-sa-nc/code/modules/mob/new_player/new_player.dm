@@ -1,5 +1,5 @@
 /obj/screen/splash
-	icon = 'icons/misc/splash.dmi'
+	icon = 'cc-by-sa-nc/icons/misc/splash.dmi'
 	icon_state = "ss13"
 	screen_loc = "CENTER:-88,CENTER:-16"
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER

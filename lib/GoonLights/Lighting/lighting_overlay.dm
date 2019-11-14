@@ -1,7 +1,7 @@
 /atom/movable/lighting_overlay
 	name             = ""
 
-	icon             = 'Lighting/icon.png'
+	icon             = 'lib/GoonLights/Lighting/icon.png'
 	color            = LIGHTING_BASE_MATRIX
 
 	mouse_opacity    = 0
