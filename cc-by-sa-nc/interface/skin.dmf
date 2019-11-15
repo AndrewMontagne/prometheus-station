@@ -39,6 +39,7 @@ macro "macro"
 		name = "SHIFT+F2+REP"
 		command = ".screenshot"
 
+
 window "infowindow"
 	elem "infowindow"
 		type = MAIN
@@ -55,6 +56,8 @@ window "infowindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 494x334
+		inner-size = 480x320
 	elem "button4"
 		type = BUTTON
 		pos = 288,4
@@ -100,17 +103,6 @@ window "infowindow"
 		saved-params = "is-checked"
 		text = "Help"
 		command = ""
-	elem "inputbutton"
-		type = BUTTON
-		pos = 0,4
-		size = 88x20
-		anchor1 = 0,0
-		anchor2 = 18,0
-		text-color = #ffffff
-		background-color = #40628a
-		saved-params = "is-checked"
-		text = "Button 1"
-		command = ""
 	elem "info"
 		type = INFO
 		pos = 0,32
@@ -125,6 +117,29 @@ window "infowindow"
 		tab-text-color = #ffffff
 		tab-background-color = #383838
 		allow-html = false
+		multi-line = false
+	elem "infobrowser"
+		type = BROWSER
+		pos = 7,57
+		size = 458x256
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #ff0080
+		is-visible = false
+		saved-params = ""
+		show-url = false
+		auto-format = false
+	elem "inputbutton"
+		type = BUTTON
+		pos = 0,4
+		size = 88x20
+		anchor1 = 0,0
+		anchor2 = 18,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Button 1"
+		command = ""
 
 window "inventorywindow"
 	elem "inventorywindow"

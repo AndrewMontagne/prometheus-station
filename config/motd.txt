@@ -3,7 +3,7 @@ body {
   font-family: Tahoma, sans-serif;
   text-align: center;
   color: white;
-  background-color: #202020;
+  background-color: #272727;
 }
 </style>
 <h1>Welcome to Andrew Station 13!</h1>

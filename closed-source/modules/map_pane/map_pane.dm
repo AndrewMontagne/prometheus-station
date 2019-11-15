@@ -5,7 +5,7 @@
 	map_panes = list()
 	new /datum/map_pane(src, "inventorywindow.inventory")
 
-/mob/verb/interface_resize(var/pane_name as text, var/new_size as text)
+/mob/verb/interface_resize(var/pane_name as null|text, var/new_size as null|text)
 	set name = "OnInterfaceResize"
 	set hidden = 1
 
@@ -18,10 +18,6 @@
 	var/width = 0
 	var/height = 0
 
-	var/obj/screen/topleft
-	var/obj/screen/topright
-	var/obj/screen/bottomleft
-	var/obj/screen/bottomright
 	var/obj/screen/background
 
 /datum/map_pane/New(var/_player, var/_skin_id)
@@ -33,27 +29,7 @@
 	background.layer--
 	background.name = "pane background"
 
-	topleft = new /obj/screen(null)
-	topleft.icon_state = "block"
-	topleft.name = "top left"
-
-	topright = new /obj/screen(null)
-	topright.icon_state = "block"
-	topright.name = "top right"
-
-	bottomleft = new /obj/screen(null)
-	bottomleft.icon_state = "block"
-	bottomleft.name = "bottom left"
-
-	bottomright = new /obj/screen(null)
-	bottomright.icon_state = "block"
-	bottomright.name = "bottom right"
-
 	player.screen += background
-	player.screen += topleft
-	player.screen += topright
-	player.screen += bottomleft
-	player.screen += bottomright
 
 	update()
 	winset(player, skin_id, "on-size=\"OnInterfaceResize \\\"[skin_id]\\\" \\\"\[\[*\]\]\\\"\"")
@@ -74,8 +50,3 @@
 	var/right_offset = left_offset + (width - 32) - 2
 
 	background.screen_loc = "inventory:0,0 to [tiles_x],[tiles_y]"
-
-	topleft.screen_loc = "inventory:0:[left_offset],0:[top_offset]"
-	topright.screen_loc = "inventory:0:[right_offset],0:[top_offset]"
-	bottomleft.screen_loc = "inventory:0:[left_offset],0:[bottom_offset]"
-	bottomright.screen_loc = "inventory:0:[right_offset],0:[bottom_offset]"

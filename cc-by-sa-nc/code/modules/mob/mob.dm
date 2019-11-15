@@ -1654,7 +1654,9 @@
 	src.authorize()
 	src.goonauth()
 	src.beta_tester_auth()
-	spawn(10) src.init_map_panes()
+	spawn(2) 
+		src.init_map_panes()
+		src.init_infobrowser()
 	
 	src.update_world()
 
