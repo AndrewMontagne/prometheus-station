@@ -1189,7 +1189,7 @@
 /mob/verb/changes()
 	set name = "Changelog"
 	if (src.client)
-		src << browse_rsc('cc-by-sa-nc/icons/postcardsmall.jpg')
+		src << browse_rsc('cc-by-sa-nc/icons/postcardsmall.png')
 		src << browse_rsc('cc-by-sa-nc/icons/somerights20.png')
 		src << browse_rsc('cc-by-sa-nc/icons/88x31.png')
 		src << browse('cc-by-sa-nc/icons/changelog.html', "window=changes;size=400x650")
