@@ -1,7 +1,7 @@
 /obj/screen/splash
 	icon = 'cc-by-sa-nc/icons/misc/splash.dmi'
 	icon_state = "ss13"
-	screen_loc = "CENTER:-88,CENTER:-16"
+	screen_loc = "CENTER:-104,CENTER:-16"
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
 	name = "Splash Screen"
 
@@ -74,6 +74,9 @@
 
 	if(!isnull(ticker) && ticker.current_state > GAME_STATE_PREGAME)
 		reconfigure_window_to_join()
+	else
+		winset(src, "loginwindow.loginbutton_ready", "border=line; text=\"Ready Up\"; background-color=#00dc00; focus=false")
+	
 	winset(src, "loginwindow", "is-visible=true;")
 	src << browse_rsc('cc-by-sa-nc/icons/postcardsmall.png')
 	src << browse("<html><body>[join_motd]</body></html>", "window=loginwindow")
@@ -129,21 +132,23 @@
 /mob/new_player/Stat()
 	..()
 
-	statpanel("Game")
-	if(client.statpanel=="Game" && ticker)
-		if(ticker.hide_mode)
-			stat("Game Mode:", "Secret")
-		else
-			stat("Game Mode:", "[master_mode]")
-
-		if(ticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", ticker.pregame_timeleft)
-
-	statpanel("Lobby")
-	if(client.statpanel=="Lobby" && ticker)
-		if(ticker.current_state == GAME_STATE_PREGAME)
-			for(var/mob/new_player/player in world)
-				stat("[player.key]", (player.ready)?("(Playing)"):(null))
+	if(ticker)
+		switch(ticker.current_state)
+			if(GAME_STATE_SETTING_UP)
+				winset(src, "login_label", "text=\"Please wait...\"")
+			if(GAME_STATE_PREGAME)
+				var/secs = ticker.pregame_timeleft - 2
+				var/mins = (secs - (secs % 60)) / 60
+				secs %= 60
+				var/time = "in"
+				if (mins > 0)
+					time += " [mins] min"
+				time += " [secs] secs"
+				if (ticker.pregame_timeleft <= 1)
+					time = "shortly..."
+				winset(src, "login_label", "text=\"Round starts [time]\"")
+			if(GAME_STATE_PLAYING)
+				winset(src, "login_label", "text=\"Welcome to [world.name]!\"")
 
 /mob/new_player/Topic(href, href_list[])
 

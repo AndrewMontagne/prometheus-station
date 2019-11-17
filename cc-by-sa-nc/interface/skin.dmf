@@ -56,8 +56,6 @@ window "infowindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-		outer-size = 494x334
-		inner-size = 480x320
 	elem "button4"
 		type = BUTTON
 		pos = 288,4
@@ -127,7 +125,6 @@ window "infowindow"
 		background-color = #ff0080
 		is-visible = false
 		saved-params = ""
-		show-url = false
 		auto-format = false
 	elem "inputbutton"
 		type = BUTTON
@@ -169,20 +166,33 @@ window "inventorywindow"
 window "loginwindow"
 	elem "loginwindow"
 		type = MAIN
-		pos = 281,0
-		size = 475x375
+		pos = 992,145
+		size = 472x503
 		anchor1 = none
 		anchor2 = none
 		background-color = #383838
 		is-visible = false
-		saved-params = "pos;size;is-minimized;is-maximized"
+		saved-params = "pos;is-minimized;is-maximized"
 		statusbar = false
 		can-close = false
 		can-minimize = false
 		can-resize = false
+		outer-size = 488x542
+		inner-size = 472x503
+	elem "login_label"
+		type = LABEL
+		pos = 8,424
+		size = 456x32
+		anchor1 = none
+		anchor2 = none
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #383838
+		saved-params = ""
+		text = "Please wait..."
 	elem "loginbutton_ready"
 		type = BUTTON
-		pos = 168,328
+		pos = 168,456
 		size = 138x40
 		anchor1 = 0,100
 		anchor2 = none
@@ -196,7 +206,7 @@ window "loginwindow"
 		command = "toggleready"
 	elem "loginbutton_preferences"
 		type = BUTTON
-		pos = 320,336
+		pos = 320,464
 		size = 136x24
 		anchor1 = 0,100
 		anchor2 = none
@@ -207,7 +217,7 @@ window "loginwindow"
 		command = "showpreferences"
 	elem "loginbutton_observe"
 		type = BUTTON
-		pos = 16,336
+		pos = 16,464
 		size = 136x24
 		anchor1 = 0,100
 		anchor2 = none
@@ -218,10 +228,11 @@ window "loginwindow"
 		command = "toggleobserve"
 	elem "loginwindow_browser"
 		type = BROWSER
-		pos = 8,9
-		size = 459x311
+		pos = 8,12
+		size = 456x412
 		anchor1 = 2,2
 		anchor2 = 98,83
+		background-color = none
 		border = sunken
 		saved-params = ""
 		auto-format = false
@@ -274,7 +285,7 @@ window "mapwindow"
 		anchor2 = 100,100
 		text-color = #000000
 		is-default = true
-		saved-params = "icon-size"
+		zoom = 2
 
 window "outputwindow"
 	elem "outputwindow"

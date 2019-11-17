@@ -18,18 +18,18 @@
 	var/width = 0
 	var/height = 0
 
+	var/left_offset = 0
+	var/right_offset = 0
+	var/top_offset = 0
+	var/bottom_offset = 0
+
 	var/obj/screen/background
 
 /datum/map_pane/New(var/_player, var/_skin_id)
 	skin_id = _skin_id
 	player = _player
 
-	background = new /obj/screen(null)
-	background.icon_state = "blank"
-	background.layer--
-	background.name = "pane background"
-
-	player.screen += background
+	add_background()
 
 	update()
 	winset(player, skin_id, "on-size=\"OnInterfaceResize \\\"[skin_id]\\\" \\\"\[\[*\]\]\\\"\"")
@@ -44,9 +44,17 @@
 	var/tiles_x = round(width / 32)
 	var/tiles_y = round(height / 32)
 
-	var/bottom_offset = round((((tiles_y + 1) * 32) - height) / 2) + 1
-	var/left_offset = round((((tiles_x + 1) * 32) - width) / 2) + 1
-	var/top_offset = bottom_offset + (height - 32) - 2
-	var/right_offset = left_offset + (width - 32) - 2
+	bottom_offset = round((((tiles_y + 1) * 32) - height) / 2) + 1
+	left_offset = round((((tiles_x + 1) * 32) - width) / 2) + 1
+	top_offset = bottom_offset + (height - 32) - 2
+	right_offset = left_offset + (width - 32) - 2
 
-	background.screen_loc = "inventory:0,0 to [tiles_x],[tiles_y]"
+	if (background)
+		background.screen_loc = "inventory:0,0 to [tiles_x],[tiles_y]"
+
+/datum/map_pane/proc/add_background()
+	background = new /obj/screen(null)
+	background.icon_state = "blank"
+	background.layer--
+	background.name = "pane background"
+	player.screen += background

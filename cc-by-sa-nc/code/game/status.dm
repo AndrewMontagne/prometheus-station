@@ -4,10 +4,10 @@
 	if (config && config.server_name)
 		s += "<b>[config.server_name]</b> &#8212; "
 
-	s += "<b>[station_name()]</b>";
+	s += "<b>Andrew Station 13</b>";
 	s += " ("
-	s += "<a href=\"http://ss13.lljk.net/\">"
-	s += "[game_version]"
+	s += "<a href=\"https://nanotrasen.space/\">"
+	s += "https://nanotrasen.space/"
 	s += "</a>"
 	s += ")"
 
@@ -15,24 +15,6 @@
 
 	if (!ticker)
 		features += "<b>STARTING</b>"
-
-	if (ticker && master_mode)
-		features += master_mode
-
-	if (config && config.enable_authentication)
-		features += "goon only"
-
-	if (!enter_allowed)
-		features += "closed"
-
-	if (abandon_allowed)
-		features += abandon_allowed ? "respawn" : "no respawn"
-
-	if (config && config.allow_vote_mode)
-		features += "vote"
-
-	if (config && config.allow_ai)
-		features += "AI allowed"
 
 	var/n = 0
 	for (var/mob/M in world)

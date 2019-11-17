@@ -19,4 +19,11 @@ build: mapmerge
 
 run:
 	@echo -e '\n${INV} ###    RUN    ### ${NC}\n'
-	DreamSeeker.exe prometheus.dmb -safe; true
+	@echo "Starting server..."
+	@DreamDaemon.exe prometheus.dmb 3665 -safe &
+	@sleep 1
+	@echo "Connecting..."
+	@DreamSeeker.exe byond://localhost:3665; true
+	@echo "Shutting down server..."
+	@taskkill.exe /IM "dreamdaemon.exe" /F > /dev/null
+	@echo ""
