@@ -1,0 +1,266 @@
+ERROR: ld.so: object '' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+execve("/bin/ls", ["ls"], 0x7ffc3a8bbdc0 /* 24 vars */) = 0
+brk(NULL)                               = 0x555a10fd8000
+openat(AT_FDCWD, "/byond/bin/tls/haswell/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/byond/bin/tls/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/byond/bin/tls/haswell/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/byond/bin/tls/haswell", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/byond/bin/tls/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/byond/bin/tls/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/byond/bin/tls/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/byond/bin/tls", 0x7ffe59634610)  = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/byond/bin/haswell/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/byond/bin/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/byond/bin/haswell/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/byond/bin/haswell", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/byond/bin/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/byond/bin/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/byond/bin/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/byond/bin", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+openat(AT_FDCWD, "\r/tls/haswell/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=25012, ...}) = 0
+mmap(NULL, 25012, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f9d01c09000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/tls/haswell/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/tls/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/tls/haswell/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/tls/haswell", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/tls/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/tls/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/tls/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/tls", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/haswell/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/haswell/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/haswell", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/x86_64/inode64.so", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64-linux-gnu/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/inode64.so", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0@\20\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=15552, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f9d01c07000
+mmap(NULL, 16424, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f9d01c02000
+mmap(0x7f9d01c03000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7f9d01c03000
+mmap(0x7f9d01c04000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f9d01c04000
+mmap(0x7f9d01c05000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f9d01c05000
+close(3)                                = 0
+openat(AT_FDCWD, "/byond/bin/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/tls/haswell/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/tls/haswell", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/tls/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/tls/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/tls/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/tls", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/haswell/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/haswell/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/haswell", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64-linux-gnu/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64-linux-gnu", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+openat(AT_FDCWD, "/lib/tls/haswell/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/tls/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/tls/haswell/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/tls/haswell", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/tls/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/tls/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/tls/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/tls", 0x7ffe59634610)        = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/haswell/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/haswell/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/haswell", 0x7ffe59634610)    = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib/x86_64", 0x7ffe59634610)     = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/lib", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+openat(AT_FDCWD, "/usr/lib/tls/haswell/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/tls/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/tls/haswell/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/tls/haswell", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/tls/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/tls/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/tls/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/tls", 0x7ffe59634610)    = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/haswell/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/haswell/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/haswell/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/haswell", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/x86_64/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib/x86_64", 0x7ffe59634610) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/\r", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+stat("/usr/lib", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+writev(2, [{iov_base="ERROR: ld.so: object '", iov_len=22}, {iov_base="\r", iov_len=1}, {iov_base="' from ", iov_len=7}, {iov_base="LD_PRELOAD", iov_len=10}, {iov_base=" cannot be preloaded (", iov_len=22}, {iov_base="cannot open shared object file", iov_len=30}, {iov_base="): ignored.\n", iov_len=12}], 7ERROR: ld.so: object '' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+) = 104
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/byond/bin/libselinux.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/x86_64/libselinux.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/libselinux.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/x86_64/libselinux.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/libselinux.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/x86_64/libselinux.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/libselinux.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/x86_64/libselinux.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/libselinux.so.1", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0@k\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=155296, ...}) = 0
+mmap(NULL, 2259632, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f9d019da000
+mprotect(0x7f9d019ff000, 2093056, PROT_NONE) = 0
+mmap(0x7f9d01bfe000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x24000) = 0x7f9d01bfe000
+mmap(0x7f9d01c00000, 6832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f9d01c00000
+close(3)                                = 0
+openat(AT_FDCWD, "/byond/bin/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/x86_64/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/x86_64/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/x86_64/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/x86_64/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/libc.so.6", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\260A\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1824496, ...}) = 0
+mmap(NULL, 1837056, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f9d01819000
+mprotect(0x7f9d0183b000, 1658880, PROT_NONE) = 0
+mmap(0x7f9d0183b000, 1343488, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x22000) = 0x7f9d0183b000
+mmap(0x7f9d01983000, 311296, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16a000) = 0x7f9d01983000
+mmap(0x7f9d019d0000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b6000) = 0x7f9d019d0000
+mmap(0x7f9d019d6000, 14336, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f9d019d6000
+close(3)                                = 0
+openat(AT_FDCWD, "/byond/bin/libpcre.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/x86_64/libpcre.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/libpcre.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/x86_64/libpcre.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/libpcre.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/x86_64/libpcre.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/libpcre.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/x86_64/libpcre.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/libpcre.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libpcre.so.3", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\340!\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=468944, ...}) = 0
+mmap(NULL, 471304, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f9d017a5000
+mmap(0x7f9d017a7000, 335872, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f9d017a7000
+mmap(0x7f9d017f9000, 122880, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x54000) = 0x7f9d017f9000
+mmap(0x7f9d01817000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x71000) = 0x7f9d01817000
+close(3)                                = 0
+openat(AT_FDCWD, "/byond/bin/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/x86_64/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/x86_64/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/x86_64/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/x86_64/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/libdl.so.2", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libdl.so.2", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0000\21\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=14592, ...}) = 0
+mmap(NULL, 16656, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f9d017a0000
+mmap(0x7f9d017a1000, 4096, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1000) = 0x7f9d017a1000
+mmap(0x7f9d017a2000, 4096, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f9d017a2000
+mmap(0x7f9d017a3000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7f9d017a3000
+close(3)                                = 0
+openat(AT_FDCWD, "/byond/bin/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/x86_64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/haswell/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/x86_64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/tls/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/x86_64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/haswell/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/x86_64/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "\r/libpthread.so.0", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libpthread.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0@l\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=146968, ...}) = 0
+mmap(NULL, 132288, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f9d0177f000
+mmap(0x7f9d01785000, 61440, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7f9d01785000
+mmap(0x7f9d01794000, 24576, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x15000) = 0x7f9d01794000
+mmap(0x7f9d0179a000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1a000) = 0x7f9d0179a000
+mmap(0x7f9d0179c000, 13504, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f9d0179c000
+close(3)                                = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f9d0177d000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f9d0177b000
+arch_prctl(ARCH_SET_FS, 0x7f9d0177e680) = 0
+mprotect(0x7f9d019d0000, 16384, PROT_READ) = 0
+mprotect(0x7f9d0179a000, 4096, PROT_READ) = 0
+mprotect(0x7f9d017a3000, 4096, PROT_READ) = 0
+mprotect(0x7f9d01817000, 4096, PROT_READ) = 0
+mprotect(0x7f9d01bfe000, 4096, PROT_READ) = 0
+mprotect(0x7f9d01c05000, 4096, PROT_READ) = 0
+mprotect(0x555a0f5af000, 4096, PROT_READ) = 0
+mprotect(0x7f9d01c37000, 4096, PROT_READ) = 0
+munmap(0x7f9d01c09000, 25012)           = 0
+set_tid_address(0x7f9d0177e950)         = 3436
+set_robust_list(0x7f9d0177e960, 24)     = 0
+rt_sigaction(SIGRTMIN, {sa_handler=0x7f9d017856b0, sa_mask=[], sa_flags=SA_RESTORER|SA_SIGINFO, sa_restorer=0x7f9d01791730}, NULL, 8) = 0
+rt_sigaction(SIGRT_1, {sa_handler=0x7f9d01785740, sa_mask=[], sa_flags=SA_RESTORER|SA_RESTART|SA_SIGINFO, sa_restorer=0x7f9d01791730}, NULL, 8) = 0
+rt_sigprocmask(SIG_UNBLOCK, [RTMIN RT_1], NULL, 8) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+statfs("/sys/fs/selinux", 0x7ffe59635e70) = -1 ENOENT (No such file or directory)
+statfs("/selinux", 0x7ffe59635e70)      = -1 ENOENT (No such file or directory)
+brk(NULL)                               = 0x555a10fd8000
+brk(0x555a10ff9000)                     = 0x555a10ff9000
+openat(AT_FDCWD, "/proc/filesystems", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+read(3, "nodev\tsysfs\nnodev\trootfs\nnodev\tt"..., 1024) = 474
+read(3, "", 1024)                       = 0
+close(3)                                = 0
+access("/etc/selinux/config", F_OK)     = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/share/locale/locale.alias", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/locale/en_US.UTF-8/LC_IDENTIFICATION", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/locale/en_US.utf8/LC_IDENTIFICATION", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/locale/en_US/LC_IDENTIFICATION", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/locale/en.UTF-8/LC_IDENTIFICATION", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/locale/en.utf8/LC_IDENTIFICATION", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/locale/en/LC_IDENTIFICATION", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+ioctl(1, TCGETS, 0x7ffe59635df0)        = -1 ENOTTY (Inappropriate ioctl for device)
+ioctl(1, TIOCGWINSZ, 0x7ffe59635ec0)    = -1 ENOTTY (Inappropriate ioctl for device)
+openat(AT_FDCWD, ".", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3
+fstat(3, {st_mode=S_IFDIR|0777, st_size=512, ...}) = 0
+getdents64(3, /* 20 entries */, 32768)  = 632
+getdents64(3, /* 0 entries */, 32768)   = 0
+close(3)                                = 0
+fstat(1, {st_mode=S_IFREG|0777, st_size=22782, ...}) = 0
+write(1, "LICENCE.md\nMakefile\ncc-by-sa\ncc-"..., 137LICENCE.md
+Makefile
+cc-by-sa
+cc-by-sa-nc
+closed-source
+config
+data
+lib
+mit
+music
+prometheus.dmb
+prometheus.dme
+prometheus.rsc
+strace.log
+) = 137
+close(1)                                = 0
+close(2)                                = 0
+exit_group(0)                           = ?
++++ exited with 0 +++

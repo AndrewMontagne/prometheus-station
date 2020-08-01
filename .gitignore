@@ -5,4 +5,5 @@
 *.int
 *.lk
 /.idea/
+/.vscode/
 __pycache__

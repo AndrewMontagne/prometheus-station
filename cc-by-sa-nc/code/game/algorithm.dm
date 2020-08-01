@@ -8,6 +8,9 @@
 	diary << "---------------------"
 	diary << ""
 
+	extools_initialize()
+	tffi_initialize()
+
 	jobban_loadbanfile()
 	jobban_updatelegacybans()
 	goon_loadfile()
