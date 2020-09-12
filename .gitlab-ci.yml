@@ -7,3 +7,8 @@ build:
     - docker-runner
   script:
     - make build
+  artifacts:
+    paths:
+      - prometheus.dmb
+      - prometheus.rsc
+    expire_in: 1 month
