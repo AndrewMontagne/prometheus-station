@@ -20,7 +20,7 @@ mapmerge:
 	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
 	@python3 ./mit/tools/mapmerge.py ./cc-by-sa-nc/maps/*.dmm
 
-build: lint mapmerge
+build: mapmerge
 	@echo -e '\n${INV} ###   BUILD   ### ${NC}\n'
 	@mkdir -p /tmp/prometheus-station
 	@rsync -ra --delete --exclude='/.*' --exclude='/data' ./* /tmp/prometheus-station
