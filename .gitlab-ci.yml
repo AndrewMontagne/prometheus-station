@@ -1,0 +1,7 @@
+image: andrewmontagne/byond:latest
+
+build:
+  tags:
+    - docker-runner
+  script:
+    - make build
