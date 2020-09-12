@@ -1,6 +1,8 @@
 image: andrewmontagne/byond:latest
 
 build:
+  variables:
+    TERM: dumb
   tags:
     - docker-runner
   script:
