@@ -19,10 +19,10 @@
 			return
 		var/time = rand(2, 6)
 		if (prob(75))
-			if (M.paralysis < time) )
+			if (M.paralysis < time)
 				M.paralysis = time
 		else
-			if (M.stunned < time) )
+			if (M.stunned < time)
 				M.stunned = time
 		if(M.stat != 2)	M.stat = 1
 		for(var/mob/O in viewers(M, null))

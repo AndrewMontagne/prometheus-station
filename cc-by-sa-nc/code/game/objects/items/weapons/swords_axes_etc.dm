@@ -85,7 +85,7 @@ STUN BATON
 		return
 	if (status == 0 || (status == 1 && charges ==0))
 		if(user.a_intent == "hurt")
-			if (M.weakened < 5)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			if (M.weakened < 5)
 				M.weakened = 5
 				..()
 			for(var/mob/O in viewers(M))
@@ -108,12 +108,12 @@ STUN BATON
 				R.cell.charge -= 20
 			else
 				charges--
-			if (M.weakened < 1)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			if (M.weakened < 1)
 				M.weakened = 1
-			if (M.stuttering < 1)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			if (M.stuttering < 1)
 				M.stuttering = 1
 			..()
-			if (M.stunned < 1)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			if (M.stunned < 1)
 				M.stunned = 1
 		else
 			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Egloves.ogg', 50, 1, -1)
@@ -122,11 +122,11 @@ STUN BATON
 				R.cell.charge -= 20
 			else
 				charges--
-			if (M.weakened < 10)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			if (M.weakened < 10)
 				M.weakened = 10
-			if (M.stuttering < 10)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			if (M.stuttering < 10)
 				M.stuttering = 10
-			if (M.stunned < 10)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			if (M.stunned < 10)
 				M.stunned = 10
 			user.lastattacked = M
 			M.lastattacker = user
@@ -141,12 +141,12 @@ STUN BATON
 				R.cell.charge -= 20
 			else
 				charges--
-			if (M.weakened < 1) )
+			if (M.weakened < 1)
 				M.weakened = 1
-			if (M.stuttering < 1) )
+			if (M.stuttering < 1)
 				M.stuttering = 1
 			..()
-			if (M.stunned < 1) )
+			if (M.stunned < 1)
 				M.stunned = 1
 		else
 			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Egloves.ogg', 50, 1, -1)
@@ -155,11 +155,11 @@ STUN BATON
 				R.cell.charge -= 20
 			else
 				charges--
-			if (M.weakened < 10) )
+			if (M.weakened < 10)
 				M.weakened = 10
-			if (M.stuttering < 10) )
+			if (M.stuttering < 10)
 				M.stuttering = 10
-			if (M.stunned < 10) )
+			if (M.stunned < 10)
 				M.stunned = 10
 			user.lastattacked = M
 			M.lastattacker = user
@@ -171,20 +171,20 @@ STUN BATON
 
 	if (user.a_intent == "hurt")
 		playsound(src.loc, "swing_hit", 50, 1, -1)
-		if (M.weakened < 8)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+		if (M.weakened < 8)
 			M.weakened = 8
-		if (M.stuttering < 8)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+		if (M.stuttering < 8)
 			M.stuttering = 8
 		..()
-		if (M.stunned < 8)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+		if (M.stunned < 8)
 			M.stunned = 8
 		for(var/mob/O in viewers(M))
 			if (O.client)	O.show_message("\red <B>[M] has been beaten with the police baton by [user]!</B>", 1, "\red You hear someone fall", 2)
 	else
 		playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 50, 1, -1)
-		if (M.weakened < 5)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+		if (M.weakened < 5)
 			M.weakened = 5
-		if (M.stunned < 5)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+		if (M.stunned < 5)
 			M.stunned = 5
 		for(var/mob/O in viewers(M))
 			if (O.client)	O.show_message("\red <B>[M] has been stunned with the police baton by [user]!</B>", 1, "\red You hear someone fall", 2)

@@ -1201,7 +1201,7 @@
 		user << "\blue You arm the mousetrap."
 	else
 		icon_state = "mousetrap"
-		if((user.brainloss >= 60)
+		if(user.brainloss >= 60)
 			var/which_hand = "l_hand"
 			if(!user.hand)
 				which_hand = "r_hand"

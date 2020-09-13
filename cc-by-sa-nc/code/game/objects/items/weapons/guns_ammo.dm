@@ -513,11 +513,11 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 	if((src.charges >= 1) && (istype(H, /mob/living/carbon/human)))
 		if (user.a_intent == "hurt")
 			if (prob(20))
-				if (M.paralysis < 10)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+				if (M.paralysis < 10)
 					M.paralysis = 10
-			else if (M.weakened < 10)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			else if (M.weakened < 10)
 				M.weakened = 10
-			if (M.stuttering < 10)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			if (M.stuttering < 10)
 				M.stuttering = 10
 			..()
 			if(M.stat != 2)	M.stat = 1
@@ -525,12 +525,12 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 				O.show_message("\red <B>[M] has been knocked unconscious!</B>", 1, "\red You hear someone fall", 2)
 		else
 			if (prob(50))
-				if (M.paralysis < 60)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+				if (M.paralysis < 60)
 					M.paralysis = 60
 			else
-				if (M.weakened < 60)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+				if (M.weakened < 60)
 					M.weakened = 60
-			if (M.stuttering < 60)  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+			if (M.stuttering < 60)
 				M.stuttering = 60
 			if(M.stat != 2)	M.stat = 1
 			for(var/mob/O in viewers(M, null))
