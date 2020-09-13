@@ -28,17 +28,6 @@
 	return
 
 /obj/table/attack_paw(mob/user as mob)
-	if ((usr.mutations & 8))
-		usr << text("\blue You destroy the table.")
-		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
-				O << text("\red [] destroys the table.", usr)
-		if(istype(src, /obj/table/reinforced))
-			new /obj/item/weapon/table_parts/reinforced( src.loc )
-		else
-			new /obj/item/weapon/table_parts( src.loc )
-		src.density = 0
-		del(src)
 	if (!( locate(/obj/table, user.loc) ))
 		step(user, get_dir(user, src))
 		if (user.loc == src.loc)
@@ -59,17 +48,6 @@
 	return
 
 /obj/table/attack_hand(mob/user as mob)
-	if ((usr.mutations & 8))
-		usr << text("\blue You destroy the table.")
-		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
-				O << text("\red [] destroys the table.", usr)
-		if(istype(src, /obj/table/reinforced))
-			new /obj/item/weapon/table_parts/reinforced( src.loc )
-		else
-			new /obj/item/weapon/table_parts( src.loc )
-		src.density = 0
-		del(src)
 	return
 
 

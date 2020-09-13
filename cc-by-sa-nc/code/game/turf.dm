@@ -255,27 +255,9 @@
 		dismantle_wall()
 
 /turf/simulated/wall/attack_paw(mob/user as mob)
-	if ((user.mutations & 8))
-		if (prob(40))
-			usr << text("\blue You smash through the wall.")
-			dismantle_wall(1)
-			return
-		else
-			usr << text("\blue You punch the wall.")
-			return
-
 	return src.attack_hand(user)
 
 /turf/simulated/wall/attack_hand(mob/user as mob)
-	if ((user.mutations & 8))
-		if (prob(40))
-			usr << text("\blue You smash through the wall.")
-			dismantle_wall(1)
-			return
-		else
-			usr << text("\blue You punch the wall.")
-			return
-
 	user << "\blue You push the wall but nothing happens!"
 	playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 25, 1)
 	src.add_fingerprint(user)

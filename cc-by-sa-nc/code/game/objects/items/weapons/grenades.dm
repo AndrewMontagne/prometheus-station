@@ -7,15 +7,7 @@ FLASHBANG
 
 /obj/item/weapon/empgrenade/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
 	if (user.equipped() == src)
-		if ((user.mutations & 16) && prob(50))
-			user << "\red Huh? How does this thing work?!"
-			src.state = 1
-			src.icon_state = "empar"
-			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/armbomb.ogg', 75, 1, -3)
-			spawn( 5 )
-				prime()
-				return
-		else if (!( src.state ))
+		if (!( src.state ))
 			user << "\red You prime the emp grenade! [det_time/10] seconds!"
 			src.state = 1
 			src.icon_state = "empar"
@@ -232,15 +224,7 @@ FLASHBANG
 
 /obj/item/weapon/flashbang/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
 	if (user.equipped() == src)
-		if ((user.mutations & 16) && prob(50))
-			user << "\red Huh? How does this thing work?!"
-			src.state = 1
-			src.icon_state = "flashbang1"
-			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/armbomb.ogg', 75, 1, -3)
-			spawn( 5 )
-				prime()
-				return
-		else if (!( src.state ))
+		if (!( src.state ))
 			user << "\red You prime the flashbang! [det_time/10] seconds!"
 			src.state = 1
 			src.icon_state = "flashbang1"
@@ -276,8 +260,6 @@ FLASHBANG
 				S.icon_state = "shield0"
 		if ((get_dist(M, T) <= 2 || src.loc == M.loc || src.loc == M))
 			flick("e_flash", M.flash)
-			if(!(M.mutations & 8))  M.stunned = 10
-			if(!(M.mutations & 8))  M.weakened = 3
 			M << "\red <B>BANG</B>"
 			if ((prob(14) || (M == src.loc && prob(70))))
 				M.ear_damage += rand(1, 10)
@@ -304,19 +286,13 @@ FLASHBANG
 			if (get_dist(M, T) <= 5)
 				flick("e_flash", M.flash)
 				if (!( istype(M, /mob/living/carbon/human) ))
-					if(!(M.mutations & 8))  M.stunned = 7
-					if(!(M.mutations & 8))  M.weakened = 2
 				else
 					var/mob/living/carbon/human/H = M
 					M.ear_deaf += 10
 					if (prob(20))
 						M.ear_damage += rand(0, 4)
-					if ((!( istype(H.glasses, /obj/item/clothing/glasses/sunglasses) || istype(H.head, /obj/item/clothing/head/helmet/welding) ) || M.paralysis))
-						if(!(M.mutations & 8))  M.stunned = 7
-						if(!(M.mutations & 8))  M.weakened = 2
-					else
-						if (!( M.paralysis ))
-							M.eye_stat += rand(1, 3)
+					if (!( M.paralysis ))
+						M.eye_stat += rand(1, 3)
 				M << "\red <B>BANG</B>"
 			else
 				if (!( istype(M, /mob/living/carbon/human) ))
@@ -352,34 +328,22 @@ FLASHBANG
 
 /obj/item/weapon/flashbang/attack_self(mob/user as mob)
 	if (!src.state)
-		if (user.mutations & 16)
-			user << "\red Huh? How does this thing work?!"
-			spawn( 5 )
-				prime()
-				return
-		else
-			user << "\red You prime the flashbang! [det_time/10] seconds!"
-			src.state = 1
-			src.icon_state = "flashbang1"
-			add_fingerprint(user)
-			spawn( src.det_time )
-				prime()
-				return
+		user << "\red You prime the flashbang! [det_time/10] seconds!"
+		src.state = 1
+		src.icon_state = "flashbang1"
+		add_fingerprint(user)
+		spawn( src.det_time )
+			prime()
+			return
 	return
 
 /obj/item/weapon/empgrenade/attack_self(mob/user as mob)
 	if (!src.state)
-		if (user.mutations & 16)
-			user << "\red Huh? How does this thing work?!"
-			spawn( 5 )
-				prime()
-				return
-		else
-			user << "\red You prime the flashbang! [det_time/10] seconds!"
-			src.state = 1
-			src.icon_state = "empar"
-			add_fingerprint(user)
-			spawn( src.det_time )
-				prime()
-				return
+		user << "\red You prime the flashbang! [det_time/10] seconds!"
+		src.state = 1
+		src.icon_state = "empar"
+		add_fingerprint(user)
+		spawn( src.det_time )
+			prime()
+			return
 	return

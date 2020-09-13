@@ -1201,7 +1201,7 @@
 		user << "\blue You arm the mousetrap."
 	else
 		icon_state = "mousetrap"
-		if((user.brainloss >= 60 || user.mutations & 16) && prob(50))
+		if((user.brainloss >= 60)
 			var/which_hand = "l_hand"
 			if(!user.hand)
 				which_hand = "r_hand"
@@ -1218,7 +1218,7 @@
 
 /obj/item/weapon/mousetrap/attack_hand(mob/user as mob)
 	if(armed)
-		if((user.brainloss >= 60 || user.mutations & 16) && prob(50))
+		if((user.brainloss >= 60))
 			var/which_hand = "l_hand"
 			if(!user.hand)
 				which_hand = "r_hand"

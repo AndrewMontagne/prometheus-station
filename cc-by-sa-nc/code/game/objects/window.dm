@@ -102,29 +102,9 @@
 	return
 
 /obj/window/attack_hand()
-	if ((usr.mutations & 8))
-		usr << text("\blue You smash through the window.")
-		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
-				O << text("\red [] smashes through the window.", usr)
-		src.health = 0
-		new /obj/item/weapon/shard( src.loc )
-		if(reinf) new /obj/item/weapon/rods( src.loc)
-		src.density = 0
-		del(src)
 	return
 
 /obj/window/attack_paw()
-	if ((usr.mutations & 8))
-		usr << text("\blue You smash through the window.")
-		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
-				O << text("\red [] smashes through the window.", usr)
-		src.health = 0
-		new /obj/item/weapon/shard( src.loc )
-		if(reinf) new /obj/item/weapon/rods( src.loc)
-		src.density = 0
-		del(src)
 	return
 
 /obj/window/attackby(obj/item/weapon/W as obj, mob/user as mob)

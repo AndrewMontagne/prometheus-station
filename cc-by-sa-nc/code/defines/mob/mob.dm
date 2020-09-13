@@ -144,15 +144,6 @@
 	var/datum/dna/dna = null
 	var/radiation = 0.0
 
-	var/mutations = 0
-	//telekinesis = 1
-	//firemut = 2
-	//xray = 4
-	//hulk = 8
-	//clumsy = 16
-	//obese = 32
-	//husk = 64
-
 	var/voice_name = "unidentifiable voice"
 	var/voice_message = null
 

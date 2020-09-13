@@ -86,7 +86,6 @@
 		if(5.0)
 			t = "huge"
 		else
-	if ((usr.mutations & 16) && prob(50)) t = "funny-looking"
 	usr << text("This is a []\icon[][]. It is a [] item.", !src.blood_DNA ? "" : "bloody ",src, src.name, t)
 	usr << src.desc
 	return
@@ -166,8 +165,6 @@
 		if (istype(affecting, /datum/organ/external))
 			var/b_dam = (src.damtype == "brute" ? src.force : 0)
 			var/f_dam = (src.damtype == "fire" ? src.force : 0)
-			if (M.mutations & 2)
-				f_dam = 0
 			if (def_zone == "head")
 				if (b_dam && (istype(H.head, /obj/item/clothing/head/helmet/) && H.head.body_parts_covered & HEAD) && prob(80 - src.force))
 					if (prob(20))
@@ -317,10 +314,6 @@
 		switch(src.damtype)
 			if("brute")
 				M.bruteloss += power
-			if("fire")
-				if (!(M.mutations & 2))
-					M.fireloss += power
-					M << "heres ur burn notice"
 		M.updatehealth()
 	src.add_fingerprint(user)
 	return

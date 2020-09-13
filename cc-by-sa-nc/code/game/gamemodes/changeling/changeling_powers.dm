@@ -86,7 +86,6 @@
 
 	T.death(0)
 	T.real_name = "Unknown"
-	T.mutations |= 64
 	T.update_body()
 
 	return

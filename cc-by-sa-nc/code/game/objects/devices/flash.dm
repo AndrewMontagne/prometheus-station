@@ -1,9 +1,5 @@
 
 /obj/item/device/flash/attack(mob/living/carbon/M as mob, mob/user as mob)
-	if ((usr.mutations & 16) && prob(50))
-		usr << "\red The Flash slips out of your hand."
-		usr.drop_item()
-		return
 	if (src.shots > 0)
 		var/safety = null
 		if (istype(M, /mob/living/carbon/human))
@@ -27,7 +23,6 @@
 					return
 				if (!( safety ) && status == 1)
 					playsound(src.loc, 'cc-by-sa-nc/sound/weapons/flash.ogg', 100, 1)
-					if(!(M.mutations & 8))  M.weakened = 10
 					if (prob(10))
 						status = 0
 						user << "\red The bulb has burnt out!"
@@ -55,10 +50,6 @@
 	return
 
 /obj/item/device/flash/attack_self(mob/living/carbon/user as mob, flag)
-	if ((usr.mutations & 16) && prob(50))
-		usr << "\red The Flash slips out of your hand."
-		usr.drop_item()
-		return
 	if ( (world.time + 600) > src.l_time)
 		src.shots = 5
 	if (src.shots < 1)

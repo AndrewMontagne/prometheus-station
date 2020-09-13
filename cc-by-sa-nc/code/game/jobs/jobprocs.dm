@@ -294,7 +294,6 @@
 			src.equip_if_possible(new /obj/item/clothing/mask/clown_hat(src), slot_wear_mask)
 			src.equip_if_possible(new /obj/item/weapon/banana(src), slot_in_backpack)
 			src.equip_if_possible(new /obj/item/weapon/bikehorn(src), slot_in_backpack)
-			src.mutations |= 16
 
 		if ("Station Engineer")
 			src.equip_if_possible(new /obj/item/device/pda/engineering(src), slot_belt)
