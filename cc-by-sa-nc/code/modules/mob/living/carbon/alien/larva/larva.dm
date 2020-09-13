@@ -466,13 +466,6 @@ to clean it up, or just beat the shit out of it (which takes ages).
 				var/damage = rand(1, 9)
 
 				if (prob(90))
-					if (M.mutations & 8 && prob(90))
-						damage += 5
-						spawn(0)
-							src.paralysis += 1
-							step_away(src,M,15)
-							sleep(3)
-							step_away(src,M,15)
 					playsound(src.loc, "punch", 25, 1, -1)
 					for(var/mob/O in viewers(src, null))
 						O.show_message(text("\red <B>[] has punched []!</B>", M, src), 1)

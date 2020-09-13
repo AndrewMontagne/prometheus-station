@@ -168,9 +168,6 @@
 				if(M == user)
 					continue
 				M.show_message("[user.name] smashed the light!", 3, "You hear a tinkle of breaking glass", 2)
-			if(on && (W.flags & CONDUCT))
-				if(!user.mutations & 2)
-					src.electrocute(user, 50, null, 20000)
 			broken()
 
 
@@ -184,8 +181,6 @@
 			var/datum/effects/system/spark_spread/s = new /datum/effects/system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
-			if(!user.mutations & 2)
-				src.electrocute(user, 75, null, 20000)
 
 
 // returns whether this light has power
@@ -226,7 +221,7 @@
 		else
 			prot = 1
 
-		if(prot > 0 || (user.mutations & 2))
+		if(prot > 0)
 			user << "You remove the light [fitting]"
 		else
 			user << "You try to remove the light [fitting], but you burn your hand on it!"

@@ -44,16 +44,6 @@
 	spawn( 0 )
 		if ((!( yes ) || src.now_pushing))
 			return
-		src.now_pushing = 1
-		if(ismob(AM))
-			var/mob/tmob = AM
-			if(istype(tmob, /mob/living/carbon/human) && tmob.mutations & 32)
-				if(prob(70))
-					for(var/mob/M in viewers(src, null))
-						if(M.client)
-							M << "\red <B>[src] fails to push [tmob]'s fat ass out of the way.</B>"
-					src.now_pushing = 0
-					return
 		src.now_pushing = 0
 		..()
 		if (!( istype(AM, /atom/movable) ))
@@ -141,7 +131,6 @@
 			for(var/mob/O in viewers(src, null))
 				O.show_message(text("\red <B>[M.name] has bit []!</B>", src), 1)
 			var/damage = rand(1, 5)
-			if (src.mutations & 8) damage += 10
 			src.bruteloss += damage
 			src.updatehealth()
 		else

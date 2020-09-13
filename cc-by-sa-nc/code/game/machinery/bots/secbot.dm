@@ -236,11 +236,11 @@ Auto Patrol: []"},
 						var/mob/living/carbon/M = src.target
 						var/maxstuns = 4
 						if (istype(M, /mob/living/carbon/human))
-							if (M.weakened < 10)  /*&& (!istype(M:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+							if (M.weakened < 10)
 								M.weakened = 10
-							if (M.stuttering < 10)  /*&& (!istype(M:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+							if (M.stuttering < 10)
 								M.stuttering = 10
-							if (M.stunned < 10)  /*&& (!istype(M:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
+							if (M.stunned < 10)
 								M.stunned = 10
 						else
 							M.weakened = 10
