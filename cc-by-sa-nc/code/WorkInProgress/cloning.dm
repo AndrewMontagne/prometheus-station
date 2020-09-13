@@ -495,7 +495,6 @@
 		updateappearance(src.occupant, ui)
 	if (se)
 		src.occupant.dna.struc_enzymes = se
-		randmutb(src.occupant) //Sometimes the clones come out wrong.
 
 	src.attempting = 0
 	return 1

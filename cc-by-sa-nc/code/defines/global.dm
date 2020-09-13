@@ -48,7 +48,6 @@ var
 	ooc_allowed = 1
 	traitor_scaling = 1
 	goonsay_allowed = 0
-	dna_ident = 1
 	abandon_allowed = 1
 	enter_allowed = 1
 	shuttle_frozen = 0
@@ -81,7 +80,6 @@ var
 	list/lastsignalers = list(	)	//keeps last 100 signals here in format: "[src] used \ref[src] @ location [src.loc]: [freq]/[code]"
 	list/admins = list(  )
 	list/shuttles = list(  )
-	list/reg_dna = list(  )
 //	list/traitobj = list(  )
 
 

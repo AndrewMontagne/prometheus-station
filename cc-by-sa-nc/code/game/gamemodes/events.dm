@@ -72,13 +72,6 @@
 				H.radiation += rand(5,25)
 				if (prob(5))
 					H.radiation += rand(30,50)
-				if (prob(25))
-					if (prob(75))
-						randmutb(H)
-						domutcheck(H,null,1)
-					else
-						randmutg(H)
-						domutcheck(H,null,1)
 			for(var/mob/living/carbon/monkey/M in world)
 				M.radiation += rand(5,25)
 		if(6)
@@ -222,23 +215,11 @@
 
 /proc/viral_outbreak()
 	command_alert("Confirmed outbreak of level 7 viral biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert")
-	var/virus_type = pick(/datum/disease/dnaspread,/datum/disease/cold)
+	var/virus_type = ,/datum/disease/cold
 	for(var/mob/living/carbon/human/H in world)
 		if((H.virus) || (H.stat == 2))
 			continue
-		if(virus_type == /datum/disease/dnaspread) //Dnaspread needs strain_data set to work.
-			if((!H.dna) || (H.sdisabilities & 1)) //A blindness disease would be the worst.
-				continue
-			var/datum/disease/dnaspread/D = new
-			D.strain_data["name"] = H.real_name
-			D.strain_data["UI"] = H.dna.uni_identity
-			D.strain_data["SE"] = H.dna.struc_enzymes
-			D.carrier = 1
-			D.affected_mob = H
-			H.virus = D
-			break
-		else
-			H.virus = new virus_type
-			H.virus.affected_mob = H
-			H.virus.carrier = 1
-			break
+		H.virus = new virus_type
+		H.virus.affected_mob = H
+		H.virus.carrier = 1
+		break

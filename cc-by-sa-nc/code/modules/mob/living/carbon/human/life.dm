@@ -177,9 +177,9 @@
 						src.radiation -= 3
 						src.toxloss += 3
 						if(prob(1))
-							src << "\red You mutate!"
-							randmutb(src)
-							domutcheck(src,null)
+							src << "\red You feel your DNA being torn apart!"
+							//randmutb(src)
+							//domutcheck(src,null)
 							emote("gasp")
 						src.updatehealth()
 

@@ -140,8 +140,6 @@
 	var/const/muteness = 4
 	var/brainloss = 0
 
-
-	var/datum/dna/dna = null
 	var/radiation = 0.0
 
 	var/voice_name = "unidentifiable voice"

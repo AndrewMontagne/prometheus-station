@@ -47,7 +47,7 @@
 	return
 
 /atom/proc/add_fingerprint(mob/living/carbon/human/M as mob)
-	if ((!( istype(M, /mob/living/carbon/human) ) || !( istype(M.dna, /datum/dna) )))
+	if (!istype(M, /mob/living/carbon/human)
 		return 0
 	if (!( src.flags ) & 256)
 		return
