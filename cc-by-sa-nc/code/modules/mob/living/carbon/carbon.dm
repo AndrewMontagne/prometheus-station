@@ -3,8 +3,6 @@
 	if(.)
 		if(src.nutrition)
 			src.nutrition--
-		if(src.mutations & 32 && src.m_intent == "run")
-			src.bodytemperature += 2
 
 /mob/living/carbon/relaymove(var/mob/user, direction)
 	if(user in src.stomach_contents)

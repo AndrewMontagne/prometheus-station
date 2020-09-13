@@ -26,12 +26,6 @@ WELDINGTOOOL
 	if(!istype(M, /mob))
 		return
 
-	if((usr.mutations & 16) && prob(50))
-		M << "\red You stab yourself in the eye."
-		M.sdisabilities |= 1
-		M.weakened += 4
-		M.bruteloss += 10
-
 	src.add_fingerprint(user)
 	if(!(user.zone_sel.selecting == ("eyes" || "head")))
 		return ..()

@@ -50,10 +50,6 @@ CLIPBOARDS
 
 
 /obj/item/weapon/paper/attack_self(mob/user as mob)
-	if ((usr.mutations & 16) && prob(50))
-		usr << text("\red You cut yourself on the paper.")
-		usr.bruteloss += 3
-		return
 	var/n_name = input(user, "What would you like to label the paper?", "Paper Labelling", null)  as text
 	n_name = copytext(n_name, 1, 32)
 	if ((src.loc == user && user.stat == 0))

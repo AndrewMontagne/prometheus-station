@@ -72,16 +72,6 @@ to clean it up, or just beat the shit out of it (which takes ages).
 	spawn( 0 )
 		if ((!( yes ) || src.now_pushing))
 			return
-		src.now_pushing = 1
-		if(ismob(AM))
-			var/mob/tmob = AM
-			if(istype(tmob, /mob/living/carbon/human) && tmob.mutations & 32)
-				if(prob(70))
-					for(var/mob/M in viewers(src, null))
-						if(M.client)
-							M << "\red <B>[src] fails to push [tmob]'s fat ass out of the way.</B>"
-					src.now_pushing = 0
-					return
 		src.now_pushing = 0
 		..()
 		if (!( istype(AM, /atom/movable) ))
