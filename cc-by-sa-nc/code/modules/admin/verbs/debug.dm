@@ -140,21 +140,6 @@
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_changelinginize(var/mob/M in world)
-	set category = "Debug"
-	set name = "Make Changeling"
-
-	if(!ticker)
-		alert("Wait until the game starts")
-		return
-	if(istype(M, /mob/living/carbon/human))
-		log_admin("[key_name(src)] has made [M.key] a changeling.")
-		spawn(10)
-			M.absorbed_dna[M.real_name] = M.dna
-			M.make_changeling()
-	else
-		alert("Invalid mob")
-
 /client/proc/cmd_debug_del_all()
 	set category = "Debug"
 	set name = "Del-All"

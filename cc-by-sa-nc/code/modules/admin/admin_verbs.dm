@@ -52,7 +52,6 @@
 			src.verbs += /client/proc/cmd_admin_rejuvenate
 			src.verbs += /client/proc/cmd_admin_robotize
 			src.verbs += /client/proc/cmd_admin_alienize
-			src.verbs += /client/proc/cmd_admin_changelinginize
 			src.verbs += /client/proc/Cell
 			src.verbs += /client/proc/ticklag
 			src.verbs += /client/proc/cmd_admin_mute
@@ -134,7 +133,6 @@
 			src.verbs += /client/proc/cmd_admin_rejuvenate
 			src.verbs += /client/proc/cmd_admin_robotize
 			src.verbs += /client/proc/cmd_admin_alienize
-			src.verbs += /client/proc/cmd_admin_changelinginize
 			src.verbs += /client/proc/Cell
 			src.verbs += /client/proc/ticklag
 			src.verbs += /client/proc/cmd_admin_mute
@@ -484,7 +482,6 @@
 	src.verbs -= /client/proc/jumptomob
 	src.verbs -= /client/proc/jumptokey
 	src.verbs -= /client/proc/cmd_admin_alienize
-	src.verbs -= /client/proc/cmd_admin_changelinginize
 //	src.verbs -= /client/proc/cmd_admin_list_admins
 	src.verbs -= /client/proc/Getmob
 	src.verbs -= /client/proc/sendmob

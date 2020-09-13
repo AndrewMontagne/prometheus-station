@@ -152,8 +152,3 @@
 	var/datum/disease/virus = null
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
-
-//Changeling mode stuff
-	var/changeling_level = 0
-	var/list/absorbed_dna = list()
-	var/changeling_fakedeath = 0

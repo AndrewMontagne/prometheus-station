@@ -83,7 +83,7 @@
 			if(100 to 200)
 				usr << "\red [src] is twitching ever so slightly."
 
-	if (src.stat == 2 || src.changeling_fakedeath == 1)
+	if (src.stat == 2)
 		usr << "\red [src] is limp and unresponsive, a dull lifeless look in [t_his] eyes."
 	else
 		if (src.bruteloss)
