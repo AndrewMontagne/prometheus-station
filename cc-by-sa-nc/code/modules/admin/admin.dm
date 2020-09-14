@@ -226,14 +226,6 @@ var/showadminmessages = 1
 					del(M.client)
 					del(M)
 
-	if (href_list["remove"])
-		if ((src.rank in list( "Administrator", "Primary Administrator", "Shit Guy", "Coder", "Host"  )))
-			var/t = href_list["remove"]
-			if(t && isgoon(t))
-				log_admin("[key_name(usr)] removed [t] from the goonlist.")
-				message_admins("\blue [key_name_admin(usr)] removed [t] from the goonlist.")
-				remove_goon(t)
-
 	if (href_list["mute2"])
 		if ((src.rank in list( "Moderator", "Secondary Administrator", "Administrator", "Primary Administrator", "Shit Guy", "Coder", "Host"  )))
 			var/mob/M = locate(href_list["mute2"])
@@ -432,7 +424,6 @@ var/showadminmessages = 1
 		if ((src.rank in list( "Administrator", "Secondary Administrator", "Primary Administrator", "Shit Guy", "Coder", "Host"  )))
 			var/mob/M = locate(href_list["adminauth"])
 			if (ismob(M) && !M.client.authenticated && !M.client.authenticating)
-				M.client.verbs -= /client/proc/authorize
 				M.client.authenticated = text("admin/[]", usr.client.authenticated)
 				log_admin("[key_name(usr)] authorized [key_name(M)]")
 				message_admins("\blue [key_name_admin(usr)] authorized [key_name_admin(M)]", 1)
@@ -1254,20 +1245,6 @@ var/showadminmessages = 1
 	usr << browse(dat, "window=admin2;size=210x180")
 	return
 
-/obj/admins/proc/goons()
-	var/dat = "<HR><B>GOOOOOOONS</B><HR><table cellspacing=5><tr><th>Key</th><th>SA Username</th></tr>"
-	for(var/t in goon_keylist)
-		dat += text("<tr><td><A href='?src=\ref[src];remove=[ckey(t)]'><B>[t]</B></A></td><td>[goon_keylist[ckey(t)]]</td></tr>")
-	dat += "</table>"
-	usr << browse(dat, "window=ban;size=300x400")
-
-/obj/admins/proc/beta_testers()
-	var/dat = "<HR><B>Beta testers</B><HR><table cellspacing=5><tr><th>Key</th></tr>"
-	for(var/t in beta_tester_keylist)
-		dat += text("<tr><td>[t]</td></tr>")
-	dat += "</table>"
-	usr << browse(dat, "window=ban;size=300x400")
-
 /obj/admins/proc/Secrets()
 
 	var/lvl = 0
@@ -1504,18 +1481,6 @@ var/showadminmessages = 1
 	traitor_scaling = !traitor_scaling
 	log_admin("[key_name(usr)] toggled Traitor Scaling to [traitor_scaling].")
 	message_admins("[key_name_admin(usr)] toggled Traitor Scaling [traitor_scaling ? "on" : "off"].", 1)
-
-/obj/admins/proc/togglegoonsay()
-	set category = "Special Verbs"
-	set desc = "Toggle dis bitch"
-	set name = "Toggle Goonsay"
-	goonsay_allowed = !( goonsay_allowed )
-	if (goonsay_allowed)
-		world << "<B>The GOONSAY channel has been enabled.</B>"
-	else
-		world << "<B>The GOONSAY channel has been disabled.</B>"
-	log_admin("[key_name(usr)] toggled Goonsay to [goonsay_allowed].")
-	message_admins("[key_name_admin(usr)] toggled GOONSAY [goonsay_allowed ? "on" : "off"]", 1)
 
 /obj/admins/proc/startnow()
 	set category = "Special Verbs"

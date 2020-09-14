@@ -1629,15 +1629,12 @@
 		del(src)
 
 
-	if (((world.address == src.address || !(src.address)) && !(host)))
+	if (((world.address == src.address || src.address == "127.0.0.1" || !(src.address)) && !(host)))
 		host = src.key
 		world.update_status()
 
 	..()
 
-	src.authorize()
-	src.goonauth()
-	src.beta_tester_auth()
 	spawn(2) 
 		src.init_map_panes()
 		src.init_infobrowser()

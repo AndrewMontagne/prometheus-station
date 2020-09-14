@@ -2,7 +2,6 @@
 	var/obj/admins/holder = null
 	var/authenticated = 0
 	var/goon = 0
-	var/beta_tester = 0
 	var/authenticating = 0
 	var/listen_ooc = 1
 	var/move_delay = 1

@@ -47,7 +47,6 @@ var
 	aliens_allowed = 0
 	ooc_allowed = 1
 	traitor_scaling = 1
-	goonsay_allowed = 0
 	abandon_allowed = 1
 	enter_allowed = 1
 	shuttle_frozen = 0

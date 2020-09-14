@@ -343,7 +343,6 @@
 #include "cc-by-sa-nc\code\game\objects\storage\toolbox.dm"
 #include "cc-by-sa-nc\code\game\verbs\ai_lockdown.dm"
 #include "cc-by-sa-nc\code\game\verbs\AI_status.dm"
-#include "cc-by-sa-nc\code\game\verbs\authorize.dm"
 #include "cc-by-sa-nc\code\game\verbs\begin.dm"
 #include "cc-by-sa-nc\code\game\verbs\ooc.dm"
 #include "cc-by-sa-nc\code\game\verbs\suicide.dm"
