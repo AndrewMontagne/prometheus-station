@@ -68,18 +68,6 @@
 	..()
 	return
 
-/obj/item/weapon/storage/injectbox/New()
-
-	new /obj/item/weapon/dnainjector/h2m( src )
-	new /obj/item/weapon/dnainjector/h2m( src )
-	new /obj/item/weapon/dnainjector/h2m( src )
-	new /obj/item/weapon/dnainjector/m2h( src )
-	new /obj/item/weapon/dnainjector/m2h( src )
-	new /obj/item/weapon/dnainjector/m2h( src )
-
-	..()
-	return
-
 /obj/item/weapon/storage/fcard_kit/New()
 
 	new /obj/item/weapon/f_card( src )

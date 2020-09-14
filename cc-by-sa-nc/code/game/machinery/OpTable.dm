@@ -34,13 +34,6 @@
 	return
 
 /obj/machinery/optable/attack_paw(mob/user as mob)
-	if ((usr.mutations & 8))
-		usr << text("\blue You destroy the operating table.")
-		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
-				O << text("\red [usr] destroys the operating table.")
-		src.density = 0
-		del(src)
 	if (!( locate(/obj/machinery/optable, user.loc) ))
 		step(user, get_dir(user, src))
 		if (user.loc == src.loc)
@@ -51,13 +44,6 @@
 	return
 
 /obj/machinery/optable/attack_hand(mob/user as mob)
-	if ((usr.mutations & 8))
-		usr << text("\blue You destroy the table.")
-		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
-				O << text("\red [usr] destroys the table.")
-		src.density = 0
-		del(src)
 	return
 
 

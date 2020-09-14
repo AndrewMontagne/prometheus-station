@@ -348,24 +348,11 @@
 	var/active = 0	// true if the holder is moving, otherwise inactive
 	dir = 0
 	var/count = 1000	//*** can travel 1000 steps before going inactive (in case of loops)
-	var/has_fat_guy = 0	// true if contains a fat person
 
 
 	// initialize a holder from the contents of a disposal unit
 	proc/init(var/obj/machinery/disposal/D)
 		gas = D.air_contents		// transfer gas resv. into holder object
-
-
-		// now everything inside the disposal gets put into the holder
-		// note AM since can contain mobs or objs
-		for(var/atom/movable/AM in D)
-			AM.loc = src
-			if(istype(AM, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = AM
-				if(H.mutations & 32)		// is a human and fat?
-					has_fat_guy = 1			// set flag on holder
-
-
 
 	// start the movement process
 	// argument is the disposal unit the holder started in
@@ -386,12 +373,6 @@
 	proc/process()
 		var/obj/disposalpipe/last
 		while(active)
-			if(has_fat_guy && prob(2)) // chance of becoming stuck per segment if contains a fat guy
-				active = 0
-				// find the fat guys
-				for(var/mob/living/carbon/human/H in src)
-
-				break
 			sleep(1)		// was 1
 			var/obj/disposalpipe/curr = loc
 			last = curr
@@ -432,9 +413,6 @@
 				var/mob/M = AM
 				if(M.client)	// if a client mob, update eye to follow this holder
 					M.client.eye = src
-
-		if(other.has_fat_guy)
-			has_fat_guy = 1
 		del(other)
 
 

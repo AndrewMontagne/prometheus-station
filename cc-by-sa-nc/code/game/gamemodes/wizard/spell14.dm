@@ -192,6 +192,3 @@
 						S.current = null
 						O.reset_view(null)
 						O << "The screen bursts into static."
-
-		if(istype(A, /obj/machinery/clonepod))
-			A:malfunction()

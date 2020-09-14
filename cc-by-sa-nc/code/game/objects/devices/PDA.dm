@@ -1328,16 +1328,12 @@ Code:
 					user.show_message(text("\red <b>Warning Virus Detected.</b>\nName: [C.virus.name].\nType: [C.virus.spread].\nStage: [C.virus.stage]/[C.virus.max_stages].\nPossible Cure: [C.virus.cure]"))
 
 			if(2)
-				if (!istype(C:dna, /datum/dna) || !isnull(C:gloves))
-					user << "\blue No fingerprints found on [C]"
-				else
-					user << text("\blue [C]'s Fingerprints: [md5(C:dna.uni_identity)]")
-				if ( !(C:blood_DNA) )
+				if ( !(C:blood_type) )
 					user << "\blue No blood found on [C]"
 				else
 					user << "\blue Blood found on [C]. Analysing..."
 					spawn(15)
-						user << "\blue Blood type: [C:blood_type]\nDNA: [C:blood_DNA]"
+						user << "\blue Blood type: [C:blood_type]"
 
 /obj/item/device/pda/afterattack(atom/A as mob|obj|turf|area, mob/user as mob)
 	if (src.scanmode == 2)

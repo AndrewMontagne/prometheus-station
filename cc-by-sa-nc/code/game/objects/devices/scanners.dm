@@ -78,43 +78,24 @@ GAS ANALYZER
 	return
 
 /obj/item/device/detective_scanner/attack(mob/living/carbon/human/M as mob, mob/user as mob)
-
-	if (( !( istype(M.dna, /datum/dna) ) || M.gloves) )
-		user << "\blue No fingerprints found on [M]"
-	else
-		if ((src.amount < 1 && src.printing))
-			user << text("\blue Fingerprints scanned on [M]. Need more cards to print.")
-			src.printing = 0
-		src.icon_state = text("forensic[]", src.printing)
-		if (src.printing)
-			src.amount--
-			var/obj/item/weapon/f_card/F = new /obj/item/weapon/f_card( user.loc )
-			F.amount = 1
-			F.fingerprints = md5(M.dna.uni_identity)
-			F.icon_state = "fingerprint1"
-			F.name = text("FPrintC- '[M.name]'")
-			user << "\blue Done printing."
-		user << text("\blue [M]'s Fingerprints: [md5(M.dna.uni_identity)]")
-	if ( !(M.blood_DNA) )
+	if ( !(M.blood_type) )
 		user << "\blue No blood found on [M]"
 	else
 		user << "\blue Blood found on [M]. Analysing..."
 		spawn(15)
-			user << "\blue Blood type: [M.blood_type]\nDNA: [M.blood_DNA]"
+			user << "\blue Blood type: [M.blood_type]"
 	return
 
 /obj/item/device/detective_scanner/afterattack(atom/A as mob|obj|turf|area, mob/user as mob)
 
 	src.add_fingerprint(user)
 	if (istype(A, /obj/decal/cleanable/blood))
-		if(A.blood_DNA)
-			user << "\blue Blood type: [A.blood_type]\nDNA: [A.blood_DNA]"
 		if(A:virus)
 			user << "\red Warning, virus found in the blood! Name: [A:virus.name]"
-	else if (A.blood_DNA)
+	else if (A.blood_type)
 		user << "\blue Blood found on [A]. Analysing..."
 		sleep(15)
-		user << "\blue Blood type: [A.blood_type]\nDNA: [A.blood_DNA]"
+		user << "\blue Blood type: [A.blood_type]"
 	else
 		user << "\blue No blood found on [A]."
 	if (!( A.fingerprints ))
@@ -140,7 +121,7 @@ GAS ANALYZER
 	return
 
 /obj/item/device/healthanalyzer/attack(mob/M as mob, mob/user as mob)
-	if ((user.mutations & 16 || user.brainloss >= 60) && prob(50))
+	if (user.brainloss >= 60 && prob(50))
 		user << text("\red You try to analyze the floor's vitals!")
 		for(var/mob/O in viewers(M, null))
 			O.show_message(text("\red [user] has analyzed the floor's vitals!"), 1)

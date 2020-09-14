@@ -47,7 +47,7 @@
 	return
 
 /atom/proc/add_fingerprint(mob/living/carbon/human/M as mob)
-	if ((!( istype(M, /mob/living/carbon/human) ) || !( istype(M.dna, /datum/dna) )))
+	if (!istype(M, /mob/living/carbon/human))
 		return 0
 	if (!( src.flags ) & 256)
 		return
@@ -57,17 +57,17 @@
 			src.fingerprintslast = M.key
 		return 0
 	if (!( src.fingerprints ))
-		src.fingerprints = text("[]", md5(M.dna.uni_identity))
+		src.fingerprints = text("[]", md5(M.key))
 		if(src.fingerprintslast != M.key)
 			src.fingerprintshidden += text("Real name: [], Key: []",M.real_name, M.key)
 			src.fingerprintslast = M.key
 		return 1
 	else
 		var/list/L = params2list(src.fingerprints)
-		L -= md5(M.dna.uni_identity)
+		L -= md5(M.key)
 		while(L.len >= 3)
 			L -= L[1]
-		L += md5(M.dna.uni_identity)
+		L += md5(M.key)
 		src.fingerprints = list2params(L)
 
 		if(src.fingerprintslast != M.key)
@@ -80,7 +80,7 @@
 		return 0
 	if (!( src.flags ) & 256)
 		return
-	if (!( src.blood_DNA ))
+	if (!( src.blood_type ))
 		if (istype(src, /obj/item))
 			var/obj/item/source2 = src
 			source2.icon_old = src.icon
@@ -89,7 +89,6 @@
 			I.Blend(new /icon('cc-by-sa-nc/icons/effects/blood.dmi', "itemblood"),ICON_MULTIPLY)
 			I.Blend(new /icon(src.icon, src.icon_state),ICON_UNDERLAY)
 			src.icon = I
-			src.blood_DNA = M.dna.unique_enzymes
 			src.blood_type = M.b_type
 		else if (istype(src, /turf/simulated))
 			var/turf/simulated/source2 = src
@@ -99,36 +98,25 @@
 				if(istype(objsonturf[i],/obj/decal/cleanable/blood))
 					return
 			var/obj/decal/cleanable/blood/this = new /obj/decal/cleanable/blood(source2)
-			this.blood_DNA = M.dna.unique_enzymes
 			this.blood_type = M.b_type
 			this.virus = M.virus
 		else if (istype(src, /mob/living/carbon/human))
-			src.blood_DNA = M.dna.unique_enzymes
 			src.blood_type = M.b_type
 		else
 			return
-	else
-		var/list/L = params2list(src.blood_DNA)
-		L -= M.dna.unique_enzymes
-		while(L.len >= 3)
-			L -= L[1]
-		L += M.dna.unique_enzymes
-		src.blood_DNA = list2params(L)
 	return
 
 /atom/proc/clean_blood()
 
 	if (!( src.flags ) & 256)
 		return
-	if ( src.blood_DNA )
+	if ( src.blood_type )
 		if (istype (src, /obj/item))
 			var/obj/item/source2 = src
-			source2.blood_DNA = null
 			var/icon/I = new /icon(source2.icon_old, source2.icon_state)
 			source2.icon = I
 		else if (istype(src, /turf/simulated))
 			var/obj/item/source2 = src
-			source2.blood_DNA = null
 			var/icon/I = new /icon(source2.icon_old, source2.icon_state)
 			source2.icon = I
 	return

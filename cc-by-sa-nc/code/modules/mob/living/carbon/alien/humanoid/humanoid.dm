@@ -75,16 +75,6 @@ to clean it up, or just beat the shit out of it (which takes ages).
 	spawn( 0 )
 		if ((!( yes ) || src.now_pushing))
 			return
-		src.now_pushing = 1
-		if(ismob(AM))
-			var/mob/tmob = AM
-			if(istype(tmob, /mob/living/carbon/human) && tmob.mutations & 32)
-				if(prob(20))
-					for(var/mob/M in viewers(src, null))
-						if(M.client)
-							M << M << "\red <B>[src] fails to push [tmob]'s fat ass out of the way.</B>"
-					src.now_pushing = 0
-					return
 		src.now_pushing = 0
 		..()
 		if (!istype(AM, /atom/movable))
@@ -501,7 +491,7 @@ to clean it up, or just beat the shit out of it (which takes ages).
 		if (!t1)
 			t1 = src.wear_suit.icon_state
 		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mob.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
-		if (src.wear_suit.blood_DNA)
+		if (src.wear_suit.blood_type)
 			if (istype(src.wear_suit, /obj/item/clothing/suit/armor))
 				src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/blood.dmi', "icon_state" = "armorblood[!src.lying ? "" : "2"]", "layer" = MOB_LAYER)
 			else
@@ -526,7 +516,7 @@ to clean it up, or just beat the shit out of it (which takes ages).
 		if (!t1)
 			t1 = src.head.icon_state
 		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mob.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
-		if (src.head.blood_DNA)
+		if (src.head.blood_type)
 			src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/blood.dmi', "icon_state" = "helmetblood[!src.lying ? "" : "2"]", "layer" = MOB_LAYER)
 		src.head.screen_loc = ui_oclothing
 
@@ -688,13 +678,6 @@ to clean it up, or just beat the shit out of it (which takes ages).
 			if (M.a_intent == "hurt" && !(M.gloves && M.gloves.elecgen == 1))
 				var/damage = rand(1, 9)
 				if (prob(90))
-					if (M.mutations & 8)
-						damage += 5
-						spawn(0)
-							src.paralysis += 1
-							step_away(src,M,15)
-							sleep(3)
-							step_away(src,M,15)
 					playsound(src.loc, "punch", 25, 1, -1)
 					for(var/mob/O in viewers(src, null))
 						O.show_message(text("\red <B>[] has punched []!</B>", M, src), 1)

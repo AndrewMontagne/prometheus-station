@@ -58,14 +58,10 @@
 
 			if(istype(A,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = A
-				if (!istype(H.dna, /datum/dna) || !isnull(H.gloves))
-					dat += "\blue Unable to scan [A]'s fingerprints.\n"
-				else
-					dat += "\blue [H]'s Fingerprints: [md5(H.dna.uni_identity)]\n"
-				if ( !(H.blood_DNA) )
+				if ( !(H.blood_type) )
 					dat += "\blue No blood found on [H]\n"
 				else
-					dat += "\blue Blood type: [H.blood_type]\nDNA: [H.blood_DNA]\n"
+					dat += "\blue Blood type: [H.blood_type]\n"
 
 			if (!A.fingerprints)
 				dat += "\blue Unable to locate any fingerprints on [A]!\n"

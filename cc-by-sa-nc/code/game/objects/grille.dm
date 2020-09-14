@@ -41,15 +41,7 @@
 	return
 
 /obj/grille/attack_hand(var/obj/M)
-	if ((usr.mutations & 8))
-		usr << text("\blue You kick the grille.")
-		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
-				O << text("\red [] kicks the grille.", usr)
-		src.health -= 2
-		healthcheck()
-		return
-	else if(!shock(usr, 70))
+	if(!shock(usr, 70))
 		usr << text("\blue You kick the grille.")
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
@@ -58,15 +50,7 @@
 		src.health -= 1
 
 /obj/grille/attack_paw(var/obj/M)
-	if ((usr.mutations & 8))
-		usr << text("\blue You kick the grille.")
-		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
-				O << text("\red [] kicks the grille.", usr)
-		src.health -= 2
-		healthcheck()
-		return
-	else if(!shock(usr, 70))
+	if(!shock(usr, 70))
 		usr << text("\blue You kick the grille.")
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))

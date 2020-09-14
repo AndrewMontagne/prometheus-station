@@ -118,15 +118,6 @@
 /obj/machinery/computer/data/weapon/log
 	name = "Log Computer"
 
-/obj/machinery/computer/dna
-	name = "DNA operations computer"
-	icon_state = "dna"
-	var/obj/item/weapon/card/data/scan = null
-	var/obj/item/weapon/card/data/modify = null
-	var/obj/item/weapon/card/data/modify2 = null
-	var/mode = null
-	var/temp = null
-
 /obj/machinery/computer/hologram_comp
 	name = "Hologram Computer"
 	icon = 'cc-by-sa-nc/icons/obj/stationobjs.dmi'

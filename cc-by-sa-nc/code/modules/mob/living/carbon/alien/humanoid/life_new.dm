@@ -111,20 +111,6 @@
 
 		handle_mutations_and_radiation()
 
-			if(src.fireloss)
-				if(src.mutations & 2 || prob(50))
-					switch(src.fireloss)
-						if(1 to 50)
-							src.fireloss--
-						if(51 to 100)
-							src.fireloss -= 5
-
-			if (src.mutations & 8 && src.health <= 25)
-				src.mutations &= ~8
-				src << "\red You suddenly feel very weak."
-				src.weakened = 3
-				emote("collapse")
-
 			if (src.radiation)
 				if (src.radiation > 100)
 					src.radiation = 100
@@ -156,9 +142,9 @@
 						src.radiation -= 3
 						src.toxloss += 3
 						if(prob(1))
-							src << "\red You mutate!"
-							randmutb(src)
-							domutcheck(src,null)
+							src << "\red You feel your DNA being torn apart!"
+							//randmutb(src)
+							//domutcheck(src,null)
 							emote("gasp")
 						src.updatehealth()
 
@@ -259,7 +245,7 @@
 			breath.toxins -= toxins_used
 			breath.oxygen += toxins_used
 
-			if(breath.temperature > (T0C+66) && !(src.mutations & 2)) // Hot air hurts :(
+			if(breath.temperature > (T0C+66)) // Hot air hurts :(
 				if(prob(20))
 					src << "\red You feel a searing heat in your lungs!"
 				fire_alert = max(fire_alert, 1)
@@ -314,8 +300,6 @@
 				thermal_protection += 0.2
 			if(wear_suit && (wear_suit.flags & SUITSPACE))
 				thermal_protection += 3
-			if(src.mutations & 2)
-				thermal_protection += 5
 
 			return thermal_protection
 
@@ -338,16 +322,6 @@
 
 			if(reagents) reagents.metabolize(src)
 
-			if(src.nutrition > 400 && !(src.mutations & 32))
-				if(prob(5 + round((src.nutrition - 200) / 2)))
-					src << "\red You suddenly feel blubbery!"
-					src.mutations |= 32
-//					update_body()
-			if (src.nutrition < 100 && src.mutations & 32)
-				if(prob(round((50 - src.nutrition) / 100)))
-					src << "\blue You feel fit again!"
-					src.mutations &= ~32
-//					update_body()
 			if (src.nutrition > 0)
 				src.nutrition--
 
@@ -457,7 +431,7 @@
 
 		handle_regular_hud_updates()
 
-			if (src.stat == 2 || src.mutations & 4)
+			if (src.stat == 2)
 				src.sight |= SEE_TURFS
 				src.sight |= SEE_MOBS
 				src.sight |= SEE_OBJS

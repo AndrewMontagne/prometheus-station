@@ -20,7 +20,6 @@
 				log_access("Notice: [key_name(src)] has same computer ID as [key_name(M)] did ([key_name(M)] is no longer logged in).")
 				message_admins("<font color='red'><B>Notice: </B><font color='blue'><A href='?src=\ref[usr];priv_msg=\ref[src]'>[key_name_admin(src)]</A> has the same <font color='red'><B>computer ID</B><font color='blue'> as [key_name_admin(M)] did ([key_name_admin(M)] is no longer logged in).</font>", 1)
 				spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
-	if(!src.dna) src.dna = new /datum/dna(null)
 	//src.client.screen -= main_hud1.contents
 	world.update_status()
 	//if (!src.hud_used)

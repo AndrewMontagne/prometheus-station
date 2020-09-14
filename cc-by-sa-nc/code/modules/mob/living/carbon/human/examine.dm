@@ -16,8 +16,8 @@
 		t_him = "her"
 
 	if (src.w_uniform)
-		if (src.w_uniform.blood_DNA)
-			usr << "\red [src.name] is wearing a[src.w_uniform.blood_DNA ? " bloody " : " "] \icon[src.w_uniform] [src.w_uniform.name]!"
+		if (src.w_uniform.blood_type)
+			usr << "\red [src.name] is wearing a[src.w_uniform.blood_type ? " bloody " : " "] \icon[src.w_uniform] [src.w_uniform.name]!"
 		else
 			usr << "\blue [src.name] is wearing a \icon[src.w_uniform] [src.w_uniform.name]."
 
@@ -25,8 +25,8 @@
 		usr << "\blue [src.name] is \icon[src.handcuffed] handcuffed!"
 
 	if (src.wear_suit)
-		if (src.wear_suit.blood_DNA)
-			usr << "\red [src.name] has a[src.wear_suit.blood_DNA ? " bloody " : " "] \icon[src.wear_suit] [src.wear_suit.name] on!"
+		if (src.wear_suit.blood_type)
+			usr << "\red [src.name] has a[src.wear_suit.blood_type ? " bloody " : " "] \icon[src.wear_suit] [src.wear_suit.name] on!"
 		else
 			usr << "\blue [src.name] has a \icon[src.wear_suit] [src.wear_suit.name] on."
 
@@ -34,36 +34,36 @@
 		usr << "\blue [src.name] has a \icon[src.ears] [src.ears.name] by [t_his] mouth."
 
 	if (src.wear_mask)
-		if (src.wear_mask.blood_DNA)
-			usr << "\red [src.name] has a[src.wear_mask.blood_DNA ? " bloody " : " "] \icon[src.wear_mask] [src.wear_mask.name] on [t_his] face!"
+		if (src.wear_mask.blood_type)
+			usr << "\red [src.name] has a[src.wear_mask.blood_type ? " bloody " : " "] \icon[src.wear_mask] [src.wear_mask.name] on [t_his] face!"
 		else
 			usr << "\blue [src.name] has a \icon[src.wear_mask] [src.wear_mask.name] on [t_his] face."
 
 	if (src.l_hand)
-		if (src.l_hand.blood_DNA)
-			usr << "\red [src.name] has a[src.l_hand.blood_DNA ? " bloody " : " "] \icon[src.l_hand] [src.l_hand.name] in [t_his] left hand!"
+		if (src.l_hand.blood_type)
+			usr << "\red [src.name] has a[src.l_hand.blood_type ? " bloody " : " "] \icon[src.l_hand] [src.l_hand.name] in [t_his] left hand!"
 		else
 			usr << "\blue [src.name] has a \icon[src.l_hand] [src.l_hand.name] in [t_his] left hand."
 
 	if (src.r_hand)
-		if (src.r_hand.blood_DNA)
-			usr << "\red [src.name] has a[src.r_hand.blood_DNA ? " bloody " : " "] \icon[src.r_hand] [src.r_hand.name] in [t_his] right hand!"
+		if (src.r_hand.blood_type)
+			usr << "\red [src.name] has a[src.r_hand.blood_type ? " bloody " : " "] \icon[src.r_hand] [src.r_hand.name] in [t_his] right hand!"
 		else
 			usr << "\blue [src.name] has a \icon[src.r_hand] [src.r_hand.name] in [t_his] right hand."
 
 	if (src.belt)
-		if (src.belt.blood_DNA)
-			usr << "\red [src.name] has a[src.belt.blood_DNA ? " bloody " : " "] \icon[src.belt] [src.belt.name] on [t_his] belt!"
+		if (src.belt.blood_type)
+			usr << "\red [src.name] has a[src.belt.blood_type ? " bloody " : " "] \icon[src.belt] [src.belt.name] on [t_his] belt!"
 		else
 			usr << "\blue [src.name] has a \icon[src.belt] [src.belt.name] on [t_his] belt."
 
 	if (src.gloves)
-		if (src.gloves.blood_DNA)
+		if (src.gloves.blood_type)
 			usr << "\red [src.name] has bloody \icon[src.gloves] [src.gloves.name] on [t_his] hands!"
 		else
 			usr << "\blue [src.name] has \icon[src.gloves] [src.gloves.name] on [t_his] hands."
-	else if (src.blood_DNA)
-		usr << "\red [src.name] has[src.blood_DNA ? " bloody " : " "] hands!"
+	else if (src.blood_type)
+		usr << "\red [src.name] has[src.blood_type ? " bloody " : " "] hands!"
 
 	if (src.back)
 		usr << "\blue [src.name] has a \icon[src.back] [src.back.name] on [t_his] back."
@@ -83,7 +83,7 @@
 			if(100 to 200)
 				usr << "\red [src] is twitching ever so slightly."
 
-	if (src.stat == 2 || src.changeling_fakedeath == 1)
+	if (src.stat == 2)
 		usr << "\red [src] is limp and unresponsive, a dull lifeless look in [t_his] eyes."
 	else
 		if (src.bruteloss)

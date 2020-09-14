@@ -382,9 +382,6 @@
 				if (src.state < 3)
 					if(istype(src.affecting, /mob/living/carbon/human))
 						var/mob/living/carbon/human/H = src.affecting
-						if(H.mutations & 32)
-							src.assailant << "\blue You can't strangle [src.affecting] through all that fat!"
-							return
 						for(var/obj/item/clothing/C in list(H.head, H.wear_suit, H.wear_mask, H.w_uniform))
 							if(C.body_parts_covered & HEAD)
 								src.assailant << "\blue You have to take off [src.affecting]'s [C.name] first!"
@@ -437,19 +434,6 @@
 		else
 			s_click(src.hud1)
 		return
-	if(M == src.assailant && src.state >= 2)
-		if( ( ishuman(user) && (user.mutations & 32) && ismonkey(src.affecting) ) || ( isalien(user) && iscarbon(src.affecting) ) )
-			var/mob/living/carbon/attacker = user
-			for(var/mob/N in viewers(user, null))
-				if(N.client)
-					N.show_message(text("\red <B>[user] is attempting to devour [src.affecting]!</B>"), 1)
-			if(!do_mob(user, src.affecting)) return
-			for(var/mob/N in viewers(user, null))
-				if(N.client)
-					N.show_message(text("\red <B>[user] devours [src.affecting]!</B>"), 1)
-			src.affecting.loc = user
-			attacker.stomach_contents.Add(src.affecting)
-			del(src)
 
 /obj/item/weapon/grab/dropped()
 	del(src)
@@ -1707,7 +1691,7 @@
 
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/proc/burn_skin(burn_amount)
-	if(istype(src, /mob/living/carbon/human) && (!src.mutations & 2))
+	if(istype(src, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = src	//make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
 		var/divided_damage = (burn_amount)/(H.organs.len)
 		var/datum/organ/external/affecting = null
@@ -1723,7 +1707,7 @@
 		H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
-	else if(istype(src, /mob/living/carbon/monkey) && (!src.mutations & 2))
+	else if(istype(src, /mob/living/carbon/monkey))
 		var/mob/living/carbon/monkey/M = src
 		M.fireloss += burn_amount
 		M.updatehealth()

@@ -15,21 +15,6 @@
 
 
 /obj/item/weapon/handcuffs/attack(mob/M as mob, mob/user as mob)
-	if ((usr.mutations & 16) && prob(50))
-		usr << "\red Uh ... how do those things work?!"
-		if (istype(M, /mob/living/carbon/human))
-			var/obj/equip_e/human/O = new /obj/equip_e/human(  )
-			O.source = user
-			O.target = user
-			O.item = user.equipped()
-			O.s_loc = user.loc
-			O.t_loc = user.loc
-			O.place = "handcuff"
-			M.requests += O
-			spawn( 0 )
-				O.process()
-				return
-		return
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		usr << "\red You don't have the dexterity to do this!"
 		return

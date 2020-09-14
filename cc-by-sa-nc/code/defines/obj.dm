@@ -258,7 +258,7 @@
 
 /obj/item/device/detective_scanner
 	name = "Scanner"
-	desc = "Used to scan objects for DNA and fingerprints"
+	desc = "Used to scan objects for fingerprints"
 	icon_state = "forensic0"
 	var/amount = 20.0
 	var/printing = 0.0

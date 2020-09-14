@@ -22,12 +22,6 @@ KNIFE
 	if(!istype(M, /mob))
 		return
 
-	if((usr.mutations & 16) && prob(50))
-		M << "\red You stab yourself in the eye."
-		M.sdisabilities |= 1
-		M.weakened += 4
-		M.bruteloss += 10
-
 	src.add_fingerprint(user)
 	if(!(user.zone_sel.selecting == ("eyes" || "head")))
 		return ..()
@@ -74,11 +68,6 @@ KNIFE
 // ROLLING PIN
 
 /obj/item/weapon/kitchen/rollingpin/attack(mob/M as mob, mob/user as mob)
-	if ((usr.mutations & 16) && prob(50))
-		usr << "\red The [src] slips out of your hand and hits your head."
-		usr.bruteloss += 10
-		usr.paralysis += 2
-		return
 	if (M.stat < 2 && M.health < 50 && prob(90))
 		var/mob/H = M
 		// ******* Check
@@ -87,10 +76,10 @@ KNIFE
 			return
 		var/time = rand(2, 6)
 		if (prob(75))
-			if (M.paralysis < time && (!(M.mutations & 8)) )
+			if (M.paralysis < time)
 				M.paralysis = time
 		else
-			if (M.stunned < time && (!(M.mutations & 8)) )
+			if (M.stunned < time)
 				M.stunned = time
 		if(M.stat != 2)	M.stat = 1
 		for(var/mob/O in viewers(M, null))
@@ -100,15 +89,3 @@ KNIFE
 		M.eye_blurry += 3
 
 	return
-
-
-
-
-
-// KNIFE
-
-/obj/item/weapon/kitchen/utensil/knife/attack(target as mob, mob/user as mob)
-	if ((usr.mutations & 16) && prob(50))
-		usr << "\red You accidentally cut yourself with the [src]."
-		usr.bruteloss += 20
-		return

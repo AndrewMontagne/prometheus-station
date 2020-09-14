@@ -3,22 +3,6 @@
 		var/datum/reagents/R = new/datum/reagents(1000)
 		reagents = R
 		R.my_atom = src
-		if (!(src.dna))
-			if(src.gender == NEUTER)
-				src.gender = pick(MALE, FEMALE)
-			src.dna = new /datum/dna( null )
-			src.dna.uni_identity = "00600200A00E0110148FC01300B009"
-			src.dna.struc_enzymes = "0983E840344C39F4B059D5145FC5785DC6406A4BB8"
-			src.dna.unique_enzymes = md5(src.name)
-					//////////blah
-			var/gendervar
-			if (src.gender == "male")
-				gendervar = add_zero2(num2hex((rand(1,2049)),1), 3)
-			else
-				gendervar = add_zero2(num2hex((rand(2051,4094)),1), 3)
-			src.dna.uni_identity += gendervar
-			src.dna.uni_identity += "12C"
-			src.dna.uni_identity += "4E2"
 
 		if(src.name == "monkey") src.name = text("monkey ([rand(1, 1000)])")
 
@@ -44,16 +28,6 @@
 	spawn( 0 )
 		if ((!( yes ) || src.now_pushing))
 			return
-		src.now_pushing = 1
-		if(ismob(AM))
-			var/mob/tmob = AM
-			if(istype(tmob, /mob/living/carbon/human) && tmob.mutations & 32)
-				if(prob(70))
-					for(var/mob/M in viewers(src, null))
-						if(M.client)
-							M << "\red <B>[src] fails to push [tmob]'s fat ass out of the way.</B>"
-					src.now_pushing = 0
-					return
 		src.now_pushing = 0
 		..()
 		if (!( istype(AM, /atom/movable) ))
@@ -141,7 +115,6 @@
 			for(var/mob/O in viewers(src, null))
 				O.show_message(text("\red <B>[M.name] has bit []!</B>", src), 1)
 			var/damage = rand(1, 5)
-			if (src.mutations & 8) damage += 10
 			src.bruteloss += damage
 			src.updatehealth()
 		else

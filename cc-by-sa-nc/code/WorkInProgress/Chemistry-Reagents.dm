@@ -466,7 +466,6 @@ datum
 			reagent_state = SOLID
 			on_mob_life(var/mob/M)
 				if(!M) M = holder.my_atom
-				M.mutations = 0
 				M.disabilities = 0
 				M.sdisabilities = 0
 				..()
@@ -483,28 +482,6 @@ datum
 					T:thermite = 1
 					T.overlays = null
 					T.overlays = image('cc-by-sa-nc/icons/effects/effects.dmi',icon_state = "thermite")
-				return
-
-		mutagen
-			name = "Unstable mutagen"
-			id = "mutagen"
-			description = "Might cause unpredictable mutations. Keep away from children."
-			reagent_state = LIQUID
-			reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
-				src = null
-				if ( (method==TOUCH && prob(33)) || method==INGEST)
-					randmuti(M)
-					if(prob(98))
-						randmutb(M)
-					else
-						randmutg(M)
-					domutcheck(M, null, 1)
-					updateappearance(M,M.dna.uni_identity)
-				return
-			on_mob_life(var/mob/M)
-				if(!M) M = holder.my_atom
-				M.radiation += 3
-				..()
 				return
 
 		iron

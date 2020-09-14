@@ -9,12 +9,6 @@ CIRCULAR SAW
 	if(!istype(M, /mob))
 		return
 
-	if((usr.mutations & 16) && prob(50))
-		M << "\red You stab yourself in the eye."
-		M.sdisabilities |= 1
-		M.weakened += 4
-		M.bruteloss += 10
-
 	src.add_fingerprint(user)
 
 	if(!(locate(/obj/machinery/optable, M.loc) && M.resting))
@@ -100,12 +94,6 @@ CIRCULAR SAW
 /obj/item/weapon/circular_saw/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
 		return
-
-	if((usr.mutations & 16) && prob(50))
-		M << "\red You cut out your eyes."
-		M.sdisabilities |= 1
-		M.weakened += 4
-		M.bruteloss += 10
 
 	src.add_fingerprint(user)
 

@@ -57,23 +57,6 @@
 	var/pltanks = 10.0
 	anchored = 1.0
 
-/obj/machinery/dna_scanner
-	name = "DNA Scanner/Implanter"
-	icon = 'cc-by-sa-nc/icons/obj/Cryogenic2.dmi'
-	icon_state = "scanner_0"
-	density = 1
-	var/locked = 0.0
-	var/mob/occupant = null
-	anchored = 1.0
-
-/obj/machinery/dna_scannernew
-	name = "DNA Modifier"
-	icon = 'cc-by-sa-nc/icons/obj/Cryogenic2.dmi'
-	icon_state = "scanner_0"
-	density = 1
-	var/locked = 0.0
-	var/mob/occupant = null
-	anchored = 1.0
 
 
 /obj/machinery/firealarm
@@ -212,67 +195,6 @@
 	maximum_speed = 30.0
 	can_maximize_speed = 1
 	one_person_only = 1
-
-/obj/machinery/restruct
-	name = "DNA Physical Restructurization Accelerator"
-	icon = 'cc-by-sa-nc/icons/obj/Cryogenic2.dmi'
-	icon_state = "restruct_0"
-	density = 1
-	var/locked = 0.0
-	var/mob/occupant = null
-	anchored = 1.0
-
-/obj/machinery/scan_console
-	name = "DNA Scanner Access Console"
-	icon = 'cc-by-sa-nc/icons/obj/computer.dmi'
-	icon_state = "scanner"
-	density = 1
-	var/obj/item/weapon/card/data/scan = null
-	var/func = ""
-	var/data = ""
-	var/special = ""
-	var/status = null
-	var/prog_p1 = null
-	var/prog_p2 = null
-	var/prog_p3 = null
-	var/prog_p4 = null
-	var/temp = null
-	var/obj/machinery/dna_scanner/connected = null
-	anchored = 1.0
-
-/obj/machinery/scan_consolenew
-	name = "DNA Modifier Access Console"
-	icon = 'cc-by-sa-nc/icons/obj/computer.dmi'
-	icon_state = "scanner"
-	density = 1
-	var/uniblock = 1.0
-	var/strucblock = 1.0
-	var/subblock = 1.0
-	var/status = null
-	var/radduration = 2.0
-	var/radstrength = 1.0
-	var/radacc = 1.0
-	var/buffer1 = null
-	var/buffer2 = null
-	var/buffer3 = null
-	var/buffer1owner = null
-	var/buffer2owner = null
-	var/buffer3owner = null
-	var/buffer1label = null
-	var/buffer2label = null
-	var/buffer3label = null
-	var/buffer1type = null
-	var/buffer2type = null
-	var/buffer3type = null
-	var/buffer1iue = 0
-	var/buffer2iue = 0
-	var/buffer3iue = 0
-	var/delete = 0
-	var/injectorready = 1
-	var/temphtml = null
-	var/obj/machinery/dna_scanner/connected = null
-	var/obj/item/weapon/disk/data/diskette = null
-	anchored = 1.0
 
 /obj/machinery/sec_lock
 	name = "Security Pad"
