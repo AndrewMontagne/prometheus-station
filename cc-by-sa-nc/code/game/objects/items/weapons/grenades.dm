@@ -285,7 +285,8 @@ FLASHBANG
 				if (!( istype(M, /mob/living/carbon/human) ))
 				else
 					var/mob/living/carbon/human/H = M
-					M.ear_deaf += 10
+					if (!( istype(H.ears, /obj/item/clothing/ears/earmuffs) ))
+						M.ear_deaf += 10
 					if (prob(20))
 						M.ear_damage += rand(0, 4)
 					if (!( M.paralysis ))

@@ -354,16 +354,6 @@
 	proc/init(var/obj/machinery/disposal/D)
 		gas = D.air_contents		// transfer gas resv. into holder object
 
-
-		// now everything inside the disposal gets put into the holder
-		// note AM since can contain mobs or objs
-		for(var/atom/movable/AM in D)
-			AM.loc = src
-			if(istype(AM, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = AM
-
-
-
 	// start the movement process
 	// argument is the disposal unit the holder started in
 	proc/start(var/obj/machinery/disposal/D)

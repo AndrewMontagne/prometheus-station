@@ -280,6 +280,7 @@
 #include "cc-by-sa-nc\code\game\objects\closets\secure\scientist.dm"
 #include "cc-by-sa-nc\code\game\objects\closets\secure\security.dm"
 #include "cc-by-sa-nc\code\game\objects\devices\chameleonproj.dm"
+#include "cc-by-sa-nc\code\game\objects\devices\data_disk.dm"
 #include "cc-by-sa-nc\code\game\objects\devices\device.dm"
 #include "cc-by-sa-nc\code\game\objects\devices\flash.dm"
 #include "cc-by-sa-nc\code\game\objects\devices\flashlight.dm"
