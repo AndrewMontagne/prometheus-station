@@ -217,10 +217,6 @@
 //	del(animation)
 	var/mob/living/carbon/alien/humanoid/O = new /mob/living/carbon/alien/humanoid( src.loc )
 	O.name = "alien"
-	O.dna = src.dna
-	src.dna = null
-	O.dna.uni_identity = "00600200A00E0110148FC01300B009"
-	O.dna.struc_enzymes = "0983E840344C39F4B059D5145FC5785DC6406A4BB8"
 	if (src.client)
 		src.client.mob = O
 	O.loc = src.loc

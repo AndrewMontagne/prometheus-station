@@ -491,7 +491,7 @@ to clean it up, or just beat the shit out of it (which takes ages).
 		if (!t1)
 			t1 = src.wear_suit.icon_state
 		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mob.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
-		if (src.wear_suit.blood_DNA)
+		if (src.wear_suit.blood_type)
 			if (istype(src.wear_suit, /obj/item/clothing/suit/armor))
 				src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/blood.dmi', "icon_state" = "armorblood[!src.lying ? "" : "2"]", "layer" = MOB_LAYER)
 			else
@@ -516,7 +516,7 @@ to clean it up, or just beat the shit out of it (which takes ages).
 		if (!t1)
 			t1 = src.head.icon_state
 		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mob.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
-		if (src.head.blood_DNA)
+		if (src.head.blood_type)
 			src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/blood.dmi', "icon_state" = "helmetblood[!src.lying ? "" : "2"]", "layer" = MOB_LAYER)
 		src.head.screen_loc = ui_oclothing
 

@@ -462,7 +462,6 @@
 #include "cc-by-sa-nc\code\WorkInProgress\Chemistry-Reagents.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\Chemistry-Recipes.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\Chemistry-Tools.dm"
-#include "cc-by-sa-nc\code\WorkInProgress\cloning.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\explosion_particles.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\KeelinsStuff.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\NewBan.dm"
@@ -511,6 +510,7 @@
 #include "lib\GoonLights\stubs\turf.dm"
 #include "mit\_extools_api.dm"
 // END_INCLUDE
+
 // BEGIN_FILE_DIR
 #define FILE_DIR .
 // END_FILE_DIR

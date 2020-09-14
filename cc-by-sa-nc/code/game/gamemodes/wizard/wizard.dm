@@ -343,7 +343,6 @@
 			dat += "<A href='byond://?src=\ref[src];spell_forcewall=1'>Forcewall</A> (10)<BR>"
 			dat += "<A href='byond://?src=\ref[src];spell_blink=1'>Blink</A> (2)<BR>"
 			dat += "<A href='byond://?src=\ref[src];spell_teleport=1'>Teleport</A> (30)<BR>"
-			dat += "<A href='byond://?src=\ref[src];spell_mutate=1'>Mutate</A> (60)<BR>"
 			dat += "<A href='byond://?src=\ref[src];spell_invis=1'>Invisibility</A> (60)<BR>"
 			dat += "<A href='byond://?src=\ref[src];spell_knock=1'>Knock</A> (10)<BR>"
 			dat += "<HR>"
@@ -409,11 +408,6 @@
 				src.uses -= 1
 				usr.verbs += /mob/proc/teleport
 				src.temp = "This spell teleports you to a type of area of your selection. Very useful if you are in danger, but has a decent cooldown, and is unpredictable."
-		else if (href_list["spell_mutate"])
-			if (src.uses >= 1)
-				src.uses -= 1
-				usr.verbs += /client/proc/mutate
-				src.temp = "This spell causes you to turn into a hulk, and gain telekinesis for a short while."
 		else if (href_list["spell_invis"])
 			if (src.uses >= 1)
 				src.uses -= 1
@@ -490,7 +484,6 @@
 	src.menu_message += "<A href='byond://?src=\ref[src];buy_spell=forcewall'>Forcewall</A> (10)<BR>"
 	src.menu_message += "<A href='byond://?src=\ref[src];buy_spell=blink'>Blink</A> (2)<BR>"
 	src.menu_message += "<A href='byond://?src=\ref[src];buy_spell=teleport'>Teleport</A> (30)<BR>"
-	src.menu_message += "<A href='byond://?src=\ref[src];buy_spell=mutate'>Mutate</A> (60)<BR>"
 	src.menu_message += "<A href='byond://?src=\ref[src];buy_spell=invis'>Invisibility</A> (60)<BR>"
 	src.menu_message += "<A href='byond://?src=\ref[src];buy_spell=knock'>Knock</A> (10)<BR>"
 	src.menu_message += "<HR>"
@@ -550,11 +543,6 @@
 					src.uses -= 1
 					usr.verbs += /mob/proc/teleport
 					src.temp = "This spell teleports you to a type of area of your selection. Very useful if you are in danger, but has a decent cooldown, and is unpredictable."
-			if("mutate")
-				if (src.uses >= 1)
-					src.uses -= 1
-					usr.verbs += /client/proc/mutate
-					src.temp = "This spell causes you to turn into a hulk, and gain telekinesis for a short while."
 			if("invis")
 				if (src.uses >= 1)
 					src.uses -= 1

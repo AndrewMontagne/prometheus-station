@@ -3,8 +3,6 @@
 	reagents = R
 	R.my_atom = src
 
-	if (!dna)
-		dna = new /datum/dna( null )
 	spawn (1)
 		var/datum/organ/external/chest/chest = new /datum/organ/external/chest( src )
 		chest.owner = src
@@ -805,7 +803,7 @@
 	src.overlays = null
 
 	if (src.mutantrace)
-		src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/genetics.dmi', "icon_state" = "[mutantrace][fat][!src.lying ? "_s" : "_l"]")
+		src.overlays += image("icon" = 'cc-by-sa-nc/icons/effects/genetics.dmi', "icon_state" = "[mutantrace]0[!src.lying ? "_s" : "_l"]")
 		if(src.face_standing)
 			del(src.face_standing)
 		if(src.face_lying)
@@ -868,7 +866,7 @@
 			if (!t1)
 				t1 = src.icon_state
 			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/uniform.dmi', "icon_state" = text("[][]",t1, (!(src.lying) ? "_s" : "_l")), "layer" = MOB_LAYER)
-			if (src.w_uniform.blood_DNA)
+			if (src.w_uniform.blood_type)
 				var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "uniformblood[!src.lying ? "" : "2"]")
 				src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 
@@ -889,10 +887,10 @@
 		if (!t1)
 			t1 = src.gloves.icon_state
 		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/hands.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
-		if (src.gloves.blood_DNA)
+		if (src.gloves.blood_type)
 			var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "bloodyhands[!src.lying ? "" : "2"]")
 			src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
-	else if (src.blood_DNA)
+	else if (src.blood_type)
 		var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "bloodyhands[!src.lying ? "" : "2"]")
 		src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 	// Glasses
@@ -907,7 +905,7 @@
 	if (src.shoes)
 		var/t1 = src.shoes.icon_state
 		src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/feet.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
-		if (src.shoes.blood_DNA)
+		if (src.shoes.blood_type)
 			var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "shoesblood[!src.lying ? "" : "2"]")
 			src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)	// Radio
 /*	if (src.w_radio)
@@ -921,7 +919,7 @@
 			var/t1 = src.wear_mask.icon_state
 			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/mask.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 			if (!istype(src.wear_mask, /obj/item/clothing/mask/cigarette))
-				if (src.wear_mask.blood_DNA)
+				if (src.wear_mask.blood_type)
 					var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "maskblood[!src.lying ? "" : "2"]")
 					src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 			src.wear_mask.screen_loc = ui_mask
@@ -952,7 +950,7 @@
 		if (istype(src.wear_suit, /obj/item/clothing/suit))
 			var/t1 = src.wear_suit.icon_state
 			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/suit.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
-		if (src.wear_suit.blood_DNA)
+		if (src.wear_suit.blood_type)
 			var/icon/stain_icon = null
 			if (istype(src.wear_suit, /obj/item/clothing/suit/armor/vest || /obj/item/clothing/suit/wcoat || /obj/item/clothing/suit/armor/a_i_a_ptank))
 				stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "armorblood[!src.lying ? "" : "2"]")
@@ -980,7 +978,7 @@
 		var/t1 = src.head.icon_state
 		var/icon/head_icon = icon('cc-by-sa-nc/icons/mob/head.dmi', text("[][]", t1, (!( src.lying ) ? null : "2")))
 		src.overlays += image("icon" = head_icon, "layer" = MOB_LAYER)
-		if (src.head.blood_DNA)
+		if (src.head.blood_type)
 			var/icon/stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "helmetblood[!src.lying ? "" : "2"]")
 			src.overlays += image("icon" = stain_icon, "layer" = MOB_LAYER)
 		src.head.screen_loc = ui_head
@@ -1516,11 +1514,6 @@
 		src.stand_icon.Blend(rgb(-src.s_tone,  -src.s_tone,  -src.s_tone), ICON_SUBTRACT)
 		src.lying_icon.Blend(rgb(-src.s_tone,  -src.s_tone,  -src.s_tone), ICON_SUBTRACT)
 
-	if (src.underwear > 0)
-		if(!obese)
-			src.stand_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "underwear[src.underwear]_[g]_s"), ICON_OVERLAY)
-			src.lying_icon.Blend(new /icon('cc-by-sa-nc/icons/mob/human.dmi', "underwear[src.underwear]_[g]_l"), ICON_OVERLAY)
-
 /mob/living/carbon/human/proc/update_face()
 	del(src.face_standing)
 	del(src.face_lying)
@@ -1624,8 +1617,6 @@
 				return
 			if("drink")
 				return
-			if("dnainjector")
-				return
 			if("handcuff")
 				if (!( src.target.handcuffed ))
 					//SN src = null
@@ -1642,7 +1633,7 @@
 					del(src)
 					return
 
-	var/list/L = list( "syringe", "pill", "drink", "dnainjector", "fuel")
+	var/list/L = list( "syringe", "pill", "drink", "fuel")
 	if ((src.item && !( L.Find(src.place) )))
 		for(var/mob/O in viewers(src.target, null))
 			O.show_message(text("\red <B>[] is trying to put \a [] on []</B>", src.source, src.item, src.target), 1)
@@ -1663,72 +1654,68 @@
 						for(var/mob/O in viewers(src.target, null))
 							O.show_message(text("\red <B>[] is trying to force [] to swallow a gulp of []!</B>", src.source, src.target, src.item), 1)
 					else
-						if (src.place == "dnainjector")
-							for(var/mob/O in viewers(src.target, null))
-								O.show_message(text("\red <B>[] is trying to inject [] with the []!</B>", src.source, src.target, src.item), 1)
-						else
-							var/message = null
-							switch(src.place)
-								if("mask")
-									message = text("\red <B>[] is trying to take off \a [] from []'s head!</B>", src.source, src.target.wear_mask, src.target)
+						var/message = null
+						switch(src.place)
+							if("mask")
+								message = text("\red <B>[] is trying to take off \a [] from []'s head!</B>", src.source, src.target.wear_mask, src.target)
 /*								if("headset")
-									message = text("\red <B>[] is trying to take off \a [] from []'s face!</B>", src.source, src.target.w_radio, src.target) */
-								if("l_hand")
-									message = text("\red <B>[] is trying to take off \a [] from []'s left hand!</B>", src.source, src.target.l_hand, src.target)
-								if("r_hand")
-									message = text("\red <B>[] is trying to take off \a [] from []'s right hand!</B>", src.source, src.target.r_hand, src.target)
-								if("gloves")
-									message = text("\red <B>[] is trying to take off the [] from []'s hands!</B>", src.source, src.target.gloves, src.target)
-								if("eyes")
-									message = text("\red <B>[] is trying to take off the [] from []'s eyes!</B>", src.source, src.target.glasses, src.target)
-								if("ears")
-									message = text("\red <B>[] is trying to take off the [] from []'s ears!</B>", src.source, src.target.ears, src.target)
-								if("head")
-									message = text("\red <B>[] is trying to take off the [] from []'s head!</B>", src.source, src.target.head, src.target)
-								if("shoes")
-									message = text("\red <B>[] is trying to take off the [] from []'s feet!</B>", src.source, src.target.shoes, src.target)
-								if("belt")
-									message = text("\red <B>[] is trying to take off the [] from []'s belt!</B>", src.source, src.target.belt, src.target)
-								if("suit")
-									message = text("\red <B>[] is trying to take off \a [] from []'s body!</B>", src.source, src.target.wear_suit, src.target)
-								if("back")
-									message = text("\red <B>[] is trying to take off \a [] from []'s back!</B>", src.source, src.target.back, src.target)
-								if("handcuff")
-									message = text("\red <B>[] is trying to unhandcuff []!</B>", src.source, src.target)
-								if("uniform")
-									message = text("\red <B>[] is trying to take off \a [] from []'s body!</B>", src.source, src.target.w_uniform, src.target)
-								if("pockets")
-									for(var/obj/item/weapon/mousetrap/MT in  list(src.target.l_store, src.target.r_store))
-										if(MT.armed)
-											for(var/mob/O in viewers(src.target, null))
-												if(O == src.source)
-													O.show_message(text("\red <B>You reach into the [src.target]'s pockets, but there was a live mousetrap in there!</B>"), 1)
-												else
-													O.show_message(text("\red <B>[src.source] reaches into [src.target]'s pockets and sets off a hidden mousetrap!</B>"), 1)
-											src.target.u_equip(MT)
-											if (src.target.client)
-												src.target.client.screen -= MT
-											MT.loc = src.source.loc
-											MT.triggered(src.source, src.source.hand ? "l_hand" : "r_hand")
-											MT.layer = OBJ_LAYER
-											return
-									message = text("\red <B>[] is trying to empty []'s pockets!!</B>", src.source, src.target)
-								if("CPR")
-									if (src.target.cpr_time >= world.time + 3)
-										//SN src = null
-										del(src)
+								message = text("\red <B>[] is trying to take off \a [] from []'s face!</B>", src.source, src.target.w_radio, src.target) */
+							if("l_hand")
+								message = text("\red <B>[] is trying to take off \a [] from []'s left hand!</B>", src.source, src.target.l_hand, src.target)
+							if("r_hand")
+								message = text("\red <B>[] is trying to take off \a [] from []'s right hand!</B>", src.source, src.target.r_hand, src.target)
+							if("gloves")
+								message = text("\red <B>[] is trying to take off the [] from []'s hands!</B>", src.source, src.target.gloves, src.target)
+							if("eyes")
+								message = text("\red <B>[] is trying to take off the [] from []'s eyes!</B>", src.source, src.target.glasses, src.target)
+							if("ears")
+								message = text("\red <B>[] is trying to take off the [] from []'s ears!</B>", src.source, src.target.ears, src.target)
+							if("head")
+								message = text("\red <B>[] is trying to take off the [] from []'s head!</B>", src.source, src.target.head, src.target)
+							if("shoes")
+								message = text("\red <B>[] is trying to take off the [] from []'s feet!</B>", src.source, src.target.shoes, src.target)
+							if("belt")
+								message = text("\red <B>[] is trying to take off the [] from []'s belt!</B>", src.source, src.target.belt, src.target)
+							if("suit")
+								message = text("\red <B>[] is trying to take off \a [] from []'s body!</B>", src.source, src.target.wear_suit, src.target)
+							if("back")
+								message = text("\red <B>[] is trying to take off \a [] from []'s back!</B>", src.source, src.target.back, src.target)
+							if("handcuff")
+								message = text("\red <B>[] is trying to unhandcuff []!</B>", src.source, src.target)
+							if("uniform")
+								message = text("\red <B>[] is trying to take off \a [] from []'s body!</B>", src.source, src.target.w_uniform, src.target)
+							if("pockets")
+								for(var/obj/item/weapon/mousetrap/MT in  list(src.target.l_store, src.target.r_store))
+									if(MT.armed)
+										for(var/mob/O in viewers(src.target, null))
+											if(O == src.source)
+												O.show_message(text("\red <B>You reach into the [src.target]'s pockets, but there was a live mousetrap in there!</B>"), 1)
+											else
+												O.show_message(text("\red <B>[src.source] reaches into [src.target]'s pockets and sets off a hidden mousetrap!</B>"), 1)
+										src.target.u_equip(MT)
+										if (src.target.client)
+											src.target.client.screen -= MT
+										MT.loc = src.source.loc
+										MT.triggered(src.source, src.source.hand ? "l_hand" : "r_hand")
+										MT.layer = OBJ_LAYER
 										return
-									message = text("\red <B>[] is trying perform CPR on []!</B>", src.source, src.target)
-								if("id")
-									message = text("\red <B>[] is trying to take off [] from []'s uniform!</B>", src.source, src.target.wear_id, src.target)
-								if("internal")
-									if (src.target.internal)
-										message = text("\red <B>[] is trying to remove []'s internals</B>", src.source, src.target)
-									else
-										message = text("\red <B>[] is trying to set on []'s internals.</B>", src.source, src.target)
+								message = text("\red <B>[] is trying to empty []'s pockets!!</B>", src.source, src.target)
+							if("CPR")
+								if (src.target.cpr_time >= world.time + 3)
+									//SN src = null
+									del(src)
+									return
+								message = text("\red <B>[] is trying perform CPR on []!</B>", src.source, src.target)
+							if("id")
+								message = text("\red <B>[] is trying to take off [] from []'s uniform!</B>", src.source, src.target.wear_id, src.target)
+							if("internal")
+								if (src.target.internal)
+									message = text("\red <B>[] is trying to remove []'s internals</B>", src.source, src.target)
 								else
-							for(var/mob/M in viewers(src.target, null))
-								M.show_message(message, 1)
+									message = text("\red <B>[] is trying to set on []'s internals.</B>", src.source, src.target)
+							else
+						for(var/mob/M in viewers(src.target, null))
+							M.show_message(message, 1)
 	spawn( 40 )
 		src.done()
 		return
@@ -2085,21 +2072,6 @@
 			for(var/mob/O in viewers(src.source, null))
 				O.show_message(text("\red [src.source] forced [src.target] to eat the [a]!"), 1)
 			S.injest(src.target)
-		if("dnainjector")
-			var/obj/item/weapon/dnainjector/S = src.item
-			src.item.add_fingerprint(src.source)
-			src.item:inject(src.target, null)
-			if (!( istype(S, /obj/item/weapon/dnainjector) ))
-				//SN src = null
-				del(src)
-				return
-			if (S.s_time >= world.time + 30)
-				//SN src = null
-				del(src)
-				return
-			S.s_time = world.time
-			for(var/mob/O in viewers(src.source, null))
-				O.show_message(text("\red [] injects [] with the DNA Injector!", src.source, src.target), 1)
 		if("pockets")
 			if (src.target.l_store)
 				var/obj/item/W = src.target.l_store

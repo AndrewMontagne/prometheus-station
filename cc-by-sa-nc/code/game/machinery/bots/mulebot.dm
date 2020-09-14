@@ -781,7 +781,6 @@
 		H.TakeDamage("r_arm",0.5*damage, 0)
 
 		var/obj/decal/cleanable/blood/B = new(src.loc)
-		B.blood_DNA = H.dna.unique_enzymes
 		B.blood_type = H.b_type
 
 		bloodiness += 4

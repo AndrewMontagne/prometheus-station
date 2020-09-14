@@ -355,7 +355,7 @@ Pod/Blast Doors computer
 			else
 				G.fields["sex"] = "Male"
 			G.fields["age"] = text("[]", H.age)
-			G.fields["fingerprint"] = text("[]", md5(H.dna.uni_identity))
+			G.fields["fingerprint"] = text("[]", md5(H.key))
 			G.fields["p_stat"] = "Active"
 			G.fields["m_stat"] = "Stable"
 			M.fields["b_type"] = text("[]", H.b_type)

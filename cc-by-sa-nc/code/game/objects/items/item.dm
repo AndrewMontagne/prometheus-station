@@ -86,7 +86,7 @@
 		if(5.0)
 			t = "huge"
 		else
-	usr << text("This is a []\icon[][]. It is a [] item.", !src.blood_DNA ? "" : "bloody ",src, src.name, t)
+	usr << text("This is a []\icon[][]. It is a [] item.", !src.blood_type ? "" : "bloody ",src, src.name, t)
 	usr << src.desc
 	return
 

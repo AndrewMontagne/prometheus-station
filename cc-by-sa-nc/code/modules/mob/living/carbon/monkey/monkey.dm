@@ -3,9 +3,6 @@
 		var/datum/reagents/R = new/datum/reagents(1000)
 		reagents = R
 		R.my_atom = src
-		if (!(src.dna))
-			if(src.gender == NEUTER)
-				src.gender = pick(MALE, FEMALE)
 
 		if(src.name == "monkey") src.name = text("monkey ([rand(1, 1000)])")
 

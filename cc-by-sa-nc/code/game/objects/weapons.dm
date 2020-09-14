@@ -3,8 +3,6 @@
 	s.set_up(3, 1, src)
 	s.start()
 	obj:radiation += 50
-	randmutb(obj)
-	domutcheck(obj,null)
 	spawn(0)
 		del(src)
 
