@@ -85,13 +85,6 @@ obj/hud/New()
 		src.monkey_hud()
 		return
 
-	//aliens
-	if(istype(mymob, /mob/living/carbon/alien/larva))
-		src.larva_hud()
-	else if(istype(mymob, /mob/living/carbon/alien))
-		src.alien_hud()
-		return
-
 	if(istype(mymob, /mob/living/silicon/ai))
 		src.ai_hud()
 		return
