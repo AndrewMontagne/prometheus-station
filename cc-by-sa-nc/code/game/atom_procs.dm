@@ -11,11 +11,6 @@
 /atom/proc/attack_ai(mob/user as mob)
 	return
 
-//for aliens, it works the same as monkeys except for alien-> mob interactions which will be defined in the
-//appropiate mob files
-/atom/proc/attack_alien(mob/user as mob)
-	src.attack_paw(user)
-	return
 
 /atom/proc/hand_h(mob/user as mob)
 	return
@@ -292,11 +287,8 @@
 					if (istype(usr, /mob/living/carbon/monkey))
 						src.attack_paw(usr, usr.hand)
 					else
-						if (istype(usr, /mob/living/carbon/alien/humanoid))
-							src.attack_alien(usr, usr.hand)
-						else
-							if (istype(usr, /mob/living/silicon/ai) || istype(usr, /mob/living/silicon/robot))
-								src.attack_ai(usr, usr.hand)
+						if (istype(usr, /mob/living/silicon/ai) || istype(usr, /mob/living/silicon/robot))
+							src.attack_ai(usr, usr.hand)
 		else
 			if (istype(usr, /mob/living/carbon/human))
 				src.hand_h(usr, usr.hand)
@@ -329,17 +321,11 @@
 					else
 						if (istype(usr, /mob/living/carbon/monkey))
 							src.attack_paw(usr, usr.hand)
-						else
-							if (istype(usr, /mob/living/carbon/alien/humanoid))
-								src.attack_alien(usr, usr.hand)
 			else
 				if (istype(usr, /mob/living/carbon/human))
 					src.hand_h(usr, usr.hand)
 				else
 					if (istype(usr, /mob/living/carbon/monkey))
 						src.hand_p(usr, usr.hand)
-					else
-						if (istype(usr, /mob/living/carbon/alien/humanoid))
-							src.hand_al(usr, usr.hand)
 	return
 

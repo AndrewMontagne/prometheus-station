@@ -28,7 +28,6 @@
 
 /mob/proc/contract_disease(var/datum/disease/virus, var/skip_this = 0)
 
-	//For alien egg and stuff
 	if(skip_this == 1)
 		src.virus = virus
 		src.virus.affected_mob = src

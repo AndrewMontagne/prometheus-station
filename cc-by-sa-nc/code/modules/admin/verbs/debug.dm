@@ -125,21 +125,6 @@
 	else
 		alert("Invalid mob")
 
-
-/client/proc/cmd_admin_alienize(var/mob/M in world)
-	set category = "Debug"
-	set name = "Alienize"
-
-	if(!ticker)
-		alert("Wait until the game starts")
-		return
-	if(istype(M, /mob/living/carbon/human))
-		log_admin("[key_name(src)] is attempting to alienize [M.key].")
-		spawn(10)
-			M:Alienize()
-	else
-		alert("Invalid mob")
-
 /client/proc/cmd_debug_del_all()
 	set category = "Debug"
 	set name = "Del-All"
@@ -153,11 +138,3 @@
 				del(O)
 		log_admin("[key_name(src)] has deleted all instances of [hsbitem].")
 		message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem].", 0)
-
-/client/proc/cmd_debug_tog_aliens()
-	set category = "Debug"
-	set name = "Toggle Aliens"
-
-	aliens_allowed = !aliens_allowed
-	log_admin("[key_name(src)] has turned aliens [aliens_allowed ? "on" : "off"].")
-	message_admins("[key_name_admin(src)] has turned aliens [aliens_allowed ? "on" : "off"].", 0)

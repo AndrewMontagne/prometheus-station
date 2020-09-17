@@ -50,7 +50,6 @@
 			src.verbs += /client/proc/jumptoturf
 			src.verbs += /client/proc/cmd_admin_rejuvenate
 			src.verbs += /client/proc/cmd_admin_robotize
-			src.verbs += /client/proc/cmd_admin_alienize
 			src.verbs += /client/proc/Cell
 			src.verbs += /client/proc/ticklag
 			src.verbs += /client/proc/cmd_admin_mute
@@ -98,7 +97,6 @@
 			src.verbs += /client/proc/fix_next_move
 
 			src.verbs += /client/proc/toggle_view_range
-			src.verbs += /obj/admins/proc/toggle_aliens
 			src.verbs += /client/proc/warn
 		if ("Coder")
 			src.deadchat = 1
@@ -109,7 +107,6 @@
 			src.verbs += /proc/release
 			src.verbs += /proc/givetestverbs
 			src.verbs += /client/proc/debug_variables
-			src.verbs += /client/proc/cmd_debug_tog_aliens
 			src.verbs += /client/proc/cmd_modify_object_variables
 			src.verbs += /client/proc/cmd_modify_ticker_variables
 			src.verbs += /client/proc/cmd_admin_pm
@@ -130,7 +127,6 @@
 			src.verbs += /client/proc/jumptoturf
 			src.verbs += /client/proc/cmd_admin_rejuvenate
 			src.verbs += /client/proc/cmd_admin_robotize
-			src.verbs += /client/proc/cmd_admin_alienize
 			src.verbs += /client/proc/Cell
 			src.verbs += /client/proc/ticklag
 			src.verbs += /client/proc/cmd_admin_mute
@@ -178,7 +174,6 @@
 			src.verbs += /obj/admins/proc/spawn_atom
 
 			src.verbs += /client/proc/toggle_view_range
-			src.verbs += /obj/admins/proc/toggle_aliens
 			src.verbs += /client/proc/warn
 
 		if ("Shit Guy")
@@ -464,13 +459,11 @@
 	src.verbs -= /client/proc/cmd_admin_delete
 	src.verbs -= /client/proc/cmd_admin_mute
 	src.verbs -= /client/proc/cmd_admin_drop_everything
-	src.verbs -= /client/proc/cmd_debug_tog_aliens
 	src.verbs -= /client/proc/cmd_admin_godmode
 	src.verbs -= /client/proc/cmd_admin_add_freeform_ai_law
 	src.verbs -= /client/proc/cmd_admin_check_contents
 	src.verbs -= /client/proc/jumptomob
 	src.verbs -= /client/proc/jumptokey
-	src.verbs -= /client/proc/cmd_admin_alienize
 //	src.verbs -= /client/proc/cmd_admin_list_admins
 	src.verbs -= /client/proc/Getmob
 	src.verbs -= /client/proc/sendmob
@@ -509,7 +502,6 @@
 	src.verbs -= /client/proc/air_status
 
 	src.verbs -= /client/proc/toggle_view_range
-	src.verbs -= /obj/admins/proc/toggle_aliens
 
 	if(src.holder)
 		src.holder.level = 0

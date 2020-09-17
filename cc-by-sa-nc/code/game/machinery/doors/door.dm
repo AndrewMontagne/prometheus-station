@@ -9,10 +9,6 @@
 		if(src.check_access(bot.botcard))
 			if(density)
 				open()
-	else if(istype(AM, /obj/alien/facehugger))
-		if(src.check_access(null))
-			if(density)
-				open()
 
 /obj/machinery/door/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group) return 0

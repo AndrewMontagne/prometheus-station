@@ -31,16 +31,6 @@
 				//Foreach goto(69)
 	return
 
-/obj/table/attack_alien(mob/user as mob)
-	if(istype(user, /mob/living/carbon/alien/larva))
-		if (!( locate(/obj/table, user.loc) ))
-			step(user, get_dir(user, src))
-			if (user.loc == src.loc)
-				user.layer = TURF_LAYER
-				for(var/mob/M in viewers(user, null))
-					M.show_message("The alien larva hides under the table!", 1)
-	return
-
 /obj/table/attack_hand(mob/user as mob)
 	return
 

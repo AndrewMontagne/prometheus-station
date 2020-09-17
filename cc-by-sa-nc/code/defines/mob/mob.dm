@@ -28,8 +28,6 @@
 
 	var/list/obj/hallucination/hallucinations = list()
 
-	var/alien_egg_flag = 0
-
 	var/last_special = 0
 
 	var/obj/screen/zone_sel/zone_sel = null

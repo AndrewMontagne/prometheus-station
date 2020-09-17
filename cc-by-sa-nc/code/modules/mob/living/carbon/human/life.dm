@@ -47,9 +47,6 @@
 	//Chemicals in the body
 	handle_chemicals_in_body()
 
-	//stuff in the stomach
-	handle_stomach()
-
 	//Disabilities
 	handle_disabilities()
 
@@ -792,28 +789,6 @@
 				src.density = 1
 			else
 				src.density = !src.lying
-
-		handle_stomach()
-			spawn(0)
-				for(var/mob/M in stomach_contents)
-					if(M.loc != src)
-						stomach_contents.Remove(M)
-						continue
-					if(istype(M, /mob/living/carbon) && src.stat != 2)
-						if(M.stat == 2)
-							M.death(1)
-							stomach_contents.Remove(M)
-							if(M.client)
-								var/mob/dead/observer/newmob = new(M)
-								M:client:mob = newmob
-								M.mind.transfer_to(newmob)
-								newmob.reset_view(null)
-							del(M)
-							continue
-						if(air_master.current_cycle%3==1)
-							if(!M.nodamage)
-								M.bruteloss += 5
-							src.nutrition += 10
 /*
 snippets
 

@@ -226,7 +226,6 @@
 	var/list/m_ints = null
 	var/obj/screen/druggy = null
 	var/vimpaired = null
-	var/obj/screen/alien_view = null
 	var/obj/screen/g_dither = null
 	var/obj/screen/blurry = null
 	var/list/darkMask = null

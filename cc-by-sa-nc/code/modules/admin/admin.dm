@@ -1440,14 +1440,6 @@ var/showadminmessages = 1
 	log_admin("[key_name(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"].")
 	world.update_status()
 
-/obj/admins/proc/toggle_aliens()
-	set category = "Special Verbs"
-	set desc="Toggle alien mobs"
-	set name="Toggle Aliens"
-	aliens_allowed = !aliens_allowed
-	log_admin("[key_name(usr)] toggled Aliens to [aliens_allowed].")
-	message_admins("[key_name_admin(usr)] toggled Aliens [aliens_allowed ? "on" : "off"].", 1)
-
 /obj/admins/proc/delay()
 	set category = "Special Verbs"
 	set desc="Delay the game start"
