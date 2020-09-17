@@ -16,11 +16,6 @@
 	src.healthcheck()
 	return
 
-/obj/machinery/power/solar/blob_act()
-	src.health--
-	src.healthcheck()
-	return
-
 /obj/machinery/power/solar/proc/healthcheck()
 	if (src.health <= 0)
 		if(!(stat & BROKEN))
@@ -80,12 +75,6 @@
 	updateicon()
 	return
 
-/obj/machinery/power/solar/meteorhit()
-	if(stat & !BROKEN)
-		broken()
-	else
-		del(src)
-
 /obj/machinery/power/solar/ex_act(severity)
 	switch(severity)
 		if(1.0)
@@ -100,17 +89,6 @@
 			if (prob(25))
 				broken()
 	return
-
-/obj/machinery/power/solar/blob_act()
-	if(prob(50))
-		broken()
-		src.density = 0
-
-
-
-
-
-
 
 /obj/machinery/power/solar_control/New()
 	..()
@@ -269,10 +247,6 @@
 	stat |= BROKEN
 	updateicon()
 
-/obj/machinery/power/solar_control/meteorhit()
-	broken()
-	return
-
 /obj/machinery/power/solar_control/ex_act(severity)
 	switch(severity)
 		if(1.0)
@@ -286,8 +260,3 @@
 			if (prob(25))
 				broken()
 	return
-
-/obj/machinery/power/solar_control/blob_act()
-	if (prob(50))
-		broken()
-		src.density = 0

@@ -54,17 +54,6 @@
 		src.icon_state = malfunction ? "shieldoffbr":"shieldoff"
 	return
 
-/obj/shieldgen/meteorhit(obj/O as obj)
-	src.health -= 25
-	if (prob(5))
-		src.malfunction = 1
-	src.checkhp()
-	return
-
-/obj/shield/meteorhit(obj/O as obj)
-	if (prob(75))
-		del(src)
-	return
 
 /obj/shieldgen/ex_act(severity)
 	switch(severity)

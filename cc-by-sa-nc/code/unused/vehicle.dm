@@ -13,17 +13,6 @@
 				t1--
 	return
 
-/obj/machinery/vehicle/meteorhit(var/obj/O as obj)
-	for (var/obj/item/I in src)
-		I.loc = src.loc
-
-	for (var/mob/M in src)
-		M.loc = src.loc
-		if (M.client)
-			M.client.eye = M.client.mob
-			M.client.perspective = MOB_PERSPECTIVE
-	del(src)
-
 /obj/machinery/vehicle/ex_act(severity)
 	switch (severity)
 		if (1.0)
@@ -39,11 +28,6 @@
 					ex_act(severity)
 				//SN src = null
 				del(src)
-
-/obj/machinery/vehicle/blob_act()
-	for(var/atom/movable/A as mob|obj in src)
-		A.loc = src.loc
-	del(src)
 
 /obj/machinery/vehicle/Bump(var/atom/A)
 	//world << "[src] bumped into [A]"

@@ -20,26 +20,6 @@
 		else
 	return
 
-/obj/machinery/dispenser/blob_act()
-	if (prob(25))
-		while(src.o2tanks > 0)
-			new /obj/item/weapon/tank/oxygen( src.loc )
-			src.o2tanks--
-		while(src.pltanks > 0)
-			new /obj/item/weapon/tank/plasma( src.loc )
-			src.pltanks--
-		del(src)
-
-/obj/machinery/dispenser/meteorhit()
-	while(src.o2tanks > 0)
-		new /obj/item/weapon/tank/oxygen( src.loc )
-		src.o2tanks--
-	while(src.pltanks > 0)
-		new /obj/item/weapon/tank/plasma( src.loc )
-		src.pltanks--
-	del(src)
-	return
-
 /obj/machinery/dispenser/process()
 	return
 

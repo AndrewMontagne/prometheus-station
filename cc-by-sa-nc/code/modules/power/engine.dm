@@ -31,10 +31,3 @@
 				return
 		else
 	return
-
-/turf/simulated/floor/engine/blob_act()
-	if (prob(15))
-		ReplaceWithSpace()
-		del(src)
-		return
-	return

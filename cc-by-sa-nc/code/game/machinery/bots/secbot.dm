@@ -682,15 +682,6 @@ Auto Patrol: []"},
 				return
 		return
 
-	meteorhit()
-		src.explode()
-		return
-
-	blob_act()
-		if(prob(25))
-			src.explode()
-		return
-
 	proc/explode()
 
 		walk_to(src,0)

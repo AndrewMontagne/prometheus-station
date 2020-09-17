@@ -75,11 +75,6 @@
 
 		..()
 
-
-/obj/machinery/door/meteorhit(obj/M as obj)
-	src.open()
-	return
-
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
@@ -113,10 +108,6 @@
 	else if (src.density)
 		flick("door_deny", src)
 	return
-
-/obj/machinery/door/blob_act()
-	if(prob(20))
-		del(src)
 
 /obj/machinery/door/ex_act(severity)
 	switch(severity)

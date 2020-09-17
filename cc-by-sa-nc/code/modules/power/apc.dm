@@ -843,11 +843,6 @@
 
 // damage and destruction acts
 
-/obj/machinery/power/apc/meteorhit(var/obj/O as obj)
-
-	set_broken()
-	return
-
 /obj/machinery/power/apc/ex_act(severity)
 
 	switch(severity)
@@ -863,10 +858,6 @@
 				set_broken()
 		else
 	return
-
-/obj/machinery/power/apc/blob_act()
-	if (prob(50))
-		set_broken()
 
 
 /obj/machinery/power/apc/proc/set_broken()

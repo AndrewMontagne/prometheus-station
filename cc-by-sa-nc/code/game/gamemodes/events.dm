@@ -8,18 +8,8 @@
 		start_events()
 
 /proc/event()
-	switch(rand(1,6))
+	switch(rand(1,4))
 		if(1)
-			event = 1
-			command_alert("Meteors have been detected on collision course with the station.", "Meteor Alert")
-			spawn(100)
-				meteor_wave()
-				meteor_wave()
-			spawn(500)
-				meteor_wave()
-				meteor_wave()
-
-		if(2)
 			event = 1
 			command_alert("Gravitational anomalies detected on the station. There is no additional data.", "Anomaly Alert")
 			var/turf/T = pick(blobstart)
@@ -27,7 +17,7 @@
 			spawn(rand(50, 300))
 				del(bh)
 
-		if(3)
+		if(2)
 			event = 1
 			command_alert("Space-time anomalies detected on the station. There is no additional data.", "Anomaly Alert")
 			var/list/turfs = list(	)
@@ -48,24 +38,8 @@
 						P.name = "wormhole"
 						spawn(rand(300,600))
 							del(P)
-		if(4)
-			event = 1
-			command_alert("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert")
-			var/turf/T = pick(blobstart)
-			var/obj/blob/bl = new /obj/blob( T.loc, 30 )
-			spawn(0)
-				bl.Life()
-				bl.Life()
-				bl.Life()
-				bl.Life()
-				bl.Life()
-			blobevent = 1
-			dotheblobbaby()
-			spawn(3000)
-				blobevent = 0
-			//start loop here
 
-		if(5)
+		if(3)
 			event = 1
 			command_alert("High levels of radiation detected near the station. Please report to the Med-bay if you feel strange.", "Anomaly Alert")
 			for(var/mob/living/carbon/human/H in world)
@@ -74,17 +48,9 @@
 					H.radiation += rand(30,50)
 			for(var/mob/living/carbon/monkey/M in world)
 				M.radiation += rand(5,25)
-		if(6)
+		if(4)
 			event = 1
 			viral_outbreak()
-
-/proc/dotheblobbaby()
-	if (blobevent)
-		for(var/obj/blob/B in world)
-			if (prob (40))
-				B.Life()
-		spawn(30)
-			dotheblobbaby()
 
 /obj/bhole/New()
 	src.smoke = new /datum/effects/system/harmless_smoke_spread()

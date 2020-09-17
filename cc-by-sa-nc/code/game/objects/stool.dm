@@ -18,11 +18,6 @@
 		else
 	return
 
-/obj/stool/blob_act()
-	if(prob(50))
-		new /obj/item/weapon/sheet/metal( src.loc )
-		del(src)
-
 /obj/stool/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/wrench))
 		playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 50, 1)
@@ -192,13 +187,6 @@
 				del(src)
 				return
 	return
-
-/obj/stool/chair/blob_act()
-	if(prob(50))
-		for(var/mob/M in src.loc)
-			if(M.buckled == src)
-				M.buckled = null
-		del(src)
 
 /obj/stool/chair/New()
 	src.verbs -= /atom/movable/verb/pull

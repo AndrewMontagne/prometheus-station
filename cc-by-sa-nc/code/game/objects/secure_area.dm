@@ -10,9 +10,3 @@
 			return
 		else
 	return
-
-/obj/securearea/blob_act()
-	if (prob(50))
-		del(src)
-		return
-	return

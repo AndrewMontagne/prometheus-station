@@ -309,12 +309,6 @@
 			else
 		return
 
-	blob_act()
-		if(prob(25))
-			new /obj/effects/water(src.loc)
-			del(src)
-
-
 
 /obj/item/weapon/reagent_containers
 	name = "Container"

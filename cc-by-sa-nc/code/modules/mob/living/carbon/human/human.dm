@@ -139,9 +139,7 @@
 
 	stat(null, "Intent: [src.a_intent]")
 	stat(null, "Move Mode: [src.m_intent]")
-	if(ticker.mode.name == "AI malfunction")
-		if(ticker.mode:malf_mode_declared)
-			stat(null, "Time left: [ ticker.mode:AI_win_timeleft]")
+
 	if(emergency_shuttle.online && emergency_shuttle.location < 2)
 		var/timeleft = emergency_shuttle.timeleft()
 		if (timeleft)
@@ -387,89 +385,6 @@
 
 	src.UpdateDamageIcon()
 
-/mob/living/carbon/human/blob_act()
-	if (src.stat == 2)
-		return
-	var/shielded = 0
-	for(var/obj/item/device/shield/S in src)
-		if (S.active)
-			shielded = 1
-	var/damage = null
-	if (src.stat != 2)
-		damage = rand(1,20)
-
-	if(shielded)
-		damage /= 4
-
-		//src.paralysis += 1
-
-	src.show_message("\red The blob attacks you!")
-
-	var/list/zones = list("head","chest","chest", "groin", "l_arm", "r_arm", "l_hand", "r_hand", "l_leg", "r_leg", "l_foot", "r_foot")
-
-	var/zone = pick(zones)
-
-	var/datum/organ/external/temp = src.organs["[zone]"]
-
-	switch(zone)
-		if ("head")
-			if ((((src.head && src.head.body_parts_covered & HEAD) || (src.wear_mask && src.wear_mask.body_parts_covered & HEAD)) && prob(99)))
-				if (prob(20))
-					temp.take_damage(damage, 0)
-				else
-					src.show_message("\red You have been protected from a hit to the head.")
-				return
-			if (damage > 4.9)
-				if (src.weakened < 10)
-					src.weakened = rand(10, 15)
-				for(var/mob/O in viewers(src, null))
-					O.show_message(text("\red <B>The blob has weakened []!</B>", src), 1, "\red You hear someone fall.", 2)
-			temp.take_damage(damage)
-		if ("chest")
-			if ((((src.wear_suit && src.wear_suit.body_parts_covered & UPPER_TORSO) || (src.w_uniform && src.w_uniform.body_parts_covered & UPPER_TORSO)) && prob(85)))
-				src.show_message("\red You have been protected from a hit to the chest.")
-				return
-			if (damage > 4.9)
-				if (prob(50))
-					if (src.weakened < 5)
-						src.weakened = 5
-					for(var/mob/O in viewers(src, null))
-						O.show_message(text("\red <B>The blob has knocked down []!</B>", src), 1, "\red You hear someone fall.", 2)
-				else
-					if (src.stunned < 5)
-						src.stunned = 5
-					for(var/mob/O in viewers(src, null))
-						if(O.client)	O.show_message(text("\red <B>The blob has stunned []!</B>", src), 1)
-				if(src.stat != 2)	src.stat = 1
-			temp.take_damage(damage)
-		if ("groin")
-			if ((((src.wear_suit && src.wear_suit.body_parts_covered & LOWER_TORSO) || (src.w_uniform && src.w_uniform.body_parts_covered & LOWER_TORSO)) && prob(75)))
-				src.show_message("\red You have been protected from a hit to the lower chest.")
-				return
-			else
-				temp.take_damage(damage, 0)
-
-
-		if("l_arm")
-			temp.take_damage(damage, 0)
-		if("r_arm")
-			temp.take_damage(damage, 0)
-		if("l_hand")
-			temp.take_damage(damage, 0)
-		if("r_hand")
-			temp.take_damage(damage, 0)
-		if("l_leg")
-			temp.take_damage(damage, 0)
-		if("r_leg")
-			temp.take_damage(damage, 0)
-		if("l_foot")
-			temp.take_damage(damage, 0)
-		if("r_foot")
-			temp.take_damage(damage, 0)
-
-	src.UpdateDamageIcon()
-	return
-
 /mob/living/carbon/human/u_equip(obj/item/W as obj)
 	if (W == src.wear_suit)
 		src.wear_suit = null
@@ -704,19 +619,6 @@
 
 	update_clothing()
 
-	return
-
-/mob/living/carbon/human/meteorhit(O as obj)
-	for(var/mob/M in viewers(src, null))
-		if ((M.client && !( M.blinded )))
-			M.show_message(text("\red [] has been hit by []", src, O), 1)
-	if (src.health > 0)
-		var/dam_zone = pick("chest", "chest", "chest", "head", "groin")
-		if (istype(src.organs[dam_zone], /datum/organ/external))
-			var/datum/organ/external/temp = src.organs[dam_zone]
-			temp.take_damage((istype(O, /obj/meteor/small) ? 10 : 25), 30)
-			src.UpdateDamageIcon()
-		src.updatehealth()
 	return
 
 /mob/living/carbon/human/Move(a, b, flag)

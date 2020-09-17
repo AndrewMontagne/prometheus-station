@@ -250,10 +250,6 @@
 		else
 	return
 
-/turf/simulated/wall/blob_act()
-	if(prob(20))
-		dismantle_wall()
-
 /turf/simulated/wall/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
 
@@ -421,11 +417,6 @@
 		return attack_hand(user)
 	return
 
-/turf/simulated/wall/meteorhit(obj/M as obj)
-	if (M.icon_state == "flaming")
-		dismantle_wall()
-	return 0
-
 /turf/simulated/floor/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if ((istype(mover, /obj/machinery/vehicle) && !(src.burnt)))
 		if (!( locate(/obj/machinery/mass_driver, src) ))
@@ -455,9 +446,6 @@
 			if (prob(50))
 				src.break_tile()
 				src.hotspot_expose(1000,CELL_VOLUME)
-	return
-
-/turf/simulated/floor/blob_act()
 	return
 
 /turf/simulated/floor/update_icon()
@@ -734,18 +722,12 @@
 		return
 	if (src.x <= 2)
 		if(prob(50))
-			if(istype(A, /obj/meteor))
-				del(A)
-				return
 			A.z = 3
 			A.x = world.maxx - 2
 			spawn (0)
 				if ((A && A.loc))
 					A.loc.Entered(A)
 		else
-			if(istype(A, /obj/meteor))
-				del(A)
-				return
 			A.z = 4
 			A.x = world.maxx - 2
 			spawn (0)
@@ -753,18 +735,12 @@
 					A.loc.Entered(A)
 	else if (A.x >= (world.maxx - 1))
 		if(prob(50))
-			if(istype(A, /obj/meteor))
-				del(A)
-				return
 			A.z = 3
 			A.x = 3
 			spawn (0)
 				if ((A && A.loc))
 					A.loc.Entered(A)
 		else
-			if(istype(A, /obj/meteor))
-				del(A)
-				return
 			A.z = 4
 			A.x = 3
 			spawn (0)
@@ -772,18 +748,12 @@
 					A.loc.Entered(A)
 	else if (src.y <= 2)
 		if(prob(50))
-			if(istype(A, /obj/meteor))
-				del(A)
-				return
 			A.z = 3
 			A.y = world.maxy - 2
 			spawn (0)
 				if ((A && A.loc))
 					A.loc.Entered(A)
 		else
-			if(istype(A, /obj/meteor))
-				del(A)
-				return
 			A.z = 4
 			A.y = world.maxy - 2
 			spawn (0)
@@ -792,18 +762,12 @@
 
 	else if (A.y >= (world.maxy - 1))
 		if(prob(50))
-			if(istype(A, /obj/meteor))
-				del(A)
-				return
 			A.z = 3
 			A.y = 3
 			spawn (0)
 				if ((A && A.loc))
 					A.loc.Entered(A)
 		else
-			if(istype(A, /obj/meteor))
-				del(A)
-				return
 			A.z = 4
 			A.y = 3
 			spawn (0)

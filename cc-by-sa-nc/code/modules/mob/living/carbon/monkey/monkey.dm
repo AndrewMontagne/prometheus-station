@@ -62,21 +62,6 @@
 	..()
 	return
 
-/mob/living/carbon/monkey/meteorhit(obj/O as obj)
-	for(var/mob/M in viewers(src, null))
-		M.show_message(text("\red [] has been hit by []", src, O), 1)
-	if (src.health > 0)
-		var/shielded = 0
-		for(var/obj/item/device/shield/S in src)
-			if (S.active)
-				shielded = 1
-			else
-		src.bruteloss += 30
-		if ((O.icon_state == "flaming" && !( shielded )))
-			src.fireloss += 40
-		src.health = 100 - src.oxyloss - src.toxloss - src.fireloss - src.bruteloss
-	return
-
 /mob/living/carbon/monkey/bullet_act(flag)
 
 	if (flag == PROJECTILE_BULLET)
@@ -365,13 +350,6 @@
 				src.paralysis += 10
 		else
 	return
-
-/mob/living/carbon/monkey/blob_act()
-	if (src.stat != 2)
-		src.bruteloss += 30
-		src.health = 100 - src.oxyloss - src.toxloss - src.fireloss - src.bruteloss
-	if (prob(50))
-		src.paralysis += 10
 
 /obj/equip_e/monkey/process()
 	if (src.item)

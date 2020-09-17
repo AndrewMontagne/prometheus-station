@@ -48,13 +48,6 @@
 	user.reset_view(src.current)
 	return 1
 
-/mob/living/silicon/ai/blob_act()
-	if (src.stat != 2)
-		src.bruteloss += 30
-		src.updatehealth()
-		return 1
-	return 0
-
 /mob/living/silicon/ai/restrained()
 	return 0
 
@@ -92,17 +85,6 @@
 		switchCamera(locate(href_list["switchcamera"]))
 	if (href_list["showalerts"])
 		ai_alerts()
-	return
-
-/mob/living/silicon/ai/meteorhit(obj/O as obj)
-	for(var/mob/M in viewers(src, null))
-		M.show_message(text("\red [] has been hit by []", src, O), 1)
-		//Foreach goto(19)
-	if (src.health > 0)
-		src.bruteloss += 30
-		if ((O.icon_state == "flaming"))
-			src.fireloss += 40
-		src.updatehealth()
 	return
 
 /mob/living/silicon/ai/bullet_act(flag)
@@ -253,15 +235,4 @@
 		src.network = "Prison"
 //		src.network = "AI Satellite"
 	src << "\blue Switched to [src.network] camera network."
-
-
-/mob/living/silicon/ai/proc/choose_modules()
-	set category = "AI Commands"
-	set name = "Choose Module"
-
-	src.malf_picker.use(src)
-
-
-
-
 

@@ -16,12 +16,6 @@
 		else
 	return
 
-/obj/table/blob_act()
-
-	if(prob(50))
-		new /obj/item/weapon/table_parts( src.loc )
-		del(src)
-
 /obj/table/hand_p(mob/user as mob)
 
 	return src.attack_paw(user)
@@ -55,7 +49,7 @@
 /obj/table/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group || (height==0)) return 1
 
-	if ((mover.flags & 2 || istype(mover, /obj/meteor)) )
+	if (mover.flags & 2)
 		return 1
 	else
 		return 0
@@ -150,15 +144,6 @@
 		else
 	return
 
-/obj/rack/blob_act()
-	if(prob(50))
-		del(src)
-		return
-	else if(prob(50))
-		src.icon_state = "rackbroken"
-		src.density = 0
-		return
-
 /obj/rack/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group || (height==0)) return 1
 
@@ -184,13 +169,4 @@
 		return
 	user.drop_item()
 	if(W && W.loc)	W.loc = src.loc
-	return
-
-/obj/rack/meteorhit(obj/O as obj)
-	if(prob(75))
-		del(src)
-		return
-	else
-		src.icon_state = "rackbroken"
-		src.density = 0
 	return

@@ -36,9 +36,6 @@
 /obj/item/weapon/dummy/ex_act()
 	return
 
-/obj/item/weapon/dummy/blob_act()
-	return
-
 /obj/item/ex_act(severity)
 	switch(severity)
 		if(1.0)
@@ -53,9 +50,6 @@
 				del(src)
 				return
 		else
-	return
-
-/obj/item/blob_act()
 	return
 
 /obj/item/verb/move_to_top()
@@ -183,9 +177,6 @@
 					if(H.stat != 2)	H.stat = 1
 					for(var/mob/O in viewers(M, null))
 						O.show_message(text("\red <B>[] has been knocked unconscious!</B>", H), 1, "\red You hear someone fall.", 2)
-					if (prob(50))
-						if (ticker.mode.name == "revolution")
-							ticker.mode:remove_revolutionary(H.mind)
 				if (b_dam && prob(25 + (b_dam * 2)))
 					src.add_blood(H)
 					if (prob(33))

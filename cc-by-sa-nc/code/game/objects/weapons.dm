@@ -1132,9 +1132,6 @@
 /atom/proc/ex_act()
 	return
 
-/atom/proc/blob_act()
-	return
-
 // bullet_act called when anything is hit buy a projectile (bullet, tazer shot, laser, etc.)
 // flag is projectile type, can be:
 //PROJECTILE_TASER = 1   		taser gun

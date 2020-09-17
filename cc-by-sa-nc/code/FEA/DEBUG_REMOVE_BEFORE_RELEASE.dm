@@ -30,12 +30,6 @@ turf/space
 			set src in world
 			new /turf/simulated/floor(src)
 
-		create_meteor(direction as num)
-			set src in world
-
-			var/obj/meteor/M = new( src )
-			walk(M, direction,10)
-
 
 turf/simulated/wall
 	verb

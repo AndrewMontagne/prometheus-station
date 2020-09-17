@@ -289,13 +289,6 @@
 				broken()
 	return
 
-//blob effect
-
-/obj/machinery/light/blob_act()
-	if(prob(50))
-		broken()
-
-
 // timed process
 // use power
 

@@ -50,15 +50,6 @@ Pod/Blast Doors computer
 	src.add_fingerprint(user)
 	return 0
 
-/obj/machinery/computer/meteorhit(var/obj/O as obj)
-	for(var/x in src.verbs)
-		src.verbs -= x
-	set_broken()
-	var/datum/effects/system/harmless_smoke_spread/smoke = new /datum/effects/system/harmless_smoke_spread()
-	smoke.set_up(5, 0, src)
-	smoke.start()
-	return
-
 /obj/machinery/computer/ex_act(severity)
 	switch(severity)
 		if(1.0)
@@ -76,13 +67,6 @@ Pod/Blast Doors computer
 				set_broken()
 		else
 	return
-
-/obj/machinery/computer/blob_act()
-	if (prob(50))
-		for(var/x in src.verbs)
-			src.verbs -= x
-		set_broken()
-		src.density = 0
 
 /obj/machinery/computer/power_change()
 	if(!istype(src,/obj/machinery/computer/security/telescreen))

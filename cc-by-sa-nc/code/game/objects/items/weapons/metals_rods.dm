@@ -391,12 +391,6 @@ LATTICE
 
 // LATTICE????
 
-
-/obj/lattice/blob_act()
-	if(prob(75))
-		del(src)
-		return
-
 /obj/lattice/ex_act(severity)
 	switch(severity)
 		if(1.0)

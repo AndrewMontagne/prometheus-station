@@ -37,13 +37,6 @@
 				return
 	return
 
-/obj/window/blob_act()
-	if(prob(50))
-		new /obj/item/weapon/shard( src.loc )
-		if(reinf) new /obj/item/weapon/rods( src.loc)
-		density = 0
-		del(src)
-
 /obj/window/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(istype(mover, /obj/beam))
 		return 1
@@ -61,20 +54,6 @@
 	if (get_dir(O.loc, target) == src.dir)
 		return 0
 	return 1
-
-/obj/window/meteorhit()
-
-	//*****RM
-	//world << "glass at [x],[y],[z] Mhit"
-	src.health = 0
-	new /obj/item/weapon/shard( src.loc )
-	if(reinf) new /obj/item/weapon/rods( src.loc)
-	src.density = 0
-
-
-	del(src)
-	return
-
 
 /obj/window/hitby(AM as mob|obj)
 

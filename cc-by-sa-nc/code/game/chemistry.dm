@@ -140,11 +140,6 @@
 		src.smoke.start()
 		sleep(10)
 		src.smoke.start()
-
-	for(var/obj/blob/B in view(8,src))
-		var/damage = round(30/(get_dist(B,src)+1))
-		B.health -= damage
-		B.update()
 	sleep(80)
 	del(src)
 	return
@@ -169,11 +164,6 @@
 		target_tile.assume_air(napalm)
 
 		spawn target_tile.hotspot_expose(700, 400)
-
-	for(var/obj/blob/B in view(8,src))
-		var/damage = round(30/(get_dist(B,src)+1))
-		B.health -= damage
-		B.update()
 
 	sleep(10)
 	del(src)
@@ -255,10 +245,6 @@
 		sleep(10)
 		src.mustard_gas.start()
 
-	for(var/obj/blob/B in view(8,src))
-		var/damage = round(30/(get_dist(B,src)+1))
-		B.health -= damage
-		B.update()
 	sleep(100)
 	del(src)
 	return

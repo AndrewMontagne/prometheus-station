@@ -62,13 +62,6 @@
 	src.viewalerts = 1
 	src << browse(dat, "window=robotalerts&can_close=0")
 
-/mob/living/silicon/robot/blob_act()
-	if (src.stat != 2)
-		src.bruteloss += 30
-		src.updatehealth()
-		return 1
-	return 0
-
 /mob/living/silicon/robot/Stat()
 	..()
 	statpanel("Status")
@@ -119,17 +112,6 @@
 	src.bruteloss = b_loss
 	src.fireloss = f_loss
 	src.updatehealth()
-
-/mob/living/silicon/robot/meteorhit(obj/O as obj)
-	for(var/mob/M in viewers(src, null))
-		M.show_message(text("\red [src] has been hit by [O]"), 1)
-		//Foreach goto(19)
-	if (src.health > 0)
-		src.bruteloss += 30
-		if ((O.icon_state == "flaming"))
-			src.fireloss += 40
-		src.updatehealth()
-	return
 
 /mob/living/silicon/robot/bullet_act(flag)
 	if (flag == PROJECTILE_BULLET)

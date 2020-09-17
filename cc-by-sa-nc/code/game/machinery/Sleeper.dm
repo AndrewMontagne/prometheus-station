@@ -132,14 +132,6 @@
 				return
 	return
 
-/obj/machinery/sleeper/blob_act()
-	if(prob(75))
-		for(var/atom/movable/A as mob|obj in src)
-			A.loc = src.loc
-			A.blob_act()
-		del(src)
-	return
-
 /obj/machinery/sleeper/attackby(obj/item/weapon/grab/G as obj, mob/user as mob)
 	if ((!( istype(G, /obj/item/weapon/grab) ) || !( ismob(G.affecting) )))
 		return

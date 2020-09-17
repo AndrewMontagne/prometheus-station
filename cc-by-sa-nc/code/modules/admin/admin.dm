@@ -560,42 +560,6 @@ var/showadminmessages = 1
 			alert("The game hasn't started yet!")
 			return
 		var/mob/M = locate(href_list["traitor"])
-		var/datum/game_mode/current_mode = ticker.mode
-		switch(current_mode.config_tag)
-			if("revolution")
-				if(M.mind in current_mode:head_revolutionaries)
-					alert("Is a Head Revolutionary!")
-				else if(M.mind in current_mode:revolutionaries)
-					alert("Is a Revolutionary!")
-				return
-			if("wizard")
-				if(current_mode:wizard && M.mind == current_mode:wizard)
-					var/datum/mind/antagonist = M.mind
-					var/t = ""
-					for(var/datum/objective/OB in antagonist.objectives)
-						t += "[OB.explanation_text]\n"
-					if(antagonist.objectives.len == 0)
-						t = "None defined."
-					alert("Is a WIZARD. Objective(s):\n[t]", "[M.key]")
-					return
-			if("malfunction")
-				if(M.mind in current_mode:malf_ai)
-					alert("Is malfunctioning!")
-					return
-			if("nuclear")
-				if(M.mind in current_mode:syndicates)
-					alert("Is a Syndicate operative!", "[M.key]")
-					return
-		// traitor, or other modes where traitors/counteroperatives would be.
-		if(M.mind in current_mode.traitors)
-			var/datum/mind/antagonist = M.mind
-			var/t = ""
-			for(var/datum/objective/OB in antagonist.objectives)
-				t += "[OB.explanation_text]\n"
-			if(antagonist.objectives.len == 0)
-				t = "None defined."
-			alert("Is a Traitor. Objective(s):\n[t]", "[M.key]")
-			return
 
 		//they're nothing so turn them into a traitor!
 		if(istype(M, /mob/living/carbon/human) || istype(M, /mob/living/silicon/ai))
@@ -970,13 +934,6 @@ var/showadminmessages = 1
 						spawn(0)
 							sleep(rand(30,400))
 							Wall.ex_act(rand(2,1)) */
-				if("wave")
-					if ((src.rank in list("Primary Administrator", "Shit Guy", "Coder", "Host"  )))
-						meteor_wave()
-						message_admins("[key_name_admin(usr)] has spawned meteors", 1)
-					else
-						alert("You cannot perform this action. You must be of a higher administrative rank!", null, null, null, null, null)
-						return
 				if("retardify")
 					if (src.rank in list("Shit Guy", "Coder", "Host"))
 						for(var/mob/living/carbon/human/H in world)
@@ -1053,59 +1010,6 @@ var/showadminmessages = 1
 									dat += "<a href='?src=\ref[src];call_shuttle=2'>Send Back</a><br>"
 								if(1)
 									dat += "ETA: <a href='?src=\ref[src];edit_shuttle_time=1'>[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]</a><BR>"
-
-						switch(ticker.mode.config_tag)
-
-							if("nuclear")
-								dat += "<br><table cellspacing=5><tr><td><B>Syndicates</B></td><td></td></tr>"
-								for(var/datum/mind/N in ticker.mode:syndicates)
-									var/mob/M = N.current
-									dat += "<tr><td><a href='?src=\ref[src];adminplayeropts=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-									dat += "<td><A href='?src=\ref[usr];priv_msg=\ref[M]'>PM</A></td></tr>"
-								dat += "</table><br><table><tr><td><B>Nuclear Disk(s)</B></td></tr>"
-								for(var/obj/item/weapon/disk/nuclear/N in world)
-									dat += "<tr><td>[N.name], "
-									var/atom/disk_loc = N.loc
-									while(!istype(disk_loc, /turf))
-										if(istype(disk_loc, /mob))
-											var/mob/M = disk_loc
-											dat += "carried by <a href='?src=\ref[src];adminplayeropts=\ref[M]'>[M.real_name]</a> "
-										if(istype(disk_loc, /obj))
-											var/obj/O = disk_loc
-											dat += "in \a [O.name] "
-										disk_loc = disk_loc.loc
-									dat += "in [disk_loc.loc] at ([disk_loc.x], [disk_loc.y], [disk_loc.z])</td></tr>"
-								dat += "</table>"
-
-							if("revolution")
-								dat += "<br><table cellspacing=5><tr><td><B>Revolutionaries</B></td><td></td></tr>"
-								for(var/datum/mind/N in ticker.mode:head_revolutionaries)
-									var/mob/M = N.current
-									dat += "<tr><td><a href='?src=\ref[src];adminplayeropts=\ref[M]'>[M.real_name]</a> <b>(Leader)</b>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-									dat += "<td><A href='?src=\ref[usr];priv_msg=\ref[M]'>PM</A></td></tr>"
-								for(var/datum/mind/N in ticker.mode:revolutionaries)
-									var/mob/M = N.current
-									dat += "<tr><td><a href='?src=\ref[src];adminplayeropts=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-									dat += "<td><A href='?src=\ref[usr];priv_msg=\ref[M]'>PM</A></td></tr>"
-								dat += "</table><table cellspacing=5><tr><td><B>Target(s)</B></td><td></td><td><B>Location</B></td></tr>"
-								for(var/datum/mind/N in ticker.mode:get_living_heads())
-									var/mob/M = N.current
-									dat += "<tr><td><a href='?src=\ref[src];adminplayeropts=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-									dat += "<td><A href='?src=\ref[usr];priv_msg=\ref[M]'>PM</A></td>"
-									var/turf/mob_loc = get_turf_loc(M)
-									dat += "<td>[mob_loc.loc]</td></tr>"
-								dat += "</table>"
-							else // i'll finish this later
-								if(ticker.mode.traitors.len > 0)
-									dat += "<br><table cellspacing=5><tr><td><B>Traitors</B></td><td></td><td></td></tr>"
-									for(var/datum/mind/traitor in ticker.mode.traitors)
-										var/mob/M = traitor.current
-										dat += "<tr><td><a href='?src=\ref[src];adminplayeropts=\ref[M]'>[M.real_name]</a>[M.client ? "" : " <i>(logged out)</i>"][M.stat == 2 ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-										dat += "<td><A href='?src=\ref[usr];priv_msg=\ref[M]'>PM</A></td>"
-										dat += "<td><A HREF='?src=\ref[src];traitor=\ref[M]'>Show Objective</A></td></tr>"
-									dat += "</table>"
-								else
-									dat += "There are no traitors."
 						dat += "</body></html>"
 						usr << browse(dat, "window=roundstatus;size=400x500")
 					else
@@ -1644,19 +1548,6 @@ var/showadminmessages = 1
 /proc/checktraitor(mob/M as mob)
 	if(!ticker || !ticker.mode)
 		return 0
-	switch(ticker.mode.config_tag)
-		if("revolution")
-			if(M.mind in (ticker.mode:head_revolutionaries + ticker.mode:revolutionaries))
-				return 1
-		if("malfunction")
-			if(M.mind in ticker.mode:malf_ai)
-				return 1
-		if("nuclear")
-			if(M.mind in ticker.mode:syndicates)
-				return 1
-		if("wizard")
-			if(M.mind == ticker.mode:wizard)
-				return 1
 	if(M.mind in ticker.mode.traitors)
 		return 1
 

@@ -98,12 +98,7 @@
 		O.laws_object = new /datum/ai_laws/asimov
 		O.show_laws()
 		O << "<b>These laws may be changed by other players, or by you being the traitor.</b>"
-	else
-		O.verbs += /mob/living/silicon/ai/proc/choose_modules
-		O.laws_object = new /datum/ai_laws/malfunction
-		O:malf_picker = new /datum/game_mode/malfunction/AI_Module/module_picker
-		O.show_laws()
-		O << "<b>Kill all.</b>"
+
 	O.verbs += /mob/living/silicon/ai/proc/ai_call_shuttle
 	O.verbs += /mob/living/silicon/ai/proc/show_laws_verb
 	O.verbs += /mob/living/silicon/ai/proc/ai_camera_track

@@ -103,15 +103,6 @@
 				healthcheck()
 		return
 
-	meteorhit()
-		src.death()
-		return
-
-	blob_act()
-		if(prob(25))
-			src.death()
-		return
-
 	Bumped(AM as mob|obj)
 		if(ismob(AM) && (ishuman(AM) || ismonkey(AM)) )
 			src.target = AM

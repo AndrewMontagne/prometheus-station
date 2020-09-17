@@ -33,14 +33,6 @@
 					del(src)
 					return
 
-	blob_act()
-		if (prob(25))
-			del(src)
-
-	meteorhit()
-		del(src)
-		return
-
 	Topic(href, href_list)
 		if(stat & BROKEN) return
 		if(usr.stat || usr.restrained()) return
@@ -116,14 +108,6 @@
 				if (prob(50))
 					del(src)
 					return
-
-	blob_act()
-		if (prob(25))
-			del(src)
-
-	meteorhit()
-		del(src)
-		return
 
 	attackby(var/obj/item/weapon/reagent_containers/glass/B as obj, var/mob/user as mob)
 		if(!istype(B, /obj/item/weapon/reagent_containers/glass))

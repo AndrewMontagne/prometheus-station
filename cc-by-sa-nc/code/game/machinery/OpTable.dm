@@ -24,10 +24,6 @@
 		else
 	return
 
-/obj/machinery/optable/blob_act()
-	if(prob(50))
-		del(src)
-
 /obj/machinery/optable/hand_p(mob/user as mob)
 
 	return src.attack_paw(user)
@@ -51,7 +47,7 @@
 /obj/machinery/optable/CanPass(atom/movable/O as mob|obj, target as turf)
 	if(!O)
 		return 0
-	if ((O.flags & 2 || istype(O, /obj/meteor)))
+	if (O.flags & 2)
 		return 1
 	else
 		return 0

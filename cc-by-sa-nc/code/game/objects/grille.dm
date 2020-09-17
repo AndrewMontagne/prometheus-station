@@ -29,17 +29,6 @@
 		else
 	return
 
-/obj/grille/blob_act()
-	src.health--
-	src.healthcheck()
-
-
-/obj/grille/meteorhit(var/obj/M)
-	if (M.icon_state == "flaming")
-		src.health -= 2
-		healthcheck()
-	return
-
 /obj/grille/attack_hand(var/obj/M)
 	if(!shock(usr, 70))
 		usr << text("\blue You kick the grille.")
@@ -61,7 +50,7 @@
 /obj/grille/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group || (height==0)) return 1
 
-	if ((istype(mover, /obj/effects) || istype(mover, /obj/item/weapon/dummy) || istype(mover, /obj/beam) || istype(mover, /obj/meteor/small)))
+	if (istype(mover, /obj/effects) || istype(mover, /obj/item/weapon/dummy) || istype(mover, /obj/beam))
 		return 1
 	else
 		if (istype(mover, /obj/bullet))

@@ -771,9 +771,6 @@ steam.start() -- spawns the effect
 	ex_act(severity)
 		del(src)
 
-	blob_act()
-		del(src)
-
 	bullet_act()
 		if(metal==1 || prob(50))
 			del(src)

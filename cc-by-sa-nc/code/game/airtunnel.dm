@@ -102,13 +102,6 @@
 		else
 	return
 
-/obj/machinery/at_indicator/blob_act()
-	if (prob(50))
-		for(var/x in src.verbs)
-			src.verbs -= x
-		src.icon_state = "reader_broken"
-		stat |= BROKEN
-
 /obj/machinery/at_indicator/update_icon()
 	if(stat & (BROKEN|NOPOWER))
 		icon_state = "reader_broken"

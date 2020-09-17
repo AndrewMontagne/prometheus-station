@@ -48,15 +48,6 @@
 		else
 	return
 
-/obj/machinery/vending/blob_act()
-	if (prob(25))
-		spawn(0)
-			src.malfunction()
-			del(src)
-		return
-
-	return
-
 /obj/machinery/vending/proc/build_inventory(var/list/path_list,var/list/amt_list,hidden=0)
 
 	for(var/p=1, p <= path_list.len ,p++)
