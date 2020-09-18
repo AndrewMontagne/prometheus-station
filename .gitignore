@@ -1,5 +1,4 @@
-/data/logs
-/data/player_saves
+/data/*
 *.dmb
 *.rsc
 *.int
