@@ -1,4 +1,4 @@
-// DM Environment file for InSpace.dme.
+// DM Environment file for prometheus.dme.
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
@@ -6,7 +6,7 @@
 // END_INTERNALS
 
 // BEGIN_PREFERENCES
-#define DEBUG
+//#define DEBUG
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
@@ -458,4 +458,6 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
+#define FILE_DIR "cc-by-sa-nc"
+#define FILE_DIR "closed-source"
 // END_FILE_DIR
