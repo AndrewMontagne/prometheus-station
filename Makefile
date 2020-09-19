@@ -2,9 +2,7 @@ INV=\033[7m
 NC=\033[0m
 
 SHELL := /bin/bash
-.PHONY: all clean build run
-
-include ~/.bashrc
+.PHONY: all clean build run run-container
 
 all: clean lint mapmerge build run
 
@@ -29,6 +27,9 @@ build: mapmerge
 
 run:
 	@echo -e '\n${INV} ###    RUN    ### ${NC}\n'
-	@echo "Starting server... Connect at byond://localhost:3665"
-	@DreamDaemon prometheus.dmb 3665 -safe
+	@echo "Starting server... Connect at byond://localhost:5000"
+	@DreamDaemon prometheus.dmb 5000 -safe -invisible
 	@echo ""
+
+run-container:
+	@docker pull -q andrewmontagne/byond:latest && docker run --rm -it -p 5000:5000/tcp --mount type=bind,src=$(shell pwd -P),dst=/app andrewmontagne/byond:latest /bin/bash
