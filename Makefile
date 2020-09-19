@@ -1,6 +1,10 @@
 INV=\033[7m
 NC=\033[0m
 
+BYOND_SYSTEM=/byond
+LD_LIBRARY_PATH=/byond/bin:$LD_LIBRARY_PATH
+LD_PRELOAD=inode64.so
+
 SHELL := /bin/bash
 .PHONY: all clean build run run-container
 
