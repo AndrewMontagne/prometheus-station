@@ -20,7 +20,10 @@
 //! Checks if a client has a permission, and that it is valid
 /client/proc/has_permission(permission_name)
 	var/datum/permission/perm = src.permissions[permission_name]
-	return perm != null
+	if(isnull(perm))
+		return FALSE
+	else
+		return perm.verify()
 
 //! Checks if a mob's client has a permission, and that it is valid
 /mob/proc/has_permission(permission_name)
