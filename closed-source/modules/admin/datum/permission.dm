@@ -1,7 +1,7 @@
 //! Class to encapsulate specific permissions
 /datum/permission
 	var/name = null
-	var/client/assigned_client = null
+	VAR_PROTECTED/client/assigned_client = null
 
 //! Utility method to allow for additional verification logic
 /datum/permission/proc/verify()
@@ -12,6 +12,7 @@
 
 //! Adds a permission to a client
 /datum/permission/proc/assign_to_client(client/candidate)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	var/permission_key = copytext("[src.type]", 19)
 	candidate.permissions[permission_key] = src
 	src.assigned_client = candidate
@@ -19,6 +20,7 @@
 
 //! Checks if a client has a permission, and that it is valid
 /client/proc/has_permission(permission_name)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	var/datum/permission/perm = src.permissions[permission_name]
 	if(isnull(perm))
 		return FALSE
@@ -27,6 +29,7 @@
 
 //! Checks if a mob's client has a permission, and that it is valid
 /mob/proc/has_permission(permission_name)
+	SHOULD_NOT_OVERRIDE(TRUE)
 	if(src.client)
 		return src.client.has_permission(permission_name)
 	return FALSE

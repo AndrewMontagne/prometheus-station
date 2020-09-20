@@ -2,6 +2,8 @@
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
+#include "lib\DreamChecker\dreamchecker.dm"
+
 // BEGIN_INTERNALS
 // END_INTERNALS
 
@@ -442,7 +444,6 @@
 #include "closed-source\modules\infobrowser\infobrowser.dm"
 #include "closed-source\modules\map_pane\map_pane.dm"
 #include "closed-source\modules\parallax\parallax.dm"
-#include "lib\DreamChecker\dreamchecker.dm"
 #include "lib\GoonLights\helpers\area.dm"
 #include "lib\GoonLights\helpers\atom.dm"
 #include "lib\GoonLights\helpers\dview.dm"

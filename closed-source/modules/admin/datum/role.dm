@@ -1,9 +1,8 @@
 //! The user role datum. This determines the permissions a user has.
 /datum/role
-	var/client/assigned_client //! The client this who has this role
-	var/list/permissions //! The permission this role has
-	var/priority = -1 //! The priority in which this role will be picked, lower is picked first. priority of -1 won"t be attempted.
-	var/role_name = "Blank Role"
+	VAR_PROTECTED/client/assigned_client //! The client this who has this role
+	var/priority = 0 //! The priority in which this role will be picked, lower is picked first.
+	var/role_name = null //! The name of the role. Must be set in order to be a candidate
 
 //! Returns whether a client is eligible for this role
 /datum/role/proc/is_client_eligible(client/user_client)
@@ -11,7 +10,7 @@
 
 //! Performs any logic that needs to be done when a client recieves a role.
 /datum/role/proc/apply_to_client(client/user_client)
-	user_client << "\blue You have been authenticated as a [src.role_name]"
+	throw EXCEPTION("No implementation")
 
 /client/var/role = null
 
@@ -23,7 +22,7 @@
 
 	for(var/path in typesof(/datum/role))
 		var/datum/role/type = path // Not an instance of /datum/role, this lets us introspect the initial value for a type
-		if (initial(type.priority) == -1)
+		if (initial(type.role_name) == null)
 			continue
 		potential_roles += new path()
 

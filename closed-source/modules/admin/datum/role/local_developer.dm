@@ -24,8 +24,6 @@
 
 //! The local developer role gets every single possible permission.
 /datum/role/local_developer/apply_to_client(client/user_client)
-	. = ..()
-
 	for(var/path in typesof(/datum/permission))
 		var/datum/permission/type = path // Not an instance of /datum/permission, this lets us introspect the initial value for a type
 		if (initial(type.name) == null)
