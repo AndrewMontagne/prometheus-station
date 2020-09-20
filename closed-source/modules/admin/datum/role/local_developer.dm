@@ -17,3 +17,14 @@
 		return TRUE
 
 	return FALSE
+
+/datum/role/local_developer/apply_to_client(client/user_client)
+	. = ..()
+
+	for(var/path in typesof(/datum/permission))
+		var/datum/permission/type = path // Not an instance of /datum/permission, this lets us introspect the initial value for a type
+		if (initial(type.name) == null)
+			continue
+
+		var/datum/permission/perm = new path()
+		perm.assign_to_client(user_client)
