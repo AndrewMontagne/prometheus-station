@@ -26,7 +26,7 @@
 			continue
 		potential_roles += new path()
 
-	potential_roles = list_bubblesort(potential_roles, "priority")
+	potential_roles = list_quicksort(potential_roles, "priority")
 
 	for(var/datum/role/role in potential_roles)
 		if(role.is_client_eligible(src))
