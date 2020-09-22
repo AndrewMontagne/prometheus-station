@@ -23,11 +23,13 @@
 	return FALSE
 
 //! The local developer role gets every single possible permission.
-/datum/role/local_developer/apply_to_client(client/user_client)
+/datum/role/local_developer/on_add()
+	. = ..()
+	
 	for(var/path in typesof(/datum/permission))
 		var/datum/permission/type = path // Not an instance of /datum/permission, this lets us introspect the initial value for a type
 		if (initial(type.name) == null)
 			continue
 
 		var/datum/permission/perm = new path()
-		perm.assign_to_client(user_client)
+		src.user_client.add_permission(perm)

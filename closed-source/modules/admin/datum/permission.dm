@@ -1,22 +1,48 @@
 //! Class to encapsulate specific permissions
 /datum/permission
 	var/name = null
-	VAR_PROTECTED/client/assigned_client = null
+	VAR_PRIVATE/client/assigned_client = null
 
 //! Utility method to allow for additional verification logic
 /datum/permission/proc/verify()
 	return TRUE
 
 //! Associative array of permissions
-/client/var/list/permissions = list()
+/client
+	VAR_PRIVATE/list/permissions = list()
+	var/global/list/permissions_to_clients = list()
 
 //! Adds a permission to a client
-/datum/permission/proc/assign_to_client(client/candidate)
+/client/proc/add_permission(datum/permission/perm)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	var/permission_key = copytext("[src.type]", 19)
-	candidate.permissions[permission_key] = src
-	src.assigned_client = candidate
-	candidate << "\red You have been given the [permission_key] permission!"
+	var/permkey = perm.get_permission_key()
+	src.permissions[permkey] = src
+	perm.assigned_client = src
+	perm.on_add()
+	if(!islist(src.permissions_to_clients[permkey]))
+		src.permissions_to_clients[permkey] = list()
+	src.permissions_to_clients[permkey] |= src
+
+//! Removes 
+/client/proc/remove_permission(permkey)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	var/datum/permission/perm = src.permissions[permkey]
+	src.permissions[permkey] = null
+	src.permissions_to_clients.Remove(src)
+	perm.on_remove()
+	perm.assigned_client = null
+	perm.Del()
+
+/datum/permission/proc/get_permission_key()
+	return copytext("[src.type]", 19)
+
+//! Called when a client has this permission added
+/datum/permission/proc/on_add()
+	throw EXCEPTION("No implementation")
+
+//! Called when a client has this permission removed
+/datum/permission/proc/on_remove()
+	throw EXCEPTION("No implementation")
 
 //! Checks if a client has a permission, and that it is valid
 /client/proc/has_permission(permission_name)
