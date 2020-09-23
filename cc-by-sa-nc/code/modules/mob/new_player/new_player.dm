@@ -89,7 +89,7 @@
 	set name = "toggleready"
 
 	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
-		if (!usr.client.authenticated)
+		if (!usr.client.has_permission("BAN"))
 			src << "You are not authorized to enter the game."
 			return
 
@@ -110,7 +110,7 @@
 /mob/new_player/verb/toggle_observe()
 	set name = "toggleobserve"
 
-	if (!usr.client.authenticated)
+	if (!usr.client.has_permission("BAN"))
 		src << "You are not authorized to enter the game."
 		return
 
@@ -153,7 +153,7 @@
 /mob/new_player/Topic(href, href_list[])
 
 	if(href_list["SelectedJob"])
-		if (!usr.client.authenticated)
+		if (!usr.client.has_permission("BAN"))
 			src << "You are not authorized to enter the game."
 			return
 

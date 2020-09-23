@@ -16,7 +16,7 @@
 /client/proc/add_permission(datum/permission/perm)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/permkey = perm.get_permission_key()
-	src.permissions[permkey] = src
+	src.permissions[permkey] = perm
 	perm.assigned_client = src
 	perm.on_add()
 	if(!islist(src.permissions_to_clients[permkey]))
@@ -34,7 +34,7 @@
 	perm.Del()
 
 /datum/permission/proc/get_permission_key()
-	return copytext("[src.type]", 19)
+	return uppertext(copytext("[src.type]", 19))
 
 //! Called when a client has this permission added
 /datum/permission/proc/on_add()
