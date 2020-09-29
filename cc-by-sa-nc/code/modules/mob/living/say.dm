@@ -89,11 +89,13 @@
 
 	switch (message_mode)
 		if ("headset")
-			if (src:ears)
-				src:ears.talk_into(src, message)
+			if (istype(src, /mob/living/carbon/human))
+				var/mob/living/carbon/human/H = src
+				if (H.ears)
+					H.ears.talk_into(H, message)
 
-			message_range = 1
-			italics = 1
+				message_range = 1
+				italics = 1
 
 		if ("right hand")
 			if (src.r_hand)
@@ -108,11 +110,6 @@
 
 			message_range = 1
 			italics = 1
-
-		//Might put this back if people are used to the old system.
-		/*if ("whisper")
-			message_range = 1
-			italics = 1*/
 
 		if ("intercom")
 			for (var/obj/item/device/radio/intercom/I in view(1, null))

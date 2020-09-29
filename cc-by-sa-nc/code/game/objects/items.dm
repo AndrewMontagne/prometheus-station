@@ -133,7 +133,6 @@
 
 /obj/item/weapon/pen/sleepypen/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
-	return
 
 /obj/item/weapon/pen/sleepypen/New()
 	var/datum/reagents/R = new/datum/reagents(300)

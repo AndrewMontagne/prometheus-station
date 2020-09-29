@@ -30,23 +30,25 @@ IMPLANTER
 	else
 		if (!( istype(I, /obj/item/weapon/implanter) ))
 			return
-	if (I:imp)
-		if ((src.imp || I:imp.implanted))
+	var/obj/item/weapon/implanter/IP = I
+	
+	if (IP.imp)
+		if ((src.imp || IP.imp.implanted))
 			return
-		I:imp.loc = src
-		src.imp = I:imp
-		I:imp = null
+		IP.imp.loc = src
+		src.imp = IP.imp
+		IP.imp = null
 		src.update()
-		I:update()
+		IP.update()
 	else
 		if (src.imp)
-			if (I:imp)
+			if (IP.imp)
 				return
-			src.imp.loc = I
-			I:imp = src.imp
+			src.imp.loc = IP
+			IP.imp = src.imp
 			src.imp = null
 			update()
-			I:update()
+			IP.update()
 	return
 
 /obj/item/weapon/implantcase/tracking/New()

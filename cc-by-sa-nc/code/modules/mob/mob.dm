@@ -924,7 +924,7 @@
 
 /mob/proc/death(gibbed)
 	src.timeofdeath = world.time
-	return ..(gibbed)
+	return
 
 /mob/proc/restrained()
 	if (src.handcuffed)
@@ -1018,7 +1018,6 @@
 		return src.l_hand
 	else
 		return src.r_hand
-	return
 
 /mob/proc/show_inv(mob/user as mob)
 	user.machine = src
@@ -1252,7 +1251,6 @@
 		return (!mover.density || !src.density || src.lying)
 	else
 		return (!mover.density || !src.density || src.lying)
-	return
 
 /mob/dead/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	return TRUE

@@ -90,8 +90,9 @@ GAS ANALYZER
 
 	src.add_fingerprint(user)
 	if (istype(A, /obj/decal/cleanable/blood))
-		if(A:virus)
-			user << "\red Warning, virus found in the blood! Name: [A:virus.name]"
+		var/obj/decal/cleanable/blood/B = A
+		if(B.virus)
+			user << "\red Warning, virus found in the blood! Name: [B.virus.name]"
 	else if (A.blood_type)
 		user << "\blue Blood found on [A]. Analysing..."
 		sleep(15)

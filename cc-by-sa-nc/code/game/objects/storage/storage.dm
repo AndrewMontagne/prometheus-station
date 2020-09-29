@@ -121,7 +121,6 @@
 /obj/item/weapon/storage/attack_paw(mob/user as mob)
 	playsound(src.loc, "rustle", 50, 1, -5)
 	return src.attack_hand(user)
-	return
 
 /obj/item/weapon/storage/attack_hand(mob/user as mob)
 	playsound(src.loc, "rustle", 50, 1, -5)

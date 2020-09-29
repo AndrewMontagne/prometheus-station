@@ -180,7 +180,6 @@ FINGERPRINT CARD
 		return dat
 	else
 		return "<B>There are no fingerprints on this card.</B>"
-	return
 
 /obj/item/weapon/f_card/attack_hand(mob/user as mob)
 

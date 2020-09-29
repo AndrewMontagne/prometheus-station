@@ -291,9 +291,6 @@
 			return 0.5
 		else
 			return FALSE
-	//G = null
-	del(G)
-	return
 
 /obj/item/weapon/tank/anesthetic/New()
 	..()

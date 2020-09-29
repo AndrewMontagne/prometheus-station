@@ -63,7 +63,6 @@ THAT STUPID GAME KIT
 		user << browse(src.data, "window=game_kit")
 		onclose(user, "game_kit")
 		return
-	return
 
 /obj/item/weapon/game_kit/Topic(href, href_list)
 	..()

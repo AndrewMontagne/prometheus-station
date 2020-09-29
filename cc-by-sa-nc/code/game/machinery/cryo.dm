@@ -10,7 +10,7 @@
 	var/temperature_archived
 	var/obj/overlay/O1 = null
 	var/mob/occupant = null
-	var/beaker = null
+	var/obj/item/weapon/reagent_containers/beaker = null
 	var/next_trans = 0
 
 	var/current_heat_capacity = 50
@@ -121,15 +121,16 @@
 			G.loc = src
 			user.visible_message("[user] adds a beaker to \the [src]!", "You add a beaker to the [src]!")
 		else if(istype(G, /obj/item/weapon/grab))
-			if(!ismob(G.affecting))
+			var/obj/item/weapon/grab/GR = G
+			if(!ismob(GR.affecting))
 				return
 			if (src.occupant)
 				user << "\blue <B>The sleeper is already occupied!</B>"
 				return
-			if (G.affecting.abiotic())
+			if (GR.affecting.abiotic())
 				user << "Subject may not have abiotic items on."
 				return
-			var/mob/M = G:affecting
+			var/mob/M = GR.affecting
 			if (M.client)
 				M.client.perspective = EYE_PERSPECTIVE
 				M.client.eye = src
@@ -139,7 +140,7 @@
 				O.loc = src.loc
 			src.add_fingerprint(user)
 			build_icon()
-			del(G)
+			del(GR)
 		src.updateUsrDialog()
 		return
 

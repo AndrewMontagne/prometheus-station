@@ -121,8 +121,9 @@ obj/machinery/atmospherics/pipe
 				var/environment_temperature = 0
 
 				if(istype(loc, /turf/simulated/))
-					if(loc.blocks_air)
-						environment_temperature = loc:temperature
+					var/turf/simulated/S = loc
+					if(S.blocks_air)
+						environment_temperature = S.temperature
 					else
 						var/datum/gas_mixture/environment = loc.return_air()
 						environment_temperature = environment.temperature
