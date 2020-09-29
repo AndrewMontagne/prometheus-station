@@ -53,14 +53,6 @@
 	if(!corpse)
 		alert("You don't have a corpse!")
 		return
-//	if(corpse.stat == 2)
-//		alert("Your body is dead!")
-//		return
-	if(src.client && src.client.holder && src.client.holder.state == 2)
-		var/rank = src.client.holder.rank
-		src.client.clear_admin_verbs()
-		src.client.holder.state = 1
-		src.client.update_admins(rank)
 	src.client.mob = corpse
 	del(src)
 

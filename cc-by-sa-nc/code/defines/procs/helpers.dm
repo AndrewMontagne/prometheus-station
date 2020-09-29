@@ -602,10 +602,7 @@
 			else
 				text += "<a href=\"byond://?src=\ref[include_link];priv_msg=\ref[the_mob]\">"
 
-		if (the_client && the_client.holder && the_client.stealth && !include_name)
-			text += "Administrator"
-		else
-			text += "[the_key]"
+		text += "[the_key]"
 
 		if (!isnull(include_link) && !isnull(the_mob))
 			text += "</a>"

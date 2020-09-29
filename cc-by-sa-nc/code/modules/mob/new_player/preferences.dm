@@ -154,12 +154,6 @@ datum/preferences
 		if (destructive.Find(src.occupation1))
 			dat += "\t<a href=\"byond://?src=\ref[user];preferences=1;occ=1\"><b>[occupation1]</b></a><br>"
 		else
-			if (jobban_isbanned(user, src.occupation1))
-				src.occupation1 = "Assistant"
-			if (jobban_isbanned(user, src.occupation2))
-				src.occupation2 = "Assistant"
-			if (jobban_isbanned(user, src.occupation3))
-				src.occupation3 = "Assistant"
 			if (src.occupation1 != "No Preference")
 				dat += "\tFirst Choice: <a href=\"byond://?src=\ref[user];preferences=1;occ=1\"><b>[occupation1]</b></a><br>"
 
@@ -186,36 +180,15 @@ datum/preferences
 		dat += "<hr><b>Hair</b><br>"
 
 		dat += "<a href='byond://?src=\ref[user];preferences=1;hair=input'>Change Color</a> <font face=\"fixedsys\" size=\"3\" color=\"#[num2hex(src.r_hair, 2)][num2hex(src.g_hair, 2)][num2hex(src.b_hair, 2)]\"><table bgcolor=\"#[num2hex(src.r_hair, 2)][num2hex(src.g_hair, 2)][num2hex(src.b_hair)]\"><tr><td>IM</td></tr></table></font>"
-/*
-		dat += " <font color=\"#[num2hex(src.r_hair, 2)]0000\">Red</font> - <a href='byond://?src=\ref[user];preferences=1;r_hair=input'>[src.r_hair]</a>"
-		dat += " <font color=\"#00[num2hex(src.g_hair, 2)]00\">Green</font> - <a href='byond://?src=\ref[user];preferences=1;g_hair=input'>[src.g_hair]</a>"
-		dat += " <font color=\"#0000[num2hex(src.b_hair, 2)]\">Blue</font> - <a href='byond://?src=\ref[user];preferences=1;b_hair=input'>[src.b_hair]</a><br>"
-*/
 		dat += "Style: <a href='byond://?src=\ref[user];preferences=1;h_style=input'>[src.h_style]</a>"
 
 		dat += "<hr><b>Facial</b><br>"
 
 		dat += "<a href='byond://?src=\ref[user];preferences=1;facial=input'>Change Color</a> <font face=\"fixedsys\" size=\"3\" color=\"#[num2hex(src.r_facial, 2)][num2hex(src.g_facial, 2)][num2hex(src.b_facial, 2)]\"><table bgcolor=\"#[num2hex(src.r_facial, 2)][num2hex(src.g_facial, 2)][num2hex(src.b_facial)]\"><tr><td>GO</td></tr></table></font>"
-/*
-		dat += " <font color=\"#[num2hex(src.r_facial, 2)]0000\">Red</font> - <a href='byond://?src=\ref[user];preferences=1;r_facial=input'>[src.r_facial]</a>"
-		dat += " <font color=\"#00[num2hex(src.g_facial, 2)]00\">Green</font> - <a href='byond://?src=\ref[user];preferences=1;g_facial=input'>[src.g_facial]</a>"
-		dat += " <font color=\"#0000[num2hex(src.b_facial, 2)]\">Blue</font> - <a href='byond://?src=\ref[user];preferences=1;b_facial=input'>[src.b_facial]</a><br>"
-*/
 		dat += "Style: <a href='byond://?src=\ref[user];preferences=1;f_style=input'>[src.f_style]</a>"
 
 		dat += "<hr><b>Eyes</b><br>"
 		dat += "<a href='byond://?src=\ref[user];preferences=1;eyes=input'>Change Color</a> <font face=\"fixedsys\" size=\"3\" color=\"#[num2hex(src.r_eyes, 2)][num2hex(src.g_eyes, 2)][num2hex(src.b_eyes, 2)]\"><table bgcolor=\"#[num2hex(src.r_eyes, 2)][num2hex(src.g_eyes, 2)][num2hex(src.b_eyes)]\"><tr><td>KU</td></tr></table></font>"
-/*
-		dat += " <font color=\"#[num2hex(src.r_eyes, 2)]0000\">Red</font> - <a href='byond://?src=\ref[user];preferences=1;r_eyes=input'>[src.r_eyes]</a>"
-		dat += " <font color=\"#00[num2hex(src.g_eyes, 2)]00\">Green</font> - <a href='byond://?src=\ref[user];preferences=1;g_eyes=input'>[src.g_eyes]</a>"
-		dat += " <font color=\"#0000[num2hex(src.b_eyes, 2)]\">Blue</font> - <a href='byond://?src=\ref[user];preferences=1;b_eyes=input'>[src.b_eyes]</a>"
-*/
-		dat += "<hr>"
-		if(!jobban_isbanned(user, "Syndicate"))
-			dat += "<b>Be syndicate?:</b> <a href =\"byond://?src=\ref[user];preferences=1;b_syndicate=1\"><b>[(src.be_syndicate ? "Yes" : "No")]</b></a><br>"
-		else
-			dat += "<b> You are banned from being syndicate.</b>"
-			src.be_syndicate = 0
 		dat += "<hr>"
 
 		if (!IsGuestKey(user.key))
@@ -238,12 +211,8 @@ datum/preferences
 			if(3.0)
 				HTML += "<b>Which occupation would you like if you couldn't have the others?</b><br><br>"
 			else
-		for(var/job in uniquelist(occupations + assistant_occupations) )
-			if ((job!="AI" || config.allow_ai) && !jobban_isbanned(user, job))
-				HTML += "<a href=\"byond://?src=\ref[user];preferences=1;occ=[occ];job=[job]\">[job]</a><br>"
 
-		if(!jobban_isbanned(user, "Captain"))
-			HTML += "<a href=\"byond://?src=\ref[user];preferences=1;occ=[occ];job=Captain\">Captain</a><br>"
+		HTML += "<a href=\"byond://?src=\ref[user];preferences=1;occ=[occ];job=Captain\">Captain</a><br>"
 		HTML += "<br>"
 		HTML += "<a href=\"byond://?src=\ref[user];preferences=1;occ=[occ];job=No Preference\">\[No Preference\]</a><br>"
 		HTML += "<a href=\"byond://?src=\ref[user];preferences=1;occ=[occ];cancel\">\[Cancel\]</a>"
@@ -257,8 +226,6 @@ datum/preferences
 		if ((!( occupations.Find(job) ) && !( assistant_occupations.Find(job) ) && job != "Captain"))
 			return
 		if (job=="AI" && (!config.allow_ai))
-			return
-		if (jobban_isbanned(user, job))
 			return
 
 		switch(occ)

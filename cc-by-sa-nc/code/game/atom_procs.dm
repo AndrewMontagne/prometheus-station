@@ -126,11 +126,6 @@
 
 /atom/Click(location,control,params)
 	//world << "atom.Click() on [src] by [usr] : src.type is [src.type]"
-
-	if(usr.client.buildmode)
-		build_click(usr, usr.client.buildmode, location, control, params, src)
-		return
-
 	return DblClick()
 
 /atom/DblClick() //TODO: DEFERRED: REWRITE
