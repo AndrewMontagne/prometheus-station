@@ -21,7 +21,7 @@ def debug(s):
         print(s)
 
 def version():
-    return "1.0.0"
+    return "1.0.1"
 
 def mapmerge(filepath, test_only=False):
     hashLength = 0
@@ -179,8 +179,8 @@ def mapmerge(filepath, test_only=False):
 
         # OUTPUT MAPS
 
-        if len(sortedtiles) < 10:
-            print(filepath + " does not appear to be a *.dmm!")
+        if len(sortedtiles) < 2:
+            print("\nFATAL: " + filepath + " only has one tile!")
             return
 
         with open(filepath, 'w') as out:
@@ -197,8 +197,11 @@ def mapmerge(filepath, test_only=False):
                 out.write('"' + tile['newhash'] + '"=(' + tile['data'] + ')\n')
             print('.', end='', flush=True)
 
+            out.write('// END AREA: ' + lastarea + '\n')
+
             for map, maptiles in maps.items():
-                out.write('\n')
+                z_level = map.split(',')[2]
+                out.write('\n//BEGIN Z-LEVEL ' + str(z_level) + '\n')
                 out.write('(' + map + ') = {"\n')
 
                 chunks = listchunks(maptiles, mapwidth)
@@ -206,6 +209,7 @@ def mapmerge(filepath, test_only=False):
                     out.write(''.join(chunk) + "\n")
 
                 out.write('"}\n')
+                out.write('//END Z-LEVEL ' + str(z_level) + '\n')
                 out.flush()
                 print('.', end='', flush=True)
 

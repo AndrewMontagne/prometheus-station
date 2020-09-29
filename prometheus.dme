@@ -412,8 +412,8 @@
 #include "cc-by-sa-nc\code\WorkInProgress\recycling\disposal.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\recycling\scrap.dm"
 #include "cc-by-sa-nc\interface\skin.dmf"
-#include "cc-by-sa-nc\maps\trunkmap.dmm"
 #include "closed-source\list_sort.dm"
+#include "closed-source\maps\trunkmap.dmm"
 #include "closed-source\modules\admin\datum\permission.dm"
 #include "closed-source\modules\admin\datum\role.dm"
 #include "closed-source\modules\admin\datum\permission\ban.dm"
@@ -424,6 +424,7 @@
 #include "closed-source\modules\infobrowser\infobrowser.dm"
 #include "closed-source\modules\map_pane\map_pane.dm"
 #include "closed-source\modules\parallax\parallax.dm"
+#include "lib\DreamChecker\dreamchecker.dm"
 #include "lib\GoonLights\helpers\area.dm"
 #include "lib\GoonLights\helpers\atom.dm"
 #include "lib\GoonLights\helpers\dview.dm"
@@ -447,6 +448,4 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
-#define FILE_DIR "cc-by-sa-nc"
-#define FILE_DIR "closed-source"
 // END_FILE_DIR

@@ -18,17 +18,17 @@ lint:
 
 mapmerge-test:
 	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
-	@python3 ./mit/tools/mapmerge.py --test-only ./cc-by-sa-nc/maps/*.dmm
+	@python3 ./mit/tools/mapmerge.py --test-only ./closed-source/maps/*.dmm
 
 mapmerge:
 	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
-	@python3 ./mit/tools/mapmerge.py ./cc-by-sa-nc/maps/*.dmm
+	@python3 ./mit/tools/mapmerge.py ./closed-source/maps/*.dmm
 
 build:
 	@echo -e '\n${INV} ###   BUILD   ### ${NC}\n'
 	@mkdir -p /tmp/prometheus-station
 	@rsync -ra --delete --exclude='/.*' --exclude='/data' ./* /tmp/prometheus-station
-	@(cd /tmp/prometheus-station && DreamMaker prometheus.dme)
+	@(cd /tmp/prometheus-station && DreamMaker -clean prometheus.dme)
 	@rsync -rai --delete /tmp/prometheus-station/* .
 
 run:
