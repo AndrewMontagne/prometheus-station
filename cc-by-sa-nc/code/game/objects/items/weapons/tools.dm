@@ -201,7 +201,7 @@ WELDINGTOOOL
 		if (get_fuel() <= 0)
 			user << "\blue Need more fuel!"
 			src.welding = 0
-			return 0
+			return FALSE
 		user << "\blue You will now weld when you attack."
 		src.force = 15
 		src.damtype = "fire"

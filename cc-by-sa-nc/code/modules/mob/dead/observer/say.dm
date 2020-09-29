@@ -1,5 +1,5 @@
 /mob/dead/observer/say_understands(var/other)
-	return 1
+	return TRUE
 
 /mob/dead/observer/say(var/message)
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))

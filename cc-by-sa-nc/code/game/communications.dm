@@ -42,7 +42,7 @@ datum/controller/radio
 				del(frequency)
 				frequencies -= old_frequency
 
-		return 1
+		return TRUE
 
 	proc/return_frequency(frequency)
 		return frequencies[frequency]
@@ -58,7 +58,7 @@ datum/radio_frequency
 				start_point = get_turf(source)
 				if(!start_point)
 					del(signal)
-					return 0
+					return FALSE
 
 			for(var/obj/device in devices)
 				if(device != source)

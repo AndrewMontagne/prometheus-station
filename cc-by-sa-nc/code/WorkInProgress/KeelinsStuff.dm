@@ -225,14 +225,14 @@
 	var/steps = 0
 
 	while(current != target_turf)
-		if(steps > length) return 0
-		if(current.opacity) return 0
+		if(steps > length) return FALSE
+		if(current.opacity) return FALSE
 		for(var/atom/A in current)
-			if(A.opacity) return 0
+			if(A.opacity) return FALSE
 		current = get_step_towards(current, target_turf)
 		steps++
 
-	return 1
+	return TRUE
 
 
 /mob/proc/get_equipped_items()
@@ -293,31 +293,31 @@
 	else return get_step(ref, base_dir)
 
 /proc/do_mob(var/mob/user , var/mob/target, var/time = 30) //This is quite an ugly solution but i refuse to use the old request system.
-	if(!user || !target) return 0
+	if(!user || !target) return FALSE
 	var/user_loc = user.loc
 	var/target_loc = target.loc
 	var/holding = user.equipped()
 	sleep(time)
 	if ( user.loc == user_loc && target.loc == target_loc && user.equipped() == holding && !( user.stat ) && ( !user.stunned && !user.weakened && !user.paralysis && !user.lying ) )
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /proc/do_after(mob/M as mob, time as num)
 	var/turf/T = M.loc
 	var/holding = M.equipped()
 	sleep(time)
 	if ((M.loc == T && M.equipped() == holding && !( M.stat )))
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /proc/hasvar(var/datum/A, var/varname)
 	//Takes: Anything that could possibly have variables and a varname to check.
 	//Returns: 1 if found, 0 if not.
 	//Notes: Do i really need to explain this?
-	if(A.vars.Find(lowertext(varname))) return 1
-	else return 0
+	if(A.vars.Find(lowertext(varname))) return TRUE
+	else return FALSE
 
 /proc/get_areas(var/areatype)
 	//Takes: Area type as text string or as typepath OR an instance of the area.
@@ -381,7 +381,7 @@
 	//       Movement based on lower left corner. Tiles that do not fit
 	//		 into the new area will not be moved.
 
-	if(!A || !src) return 0
+	if(!A || !src) return FALSE
 
 	var/list/turfs_src = get_area_turfs(src.type)
 	var/list/turfs_trg = get_area_turfs(A.type)

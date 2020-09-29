@@ -293,7 +293,7 @@
 	if (src.restrained())
 		for(var/mob/M in range(src, 1))
 			if ((M.pulling == src && M.stat == 0 && !( M.restrained() )))
-				return 0
+				return FALSE
 	if ((t7 && src.pulling && get_dist(src, src.pulling) <= 1))
 		if (src.pulling.anchored)
 			src.pulling = null

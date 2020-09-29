@@ -67,5 +67,3 @@
 		if(prob(5))
 			src.virus.carrier = 1
 		return
-	return
-

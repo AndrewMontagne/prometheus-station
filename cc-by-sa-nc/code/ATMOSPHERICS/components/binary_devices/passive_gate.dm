@@ -27,7 +27,7 @@ obj/machinery/atmospherics/binary/passive_gate
 	process()
 		..()
 		if(!on)
-			return 0
+			return FALSE
 
 		var/output_starting_pressure = air2.return_pressure()
 		var/input_starting_pressure = air1.return_pressure()
@@ -35,7 +35,7 @@ obj/machinery/atmospherics/binary/passive_gate
 		if(output_starting_pressure >= min(target_pressure,input_starting_pressure-10))
 			//No need to pump gas if target is already reached or input pressure is too low
 			//Need at least 10 KPa difference to overcome friction in the mechanism
-			return 1
+			return TRUE
 
 		//Calculate necessary moles to transfer using PV = nRT
 		if((air1.total_moles() > 0) && (air1.temperature>0))

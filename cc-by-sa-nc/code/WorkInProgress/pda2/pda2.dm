@@ -259,7 +259,7 @@
 
 	run_program(datum/computer/file/pda_program/program)
 		if((!program) || (!program.holder))
-			return 0
+			return FALSE
 
 		if(!(program.holder in src))
 	//		world << "Not in src"
@@ -277,16 +277,16 @@
 				src.scan_program = null
 			else
 				src.scan_program = program
-			return 1
+			return TRUE
 
 		src.active_program = program
-		return 1
+		return TRUE
 
 	delete_file(datum/computer/file/file)
 		//world << "Deleting [file]..."
 		if((!file) || (!file.holder) || (file.holder.read_only))
 			//world << "Cannot delete :("
-			return 0
+			return FALSE
 
 		//Don't delete the running program you jerk
 		if(src.active_program == file || src.host_program == file)
@@ -294,4 +294,4 @@
 
 		//world << "Now calling del on [file]..."
 		del(file)
-		return 1
+		return TRUE

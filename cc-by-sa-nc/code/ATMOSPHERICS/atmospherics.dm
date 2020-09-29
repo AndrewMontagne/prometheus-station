@@ -41,7 +41,7 @@ obj/machinery/atmospherics
 		reassign_network(datum/pipe_network/old_network, datum/pipe_network/new_network)
 			// Used when two pipe_networks are combining
 
-		return_network_air(datum/network/reference)
+		return_network_air(datum/pipe_network/reference)
 			// Return a list of gas_mixture(s) in the object
 			//		associated with reference pipe_network for use in rebuilding the networks gases list
 			// Is permitted to return null

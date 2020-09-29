@@ -21,7 +21,7 @@
 		var/turf/location = src.loc
 		if (isturf(location))
 			location.hotspot_expose(1000,500,1)
-	return 1
+	return TRUE
 
 /obj/machinery/igniter/New()
 	..()
@@ -96,7 +96,7 @@
 	var/turf/location = src.loc
 	if (isturf(location))
 		location.hotspot_expose(1000,500,1)
-	return 1
+	return TRUE
 
 
 /obj/machinery/ignition_switch/attack_ai(mob/user as mob)

@@ -21,7 +21,7 @@
 			network = new_network
 
 		if(new_network.normal_members.Find(src))
-			return 0
+			return FALSE
 
 		new_network.normal_members += src
 
@@ -69,7 +69,7 @@
 		if(network == old_network)
 			network = new_network
 
-		return 1
+		return TRUE
 
 	return_network_air(datum/pipe_network/reference)
 		var/list/results = list()

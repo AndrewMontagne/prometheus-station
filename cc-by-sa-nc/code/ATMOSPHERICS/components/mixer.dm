@@ -63,13 +63,13 @@ obj/machinery/atmospherics/mixer
 	process()
 		..()
 		if(!on)
-			return 0
+			return FALSE
 
 		var/output_starting_pressure = air_out.return_pressure()
 
 		if(output_starting_pressure >= target_pressure)
 			//No need to mix if target is already full!
-			return 1
+			return TRUE
 
 		//Calculate necessary moles to transfer using PV=nRT
 
@@ -111,7 +111,7 @@ obj/machinery/atmospherics/mixer
 		if(network_out)
 			network_out.update = 1
 
-		return 1
+		return TRUE
 
 // Housekeeping and pipe network stuff below
 	network_expand(datum/pipe_network/new_network, obj/machinery/atmospherics/pipe/reference)
@@ -125,7 +125,7 @@ obj/machinery/atmospherics/mixer
 			network_out = new_network
 
 		if(new_network.normal_members.Find(src))
-			return 0
+			return FALSE
 
 		new_network.normal_members += src
 
@@ -217,7 +217,7 @@ obj/machinery/atmospherics/mixer
 		if(network_out == old_network)
 			network_out = new_network
 
-		return 1
+		return TRUE
 
 	return_network_air(datum/pipe_network/reference)
 		var/list/results = list()

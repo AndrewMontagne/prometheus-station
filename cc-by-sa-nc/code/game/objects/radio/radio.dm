@@ -215,12 +215,10 @@ Frequency:
 		talk_into(M, msg)
 
 /obj/item/device/radio/proc/accept_rad(obj/item/device/radio/R as obj, message)
-
 	if ((R.frequency == src.frequency && message))
-		return 1
+		return TRUE
 	else
 		return null
-	return
 
 /obj/item/device/radio/proc/send_hear()
 	if(last_transmission && world.time < (last_transmission + TRANSMISSION_DELAY))

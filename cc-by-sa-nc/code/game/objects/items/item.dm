@@ -145,8 +145,8 @@
 		var/mob/living/carbon/human/H = M
 		if (istype(user, /mob/living/carbon/human))
 			if (!( def_zone ))
-				var/mob/user2 = user
-				var/t = user2:zone_sel.selecting
+				var/mob/living/carbon/human/user2 = user
+				var/t = user2.zone_sel.selecting
 				if ((t in list( "eyes", "mouth" )))
 					t = "head"
 				def_zone = ran_zone(t)

@@ -51,7 +51,7 @@ datum
 				var/total_transfered = 0
 				var/current_list_element = 1
 				var/datum/reagents/R = target.reagents
-				//if(R.total_volume + amount > R.maximum_volume) return 0
+				//if(R.total_volume + amount > R.maximum_volume) return FALSE
 
 				current_list_element = rand(1,reagent_list.len) //Eh, bandaid fix.
 
@@ -114,7 +114,7 @@ datum
 						C.on_reaction(src, created_volume)
 
 				update_total()
-				return 0
+				return FALSE
 
 			isolate_reagent(var/reagent)
 				for(var/A in reagent_list)
@@ -131,10 +131,10 @@ datum
 						del(A)
 						update_total()
 						my_atom.on_reagent_change()
-						return 0
+						return FALSE
 
 
-				return 1
+				return TRUE
 
 			update_total()
 				total_volume = 0
@@ -144,12 +144,12 @@ datum
 					else
 						total_volume += R.volume
 
-				return 0
+				return FALSE
 
 			clear_reagents()
 				for(var/datum/reagent/R in reagent_list)
 					del_reagent(R.id)
-				return 0
+				return FALSE
 
 			reaction(var/atom/A, var/method=TOUCH, var/volume_modifier=0)
 				switch(method)
@@ -166,7 +166,7 @@ datum
 				return
 
 			add_reagent(var/reagent, var/amount)
-				if(!isnum(amount)) return 1
+				if(!isnum(amount)) return TRUE
 				update_total()
 				if(total_volume + amount > maximum_volume) amount = (maximum_volume - total_volume) //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
 
@@ -176,7 +176,7 @@ datum
 						R.volume += amount
 						update_total()
 						my_atom.on_reagent_change()
-						return 0
+						return FALSE
 
 				for(var/A in typesof(/datum/reagent) - /datum/reagent)
 					var/datum/reagent/R = new A()
@@ -186,13 +186,13 @@ datum
 						R.volume = amount
 						update_total()
 						my_atom.on_reagent_change()
-						return 0
+						return FALSE
 
-				return 1
+				return TRUE
 
 			remove_reagent(var/reagent, var/amount)
 
-				if(!isnum(amount)) return 1
+				if(!isnum(amount)) return TRUE
 
 				for(var/A in reagent_list)
 					var/datum/reagent/R = A
@@ -201,21 +201,21 @@ datum
 						update_total()
 						handle_reactions()
 						my_atom.on_reagent_change()
-						return 0
+						return FALSE
 
-				return 1
+				return TRUE
 
 			has_reagent(var/reagent, var/amount = -1)
 
 				for(var/A in reagent_list)
 					var/datum/reagent/R = A
 					if (R.id == reagent)
-						if(!amount) return 1
+						if(!amount) return TRUE
 						else
-							if(R.volume >= amount) return 1
-							else return 0
+							if(R.volume >= amount) return TRUE
+							else return FALSE
 
-				return 0
+				return FALSE
 
 			get_reagent_amount(var/reagent)
 				for(var/A in reagent_list)
@@ -223,7 +223,7 @@ datum
 					if (R.id == reagent)
 						return R.volume
 
-				return 0
+				return FALSE
 
 ///////////////////////////////////////////////////////////////////////////////////
 

@@ -425,27 +425,27 @@
 	return ((src.apcwires & wireFlag) == 0)
 
 /obj/machinery/power/apc/proc/get_connection()
-	if(stat & BROKEN)	return 0
-	return 1
+	if(stat & BROKEN)	return FALSE
+	return TRUE
 
 /obj/machinery/power/apc/proc/shock(mob/user, prb)
 	if(!prob(prb))
-		return 0
+		return FALSE
 	var/net = get_connection()		// find the powernet of the connected cable
 	if(!net)		// cable is unpowered
-		return 0
+		return FALSE
 	return src.apcelectrocute(user, prb, net)
 
 /obj/machinery/power/apc/proc/apcelectrocute(mob/user, prb, netnum)
 
 	if(stat == 2)
-		return 0
+		return FALSE
 
 	if(!prob(prb))
-		return 0
+		return FALSE
 
 	if(!netnum)		// unconnected cable is unpowered
-		return 0
+		return FALSE
 
 	var/prot = 1
 
@@ -455,10 +455,10 @@
 			var/obj/item/clothing/gloves/G = H.gloves
 			prot = G.siemens_coefficient
 	else if (istype(user, /mob/living/silicon))
-		return 0
+		return FALSE
 
 	if(prot == 0)		// elec insulted gloves protect completely
-		return 0
+		return FALSE
 
 	var/datum/effects/system/spark_spread/s = new /datum/effects/system/spark_spread
 	s.set_up(3, 1, src)
@@ -484,7 +484,7 @@
 		shock_damage = min(rand(20,65),rand(20,65))*prot
 		cell_type = cell_type - 50
 	else
-		return 0
+		return FALSE
 
 	user.burn_skin(shock_damage)
 	user << "\red <B>You feel a powerful shock course through your body!</B>"
@@ -495,7 +495,7 @@
 	for(var/mob/M in viewers(src))
 		if(M == user)	continue
 		M.show_message("\red [user.name] was shocked by the [src.name]!", 3, "\red You hear a heavy electrical crack", 2)
-	return 1
+	return TRUE
 
 
 /obj/machinery/power/apc/proc/cut(var/wireColor)
@@ -645,8 +645,7 @@
 		else if (href_list["overload"])
 			if( istype(usr, /mob/living/silicon) && !src.aidisabled )
 				src.overload_lighting()
-		return
-
+		
 		src.updateUsrDialog()
 
 	else
@@ -659,7 +658,7 @@
 	if(terminal)
 		return terminal.surplus()
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/power/apc/add_load(var/amount)
 	if(terminal && terminal.powernet)
@@ -669,7 +668,7 @@
 	if(terminal)
 		return terminal.avail()
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/power/apc/process()
 
@@ -827,9 +826,9 @@
 
 	if(on==0)
 		if(val==2)			// if on, return off
-			return 0
+			return FALSE
 		else if(val==3)		// if auto-on, return auto-off
-			return 1
+			return TRUE
 
 	else if(on==1)
 		if(val==1)			// if auto-off, return auto-on
@@ -837,7 +836,7 @@
 
 	else if(on==2)
 		if(val==3)			// if auto-on, return auto-off
-			return 1
+			return TRUE
 
 	return val
 

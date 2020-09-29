@@ -23,7 +23,7 @@
 	use_power(5, ENVIRON)
 
 	if (!( istype(location, /turf) ))
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/environment = location.return_air()
 

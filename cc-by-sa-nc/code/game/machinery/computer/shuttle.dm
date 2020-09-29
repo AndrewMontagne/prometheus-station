@@ -18,7 +18,7 @@
 
 		if(!(access_heads in W:access)) //doesn't have this access
 			user << "The access level of [W:registered]\'s card is not high enough. "
-			return 0
+			return FALSE
 
 		var/choice = alert(user, text("Would you like to (un)authorize a shortened launch time? [] authorization\s are still needed. Use abort to cancel all authorizations.", src.auth_need - src.authorized.len), "Shuttle Launch", "Authorize", "Repeal", "Abort")
 		switch(choice)

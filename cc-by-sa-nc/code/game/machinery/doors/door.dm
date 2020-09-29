@@ -11,13 +11,13 @@
 				open()
 
 /obj/machinery/door/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group) return 0
+	if(air_group) return FALSE
 	if(istype(mover, /obj/beam))
 		return !opacity
 	return !density
 
 /obj/machinery/door/proc/update_nearby_tiles(need_rebuild)
-	if(!air_master) return 0
+	if(!air_master) return FALSE
 
 	var/turf/simulated/source = loc
 	var/turf/simulated/north = get_step(source,NORTH)
@@ -58,7 +58,7 @@
 		if(istype(east)) air_master.tiles_to_update += east
 		if(istype(west)) air_master.tiles_to_update += west
 
-	return 1
+	return TRUE
 
 /obj/machinery/door
 	New()
@@ -81,7 +81,7 @@
 	return src.attackby(user, user)
 
 /obj/machinery/door/proc/requiresID()
-	return 1
+	return TRUE
 
 /obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
 	if (src.operating)
@@ -95,7 +95,7 @@
 		flick("door_spark", src)
 		sleep(6)
 		open()
-		return 1
+		return TRUE
 	if (src.allowed(user))
 		if (src.density)
 			open()
@@ -143,11 +143,11 @@
 
 /obj/machinery/door/proc/open()
 	if(!density)
-		return 1
+		return TRUE
 	if (src.operating == 1) //doors can still open when emag-disabled
 		return
 	if (!ticker)
-		return 0
+		return FALSE
 	if(!src.operating) //in case of emag
 		src.operating = 1
 
@@ -165,11 +165,11 @@
 	if(autoclose)
 		spawn(150)
 			autoclose()
-	return 1
+	return TRUE
 
 /obj/machinery/door/proc/close()
 	if(density)
-		return 1
+		return TRUE
 	if (src.operating)
 		return
 	src.operating = 1

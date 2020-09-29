@@ -35,10 +35,10 @@
 
 /mob/proc/say_understands(var/mob/other)
 	if (src.stat == 2)
-		return 1
+		return TRUE
 	else if (istype(other, src.type))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /mob/proc/say_quote(var/text)
 	var/ending = copytext(text, length(text))

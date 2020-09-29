@@ -62,7 +62,7 @@ var/global/datum/controller/gameticker/ticker
 
 		spawn pregame()
 
-		return 0
+		return FALSE
 
 	//Distribute jobs
 	distribute_jobs()
@@ -128,7 +128,7 @@ var/global/datum/controller/gameticker/ticker
 
 	proc/process()
 		if(current_state != GAME_STATE_PLAYING)
-			return 0
+			return FALSE
 
 		mode.process()
 
@@ -146,7 +146,7 @@ var/global/datum/controller/gameticker/ticker
 				sleep(250)
 				world.Reboot()
 
-		return 1
+		return TRUE
 
 /*
 /datum/controller/gameticker/proc/timeup()
@@ -184,7 +184,7 @@ var/global/datum/controller/gameticker/ticker
 
 	mode.declare_completion()
 
-	return 1
+	return TRUE
 
 /////
 /////SETTING UP THE GAME

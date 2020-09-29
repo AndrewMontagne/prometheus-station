@@ -43,20 +43,20 @@
 
 /atom/proc/add_fingerprint(mob/living/carbon/human/M as mob)
 	if (!istype(M, /mob/living/carbon/human))
-		return 0
+		return FALSE
 	if (!( src.flags ) & 256)
 		return
 	if (M.gloves)
 		if(src.fingerprintslast != M.key)
 			src.fingerprintshidden += text("(Wearing gloves). Real name: [], Key: []",M.real_name, M.key)
 			src.fingerprintslast = M.key
-		return 0
+		return FALSE
 	if (!( src.fingerprints ))
 		src.fingerprints = text("[]", md5(M.key))
 		if(src.fingerprintslast != M.key)
 			src.fingerprintshidden += text("Real name: [], Key: []",M.real_name, M.key)
 			src.fingerprintslast = M.key
-		return 1
+		return TRUE
 	else
 		var/list/L = params2list(src.fingerprints)
 		L -= md5(M.key)
@@ -72,7 +72,7 @@
 
 /atom/proc/add_blood(mob/living/carbon/human/M as mob)
 	if (!( istype(M, /mob/living/carbon/human) ))
-		return 0
+		return FALSE
 	if (!( src.flags ) & 256)
 		return
 	if (!( src.blood_type ))
@@ -184,7 +184,7 @@
 	if (istype(usr, /mob/living/silicon/robot) && W == null)
 		t5 = 1
 
-	if (istype(src, /datum/organ) && src in usr.contents)
+	if (istype(src, /datum/organ) && (src in usr.contents))
 		return
 
 	if (((t5 || (W && (W.flags & 16))) && !( istype(src, /obj/screen) )))
@@ -267,7 +267,7 @@
 			del(D)
 			if (!( ok ))
 
-				return 0
+				return FALSE
 
 		if (!( usr.restrained() ))
 			if (W)

@@ -209,7 +209,7 @@
 		src.add_scrap(O)
 		if(O)
 			return 0		// O still exists if not all could be transfered, so block it
-	return 1
+	return TRUE
 
 /obj/item/scrap/proc/to_text()
 	return "[m_amt],[g_amt],[w_amt] ([total()])"
@@ -247,7 +247,7 @@
 // must be total<=400 and of single composition
 /obj/item/scrap/proc/is_single_piece()
 	if(total() > 400)
-		return 0
+		return FALSE
 
 	var/empty = (m_amt == 0) + (g_amt == 0) + (w_amt == 0)
 

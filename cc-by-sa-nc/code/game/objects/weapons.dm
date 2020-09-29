@@ -911,12 +911,12 @@
 	return
 
 /obj/bullet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+	if(air_group || (height==0)) return TRUE
 
 	if(istype(mover, /obj/bullet))
 		return prob(95)
 	else
-		return 1
+		return TRUE
 
 /obj/bullet/weakbullet/Bump(atom/A as mob|obj|turf|area)
 	spawn(0)

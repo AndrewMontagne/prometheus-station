@@ -286,7 +286,7 @@ var/supply_shuttle_points = 50
 	if (istype(A, /mob/living)) // You Shall Not Pass!
 		var/mob/living/M = A
 		if(!M.lying)			// unless you're lying down
-			return 0
+			return FALSE
 	return ..()
 
 /obj/plasticflaps/ex_act(severity)
@@ -360,16 +360,16 @@ var/supply_shuttle_points = 50
 	send_supply_shuttle()
 
 /proc/supply_can_move()
-	if(supply_shuttle_moving) return 0
+	if(supply_shuttle_moving) return FALSE
 
 	var/shuttleat = supply_shuttle_at_station ? SUPPLY_STATION_AREATYPE : SUPPLY_DOCK_AREATYPE
 
 	for(var/turf/T in get_area_turfs(shuttleat) )
-		if(locate(/mob/living) in T) return 0
+		if(locate(/mob/living) in T) return FALSE
 		for(var/atom/atom in T)
-			if(locate(/mob/living) in atom) return 0
+			if(locate(/mob/living) in atom) return FALSE
 
-	return 1
+	return TRUE
 
 /proc/sell_crates()
 	var/shuttleat = supply_shuttle_at_station ? SUPPLY_STATION_AREATYPE : SUPPLY_DOCK_AREATYPE

@@ -215,7 +215,7 @@
 	return
 
 /atom/proc/laserhit(L as obj)
-	return 1
+	return TRUE
 
 /obj/machinery/computer/data/weapon/log/New()
 	..()

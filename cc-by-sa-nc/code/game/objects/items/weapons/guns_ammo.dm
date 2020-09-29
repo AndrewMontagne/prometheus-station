@@ -143,10 +143,10 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 	if (istype(A, /obj/item/weapon/ammo/a357))
 		if (src.bullets >= 7)
 			user << "\blue It's already fully loaded!"
-			return 1
+			return TRUE
 		if (A.amount_left <= 0)
 			user << "\red There is no more bullets!"
-			return 1
+			return TRUE
 		if (A.amount_left < (7 - src.bullets))
 			src.bullets += A.amount_left
 			user << text("\red You reload [] bullet\s!", A.amount_left)
@@ -156,7 +156,7 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 			A.amount_left -= 7 - src.bullets
 			src.bullets = 7
 		A.update_icon()
-		return 1
+		return TRUE
 	return
 
 /obj/item/weapon/gun/revolver/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
@@ -253,10 +253,10 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 	if (istype(A, /obj/item/weapon/ammo/a38))
 		if (src.bullets >= 7)
 			user << "\blue It's already fully loaded!"
-			return 1
+			return TRUE
 		if (A.amount_left <= 0)
 			user << "\red There is no more bullets!"
-			return 1
+			return TRUE
 		if (A.amount_left < (7 - src.bullets))
 			src.bullets += A.amount_left
 			user << text("\red You reload [] bullet\s!", A.amount_left)
@@ -266,7 +266,7 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 			A.amount_left -= 7 - src.bullets
 			src.bullets = 7
 		A.update_icon()
-		return 1
+		return TRUE
 	return
 
 /obj/item/weapon/gun/detectiverevolver/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)

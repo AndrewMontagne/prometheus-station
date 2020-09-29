@@ -258,7 +258,7 @@
 
 				oxygen_alert = max(oxygen_alert, 1)
 
-				return 0
+				return FALSE
 
 			var/safe_oxygen_min = 16 // Minimum safe partial pressure of O2, in kPa
 			//var/safe_oxygen_max = 140 // Maximum safe partial pressure of O2, in kPa (Not used for now)
@@ -343,7 +343,7 @@
 
 			//Temporary fixes to the alerts.
 
-			return 1
+			return TRUE
 
 		handle_environment(datum/gas_mixture/environment)
 			if(!environment)
@@ -354,7 +354,8 @@
 				environment_heat_capacity = loc:heat_capacity
 				loc_temp = 2.7
 			else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-				loc_temp = loc:air_contents.temperature
+				var/obj/machinery/atmospherics/unary/cryo_cell/cryo = loc
+				loc_temp = cryo.air_contents.temperature
 			else
 				loc_temp = environment.temperature
 
@@ -643,7 +644,7 @@
 				src.druggy--
 				src.druggy = max(0, src.druggy)
 
-			return 1
+			return TRUE
 
 		handle_regular_hud_updates()
 
@@ -724,26 +725,23 @@
 			src.client.screen -= src.hud_used.druggy
 			src.client.screen -= src.hud_used.vimpaired
 
-			if ((src.blind && src.stat != 2))
-				if (0) //(src.blinded)
-					src.blind.invisibility = 0
-				else
-					src.blind.invisibility = 101
+			if (src.blind && src.stat != 2)
+				src.blind.invisibility = 101
 
-					if (src.disabilities & 1 && !istype(src.glasses, /obj/item/clothing/glasses/regular) )
-						src.client.screen += src.hud_used.vimpaired
+				if (src.disabilities & 1 && !istype(src.glasses, /obj/item/clothing/glasses/regular) )
+					src.client.screen += src.hud_used.vimpaired
 
-					if (src.eye_blurry)
-						src.client.screen += src.hud_used.blurry
+				if (src.eye_blurry)
+					src.client.screen += src.hud_used.blurry
 
-					if (src.druggy)
-						src.client.screen += src.hud_used.druggy
+				if (src.druggy)
+					src.client.screen += src.hud_used.druggy
 
 			if (src.stat != 2)
 				if (src.machine)
 					if (!( src.machine.check_eye(src) ))
 						src.reset_view(null)
-			return 1
+			return TRUE
 
 		handle_random_events()
 			if (prob(1) && prob(2))

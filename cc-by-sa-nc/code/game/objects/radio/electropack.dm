@@ -8,12 +8,9 @@
 	return
 
 /obj/item/device/radio/electropack/attack_paw(mob/user as mob)
-
 	return src.attack_hand(user)
-	return
 
 /obj/item/device/radio/electropack/attack_hand(mob/user as mob)
-
 	if (src == user.back)
 		user << "\blue You need help taking this off!"
 		return
@@ -22,7 +19,6 @@
 	return
 
 /obj/item/device/radio/electropack/attackby(obj/item/weapon/W as obj, mob/user as mob)
-
 	if (istype(W, /obj/item/weapon/screwdriver))
 		src.e_pads = !( src.e_pads )
 		if (src.e_pads)
@@ -98,12 +94,10 @@
 	return
 
 /obj/item/device/radio/electropack/accept_rad(obj/item/device/radio/signaler/R as obj, message)
-
 	if ((istype(R, /obj/item/device/radio/signaler) && R.frequency == src.frequency && R.code == src.code))
-		return 1
+		return TRUE
 	else
 		return null
-	return
 
 /obj/item/device/radio/electropack/receive_signal(datum/signal/signal)
 	if(!signal || (signal.encryption != code))

@@ -29,7 +29,7 @@
 	process()
 		..()
 		if(!on)
-			return 0
+			return FALSE
 
 		var/datum/gas_mixture/environment = loc.return_air()
 
@@ -74,7 +74,7 @@
 			if(network)
 				network.update = 1
 
-		return 1
+		return TRUE
 
 	hide(var/i) //to make the little pipe section invisible, the icon changes.
 		if(on&&node)

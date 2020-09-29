@@ -205,7 +205,7 @@
 		if(C.d1 == 0)
 			return C.netnum
 
-	return 0
+	return FALSE
 
 /obj/machinery/autolathe/proc/shock(M as mob)
 	return src.electrocute(M, 50, get_connection())

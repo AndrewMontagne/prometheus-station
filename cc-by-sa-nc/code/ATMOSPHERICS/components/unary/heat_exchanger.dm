@@ -33,10 +33,10 @@
 	process()
 		..()
 		if(!partner)
-			return 0
+			return FALSE
 
 		if(!air_master || air_master.current_cycle <= update_cycle)
-			return 0
+			return FALSE
 
 		update_cycle = air_master.current_cycle
 		partner.update_cycle = air_master.current_cycle
@@ -63,4 +63,4 @@
 			if(abs(other_old_temperature-partner.air_contents.temperature) > 1)
 				partner.network.update = 1
 
-		return 1
+		return TRUE

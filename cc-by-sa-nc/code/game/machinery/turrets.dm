@@ -16,7 +16,7 @@
 		if (!istype(O, /mob/living/silicon))
 			if (!(O in turretTargets))
 				turretTargets += O
-	return 1
+	return TRUE
 
 /area/turret_protected/Exited(O)
 	if (istype(O, /mob))
@@ -29,7 +29,7 @@
 			if (turretTargets.len == 0)
 				popDownTurrets()
 
-	return 1
+	return TRUE
 
 /area/turret_protected/proc/popDownTurrets()
 	for (var/obj/machinery/turret/aTurret in src)

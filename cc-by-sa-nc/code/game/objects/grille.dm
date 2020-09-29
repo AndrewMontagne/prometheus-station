@@ -9,7 +9,7 @@
 		if(C.d1 == 0)
 			return C.netnum
 
-	return 0
+	return FALSE
 
 
 /obj/grille/ex_act(severity)
@@ -48,10 +48,10 @@
 		src.health -= 1
 
 /obj/grille/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+	if(air_group || (height==0)) return TRUE
 
 	if (istype(mover, /obj/effects) || istype(mover, /obj/item/weapon/dummy) || istype(mover, /obj/beam))
-		return 1
+		return TRUE
 	else
 		if (istype(mover, /obj/bullet))
 			return prob(30)
@@ -109,14 +109,14 @@
 /obj/grille/proc/shock(mob/user, prb)
 
 	if(!anchored || destroyed)		// anchored/destroyed grilles are never connected
-		return 0
+		return FALSE
 
 	if(!prob(prb))
-		return 0
+		return FALSE
 
 	var/net = get_connection()		// find the powernet of the connected cable
 
 	if(!net)		// cable is unpowered
-		return 0
+		return FALSE
 
 	return src.electrocute(user, prb, net)

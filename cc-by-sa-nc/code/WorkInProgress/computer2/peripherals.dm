@@ -26,12 +26,12 @@
 	proc
 		receive_command(obj/source, command, datum/signal/signal)
 			if((source != host) || !(src in host))
-				return 1
+				return TRUE
 
 			if(!command)
-				return 1
+				return TRUE
 
-			return 0
+			return FALSE
 
 		send_command(command, datum/signal/signal)
 			if(!command || !host)

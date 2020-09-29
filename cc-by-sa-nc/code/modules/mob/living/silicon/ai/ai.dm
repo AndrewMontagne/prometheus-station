@@ -46,10 +46,10 @@
 	if (!src.current)
 		return null
 	user.reset_view(src.current)
-	return 1
+	return TRUE
 
 /mob/living/silicon/ai/restrained()
-	return 0
+	return FALSE
 
 /mob/living/silicon/ai/ex_act(severity)
 	flick("flash", src.flash)
@@ -150,19 +150,19 @@
 	if (!C)
 		src.machine = null
 		src.reset_view(null)
-		return 0
-	if (stat == 2 || !C.status || C.network != src.network) return 0
+		return FALSE
+	if (stat == 2 || !C.status || C.network != src.network) return FALSE
 
 	// ok, we're alive, camera is good and in our network...
 
 	src.machine = src
 	src:current = C
 	src.reset_view(C)
-	return 1
+	return TRUE
 
 /mob/living/silicon/ai/triggerAlarm(var/class, area/A, var/O, var/alarmsource)
 	if (stat == 2)
-		return 1
+		return TRUE
 	var/list/L = src.alarms[class]
 	for (var/I in L)
 		if (I == A.name)
@@ -170,7 +170,7 @@
 			var/list/sources = alarm[3]
 			if (!(alarmsource in sources))
 				sources += alarmsource
-			return 1
+			return TRUE
 	var/obj/machinery/camera/C = null
 	var/list/CL = null
 	if (O && istype(O, /list))
@@ -195,7 +195,7 @@
 	else
 		src << text("--- [] alarm detected in []! (No Camera)", class, A.name)
 	if (src.viewalerts) src.ai_alerts()
-	return 1
+	return TRUE
 
 /mob/living/silicon/ai/cancelAlarm(var/class, area/A as area, obj/origin)
 	var/list/L = src.alarms[class]

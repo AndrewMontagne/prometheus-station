@@ -17,7 +17,7 @@
 
 /obj/item/weapon/secstorage/sbriefcase/attack(mob/M as mob, mob/user as mob)
 
-	var/t = user:zone_sel.selecting
+	var/t = user.zone_sel.selecting
 	if (t == "head")
 		if (M.stat < 2 && M.health < 50 && prob(90))
 			var/mob/H = M

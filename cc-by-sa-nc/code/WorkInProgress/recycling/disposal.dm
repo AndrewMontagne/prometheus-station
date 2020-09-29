@@ -818,7 +818,7 @@
 		if(fromdir == DOWN)
 			return dir
 		else
-			return 0
+			return FALSE
 
 // a broken pipe
 /obj/disposalpipe/broken

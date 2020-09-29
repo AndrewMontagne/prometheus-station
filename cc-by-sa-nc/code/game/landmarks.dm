@@ -51,11 +51,11 @@
 		blobstart += src.loc
 		del(src)
 
-	return 1
+	return TRUE
 
 /obj/landmark/start/New()
 	..()
 	src.tag = "start*[src.name]"
 	src.invisibility = 101
 
-	return 1
+	return TRUE

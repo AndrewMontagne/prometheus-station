@@ -121,7 +121,6 @@
 /obj/item/weapon/storage/attack_paw(mob/user as mob)
 	playsound(src.loc, "rustle", 50, 1, -5)
 	return src.attack_hand(user)
-	return
 
 /obj/item/weapon/storage/attack_hand(mob/user as mob)
 	playsound(src.loc, "rustle", 50, 1, -5)
@@ -180,12 +179,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/weapon/storage/utilitybelt/proc/can_use()
-	if(!ismob(loc)) return 0
+	if(!ismob(loc)) return FALSE
 	var/mob/M = loc
 	if(src in M.get_equipped_items())
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /obj/item/weapon/storage/utilitybelt/dropped(mob/user as mob)
 	..()

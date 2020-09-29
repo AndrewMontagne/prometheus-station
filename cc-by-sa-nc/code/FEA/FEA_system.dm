@@ -58,23 +58,23 @@ atom/proc/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
 
 turf
 	CanPass(atom/movable/mover, turf/target, height=1.5,air_group=0)
-		if(!target) return 0
+		if(!target) return FALSE
 
 		if(istype(mover)) // turf/Enter(...) will perform more advanced checks
 			return !density
 
 		else // Now, doing more detailed checks for air movement and air group formation
 			if(target.blocks_air||blocks_air)
-				return 0
+				return FALSE
 
 			for(var/obj/obstacle in src)
 				if(!obstacle.CanPass(mover, target, height, air_group))
-					return 0
+					return FALSE
 			for(var/obj/obstacle in target)
 				if(!obstacle.CanPass(mover, src, height, air_group))
-					return 0
+					return FALSE
 
-			return 1
+			return TRUE
 
 
 var/global/datum/controller/air_system/air_master
@@ -275,7 +275,7 @@ datum
 					for(var/datum/air_group/AG in air_groups)
 						AG.check_regroup()
 
-				return 1
+				return TRUE
 
 			process_update_tiles()
 				for(var/turf/simulated/T in tiles_to_update)
@@ -287,7 +287,7 @@ datum
 				tiles_to_update.len = 0
 
 			process_rebuild_select_groups()
-				var/turf/list/turfs = list()
+				var/list/turf/turfs = list()
 
 				for(var/datum/air_group/turf/turf_AG in groups_to_rebuild) //Deconstruct groups, gathering their old members
 					for(var/turf/simulated/T in turf_AG.members)

@@ -35,8 +35,8 @@
 	if(usr)
 		usr << src.desc
 
-/mob/dead/observer/can_use_hands()	return 0
-/mob/dead/observer/is_active()		return 0
+/mob/dead/observer/can_use_hands()	return FALSE
+/mob/dead/observer/is_active()		return FALSE
 
 /mob/dead/observer/Stat()
 	..()

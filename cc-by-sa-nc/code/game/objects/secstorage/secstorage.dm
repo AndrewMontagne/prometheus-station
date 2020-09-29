@@ -160,7 +160,6 @@
 /obj/item/weapon/secstorage/attack_paw(mob/user as mob)
 	playsound(src.loc, "rustle", 50, 1, -5)
 	return src.attack_hand(user)
-	return
 
 /obj/item/weapon/secstorage/attack_hand(mob/user as mob)
 	if ((src.loc == user) && (src.locked == 1))
@@ -243,7 +242,6 @@
 	spawn( 5 )
 		src.orient_objs(7, 8, 10, 7)
 		return
- 	return
 
 /obj/screen/storage/attackby(W, mob/user as mob)
 	src.master.attackby(W, user)

@@ -1,7 +1,7 @@
 //! Class to encapsulate specific permissions
 /datum/permission
 	var/name = null
-	VAR_PRIVATE/client/assigned_client = null
+	var/client/assigned_client = null
 
 //! Utility method to allow for additional verification logic
 /datum/permission/proc/verify()

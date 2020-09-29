@@ -303,7 +303,7 @@ datum/preferences
 		user << browse(null, "window=mob_occupation")
 		ShowChoices(user)
 
-		return 1
+		return TRUE
 
 	proc/process_link(mob/user, list/link_tags)
 
@@ -316,7 +316,7 @@ datum/preferences
 			else
 				src.SetChoices(user, text2num(link_tags["occ"]))
 
-			return 1
+			return TRUE
 
 		if (link_tags["real_name"])
 			var/new_name

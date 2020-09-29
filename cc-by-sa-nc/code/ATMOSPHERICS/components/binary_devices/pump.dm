@@ -43,13 +43,13 @@ obj/machinery/atmospherics/binary/pump
 	process()
 		..()
 		if(!on)
-			return 0
+			return FALSE
 
 		var/output_starting_pressure = air2.return_pressure()
 
 		if(output_starting_pressure >= target_pressure)
 			//No need to pump gas if target is already reached!
-			return 1
+			return TRUE
 
 		//Calculate necessary moles to transfer using PV=nRT
 		if((air1.total_moles() > 0) && (air1.temperature>0))
@@ -66,7 +66,7 @@ obj/machinery/atmospherics/binary/pump
 			if(network2)
 				network2.update = 1
 
-		return 1
+		return TRUE
 
 	//Radio remote control
 
@@ -79,7 +79,7 @@ obj/machinery/atmospherics/binary/pump
 
 		broadcast_status()
 			if(!radio_connection)
-				return 0
+				return FALSE
 
 			var/datum/signal/signal = new
 			signal.transmission_method = 1 //radio signal
@@ -92,7 +92,7 @@ obj/machinery/atmospherics/binary/pump
 
 			radio_connection.post_signal(src, signal)
 
-			return 1
+			return TRUE
 
 	var/frequency = 0
 	var/id = null
@@ -105,7 +105,7 @@ obj/machinery/atmospherics/binary/pump
 
 	receive_signal(datum/signal/signal)
 		if(signal.data["tag"] && (signal.data["tag"] != id))
-			return 0
+			return FALSE
 
 		switch(signal.data["command"])
 			if("power_on")

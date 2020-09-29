@@ -109,7 +109,7 @@
 	anchored = 1
 
 /obj/machinery/sleeper/allow_drop()
-	return 0
+	return FALSE
 
 /obj/machinery/sleeper/process()
 	src.updateDialog()
@@ -196,8 +196,8 @@
 		M.weakened = 3
 	if (M.stunned <= 1)
 		M.stunned = 3
-	if (M:reagents.get_reagent_amount("inaprovaline") < 5)
-		M:reagents.add_reagent("inaprovaline", 5)
+	if (M.reagents.get_reagent_amount("inaprovaline") < 5)
+		M.reagents.add_reagent("inaprovaline", 5)
 	return
 
 /obj/machinery/sleeper/proc/go_out()

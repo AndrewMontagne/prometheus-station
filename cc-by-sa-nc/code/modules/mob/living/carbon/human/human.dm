@@ -1248,10 +1248,10 @@
 
 /mob/living/carbon/human/restrained()
 	if (src.handcuffed)
-		return 1
+		return TRUE
 	if (istype(src.wear_suit, /obj/item/clothing/suit/straight_jacket))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/proc/update_body()
 	if(src.stand_icon)
@@ -1900,7 +1900,7 @@
 		else
 			src.UpdateDamage()
 	else
-		return 0
+		return FALSE
 	return
 
 /mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
@@ -1912,7 +1912,7 @@
 		else
 			src.UpdateDamage()
 	else
-		return 0
+		return FALSE
 	return
 
 /mob/living/carbon/human/proc/UpdateDamage()

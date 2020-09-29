@@ -63,9 +63,6 @@
 			usr << browse(null, "window=chem_dispenser")
 			return
 
-		src.add_fingerprint(usr)
-		return
-
 	attack_ai(mob/user as mob)
 		return src.attack_hand(user)
 
@@ -181,9 +178,6 @@
 		else
 			usr << browse(null, "window=chem_master")
 			return
-
-		src.add_fingerprint(usr)
-		return
 
 	attack_ai(mob/user as mob)
 		return src.attack_hand(user)

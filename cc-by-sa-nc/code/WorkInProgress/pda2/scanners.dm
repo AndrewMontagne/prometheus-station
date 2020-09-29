@@ -11,17 +11,17 @@
 	proc/scan_atom(atom/A as mob|obj|turf|area)
 
 		if( !A || (!src.holder) || (!src.master))
-			return 1
+			return TRUE
 
 		if((!istype(holder)) || (!istype(master)))
-			return 1
+			return TRUE
 
 		if(!(holder in src.master.contents))
 			if(master.scan_program == src)
 				master.scan_program = null
-			return 1
+			return TRUE
 
-		return 0
+		return FALSE
 
 	//Health analyzer program
 	health_scan

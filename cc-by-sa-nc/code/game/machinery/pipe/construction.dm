@@ -125,14 +125,14 @@ Buildable meters
 				pipe_dir = 10
 			return pipe_dir
 		if(2,3)
-			return 0
+			return FALSE
 		if(4,7,10)
 			return dir
 		if(5)
 			return dir|cw|acw
 		if(6)
 			return flip
-	return 0
+	return FALSE
 
 // return the h_dir (heat-exchange pipes) from the type and the dir
 
@@ -143,7 +143,7 @@ Buildable meters
 
 	switch(pipe_type)
 		if(0,1,4,5,7,10)
-			return 0
+			return FALSE
 		if(2)
 			if(pipe_dir == 0)
 				pipe_dir = 3
@@ -155,7 +155,7 @@ Buildable meters
 		if(6)
 			return dir
 
-	return 0
+	return FALSE
 
 /obj/item/weapon/pipe/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	/*

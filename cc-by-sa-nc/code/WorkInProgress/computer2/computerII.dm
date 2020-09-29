@@ -350,7 +350,7 @@
 
 /obj/machinery/computer2/proc/run_program(datum/computer/file/computer_program/program,datum/computer/file/computer_program/host)
 	if(!program)
-		return 0
+		return FALSE
 
 //	src.unload_program(src.active_program)
 
@@ -361,13 +361,13 @@
 			src.host_program = null
 
 		src.active_program = program
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 /obj/machinery/computer2/proc/load_program(datum/computer/file/computer_program/program)
 	if((!program) || (!program.holder))
-		return 0
+		return FALSE
 
 	if(!(program.holder in src))
 //		world << "Not in src"
@@ -378,28 +378,26 @@
 		program.master = src
 
 	if(program in src.processing_programs)
-		return 1
+		return TRUE
 	else
 		src.processing_programs.Add(program)
-		return 1
-
-	return 0
+		return TRUE
 
 /obj/machinery/computer2/proc/unload_program(datum/computer/file/computer_program/program)
 	if((!program) || (!src.hd))
-		return 0
+		return FALSE
 
 	if(program in src.processing_programs)
 		src.processing_programs.Remove(program)
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 /obj/machinery/computer2/proc/delete_file(datum/computer/file/file)
 	//world << "Deleting [file]..."
 	if((!file) || (!file.holder) || (file.holder.read_only))
 		//world << "Cannot delete :("
-		return 0
+		return FALSE
 
 	if(file in src.processing_programs)
 		src.processing_programs.Remove(file)
@@ -411,4 +409,4 @@
 
 	//world << "Now calling del on [file]..."
 	del(file)
-	return 1
+	return TRUE

@@ -55,7 +55,7 @@
 					player.preferences.occupation3 = "Captain"
 
 	if (unassigned.len == 0)
-		return 0
+		return FALSE
 
 	var/mob/new_player/captain_choice = null
 
@@ -157,7 +157,7 @@
 	for (var/mob/new_player/player in unassigned)
 		player.mind.assigned_role = pick(assistant_occupations)
 
-	return 1
+	return TRUE
 
 /mob/living/carbon/human/proc/Equip_Rank(rank, joined_late)
 	/*if(joined_late && ticker.mode.name == "ctf")

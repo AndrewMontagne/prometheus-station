@@ -2,7 +2,7 @@
 	set category = "Admin"
 	set hidden = 1
 
-	if(!loc) return 0
+	if(!loc) return FALSE
 
 	var/datum/gas_mixture/environment = loc.return_air()
 
@@ -20,38 +20,38 @@
 // fun if you want to typecast humans/monkeys/etc without writing long path-filled lines.
 /proc/ishuman(A)
 	if(A && istype(A, /mob/living/carbon/human))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /proc/isalien(A)
 	if(A && istype(A, /mob/living/carbon/alien))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /proc/ismonkey(A)
 	if(A && istype(A, /mob/living/carbon/monkey))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /proc/isrobot(A)
 	if(A && istype(A, /mob/living/silicon/robot))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /proc/isAI(A)
 	if(A && istype(A, /mob/living/silicon/ai))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /proc/iscarbon(A)
 	if(A && istype(A, /mob/living/carbon))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /proc/issilicon(A)
 	if(A && istype(A, /mob/living/silicon))
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /proc/hsl2rgb(h, s, l)
 	return
@@ -260,11 +260,11 @@
 /proc/findname(msg)
 	for(var/mob/M in world)
 		if (M.real_name == text("[msg]"))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/proc/alter_health()
-	return 1
+	return TRUE
 
 /atom/proc/relaymove()
 	return
@@ -911,10 +911,10 @@
 	for(var/mob/M in world)
 		if (M.real_name == text("[]", msg))
 			return M
-	return 0
+	return FALSE
 
 /mob/proc/movement_delay()
-	return 0
+	return FALSE
 
 /mob/proc/Life()
 	return
@@ -924,11 +924,11 @@
 
 /mob/proc/death(gibbed)
 	src.timeofdeath = world.time
-	return ..(gibbed)
+	return
 
 /mob/proc/restrained()
 	if (src.handcuffed)
-		return 1
+		return TRUE
 	return
 
 /mob/proc/db_click(text, t1)
@@ -1018,7 +1018,6 @@
 		return src.l_hand
 	else
 		return src.r_hand
-	return
 
 /mob/proc/show_inv(mob/user as mob)
 	user.machine = src
@@ -1243,19 +1242,18 @@
 			src:cameraFollow = null
 
 /mob/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+	if(air_group || (height==0)) return TRUE
 
 	if(ismob(mover))
 		var/mob/moving_mob = mover
 		if ((src.other_mobs && moving_mob.other_mobs))
-			return 1
+			return TRUE
 		return (!mover.density || !src.density || src.lying)
 	else
 		return (!mover.density || !src.density || src.lying)
-	return
 
 /mob/dead/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	return 1
+	return TRUE
 
 /mob/Topic(href, href_list)
 	if(href_list["mach_close"])
@@ -1432,7 +1430,7 @@
 	if(istype(src.mob, /mob/dead/observer))
 		return src.mob.Move(n,direct)
 	if (src.moving)
-		return 0
+		return FALSE
 	if (world.time < src.move_delay)
 		return
 	if (!( src.mob ))
@@ -1488,11 +1486,11 @@
 						if(j_pack)
 							src.mob.inertia_dir = 0
 						if (!( j_pack ))
-							return 0
+							return FALSE
 					else
-						return 0
+						return FALSE
 			else
-				return 0
+				return FALSE
 
 
 		if (isturf(src.mob.loc))
@@ -1517,7 +1515,7 @@
 				for(var/mob/M in range(src.mob, 1))
 					if (((M.pulling == src.mob && (!( M.restrained() ) && M.stat == 0)) || locate(/obj/item/weapon/grab, src.mob.grabbed_by.len)))
 						src << "\blue You're restrained! You can't move!"
-						return 0
+						return FALSE
 			src.moving = 1
 			if (locate(/obj/item/weapon/grab, src.mob))
 				src.move_delay = max(src.move_delay, world.time + 7)
@@ -1585,19 +1583,19 @@
 
 /mob/proc/can_use_hands()
 	if(src.handcuffed)
-		return 0
+		return FALSE
 	if(src.buckled && istype(src.buckled, /obj/stool/bed)) // buckling does not restrict hands
-		return 0
-	return ..()
+		return FALSE
+	return TRUE
 
 /mob/proc/is_active()
 	return (0 >= usr.stat)
 
 /mob/proc/see(message)
 	if(!src.is_active())
-		return 0
+		return FALSE
 	src << message
-	return 1
+	return TRUE
 
 /mob/proc/show_viewers(message)
 	for(var/mob/M in viewers())
@@ -1627,14 +1625,14 @@
 				extradam += divided_damage
 		H.UpdateDamageIcon()
 		H.updatehealth()
-		return 1
+		return TRUE
 	else if(istype(src, /mob/living/carbon/monkey))
 		var/mob/living/carbon/monkey/M = src
 		M.fireloss += burn_amount
 		M.updatehealth()
-		return 1
+		return TRUE
 	else if(istype(src, /mob/living/silicon/ai))
-		return 0
+		return FALSE
 
 /mob/proc/adjustBodyTemp(actual, desired, incrementboost)
 	var/temperature = actual
@@ -1714,8 +1712,8 @@
 
 	for(var/obj/B in L)
 		if(B.type == A)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 
 // adds a dizziness amount to a mob

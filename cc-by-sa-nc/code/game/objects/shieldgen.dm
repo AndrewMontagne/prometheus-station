@@ -8,7 +8,7 @@
 
 /obj/shieldgen/proc
 	shields_up()
-		if(active) return 0
+		if(active) return FALSE
 
 		for(var/turf/target_tile in range(2, src))
 			if (istype(target_tile,/turf/space) && !(locate(/obj/shield) in target_tile))
@@ -22,7 +22,7 @@
 		spawn src.process()
 
 	shields_down()
-		if(!active) return 0
+		if(!active) return FALSE
 
 		for(var/obj/shield/shield_tile in deployed_shields)
 			del(shield_tile)
@@ -177,11 +177,11 @@
 		..()
 
 	CanPass(atom/movable/mover, turf/target, height, air_group)
-		if(!height || air_group) return 0
+		if(!height || air_group) return FALSE
 		else return ..()
 
 	proc/update_nearby_tiles(need_rebuild)
-		if(!air_master) return 0
+		if(!air_master) return FALSE
 
 		var/turf/simulated/source = loc
 		var/turf/simulated/north = get_step(source,NORTH)
@@ -222,4 +222,4 @@
 			if(istype(east)) air_master.tiles_to_update += east
 			if(istype(west)) air_master.tiles_to_update += west
 
-		return 1
+		return TRUE

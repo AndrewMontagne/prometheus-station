@@ -77,9 +77,9 @@
 /proc/dir2angle(var/D)
 	switch(D)
 		if(1)
-			return 0
+			return FALSE
 		if(2)
-			return 180
+			return TRUE
 		if(4)
 			return 90
 		if(8)
@@ -87,7 +87,7 @@
 		if(5)
 			return 45
 		if(6)
-			return 135
+			return TRUE
 		if(9)
 			return 315
 		if(10)

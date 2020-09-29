@@ -140,7 +140,7 @@
 
 /obj/cable/proc/shock(mob/user, prb)
 	if(!netnum)		// unconnected cable is unpowered
-		return 0
+		return FALSE
 
 	return src.electrocute(user, prb, netnum)
 
@@ -148,10 +148,10 @@
 /atom/proc/electrocute(mob/user, prb, netnum)
 
 	if(!prob(prb))
-		return 0
+		return FALSE
 
 	if(!netnum)		// unconnected cable is unpowered
-		return 0
+		return FALSE
 
 	var/datum/powernet/PN
 	if(powernets && powernets.len >= netnum)
@@ -168,10 +168,10 @@
 
 				prot = G.siemens_coefficient
 		else if (istype(user, /mob/living/silicon))
-			return 0
+			return FALSE
 
 		if(prot == 0)		// elec insulted gloves protect completely
-			return 0
+			return FALSE
 
 		var/datum/effects/system/spark_spread/s = new /datum/effects/system/spark_spread
 		s.set_up(3, 1, src)
@@ -204,8 +204,8 @@
 		for(var/mob/M in viewers(src))
 			if(M == user)	continue
 			M.show_message("\red [user.name] was shocked by the [src.name]!", 3, "\red You hear a heavy electrical crack", 2)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 /obj/cable/ex_act(severity)
@@ -291,13 +291,13 @@
 
 /obj/item/weapon/cable_coil/proc/use(var/used)
 	if(src.amount < used)
-		return 0
+		return FALSE
 	else if (src.amount == used)
 		del(src)
 	else
 		amount -= used
 		updateicon()
-		return 1
+		return TRUE
 
 // called when cable_coil is clicked on a turf/simulated/floor
 

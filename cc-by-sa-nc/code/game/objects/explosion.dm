@@ -41,7 +41,7 @@ proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impa
 
 		makepowernets()
 		defer_powernet_rebuild = 0
-	return 1
+	return TRUE
 
 
 

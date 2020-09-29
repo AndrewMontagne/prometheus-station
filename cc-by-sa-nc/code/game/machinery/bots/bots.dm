@@ -31,38 +31,38 @@
 // Movement through doors allowed if ID has access
 /proc/LinkBlockedWithAccess(turf/A, turf/B, obj/item/weapon/card/id/ID)
 
-	if(A == null || B == null) return 1
+	if(A == null || B == null) return TRUE
 	var/adir = get_dir(A,B)
 	var/rdir = get_dir(B,A)
 	if((adir & (NORTH|SOUTH)) && (adir & (EAST|WEST)))	//	diagonal
 		var/iStep = get_step(A,adir&(NORTH|SOUTH))
 		if(!LinkBlockedWithAccess(A,iStep, ID) && !LinkBlockedWithAccess(iStep,B,ID))
-			return 0
+			return FALSE
 
 		var/pStep = get_step(A,adir&(EAST|WEST))
 		if(!LinkBlockedWithAccess(A,pStep,ID) && !LinkBlockedWithAccess(pStep,B,ID))
-			return 0
-		return 1
+			return FALSE
+		return TRUE
 
 	if(DirBlockedWithAccess(A,adir, ID))
-		return 1
+		return TRUE
 
 	if(DirBlockedWithAccess(B,rdir, ID))
-		return 1
+		return TRUE
 
 	for(var/obj/O in B)
 		if(O.density && !istype(O, /obj/machinery/door) && !(O.flags & ON_BORDER))
-			return 1
+			return TRUE
 
-	return 0
+	return FALSE
 
 // Returns true if direction is blocked from loc
 // Checks doors against access with given ID
 /proc/DirBlockedWithAccess(turf/loc,var/dir,var/obj/item/weapon/card/id/ID)
 	for(var/obj/window/D in loc)
 		if(!D.density)			continue
-		if(D.dir == SOUTHWEST)	return 1
-		if(D.dir == dir)		return 1
+		if(D.dir == SOUTHWEST)	return TRUE
+		if(D.dir == dir)		return TRUE
 
 	for(var/obj/machinery/door/D in loc)
 		if(!D.density)			continue
@@ -72,4 +72,4 @@
 			//if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return !D.check_access(ID)
 			//if((dir & EAST ) && (D.dir & (NORTH|SOUTH)))	return !D.check_access(ID)
 		else return !D.check_access(ID)	// it's a real, air blocking door
-	return 0
+	return FALSE

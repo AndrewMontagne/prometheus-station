@@ -77,7 +77,7 @@ datum/shuttle_controller
 						direction = 1
 						endtime = null
 
-						return 0
+						return FALSE
 
 					else if(timeleft <= 0)
 						location = 1
@@ -112,11 +112,10 @@ datum/shuttle_controller
 						settimeleft(SHUTTLELEAVETIME)
 						world << "<B>The Emergency Shuttle has docked with the station! You have [timeleft()/60] minutes to board the Emergency Shuttle.</B>"
 
-						return 1
-
+						return TRUE
 				if(1)
 					if(timeleft>0)
-						return 0
+						return FALSE
 
 					else
 						location = 2
@@ -126,7 +125,4 @@ datum/shuttle_controller
 						start_location.move_contents_to(end_location)
 						online = 0
 
-						return 1
-
-				else
-					return 1
+						return TRUE

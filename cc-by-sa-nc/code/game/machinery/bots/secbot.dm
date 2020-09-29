@@ -597,7 +597,7 @@ Auto Patrol: []"},
 
 		if((src.idcheck) || (isnull(perp:wear_id)) || (istype(perp:wear_id, /obj/item/weapon/card/id/syndicate)))
 			if(src.allowed(perp)) //Corrupt cops cannot exist beep boop
-				return 0
+				return FALSE
 
 			if(istype(perp.l_hand, /obj/item/weapon/gun) || istype(perp.l_hand, /obj/item/weapon/baton))
 				threatcount += 4
@@ -621,7 +621,7 @@ Auto Patrol: []"},
 		if (src.check_records)
 			for (var/datum/data/record/E in data_core.general)
 				var/perpname = perp.name
-				if (perp:wear_id && perp:wear_id.registered)
+				if (perp.wear_id && perp.wear_id.registered)
 					perpname = perp.wear_id.registered
 				if (E.fields["name"] == perpname)
 					for (var/datum/data/record/R in data_core.security)

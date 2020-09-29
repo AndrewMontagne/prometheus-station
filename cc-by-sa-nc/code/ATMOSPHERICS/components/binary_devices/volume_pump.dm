@@ -43,7 +43,7 @@ obj/machinery/atmospherics/binary/volume_pump
 	process()
 		..()
 		if(!on)
-			return 0
+			return FALSE
 
 		var/transfer_ratio = max(1, transfer_rate/air1.volume)
 
@@ -57,7 +57,7 @@ obj/machinery/atmospherics/binary/volume_pump
 		if(network2)
 			network2.update = 1
 
-		return 1
+		return TRUE
 
 	proc
 		set_frequency(new_frequency)
@@ -68,7 +68,7 @@ obj/machinery/atmospherics/binary/volume_pump
 
 		broadcast_status()
 			if(!radio_connection)
-				return 0
+				return FALSE
 
 			var/datum/signal/signal = new
 			signal.transmission_method = 1 //radio signal
@@ -81,7 +81,7 @@ obj/machinery/atmospherics/binary/volume_pump
 
 			radio_connection.post_signal(src, signal)
 
-			return 1
+			return TRUE
 
 	initialize()
 		..()
@@ -90,7 +90,7 @@ obj/machinery/atmospherics/binary/volume_pump
 
 	receive_signal(datum/signal/signal)
 		if(signal.data["tag"] && (signal.data["tag"] != id))
-			return 0
+			return FALSE
 
 		switch(signal.data["command"])
 			if("power_on")

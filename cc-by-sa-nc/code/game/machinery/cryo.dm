@@ -10,7 +10,7 @@
 	var/temperature_archived
 	var/obj/overlay/O1 = null
 	var/mob/occupant = null
-	var/beaker = null
+	var/obj/item/weapon/reagent_containers/beaker = null
 	var/next_trans = 0
 
 	var/current_heat_capacity = 50
@@ -51,11 +51,11 @@
 			network.update = 1
 
 		src.updateUsrDialog()
-		return 1
+		return TRUE
 
 
 	allow_drop()
-		return 0
+		return FALSE
 
 
 	relaymove(mob/user as mob)
@@ -103,7 +103,7 @@
 				src.on = !src.on
 				build_icon()
 			if(href_list["eject"])
-				beaker:loc = src.loc
+				beaker.loc = src.loc
 				beaker = null
 
 			src.updateUsrDialog()
@@ -121,15 +121,16 @@
 			G.loc = src
 			user.visible_message("[user] adds a beaker to \the [src]!", "You add a beaker to the [src]!")
 		else if(istype(G, /obj/item/weapon/grab))
-			if(!ismob(G:affecting))
+			var/obj/item/weapon/grab/GR = G
+			if(!ismob(GR.affecting))
 				return
 			if (src.occupant)
 				user << "\blue <B>The sleeper is already occupied!</B>"
 				return
-			if (G:affecting.abiotic())
+			if (GR.affecting.abiotic())
 				user << "Subject may not have abiotic items on."
 				return
-			var/mob/M = G:affecting
+			var/mob/M = GR.affecting
 			if (M.client)
 				M.client.perspective = EYE_PERSPECTIVE
 				M.client.eye = src
@@ -139,7 +140,7 @@
 				O.loc = src.loc
 			src.add_fingerprint(user)
 			build_icon()
-			del(G)
+			del(GR)
 		src.updateUsrDialog()
 		return
 
@@ -186,8 +187,8 @@
 						if(occupant.fireloss) occupant.fireloss = max(0, occupant.fireloss - 1)
 						if(occupant.toxloss) occupant.toxloss = max(0, occupant.toxloss - 1)
 				if(beaker && (next_trans == 0))
-					beaker:reagents.trans_to(occupant, 1, 10)
-					beaker:reagents.reaction(occupant)
+					beaker.reagents.trans_to(occupant, 1, 10)
+					beaker.reagents.reaction(occupant)
 			next_trans++
 			if(next_trans == 10)
 				next_trans = 0
@@ -262,17 +263,15 @@
 
 /mob/living/carbon/human/abiotic()
 	if ((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )) || (src.back || src.wear_mask || src.head || src.shoes || src.w_uniform || src.wear_suit || src.glasses || src.ears || src.gloves))
-		return 1
+		return TRUE
 	else
-		return 0
-	return
+		return FALSE
 
 /mob/proc/abiotic()
 	if ((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )) || src.back || src.wear_mask)
-		return 1
+		return TRUE
 	else
-		return 0
-	return
+		return FALSE
 
 /datum/data/function/proc/reset()
 	return

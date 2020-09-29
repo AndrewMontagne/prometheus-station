@@ -2,22 +2,22 @@
 	return get_turf(src)
 
 /obj/secure_closet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+	if(air_group || (height==0)) return TRUE
 
 	return src.opened
 
 /obj/secure_closet/proc/can_close()
 	for(var/obj/closet/closet in get_turf(src))
-		return 0
+		return FALSE
 	for(var/obj/secure_closet/closet in get_turf(src))
 		if(closet != src)
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 /obj/secure_closet/proc/can_open()
 	if (src.locked)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/secure_closet/proc/dump_contents()
 	for (var/obj/item/I in src)
@@ -33,24 +33,24 @@
 			M.client.perspective = MOB_PERSPECTIVE
 /obj/secure_closet/proc/open()
 	if (src.opened)
-		return 0
+		return FALSE
 
 	if (!src.can_open())
-		return 0
+		return FALSE
 
 	src.dump_contents()
 
 	src.icon_state = src.icon_opened
 	src.opened = 1
 	playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
-	return 1
+	return TRUE
 
 /obj/secure_closet/proc/close()
 	if (!src.opened)
-		return 0
+		return FALSE
 
 	if (!src.can_close())
-		return 0
+		return FALSE
 
 	for (var/obj/item/I in src.loc)
 		if (!I.anchored)
@@ -72,7 +72,7 @@
 	src.icon_state = src.icon_closed
 	src.opened = 0
 	playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
-	return 1
+	return TRUE
 
 /obj/secure_closet/proc/toggle()
 	if (src.opened)

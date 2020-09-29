@@ -27,7 +27,6 @@
 /obj/machinery/optable/hand_p(mob/user as mob)
 
 	return src.attack_paw(user)
-	return
 
 /obj/machinery/optable/attack_paw(mob/user as mob)
 	if (!( locate(/obj/machinery/optable, user.loc) ))
@@ -42,16 +41,13 @@
 /obj/machinery/optable/attack_hand(mob/user as mob)
 	return
 
-
-
 /obj/machinery/optable/CanPass(atom/movable/O as mob|obj, target as turf)
 	if(!O)
-		return 0
+		return FALSE
 	if (O.flags & 2)
-		return 1
+		return TRUE
 	else
-		return 0
-	return
+		return FALSE
 
 /obj/machinery/optable/MouseDrop_T(obj/O as obj, mob/user as mob)
 
@@ -68,10 +64,10 @@
 		if(M.resting)
 			src.victim = M
 			icon_state = "table2-active"
-			return 1
+			return TRUE
 	src.victim = null
 	icon_state = "table2-idle"
-	return 0
+	return FALSE
 
 /obj/machinery/optable/process()
 	check_victim()

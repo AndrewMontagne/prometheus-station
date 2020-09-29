@@ -16,7 +16,7 @@ obj/machinery/atmospherics/pipe
 		//Return 1 if parent should continue checking other pipes
 		//Return null if parent should stop checking other pipes. Recall: del(src) will by default return null
 
-		return 1
+		return TRUE
 
 	return_air()
 		if(!parent)
@@ -121,8 +121,9 @@ obj/machinery/atmospherics/pipe
 				var/environment_temperature = 0
 
 				if(istype(loc, /turf/simulated/))
-					if(loc:blocks_air)
-						environment_temperature = loc:temperature
+					var/turf/simulated/S = loc
+					if(S.blocks_air)
+						environment_temperature = S.temperature
 					else
 						var/datum/gas_mixture/environment = loc.return_air()
 						environment_temperature = environment.temperature
@@ -147,7 +148,7 @@ obj/machinery/atmospherics/pipe
 				if(prob(5))
 					del(src)
 
-			else return 1
+			else return TRUE
 
 		Del()
 			if(node1)

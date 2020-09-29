@@ -3,12 +3,12 @@ atom/movable/var/last_forced_movement = 0
 
 atom/movable/proc/experience_pressure_difference(pressure_difference, direction)
 	if(last_forced_movement >= air_master.current_cycle)
-		return 0
+		return FALSE
 	else if(!anchored)
 		if(pressure_difference > pressure_resistance)
 			last_forced_movement = air_master.current_cycle
 			spawn step(src, direction)
-		return 1
+		return TRUE
 
 turf
 	assume_air(datum/gas_mixture/giver) //use this for machines to adjust air
@@ -18,7 +18,7 @@ turf
 //			return movable_on_me.assume_air(giver)
 
 		del(giver)
-		return 0
+		return FALSE
 
 	return_air()
 		//First, ensure there is no movable shuttle or what not on tile that is taking over
@@ -90,7 +90,7 @@ turf
 								air_master.high_pressure_delta += src
 							pressure_direction = direction
 							pressure_difference = connection_difference
-							return 1
+							return TRUE
 
 turf
 	simulated
@@ -196,7 +196,7 @@ turf
 						if(air.check_tile_graphic())
 							update_visuals(air)
 
-				return 1
+				return TRUE
 
 			else return ..()
 
@@ -293,7 +293,7 @@ turf
 				processing = 0
 
 		process_cell()
-			var/turf/simulated/list/possible_fire_spreads = list()
+			var/list/turf/simulated/possible_fire_spreads = list()
 			if(processing)
 				if(archived_cycle < air_master.current_cycle) //archive self if not already done
 					archive()
@@ -372,7 +372,7 @@ turf
 					item.temperature_expose(air, air.temperature, CELL_VOLUME)
 				temperature_expose(air, air.temperature, CELL_VOLUME)
 
-			return 1
+			return TRUE
 
 		super_conduct()
 			var/conductivity_directions = 0
@@ -494,13 +494,13 @@ turf
 				if(air.temperature < MINIMUM_TEMPERATURE_FOR_SUPERCONDUCTION)
 					being_superconductive = 0
 					air_master.active_super_conductivity -= src
-					return 0
+					return FALSE
 
 			else
 				if(temperature < MINIMUM_TEMPERATURE_FOR_SUPERCONDUCTION)
 					being_superconductive = 0
 					air_master.active_super_conductivity -= src
-					return 0
+					return FALSE
 
 		proc/mimic_temperature_solid(turf/model, conduction_coefficient)
 			var/delta_temperature = (temperature_archived - model.temperature)
@@ -523,16 +523,16 @@ turf
 		proc/consider_superconductivity(starting)
 
 			if(being_superconductive || !thermal_conductivity)
-				return 0
+				return FALSE
 
 			if(air)
 				if(air.temperature < (starting?MINIMUM_TEMPERATURE_START_SUPERCONDUCTION:MINIMUM_TEMPERATURE_FOR_SUPERCONDUCTION))
-					return 0
+					return FALSE
 				if(air.heat_capacity() < MOLES_CELLSTANDARD*0.1*0.05)
-					return 0
+					return FALSE
 			else
 				if(temperature < (starting?MINIMUM_TEMPERATURE_START_SUPERCONDUCTION:MINIMUM_TEMPERATURE_FOR_SUPERCONDUCTION))
-					return 0
+					return FALSE
 
 			being_superconductive = 1
 

@@ -285,8 +285,8 @@ var/linenums = 0
 		if (!( src.node2 ))
 			src.node2 = P
 		else
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 // returns a list of dir1, dir2 & p_dir for a pipe
 
@@ -432,7 +432,7 @@ var/linenums = 0
 
 
 /obj/machinery/pipes/ispipe()		// return true since this is a pipe
-	return 1
+	return TRUE
 
 /obj/machinery/pipes/buildnodes(var/linenum)
 
