@@ -1,5 +1,21 @@
 image: andrewmontagne/byond:latest
 
+lint:
+  variables:
+    TERM: dumb
+  tags:
+    - docker-runner
+  script:
+	- make lint
+	
+mapmerge:
+  variables:
+    TERM: dumb
+  tags:
+    - docker-runner
+  script:
+    - make mapmerge-test
+
 build:
   variables:
     TERM: dumb
@@ -12,3 +28,6 @@ build:
       - prometheus.dmb
       - prometheus.rsc
     expire_in: 1 month
+  dependencies:
+	- lint
+	- mapmerge

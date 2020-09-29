@@ -6,7 +6,7 @@ SHELL := /bin/bash
 
 -include /byond/env.sh
 
-all: clean lint mapmerge build run
+all: clean lint mapmerge-check mapmerge build
 
 clean:
 	@echo -e '\n${INV} ###   CLEAN   ### ${NC}\n'
@@ -16,11 +16,15 @@ lint:
 	@echo -e '\n${INV} ###  LINTER   ### ${NC}\n'
 	@DreamChecker
 
+mapmerge-test:
+	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
+	@python3 ./mit/tools/mapmerge.py --test-only ./cc-by-sa-nc/maps/*.dmm
+
 mapmerge:
 	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
 	@python3 ./mit/tools/mapmerge.py ./cc-by-sa-nc/maps/*.dmm
 
-build: lint mapmerge
+build:
 	@echo -e '\n${INV} ###   BUILD   ### ${NC}\n'
 	@mkdir -p /tmp/prometheus-station
 	@rsync -ra --delete --exclude='/.*' --exclude='/data' ./* /tmp/prometheus-station

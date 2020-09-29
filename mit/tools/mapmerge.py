@@ -23,7 +23,7 @@ def debug(s):
 def version():
     return "1.0.0"
 
-def mapmerge(filepath):
+def mapmerge(filepath, test_only=False):
     hashLength = 0
     mapwidth = 0
     tiles = {}
@@ -58,12 +58,21 @@ def mapmerge(filepath):
             lineNum += 1
 
             if lineNum is 1:
-                if line.startswith("// Merged with version " + version()):
-                    print(filepath + " does not need merging!", flush=True)
-                    skip = True
-                    break
+                if test_only:
+                    if line.startswith("// Merged with version " + version()):
+                        print(filepath + ' is merged.', flush=True)
+                        skip = True
+                        break
+                    else:
+                        print(filepath + " needs map merging!", flush=True)
+                        exit(1)
                 else:
-                    print('Merging ' + filepath + '...', end='', flush=True)
+                    if line.startswith("// Merged with version " + version()):
+                        print(filepath + " does not need merging!", flush=True)
+                        skip = True
+                        break
+                    else:
+                        print('Merging ' + filepath + '...', end='', flush=True)
 
             if lineNum / 1000 > loadprog:
                 print('.', end='', flush=True)
@@ -202,5 +211,15 @@ def mapmerge(filepath):
 
         print('done! ' + str(len(sortedtiles)) + ' tiles in map.')
 
+maps = []
+test_only = False
+
 for arg in sys.argv[1:]:
-    mapmerge(arg)
+    if arg.startswith('--'):
+        if arg == '--test-only':
+            test_only = True
+    else:
+        maps.append(arg)
+
+for map_path in maps:
+	mapmerge(map_path, test_only)
