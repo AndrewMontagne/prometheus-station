@@ -390,8 +390,6 @@ About the new airlock wires panel:
 	else
 		shock_damage = min(rand(20,45),rand(20,45))*prot
 
-//		message_admins("\blue <B>ADMIN: </B>DEBUG: shock_damage = [shock_damage] PN.avail = [PN.avail] user = [user] netnum = [netnum]")
-
 	user.burn_skin(shock_damage)
 	user.fireloss += shock_damage
 	user.updatehealth()
