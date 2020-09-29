@@ -2,11 +2,11 @@ INV=\033[7m
 NC=\033[0m
 
 SHELL := /bin/bash
-.PHONY: all clean build run run-container
+.PHONY: all clean lint mapmerge-test mapmerge build run run-container
 
 -include /byond/env.sh
 
-all: clean lint mapmerge-check mapmerge build
+all: clean lint mapmerge-test mapmerge build
 
 clean:
 	@echo -e '\n${INV} ###   CLEAN   ### ${NC}\n'
