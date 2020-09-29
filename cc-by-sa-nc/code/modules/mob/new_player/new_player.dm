@@ -89,7 +89,7 @@
 	set name = "toggleready"
 
 	if(!ticker || ticker.current_state <= GAME_STATE_PREGAME)
-		if (!usr.client.authenticated)
+		if (!usr.client.has_permission("BAN"))
 			src << "You are not authorized to enter the game."
 			return
 
@@ -110,7 +110,7 @@
 /mob/new_player/verb/toggle_observe()
 	set name = "toggleobserve"
 
-	if (!usr.client.authenticated)
+	if (!usr.client.has_permission("BAN"))
 		src << "You are not authorized to enter the game."
 		return
 
@@ -153,7 +153,7 @@
 /mob/new_player/Topic(href, href_list[])
 
 	if(href_list["SelectedJob"])
-		if (!usr.client.authenticated)
+		if (!usr.client.has_permission("BAN"))
 			src << "You are not authorized to enter the game."
 			return
 
@@ -213,7 +213,7 @@
 		new_player_panel()
 
 /mob/new_player/proc/IsJobAvailable(rank, maxAllowed)
-	if(countJob(rank) < maxAllowed && !jobban_isbanned(src,rank))
+	if(countJob(rank) < maxAllowed)
 		return 1
 	else
 		return 0
@@ -304,12 +304,8 @@
 
 	if (IsJobAvailable("Quartermaster",cargoMax))
 		dat += "<a href='byond://?src=\ref[src];SelectedJob=19'>Quartermaster</a><br>"
-
-//		if (IsJobAvailable("Hydroponist",hydroponicsMax))
-//			dat += "<a href='byond://?src=\ref[src];SelectedJob=22'>Hydroponist</a><br>"
-
-	if (!jobban_isbanned(src,"Assistant"))
-		dat += "<a href='byond://?src=\ref[src];SelectedJob=18'>Assistant</a><br>"
+		
+	dat += "<a href='byond://?src=\ref[src];SelectedJob=18'>Assistant</a><br>"
 
 	src << browse(dat, "window=latechoices;size=300x640;can_close=0")
 

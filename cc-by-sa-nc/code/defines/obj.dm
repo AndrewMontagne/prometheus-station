@@ -82,14 +82,6 @@
 		opacity = 0
 		anchored = 1
 
-/obj/admins
-	name = "admins"
-	var/rank = null
-	var/owner = null
-	var/state = 1
-	//state = 1 for playing : default
-	//state = 2 for observing
-
 /obj/bhole
 	name = "black hole"
 	icon = 'cc-by-sa-nc/icons/obj/objects.dmi'

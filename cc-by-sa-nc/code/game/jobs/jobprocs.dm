@@ -14,13 +14,13 @@
 	var/list/candidates = list()
 
 	for (var/mob/new_player/player in unassigned)
-		if (level == 1 && player.preferences.occupation1 == job && !jobban_isbanned(player, job))
+		if (level == 1 && player.preferences.occupation1 == job)
 			candidates += player
 
-		if (level == 2 && player.preferences.occupation2 == job && !jobban_isbanned(player, job))
+		if (level == 2 && player.preferences.occupation2 == job)
 			candidates += player
 
-		if (level == 3 && player.preferences.occupation3 == job && !jobban_isbanned(player, job))
+		if (level == 3 && player.preferences.occupation3 == job)
 			candidates += player
 
 	return candidates
@@ -53,12 +53,6 @@
 					player.preferences.occupation2 = "Captain"
 				if (player.preferences.occupation3 == "AI")
 					player.preferences.occupation3 = "Captain"
-			if (jobban_isbanned(player, player.preferences.occupation1))
-				player.preferences.occupation1 = "Assistant"
-			if (jobban_isbanned(player, player.preferences.occupation2))
-				player.preferences.occupation2 = "Assistant"
-			if (jobban_isbanned(player, player.preferences.occupation3))
-				player.preferences.occupation3 = "Assistant"
 
 	if (unassigned.len == 0)
 		return 0
@@ -77,11 +71,8 @@
 	if (captain_choice == null && unassigned.len > 0)
 		unassigned = shuffle(unassigned)
 		for(var/mob/new_player/player in unassigned)
-			if(jobban_isbanned(player, "Captain"))
-				continue
-			else
-				captain_choice = player
-				break
+			captain_choice = player
+			break
 		unassigned -= captain_choice
 
 
@@ -108,11 +99,8 @@
 		if (ai_choice == null && unassigned.len > 0)
 			unassigned = shuffle(unassigned)
 			for(var/mob/new_player/player in unassigned)
-				if(jobban_isbanned(player, "AI"))
-					continue
-				else
-					ai_choice = player
-					break
+				ai_choice = player
+				break
 			unassigned -= ai_choice
 
 		if (ai_choice != null)

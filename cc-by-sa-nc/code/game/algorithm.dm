@@ -11,10 +11,6 @@
 	extools_initialize()
 	tffi_initialize()
 
-	jobban_loadbanfile()
-	jobban_updatelegacybans()
-	LoadBans()
-
 	spawn(30)
 		//EXPERIMENTAL
 		Optimize()
@@ -39,7 +35,7 @@ var/opt_inactive = null
 
 /world/proc/KickInactiveClients()
 	for(var/client/C)
-		if(!C.holder && ((C.inactivity/10)/60) >= 15)
+		if(((C.inactivity/10)/60) >= 15)
 			C << "\red You have been inactive for more than 15 minutes and have been disconnected."
 			del(C)
 

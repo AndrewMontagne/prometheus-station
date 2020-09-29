@@ -1,14 +1,15 @@
 root = true
 
 [*]
-indent_style = space
-indent_size = 4
+indent_style = tab
+tab_width = 4
 end_of_line = lf
 insert_final_newline = true
 charset = utf-8
 
 [*.dm, *.dme, *.dmm]
 indent_style = tab
+tab_width = 4
 end_of_line = crlf
 
 [*.json, *.yml]

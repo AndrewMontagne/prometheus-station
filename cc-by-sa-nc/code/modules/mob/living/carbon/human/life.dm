@@ -743,10 +743,6 @@
 				if (src.machine)
 					if (!( src.machine.check_eye(src) ))
 						src.reset_view(null)
-				else
-					if(!client.adminobs)
-						reset_view(null)
-
 			return 1
 
 		handle_random_events()

@@ -1156,12 +1156,6 @@
 		del(M)
 		return
 
-
-
-	if(src.client && src.client.holder && (src.client.holder.state == 2))
-		src.client.admin_play()
-		return
-
 	M.key = src.client.key
 	M.Login()
 	return
@@ -1189,16 +1183,11 @@
 
 /mob/verb/observe()
 	set name = "Observe"
-	var/is_admin = 0
 
-	if (src.client.holder && src.client.holder.level >= 1 && ( src.client.holder.state == 2 || src.client.holder.level > 3 ))
-		is_admin = 1
-	else if (istype(src, /mob/new_player) || src.stat != 2)
+
+	if (istype(src, /mob/new_player) || src.stat != 2)
 		usr << "\blue You must be observing to use this!"
 		return
-
-	if (is_admin && src.stat == 2)
-		is_admin = 0
 
 	var/list/names = list()
 	var/list/namecounts = list()
@@ -1234,29 +1223,16 @@
 
 	var/eye_name = null
 
-	if (is_admin)
-		eye_name = input("Please, select a player!", "Admin Observe", null, null) as null|anything in creatures
-	else
-		eye_name = input("Please, select a player!", "Observe", null, null) as null|anything in creatures
+	eye_name = input("Please, select a player!", "Observe", null, null) as null|anything in creatures
 
 	if (!eye_name)
 		return
 
 	var/mob/eye = creatures[eye_name]
-	if (is_admin)
-		if (eye)
-			src.reset_view(eye)
-			client.adminobs = 1
-			if(eye == src.client.mob)
-				client.adminobs = 0
-		else
-			src.reset_view(null)
-			client.adminobs = 0
+	if (eye)
+		src.client.eye = eye
 	else
-		if (eye)
-			src.client.eye = eye
-		else
-			src.client.eye = src.client.mob
+		src.client.eye = src.client.mob
 
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"
@@ -1286,34 +1262,6 @@
 		var/t1 = text("window=[href_list["mach_close"]]")
 		src.machine = null
 		src << browse(null, t1)
-
-	if(href_list["priv_msg"])
-		var/mob/M = locate(href_list["priv_msg"])
-		if(M)
-			if(src.muted)
-				src << "You are muted have a nice day"
-				return
-			if (!( ismob(M) ))
-				return
-			var/t = input("Message:", text("Private message to [M.key]"))  as text
-			if (!( t ))
-				return
-			if (usr.client && usr.client.holder)
-				M << "\red Admin PM from-<b>[key_name(usr, M, 0)]</b>: [t]"
-				usr << "\blue Admin PM to-<b>[key_name(M, usr, 1)]</b>: [t]"
-			else
-				if (M.client && M.client.holder)
-					M << "\blue Reply PM from-<b>[key_name(usr, M, 1)]</b>: [t]"
-				else
-					M << "\red Reply PM from-<b>[key_name(usr, M, 0)]</b>: [t]"
-				usr << "\blue Reply PM to-<b>[key_name(M, usr, 0)]</b>: [t]"
-
-			log_admin("PM: [key_name(usr)]->[key_name(M)] : [t]")
-
-			//we don't use message_admins here because the sender/receiver might get it too
-			for (var/mob/K in world)
-				if(K && K.client && K.client.holder && K.key != usr.key && K.key != M.key)
-					K << "<b><font color='blue'>PM: [key_name(usr, K)]->[key_name(M, K)]:</b> \blue [t]</font>"
 	..()
 	return
 
@@ -1621,13 +1569,6 @@
 	if(findtextEx(src.key, "Telnet @"))
 		src << "Sorry, this game does not support Telnet."
 		del(src)
-	var/isbanned = CheckBan(src)
-	if (isbanned)
-		log_access("Failed Login: [src] - Banned")
-		message_admins("\blue Failed Login: [src] - Banned")
-		alert(src,"You have been banned.\nReason : [isbanned]","Ban","Ok")
-		del(src)
-
 
 	if (((world.address == src.address || src.address == "127.0.0.1" || !(src.address)) && !(host)))
 		host = src.key
@@ -1638,20 +1579,8 @@
 	spawn(2) 
 		src.init_map_panes()
 		src.init_infobrowser()
-	
-	src.update_world()
-
-//new admin bit - Nannek
-
-	if (admins.Find(src.ckey))
-		src.holder = new /obj/admins(src)
-		src.holder.rank = admins[src.ckey]
-		update_admins(admins[src.ckey])
 
 /client/Del()
-	spawn(0)
-		if(src.holder)
-			del(src.holder)
 	return ..()
 
 /mob/proc/can_use_hands()
@@ -1865,10 +1794,6 @@
 	..()
 
 	statpanel("Status")
-
-	if (src.client && src.client.holder)
-		stat(null, "([x], [y], [z])")
-		stat(null, "CPU: [world.cpu]")
 
 /mob/proc/base_hud()
     var/list/basehud = list()

@@ -42,7 +42,6 @@
 			item.master = src
 
 			bombers += "[key_name(user)] attached a [item] to a transfer valve."
-			message_admins("[key_name_admin(user)] attached a [item] to a transfer valve.")
 			attacher = key_name(user)
 
 
@@ -144,7 +143,6 @@
 				var/bombarea = bombturf.loc.name
 
 				bombers += "Bomb valve opened in [bombarea] with device attacher: [attacher]. Last touched by: [src.fingerprintslast]"
-				message_admins("Bomb valve opened in [bombarea] with device attacher: [attacher]. Last touched by: [src.fingerprintslast]")
 
 				var/datum/gas_mixture/temp
 				temp = tank_one.air_contents.remove_ratio(1)

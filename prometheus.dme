@@ -2,11 +2,13 @@
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
+#include "lib\DreamChecker\dreamchecker.dm"
+
 // BEGIN_INTERNALS
 // END_INTERNALS
 
 // BEGIN_PREFERENCES
-//#define DEBUG
+#define DEBUG
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
@@ -309,24 +311,6 @@
 #include "cc-by-sa-nc\code\game\verbs\ooc.dm"
 #include "cc-by-sa-nc\code\game\verbs\suicide.dm"
 #include "cc-by-sa-nc\code\game\verbs\who.dm"
-#include "cc-by-sa-nc\code\modules\admin\admin.dm"
-#include "cc-by-sa-nc\code\modules\admin\admin_verbs.dm"
-#include "cc-by-sa-nc\code\modules\admin\banjob.dm"
-#include "cc-by-sa-nc\code\modules\admin\create_mob.dm"
-#include "cc-by-sa-nc\code\modules\admin\create_object.dm"
-#include "cc-by-sa-nc\code\modules\admin\create_turf.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\adminhelp.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\adminjump.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\adminsay.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\changetemperature.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\deadsay.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\debug.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\diagnostics.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\grillify.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\modifyvariables.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\playsound.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\randomverbs.dm"
-#include "cc-by-sa-nc\code\modules\admin\verbs\ticklag.dm"
 #include "cc-by-sa-nc\code\modules\mob\login.dm"
 #include "cc-by-sa-nc\code\modules\mob\logout.dm"
 #include "cc-by-sa-nc\code\modules\mob\mob.dm"
@@ -399,7 +383,6 @@
 #include "cc-by-sa-nc\code\modules\power\antimatter\engine.dm"
 #include "cc-by-sa-nc\code\modules\power\antimatter\fuel.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\BrokenInhands.dm"
-#include "cc-by-sa-nc\code\WorkInProgress\buildmode.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\Cameras.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\Chemistry-Holder.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\Chemistry-Machinery.dm"
@@ -409,7 +392,6 @@
 #include "cc-by-sa-nc\code\WorkInProgress\Chemistry-Tools.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\explosion_particles.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\KeelinsStuff.dm"
-#include "cc-by-sa-nc\code\WorkInProgress\NewBan.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\computer2\airlock_control.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\computer2\arcade.dm"
 #include "cc-by-sa-nc\code\WorkInProgress\computer2\base_program.dm"
@@ -431,10 +413,17 @@
 #include "cc-by-sa-nc\code\WorkInProgress\recycling\scrap.dm"
 #include "cc-by-sa-nc\interface\skin.dmf"
 #include "cc-by-sa-nc\maps\trunkmap.dmm"
+#include "closed-source\list_sort.dm"
+#include "closed-source\modules\admin\datum\permission.dm"
+#include "closed-source\modules\admin\datum\role.dm"
+#include "closed-source\modules\admin\datum\permission\ban.dm"
+#include "closed-source\modules\admin\datum\role\admin.dm"
+#include "closed-source\modules\admin\datum\role\developer.dm"
+#include "closed-source\modules\admin\datum\role\local_developer.dm"
+#include "closed-source\modules\admin\datum\role\mentor.dm"
 #include "closed-source\modules\infobrowser\infobrowser.dm"
 #include "closed-source\modules\map_pane\map_pane.dm"
 #include "closed-source\modules\parallax\parallax.dm"
-#include "lib\DreamChecker\dreamchecker.dm"
 #include "lib\GoonLights\helpers\area.dm"
 #include "lib\GoonLights\helpers\atom.dm"
 #include "lib\GoonLights\helpers\dview.dm"

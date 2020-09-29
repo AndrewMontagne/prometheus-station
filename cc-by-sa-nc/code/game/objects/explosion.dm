@@ -1,8 +1,5 @@
 proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range)
 	spawn(0)
-		if(devastation_range > 1)
-			message_admins("Explosion with size ([devastation_range], [heavy_impact_range], [light_impact_range]) in area [epicenter.loc.name] ")
-
 		defer_powernet_rebuild = 1
 
 		playsound(epicenter.loc, 'cc-by-sa-nc/sound/effects/explosionfar.ogg', 100, 1, round(devastation_range*2,1) )

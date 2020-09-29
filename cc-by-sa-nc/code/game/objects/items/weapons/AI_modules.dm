@@ -196,7 +196,6 @@ AI MODULES
 
 /obj/item/weapon/aiModule/reset/transmitInstructions(var/mob/living/silicon/ai/target, var/mob/sender)
 	..()
-	if (!checktraitor(target))
-		target << "[sender.real_name] attempted to reset your laws using a reset module."
-		target.set_zeroth_law("")
-		target.clear_supplied_laws()
+	target << "[sender.real_name] attempted to reset your laws using a reset module."
+	target.set_zeroth_law("")
+	target.clear_supplied_laws()

@@ -3,5 +3,9 @@
 	"forwardPorts": [5000],
 	"mounts": [
 		"source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached"
+	],
+	"extensions": [
+		"platymuus.dm-langclient",
+		"editorconfig.editorconfig"
 	]
 }
