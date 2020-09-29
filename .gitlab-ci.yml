@@ -26,6 +26,7 @@ compile:
   stage: build
   variables:
     TERM: dumb
+  needs: [lint, mapmerge]
   tags:
     - docker-runner
   script:
@@ -34,4 +35,4 @@ compile:
     paths:
       - prometheus.dmb
       - prometheus.rsc
-    expire_in: 1 month
+    expire_in: 1 week
