@@ -447,4 +447,6 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
+#define FILE_DIR "cc-by-sc-nc"
+#define FILE_DIR "closed-source"
 // END_FILE_DIR
