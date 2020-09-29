@@ -1,14 +1,20 @@
 image: andrewmontagne/byond:latest
 
+stages:
+  - lint
+  - build
+
 lint:
+  stage: lint
   variables:
     TERM: dumb
   tags:
     - docker-runner
   script:
-	- make lint
-	
+    - make lint
+
 mapmerge:
+  stage: lint
   variables:
     TERM: dumb
   tags:
@@ -16,7 +22,8 @@ mapmerge:
   script:
     - make mapmerge-test
 
-build:
+compile:
+  stage: build
   variables:
     TERM: dumb
   tags:
@@ -28,6 +35,3 @@ build:
       - prometheus.dmb
       - prometheus.rsc
     expire_in: 1 month
-  dependencies:
-	- lint
-	- mapmerge
