@@ -113,7 +113,6 @@ datum/shuttle_controller
 						world << "<B>The Emergency Shuttle has docked with the station! You have [timeleft()/60] minutes to board the Emergency Shuttle.</B>"
 
 						return TRUE
-
 				if(1)
 					if(timeleft>0)
 						return FALSE
@@ -127,6 +126,3 @@ datum/shuttle_controller
 						online = 0
 
 						return TRUE
-
-				else
-					return TRUE

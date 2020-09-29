@@ -184,7 +184,7 @@
 	if (istype(usr, /mob/living/silicon/robot) && W == null)
 		t5 = 1
 
-	if (istype(src, /datum/organ) && src in usr.contents)
+	if (istype(src, /datum/organ) && (src in usr.contents))
 		return
 
 	if (((t5 || (W && (W.flags & 16))) && !( istype(src, /obj/screen) )))

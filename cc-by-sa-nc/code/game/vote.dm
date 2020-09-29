@@ -318,9 +318,6 @@
 		if(M) M.vote()
 		return
 
-
-		return
-
 	if(href_list["vote"] && vote.voting)
 		if(M)
 			M.client.vote = href_list["vote"]

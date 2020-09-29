@@ -2,7 +2,6 @@
 
 	if (!( istext(hex) ))
 		CRASH("hex2num not given a hexadecimal string argument (user error)")
-		return
 	var/num = 0
 	var/power = 0
 	var/i = null
@@ -29,7 +28,6 @@
 				num += 16 ** power * 15
 			else
 				CRASH("hex2num given non-hexadecimal string (user error)")
-				return
 		power++
 	return num
 
@@ -39,7 +37,6 @@
 		placeholder = 2
 	if (!( isnum(num) ))
 		CRASH("num2hex not given a numeric argument (user error)")
-		return
 	if (!( num ))
 		return "0"
 	var/hex = ""
@@ -76,11 +73,9 @@
 
 	if (!( istext(HTMLstring) ))
 		CRASH("Given non-text argument!")
-		return
 	else
 		if (length(HTMLstring) != 7)
 			CRASH("Given non-HTML argument!")
-			return
 	var/textr = copytext(HTMLstring, 2, 4)
 	var/textg = copytext(HTMLstring, 4, 6)
 	var/textb = copytext(HTMLstring, 6, 8)
@@ -97,7 +92,6 @@
 	if (length(textb) < 2)
 		textr = text("0[]", textb)
 	return text("#[][][]", textr, textg, textb)
-	return
 
 /proc/shuffle(var/list/shufflelist)
 	if(!shufflelist)

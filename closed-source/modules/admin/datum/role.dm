@@ -24,7 +24,7 @@
 
 /client
 	VAR_PRIVATE/datum/role/role = null
-	var/global/list/roles_to_clients = list()
+	var/global/list/client/roles_to_clients = list()
 
 /client/proc/give_role(datum/role/new_role)
 	if (!isnull(src.role))
@@ -37,7 +37,7 @@
 	src.roles_to_clients[rolekey] |= src
 
 /client/proc/remove_role()
-	src.roles_to_clients[src.role.get_role_key()].Remove(src)
+	src.roles_to_clients.Remove(src)
 	src.role.on_remove()
 	spawn(0) src.role.Del()
 	src.role = null

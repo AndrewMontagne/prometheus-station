@@ -301,6 +301,5 @@
 	for(var/obj/machinery/camera/C in oview(M))
 		if(C.status)	// check if camera disabled
 			return C
-			break
 
 	return null

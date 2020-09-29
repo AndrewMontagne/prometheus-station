@@ -319,7 +319,7 @@
 						src.note_file = null
 						src.note = null
 					if("save")
-						if(src.note_file && src.note_file.holder in src.master)
+						if(src.note_file && (src.note_file.holder in src.master))
 							src.note_file.data = src.note
 						else
 							var/datum/computer/file/text/F = new /datum/computer/file/text

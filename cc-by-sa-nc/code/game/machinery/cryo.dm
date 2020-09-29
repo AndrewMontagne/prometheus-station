@@ -103,7 +103,7 @@
 				src.on = !src.on
 				build_icon()
 			if(href_list["eject"])
-				beaker:loc = src.loc
+				beaker.loc = src.loc
 				beaker = null
 
 			src.updateUsrDialog()
@@ -121,12 +121,12 @@
 			G.loc = src
 			user.visible_message("[user] adds a beaker to \the [src]!", "You add a beaker to the [src]!")
 		else if(istype(G, /obj/item/weapon/grab))
-			if(!ismob(G:affecting))
+			if(!ismob(G.affecting))
 				return
 			if (src.occupant)
 				user << "\blue <B>The sleeper is already occupied!</B>"
 				return
-			if (G:affecting.abiotic())
+			if (G.affecting.abiotic())
 				user << "Subject may not have abiotic items on."
 				return
 			var/mob/M = G:affecting
@@ -186,8 +186,8 @@
 						if(occupant.fireloss) occupant.fireloss = max(0, occupant.fireloss - 1)
 						if(occupant.toxloss) occupant.toxloss = max(0, occupant.toxloss - 1)
 				if(beaker && (next_trans == 0))
-					beaker:reagents.trans_to(occupant, 1, 10)
-					beaker:reagents.reaction(occupant)
+					beaker.reagents.trans_to(occupant, 1, 10)
+					beaker.reagents.reaction(occupant)
 			next_trans++
 			if(next_trans == 10)
 				next_trans = 0
@@ -271,7 +271,6 @@
 		return TRUE
 	else
 		return FALSE
-	return
 
 /datum/data/function/proc/reset()
 	return

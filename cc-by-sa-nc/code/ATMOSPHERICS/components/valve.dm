@@ -189,7 +189,7 @@ obj/machinery/atmospherics/valve
 
 		return TRUE
 
-	return_network_air(datum/network/reference)
+	return_network_air(datum/pipe_network/reference)
 		return null
 
 	disconnect(obj/machinery/atmospherics/reference)

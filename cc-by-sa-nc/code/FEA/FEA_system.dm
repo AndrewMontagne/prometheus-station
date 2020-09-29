@@ -287,7 +287,7 @@ datum
 				tiles_to_update.len = 0
 
 			process_rebuild_select_groups()
-				var/turf/list/turfs = list()
+				var/list/turf/turfs = list()
 
 				for(var/datum/air_group/turf/turf_AG in groups_to_rebuild) //Deconstruct groups, gathering their old members
 					for(var/turf/simulated/T in turf_AG.members)

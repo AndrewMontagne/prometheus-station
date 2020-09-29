@@ -30,8 +30,8 @@ datum
 				//Copy group air information to individual tile air
 				//Used right before turning off group processing
 
-		var/list/borders //Tiles that connect this group to other groups/individual tiles
-		var/list/members //All tiles in this group
+		var/list/turf/simulated/borders //Tiles that connect this group to other groups/individual tiles
+		var/list/turf/simulated/members //All tiles in this group
 
 		var/list/space_borders
 		var/length_space_border = 0
@@ -41,8 +41,8 @@ datum
 			group_processing = 0
 
 		update_group_from_tiles()
-			var/sample_member = pick(members)
-			var/datum/gas_mixture/sample_air = sample_member:air
+			var/turf/simulated/sample_member = pick(members)
+			var/datum/gas_mixture/sample_air = sample_member.air
 
 			air.copy_from(sample_air)
 			air.group_multiplier = members.len
@@ -50,8 +50,8 @@ datum
 			return TRUE
 
 		update_tiles_from_group()
-			for(var/member in members)
-				member:air.copy_from(air)
+			for(var/turf/simulated/member in members)
+				member.air.copy_from(air)
 
 		archive()
 			air.archive()
@@ -64,10 +64,10 @@ datum
 
 
 			var/turf/simulated/sample = pick(members)
-			for(var/member in members)
-				if(member:active_hotspot)
+			for(var/turf/simulated/member)
+				if(member.active_hotspot)
 					return FALSE
-				if(member:air.compare(sample.air)) continue
+				if(member.air.compare(sample.air)) continue
 				else
 					return FALSE
 
@@ -79,12 +79,12 @@ datum
 		turf/process_group()
 			current_cycle = air_master.current_cycle
 			if(group_processing) //See if processing this group as a group
-				var/turf/simulated/list/border_individual = list()
-				var/datum/air_group/list/border_group = list()
+				var/list/turf/simulated/border_individual = list()
+				var/list/datum/air_group/border_group = list()
 
-				var/turf/simulated/list/enemies = list() //used to send the appropriate border tile of a group to the group proc
-				var/turf/simulated/list/self_group_borders = list()
-				var/turf/simulated/list/self_tile_borders = list()
+				var/list/turf/simulated/enemies = list() //used to send the appropriate border tile of a group to the group proc
+				var/list/turf/simulated/self_group_borders = list()
+				var/list/turf/simulated/self_tile_borders = list()
 
 				if(archived_cycle < air_master.current_cycle)
 					archive()
@@ -224,10 +224,10 @@ datum
 
 			if(group_processing) //See if processing this group as a group
 
-				var/turf/simulated/list/border_individual = list()
-				var/datum/air_group/list/border_group = list()
+				var/list/turf/simulated/border_individual = list()
+				var/list/datum/air_group/border_group = list()
 
-				var/turf/simulated/list/enemies = list() //used to send the appropriate border tile of a group to the group proc
+				var/list/turf/simulated/enemies = list() //used to send the appropriate border tile of a group to the group proc
 				var/enemy_index = 1
 
 				if(archived_cycle < air_master.current_cycle)
