@@ -16,7 +16,7 @@ obj/machinery/atmospherics/pipe
 		//Return 1 if parent should continue checking other pipes
 		//Return null if parent should stop checking other pipes. Recall: del(src) will by default return null
 
-		return 1
+		return TRUE
 
 	return_air()
 		if(!parent)
@@ -147,7 +147,7 @@ obj/machinery/atmospherics/pipe
 				if(prob(5))
 					del(src)
 
-			else return 1
+			else return TRUE
 
 		Del()
 			if(node1)

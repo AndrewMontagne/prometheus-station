@@ -16,7 +16,7 @@ datum/computer/file/embedded_program
 			return null
 
 		process()
-			return 0
+			return FALSE
 
 obj/machinery/embedded_controller
 	var/datum/computer/file/embedded_program/program
@@ -36,7 +36,7 @@ obj/machinery/embedded_controller
 	proc/return_text()
 
 	proc/post_signal(datum/signal/signal, comm_line)
-		return 0
+		return FALSE
 
 	receive_signal(datum/signal/signal, receive_method, receive_param)
 		if(!signal || signal.encryption) return
@@ -46,7 +46,7 @@ obj/machinery/embedded_controller
 
 	Topic(href, href_list)
 		if(..())
-			return 0
+			return FALSE
 
 		if(program)
 			program.receive_user_command(href_list["command"])

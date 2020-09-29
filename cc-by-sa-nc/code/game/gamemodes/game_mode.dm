@@ -8,7 +8,7 @@
 	world << "<B>[src] did not define announce()</B>"
 
 /datum/game_mode/proc/pre_setup()
-	return 1
+	return TRUE
 
 /datum/game_mode/proc/post_setup()
 

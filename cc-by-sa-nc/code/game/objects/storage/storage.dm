@@ -180,12 +180,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/weapon/storage/utilitybelt/proc/can_use()
-	if(!ismob(loc)) return 0
+	if(!ismob(loc)) return FALSE
 	var/mob/M = loc
 	if(src in M.get_equipped_items())
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /obj/item/weapon/storage/utilitybelt/dropped(mob/user as mob)
 	..()

@@ -1,4 +1,4 @@
-var/global/list/datum/pipe_network/pipe_networks = list()
+var/list/datum/pipe_network/pipe_networks = list()
 
 datum/pipe_network
 	var/list/datum/gas_mixture/gases = list() //All of the gas_mixtures continuously connected in this network
@@ -42,7 +42,7 @@ datum/pipe_network
 			del(src)
 
 	proc/merge(datum/pipe_network/giver)
-		if(giver==src) return 0
+		if(giver==src) return FALSE
 
 		normal_members -= giver.normal_members
 		normal_members += giver.normal_members
@@ -59,7 +59,7 @@ datum/pipe_network
 		del(giver)
 
 		update_network_gases()
-		return 1
+		return TRUE
 
 	proc/update_network_gases()
 		//Go through membership roster and make sure gases is up to date
@@ -138,9 +138,9 @@ datum/pipe_network
 							gas.trace_gases += corresponding
 
 						corresponding.moles = trace_gas.moles*gas.volume/air_transient.volume
-		return 1
+		return TRUE
 
-proc/equalize_gases(datum/gas_mixture/list/gases)
+proc/equalize_gases(list/datum/gas_mixture/gases)
 	//Perfectly equalize all gases members instantly
 
 	//Calculate totals from individual components
@@ -200,4 +200,4 @@ proc/equalize_gases(datum/gas_mixture/list/gases)
 
 					corresponding.moles = trace_gas.moles*gas.volume/total_volume
 
-	return 1
+	return TRUE

@@ -4,4 +4,4 @@
 
 	..()
 
-	return 1
+	return TRUE

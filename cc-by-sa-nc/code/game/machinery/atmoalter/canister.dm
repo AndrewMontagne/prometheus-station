@@ -71,7 +71,7 @@
 
 /obj/machinery/portable_atmospherics/canister/proc/healthcheck()
 	if(destroyed)
-		return 1
+		return TRUE
 
 	if (src.health <= 10)
 		var/atom/location = src.loc
@@ -86,9 +86,9 @@
 			src.holding.loc = src.loc
 			src.holding = null
 
-		return 1
+		return TRUE
 	else
-		return 1
+		return TRUE
 
 /obj/machinery/portable_atmospherics/canister/process()
 	if (destroyed)
@@ -212,7 +212,7 @@ Release Pressure: <A href='?src=\ref[src];pressure_adj=-100'>-</A> <A href='?src
 	src.air_contents.toxins = (src.standard_pressure*filled)*air_contents.volume/(R_IDEAL_GAS_EQUATION*air_contents.temperature)
 
 	src.update_icon()
-	return 1
+	return TRUE
 
 /obj/machinery/portable_atmospherics/canister/oxygen/New()
 
@@ -221,7 +221,7 @@ Release Pressure: <A href='?src=\ref[src];pressure_adj=-100'>-</A> <A href='?src
 	src.air_contents.oxygen = (src.standard_pressure*filled)*air_contents.volume/(R_IDEAL_GAS_EQUATION*air_contents.temperature)
 
 	src.update_icon()
-	return 1
+	return TRUE
 
 /obj/machinery/portable_atmospherics/canister/sleeping_agent/New()
 
@@ -232,7 +232,7 @@ Release Pressure: <A href='?src=\ref[src];pressure_adj=-100'>-</A> <A href='?src
 	trace_gas.moles = (src.standard_pressure*filled)*air_contents.volume/(R_IDEAL_GAS_EQUATION*air_contents.temperature)
 
 	src.update_icon()
-	return 1
+	return TRUE
 
 /obj/machinery/portable_atmospherics/canister/nitrogen/New()
 
@@ -241,7 +241,7 @@ Release Pressure: <A href='?src=\ref[src];pressure_adj=-100'>-</A> <A href='?src
 	src.air_contents.nitrogen = (src.standard_pressure*filled)*air_contents.volume/(R_IDEAL_GAS_EQUATION*air_contents.temperature)
 
 	src.update_icon()
-	return 1
+	return TRUE
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide/New()
 
@@ -249,7 +249,7 @@ Release Pressure: <A href='?src=\ref[src];pressure_adj=-100'>-</A> <A href='?src
 	src.air_contents.carbon_dioxide = (src.standard_pressure*filled)*air_contents.volume/(R_IDEAL_GAS_EQUATION*air_contents.temperature)
 
 	src.update_icon()
-	return 1
+	return TRUE
 
 
 /obj/machinery/portable_atmospherics/canister/air/New()
@@ -259,4 +259,4 @@ Release Pressure: <A href='?src=\ref[src];pressure_adj=-100'>-</A> <A href='?src
 	src.air_contents.nitrogen = (N2STANDARD*src.standard_pressure*filled)*air_contents.volume/(R_IDEAL_GAS_EQUATION*air_contents.temperature)
 
 	src.update_icon()
-	return 1
+	return TRUE

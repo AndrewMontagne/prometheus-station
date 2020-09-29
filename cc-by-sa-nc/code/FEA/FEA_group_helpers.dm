@@ -75,7 +75,7 @@
 			parent = west.parent
 
 			air_master.tiles_to_update += west.parent.members
-			return 1
+			return TRUE
 
 		else
 			new_group_possible = 1
@@ -86,7 +86,7 @@
 		parent = north.parent
 
 		air_master.tiles_to_update += north.parent.members
-		return 1
+		return TRUE
 
 
 	if(south_votes  && (south_votes >= east_votes))
@@ -95,7 +95,7 @@
 		parent = south.parent
 
 		air_master.tiles_to_update += south.parent.members
-		return 1
+		return TRUE
 
 	if(east_votes)
 		east.parent.suspend_group_processing()
@@ -103,12 +103,12 @@
 		parent = east.parent
 
 		air_master.tiles_to_update += east.parent.members
-		return 1
+		return TRUE
 
 	if(new_group_possible)
 		air_master.assemble_group_turf(src)
-		return 1
+		return TRUE
 
 	else
 		air_master.active_singletons += src
-		return 1
+		return TRUE

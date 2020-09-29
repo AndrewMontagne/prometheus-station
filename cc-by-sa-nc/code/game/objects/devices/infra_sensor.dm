@@ -2,7 +2,7 @@
 	if (src.passive)
 		for(var/obj/beam/i_beam/I in range(2, src.loc))
 			I.left = 2
-		return 1
+		return TRUE
 
 	else
 		processing_items.Remove(src)

@@ -53,37 +53,37 @@
 /obj/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
 	if(src.check_access(null))
-		return 1
+		return TRUE
 	if(istype(M, /mob/living/silicon))
 		//AI can do whatever he wants
-		return 1
+		return TRUE
 	else if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		//if they are holding or wearing a card that has access, that works
 		if(src.check_access(H.equipped()) || src.check_access(H.wear_id))
-			return 1
+			return TRUE
 	else if(istype(M, /mob/living/carbon/monkey) || istype(M, /mob/living/carbon/alien/humanoid))
 		var/mob/living/carbon/george = M
 		//they can only hold things :(
 		if(george.equipped() && istype(george.equipped(), /obj/item/weapon/card/id) && src.check_access(george.equipped()))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/proc/check_access(obj/item/weapon/card/id/I)
 	if(!src.req_access) //no requirements
-		return 1
+		return TRUE
 	if(!istype(src.req_access, /list)) //something's very wrong
-		return 1
+		return TRUE
 
 	var/list/L = src.req_access
 	if(!L.len) //no requirements
-		return 1
+		return TRUE
 	if(!I || !istype(I, /obj/item/weapon/card/id) || !I.access) //not ID or no access
-		return 0
+		return FALSE
 	for(var/req in src.req_access)
 		if(!(req in I.access)) //doesn't have this access
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 /proc/get_access(job)
 	switch(job)

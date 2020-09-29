@@ -33,7 +33,7 @@
 		injecting = 0
 
 		if(!on)
-			return 0
+			return FALSE
 
 		if(air_contents.temperature > 0)
 			var/transfer_moles = (air_contents.return_pressure())*volume_rate/(air_contents.temperature * R_IDEAL_GAS_EQUATION)
@@ -45,11 +45,11 @@
 			if(network)
 				network.update = 1
 
-		return 1
+		return TRUE
 
 	proc/inject()
 		if(on || injecting)
-			return 0
+			return FALSE
 
 		injecting = 1
 
@@ -74,7 +74,7 @@
 
 		broadcast_status()
 			if(!radio_connection)
-				return 0
+				return FALSE
 
 			var/datum/signal/signal = new
 			signal.transmission_method = 1 //radio signal
@@ -87,7 +87,7 @@
 
 			radio_connection.post_signal(src, signal)
 
-			return 1
+			return TRUE
 
 	initialize()
 		..()
@@ -96,7 +96,7 @@
 
 	receive_signal(datum/signal/signal)
 		if(signal.data["tag"] && (signal.data["tag"] != id))
-			return 0
+			return FALSE
 
 		switch(signal.data["command"])
 			if("power_on")

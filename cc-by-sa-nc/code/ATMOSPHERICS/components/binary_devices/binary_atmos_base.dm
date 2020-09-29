@@ -37,7 +37,7 @@ obj/machinery/atmospherics/binary
 			network2 = new_network
 
 		if(new_network.normal_members.Find(src))
-			return 0
+			return FALSE
 
 		new_network.normal_members += src
 
@@ -105,7 +105,7 @@ obj/machinery/atmospherics/binary
 		if(network2 == old_network)
 			network2 = new_network
 
-		return 1
+		return TRUE
 
 	return_network_air(datum/pipe_network/reference)
 		var/list/results = list()

@@ -18,7 +18,7 @@
 	if (src.operating == 1) //doors can still open when emag-disabled
 		return
 	if (!ticker)
-		return 0
+		return FALSE
 	if(!src.operating) //in case of emag
 		src.operating = 1
 	flick("pdoorc0", src)
@@ -33,7 +33,7 @@
 	if(autoclose)
 		spawn(150)
 			autoclose()
-	return 1
+	return TRUE
 
 /obj/machinery/door/poddoor/close()
 	if (src.operating)

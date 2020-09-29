@@ -6,7 +6,7 @@ datum/preferences/proc/savefile_path(mob/user)
 
 datum/preferences/proc/savefile_save(mob/user)
 	if (IsGuestKey(user.key))
-		return 0
+		return FALSE
 
 	var/savefile/F = new /savefile(src.savefile_path(user))
 
@@ -35,7 +35,7 @@ datum/preferences/proc/savefile_save(mob/user)
 	F["underwear"] << src.underwear
 	F["name_is_always_random"] << src.be_random_name
 
-	return 1
+	return TRUE
 
 // loads the savefile corresponding to the mob's ckey
 // if silent=true, report incompatible savefiles
@@ -44,12 +44,12 @@ datum/preferences/proc/savefile_save(mob/user)
 
 datum/preferences/proc/savefile_load(mob/user, var/silent = 1)
 	if (IsGuestKey(user.key))
-		return 0
+		return FALSE
 
 	var/path = savefile_path(user)
 
 	if (!fexists(path))
-		return 0
+		return FALSE
 
 	var/savefile/F = new /savefile(path)
 
@@ -62,7 +62,7 @@ datum/preferences/proc/savefile_load(mob/user, var/silent = 1)
 //		if (!silent)
 //			alert(user, "Your savefile was incompatible with this version and was deleted.")
 
-		return 0
+		return FALSE
 
 	F["real_name"] >> src.real_name
 	F["gender"] >> src.gender
@@ -86,7 +86,7 @@ datum/preferences/proc/savefile_load(mob/user, var/silent = 1)
 	F["be_syndicate"] >> src.be_syndicate
 	F["underwear"] >> src.underwear
 	F["name_is_always_random"] >> src.be_random_name
-	return 1
+	return TRUE
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

@@ -136,7 +136,7 @@
 
 /atom/proc/check_eye(user as mob)
 	if (istype(user, /mob/living/silicon/ai))
-		return 1
+		return TRUE
 	return
 
 /atom/proc/on_reagent_change()

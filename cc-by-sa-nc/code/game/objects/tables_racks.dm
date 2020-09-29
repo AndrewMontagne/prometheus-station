@@ -17,9 +17,7 @@
 	return
 
 /obj/table/hand_p(mob/user as mob)
-
 	return src.attack_paw(user)
-	return
 
 /obj/table/attack_paw(mob/user as mob)
 	if (!( locate(/obj/table, user.loc) ))
@@ -37,12 +35,12 @@
 
 
 /obj/table/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+	if(air_group || (height==0)) return TRUE
 
 	if (mover.flags & 2)
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /obj/table/MouseDrop_T(obj/O as obj, mob/user as mob)
 
@@ -135,12 +133,12 @@
 	return
 
 /obj/rack/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+	if(air_group || (height==0)) return TRUE
 
 	if (mover.flags & 2)
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /obj/rack/MouseDrop_T(obj/O as obj, mob/user as mob)
 	if ((!( istype(O, /obj/item/weapon) ) || user.equipped() != O))

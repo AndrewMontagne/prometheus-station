@@ -100,7 +100,7 @@ GAS ANALYZER
 		user << "\blue No blood found on [A]."
 	if (!( A.fingerprints ))
 		user << "\blue Unable to locate any fingerprints on [A]!"
-		return 0
+		return FALSE
 	else
 		if ((src.amount < 1 && src.printing))
 			user << "\blue Fingerprints found. Need more cards to print."

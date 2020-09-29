@@ -47,7 +47,7 @@ datum
 			air.copy_from(sample_air)
 			air.group_multiplier = members.len
 
-			return 1
+			return TRUE
 
 		update_tiles_from_group()
 			for(var/member in members)
@@ -60,21 +60,21 @@ datum
 		check_regroup()
 			//Purpose: Checks to see if group processing should be turned back on
 			//Returns: group_processing
-			if(group_processing) return 1
+			if(group_processing) return TRUE
 
 
 			var/turf/simulated/sample = pick(members)
 			for(var/member in members)
 				if(member:active_hotspot)
-					return 0
+					return FALSE
 				if(member:air.compare(sample.air)) continue
 				else
-					return 0
+					return FALSE
 
 			update_group_from_tiles()
 			group_processing = 1
 
-			return 1
+			return TRUE
 
 		turf/process_group()
 			current_cycle = air_master.current_cycle

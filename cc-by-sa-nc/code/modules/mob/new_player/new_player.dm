@@ -214,9 +214,9 @@
 
 /mob/new_player/proc/IsJobAvailable(rank, maxAllowed)
 	if(countJob(rank) < maxAllowed)
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /mob/new_player/proc/AttemptLateSpawn(rank, maxAllowed)
 	if(IsJobAvailable(rank, maxAllowed))
@@ -322,7 +322,7 @@
 	return new_character
 
 /mob/new_player/Move()
-	return 0
+	return FALSE
 
 
 /mob/new_player/proc/close_spawn_windows()

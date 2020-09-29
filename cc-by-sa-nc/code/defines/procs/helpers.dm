@@ -12,7 +12,7 @@
 		switch(char)
 			if("0")
 				power++
-				goto Label_290
+				i--
 			if("9", "8", "7", "6", "5", "4", "3", "2", "1")
 				num += text2num(char) * 16 ** power
 			if("a", "A")
@@ -31,8 +31,6 @@
 				CRASH("hex2num given non-hexadecimal string (user error)")
 				return
 		power++
-		Label_290:
-		i--
 	return num
 
 /proc/num2hex(num, placeholder)
@@ -370,46 +368,46 @@
 	return strip_html(input(Message,Title,Default) as text, length)
 
 /proc/InRange(var/A, var/lower, var/upper)
-	if(A < lower) return 0
-	if(A > upper) return 0
-	return 1
+	if(A < lower) return FALSE
+	if(A > upper) return FALSE
+	return TRUE
 
 /proc/LinkBlocked(turf/A, turf/B)
-	if(A == null || B == null) return 1
+	if(A == null || B == null) return TRUE
 	var/adir = get_dir(A,B)
 	var/rdir = get_dir(B,A)
 	if((adir & (NORTH|SOUTH)) && (adir & (EAST|WEST)))	//	diagonal
 		var/iStep = get_step(A,adir&(NORTH|SOUTH))
-		if(!LinkBlocked(A,iStep) && !LinkBlocked(iStep,B)) return 0
+		if(!LinkBlocked(A,iStep) && !LinkBlocked(iStep,B)) return FALSE
 
 		var/pStep = get_step(A,adir&(EAST|WEST))
-		if(!LinkBlocked(A,pStep) && !LinkBlocked(pStep,B)) return 0
-		return 1
+		if(!LinkBlocked(A,pStep) && !LinkBlocked(pStep,B)) return FALSE
+		return TRUE
 
-	if(DirBlocked(A,adir)) return 1
-	if(DirBlocked(B,rdir)) return 1
-	return 0
+	if(DirBlocked(A,adir)) return TRUE
+	if(DirBlocked(B,rdir)) return TRUE
+	return FALSE
 
 
 /proc/DirBlocked(turf/loc,var/dir)
 	for(var/obj/window/D in loc)
 		if(!D.density)			continue
-		if(D.dir == SOUTHWEST)	return 1
-		if(D.dir == dir)		return 1
+		if(D.dir == SOUTHWEST)	return TRUE
+		if(D.dir == dir)		return TRUE
 
 	for(var/obj/machinery/door/D in loc)
 		if(!D.density)			continue
 		if(istype(D, /obj/machinery/door/window))
-			if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return 1
-			if((dir & EAST ) && (D.dir & (NORTH|SOUTH)))	return 1
+			if((dir & SOUTH) && (D.dir & (EAST|WEST)))		return TRUE
+			if((dir & EAST ) && (D.dir & (NORTH|SOUTH)))	return TRUE
 		else return 1	// it's a real, air blocking door
-	return 0
+	return FALSE
 
 /proc/TurfBlockedNonWindow(turf/loc)
 	for(var/obj/O in loc)
 		if(O.density && !istype(O, /obj/window))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /proc/sign(x) //Should get bonus points for being the most compact code in the world!
 	return x!=0?x/abs(x):0 //((x<0)?-1:((x>0)?1:0))
@@ -474,16 +472,16 @@
 
 /proc/IsGuestKey(key)
 	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
-		return 0
+		return FALSE
 
 	var/i, ch, len = length(key)
 
 	for (i = 7, i <= len, ++i)
 		ch = text2ascii(key, i)
 		if (ch < 48 || ch > 57)
-			return 0
+			return FALSE
 
-	return 1
+	return TRUE
 
 /proc/pickweight(list/L)
 	var/total = 0

@@ -59,7 +59,7 @@ SYNDICATE UPLINK
 		return
 	var/mob/living/carbon/human/H = usr
 	if (!( istype(H, /mob/living/carbon/human)))
-		return 1
+		return TRUE
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.machine = src
 		if (href_list["item_emag"])

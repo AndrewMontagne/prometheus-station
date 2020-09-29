@@ -6,22 +6,22 @@
 	return get_turf(src)
 
 /obj/closet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
+	if(air_group || (height==0)) return TRUE
 
 	return opened
 
 /obj/closet/proc/can_open()
 	if (src.welded)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/closet/proc/can_close()
 	for(var/obj/closet/closet in get_turf(src))
 		if(closet != src)
-			return 0
+			return FALSE
 	for(var/obj/secure_closet/closet in get_turf(src))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/closet/proc/dump_contents()
 	for (var/obj/item/I in src)
@@ -38,22 +38,22 @@
 
 /obj/closet/proc/open()
 	if (src.opened)
-		return 0
+		return FALSE
 
 	if (!src.can_open())
-		return 0
+		return FALSE
 
 	src.dump_contents()
 	src.opened = 1
 	update_icon()
 	playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
-	return 1
+	return TRUE
 
 /obj/closet/proc/close()
 	if (!src.opened)
-		return 0
+		return FALSE
 	if (!src.can_close())
-		return 0
+		return FALSE
 
 	for (var/obj/item/I in src.loc)
 		if (!I.anchored)
@@ -75,7 +75,7 @@
 	src.opened = 0
 	update_icon()
 	playsound(src.loc, 'cc-by-sa-nc/sound/machines/click.ogg', 15, 1, -3)
-	return 1
+	return TRUE
 
 /obj/closet/proc/toggle()
 	if (src.opened)

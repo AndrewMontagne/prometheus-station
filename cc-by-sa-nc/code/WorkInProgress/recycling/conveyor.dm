@@ -294,18 +294,18 @@
 /obj/machinery/diverter/CanPass(atom/movable/O, var/turf/target)
 	var/direct = get_dir(O, target)
 	if(direct == divert_to)	// prevent movement through body of diverter
-		return 0
+		return FALSE
 	if(!deployed)
-		return 1
+		return TRUE
 	return(direct != turn(divert_from,180))
 
 // don't allow movement through the arm if deployed
 /obj/machinery/diverter/CheckExit(atom/movable/O, var/turf/target)
 	var/direct = get_dir(O, target)
 	if(direct == turn(divert_to,180))	// prevent movement through body of diverter
-		return 0
+		return FALSE
 	if(!deployed)
-		return 1
+		return TRUE
 	return(direct != divert_from)
 
 

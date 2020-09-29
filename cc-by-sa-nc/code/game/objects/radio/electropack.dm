@@ -100,7 +100,7 @@
 /obj/item/device/radio/electropack/accept_rad(obj/item/device/radio/signaler/R as obj, message)
 
 	if ((istype(R, /obj/item/device/radio/signaler) && R.frequency == src.frequency && R.code == src.code))
-		return 1
+		return TRUE
 	else
 		return null
 	return

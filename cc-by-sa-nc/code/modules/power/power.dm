@@ -11,13 +11,13 @@
 	if(powernet)
 		return powernet.avail-powernet.load
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/power/proc/avail()
 	if(powernet)
 		return powernet.avail
 	else
-		return 0
+		return FALSE
 
 // returns true if the area has power on given channel (or doesn't require power).
 // defaults to equipment channel

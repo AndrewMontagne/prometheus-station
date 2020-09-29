@@ -136,7 +136,7 @@ datum/computer/file/embedded_program/access_controller
 						post_signal(signal)
 
 
-		return 1
+		return TRUE
 
 
 obj/machinery/embedded_controller/radio/access_controller

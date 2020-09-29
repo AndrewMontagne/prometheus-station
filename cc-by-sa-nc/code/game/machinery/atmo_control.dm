@@ -234,7 +234,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 			if(href_list["in_refresh_status"])
 				input_info = null
 				if(!radio_connection)
-					return 0
+					return FALSE
 
 				var/datum/signal/signal = new
 				signal.transmission_method = 1 //radio signal
@@ -248,7 +248,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 			if(href_list["in_toggle_injector"])
 				input_info = null
 				if(!radio_connection)
-					return 0
+					return FALSE
 
 				var/datum/signal/signal = new
 				signal.transmission_method = 1 //radio signal
@@ -262,7 +262,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 			if(href_list["out_refresh_status"])
 				output_info = null
 				if(!radio_connection)
-					return 0
+					return FALSE
 
 				var/datum/signal/signal = new
 				signal.transmission_method = 1 //radio signal
@@ -276,7 +276,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 			if(href_list["out_toggle_power"])
 				output_info = null
 				if(!radio_connection)
-					return 0
+					return FALSE
 
 				var/datum/signal/signal = new
 				signal.transmission_method = 1 //radio signal
@@ -290,7 +290,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 			if(href_list["out_set_pressure"])
 				output_info = null
 				if(!radio_connection)
-					return 0
+					return FALSE
 
 				var/datum/signal/signal = new
 				signal.transmission_method = 1 //radio signal
@@ -357,7 +357,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 		process()
 			if(automation)
 				if(!radio_connection)
-					return 0
+					return FALSE
 
 				var/injecting = 0
 				for(var/id_tag in sensor_information)
@@ -423,7 +423,7 @@ Rate: [volume_rate] L/sec<BR>"}
 			if(href_list["refresh_status"])
 				device_info = null
 				if(!radio_connection)
-					return 0
+					return FALSE
 
 				var/datum/signal/signal = new
 				signal.transmission_method = 1 //radio signal
@@ -440,7 +440,7 @@ Rate: [volume_rate] L/sec<BR>"}
 			if(href_list["toggle_injector"])
 				device_info = null
 				if(!radio_connection)
-					return 0
+					return FALSE
 
 				var/datum/signal/signal = new
 				signal.transmission_method = 1 //radio signal
@@ -453,7 +453,7 @@ Rate: [volume_rate] L/sec<BR>"}
 
 			if(href_list["injection"])
 				if(!radio_connection)
-					return 0
+					return FALSE
 
 				var/datum/signal/signal = new
 				signal.transmission_method = 1 //radio signal

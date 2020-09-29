@@ -14,19 +14,19 @@
 			location = location:loc
 		else
 			return location
-	return 0
+	return FALSE
 
 /proc/get_area_name(N) //get area by it's name
 
 	for(var/area/A in world)
 		if(A.name == N)
 			return A
-	return 0
+	return FALSE
 
 /proc/in_range(source, user)
 	if(get_dist(source, user) <= 1)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /proc/circlerange(center=usr,radius=3)
 

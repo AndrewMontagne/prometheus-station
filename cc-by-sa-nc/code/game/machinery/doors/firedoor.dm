@@ -73,12 +73,12 @@
 				var/direction = get_dir(src,target)
 				return (dir != direction)
 			else
-				return 0
+				return FALSE
 
-		return 1
+		return TRUE
 
 	update_nearby_tiles(need_rebuild)
-		if(!air_master) return 0
+		if(!air_master) return FALSE
 
 		var/turf/simulated/source = loc
 		var/turf/simulated/destination = get_step(source,dir)
@@ -99,4 +99,4 @@
 			if(istype(source)) air_master.tiles_to_update += source
 			if(istype(destination)) air_master.tiles_to_update += destination
 
-		return 1
+		return TRUE

@@ -55,7 +55,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 		//SN src = null
 		del(src)
 	if(newloc.density)
-		return 0
+		return FALSE
 	.=..()
 
 
@@ -813,7 +813,7 @@ steam.start() -- spawns the effect
 	// shouldn't this be a general procedure?
 	// not sure if this neccessary or overkill
 	proc/update_nearby_tiles(need_rebuild)
-		if(!air_master) return 0
+		if(!air_master) return FALSE
 
 		var/turf/simulated/source = loc
 		var/turf/simulated/north = get_step(source,NORTH)
@@ -854,6 +854,6 @@ steam.start() -- spawns the effect
 			if(istype(east)) air_master.tiles_to_update += east
 			if(istype(west)) air_master.tiles_to_update += west
 
-		return 1
+		return TRUE
 
 

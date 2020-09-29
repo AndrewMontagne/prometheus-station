@@ -58,7 +58,7 @@
 		..()
 
 		if(!on)
-			return 0
+			return FALSE
 
 		var/datum/gas_mixture/environment = loc.return_air()
 		var/environment_pressure = environment.return_pressure()
@@ -101,7 +101,7 @@
 					if(network2)
 						network2.update = 1
 
-		return 1
+		return TRUE
 
 	//Radio remote control
 
@@ -114,7 +114,7 @@
 
 		broadcast_status()
 			if(!radio_connection)
-				return 0
+				return FALSE
 
 			var/datum/signal/signal = new
 			signal.transmission_method = 1 //radio signal
@@ -131,7 +131,7 @@
 
 			radio_connection.post_signal(src, signal)
 
-			return 1
+			return TRUE
 
 	var/frequency = 0
 	var/id = null
@@ -144,7 +144,7 @@
 
 	receive_signal(datum/signal/signal)
 		if(signal.data["tag"] && (signal.data["tag"] != id))
-			return 0
+			return FALSE
 
 		switch(signal.data["command"])
 			if("power_on")

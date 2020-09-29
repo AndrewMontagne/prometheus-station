@@ -304,7 +304,7 @@
 	var/obj/throw_item = null
 	var/mob/living/target = locate() in view(7,src)
 	if(!target)
-		return 0
+		return FALSE
 
 	for(var/datum/data/vending_product/R in src.product_records)
 		if (R.amount <= 0) //Try to use a record that actually has something to dump.
@@ -320,7 +320,7 @@
 	spawn(0)
 		throw_item.throw_at(target, 16, 3)
 	src.visible_message("\red <b>[src] launches [throw_item.name] at [target.name]!</b>")
-	return 1
+	return TRUE
 
 /obj/machinery/vending/proc/isWireColorCut(var/wireColor)
 	var/wireFlag = APCWireColorToFlag[wireColor]
@@ -372,20 +372,20 @@
 
 
 	if(!prob(prb))
-		return 0
+		return FALSE
 
 	if(stat & (BROKEN|NOPOWER))		// unpowered, no shock
-		return 0
+		return FALSE
 
 	if (src.electrocute(user, 1))
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/vending/electrocute(mob/user, netnum)
 
 	if(!netnum)		// unconnected cable is unpowered
-		return 0
+		return FALSE
 
 	var/prot = 1
 
@@ -397,10 +397,10 @@
 
 			prot = G.siemens_coefficient
 	else if (istype(user, /mob/living/silicon))
-		return 0
+		return FALSE
 
 	if(prot == 0)		// elec insulted gloves protect completely
-		return 0
+		return FALSE
 
 	//ok you're getting shocked now
 	var/datum/powernet/PN			// find the powernet
@@ -438,4 +438,4 @@
 	for(var/mob/M in viewers(src))
 		if(M == user)	continue
 		M.show_message("\red [user.name] was shocked by the [src.name]!", 3, "\red You hear a heavy electrical crack", 2)
-	return 1
+	return TRUE

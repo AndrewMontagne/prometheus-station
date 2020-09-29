@@ -24,8 +24,8 @@ DEATH COMMANDO GAS MASK
 				del(src)
 				return
 			return
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 */ //TODO FIX
 
 /obj/item/clothing/gloves/examine()

@@ -8,7 +8,7 @@
 
 	if(excess < -10000)		// handle clock-wrapping problems - very long delay (>20 hrs) if wrapped
 		vote.nextvotetime = world.timeofday
-		return 1
+		return TRUE
 	return (excess >= 0)
 
 /datum/vote/proc/nextwait()

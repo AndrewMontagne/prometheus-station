@@ -48,7 +48,7 @@ datum/controller/game_controller
 	process()
 
 		if(!processing)
-			return 0
+			return FALSE
 		//world << "Processing"
 
 		var/start_time = world.timeofday
@@ -89,4 +89,4 @@ datum/controller/game_controller
 
 		spawn process()
 
-		return 1
+		return TRUE

@@ -2,9 +2,9 @@
 
 /turf/proc/move_camera_by_click()
 	if (usr.stat)
-		return ..()
+		return
 	if (world.time <= usr:lastDblClick+2)
-		return ..()
+		return
 
 	//try to find the closest working camera in the same area, switch to it
 	var/area/A = get_area(src)
@@ -23,7 +23,7 @@
 			best_cam = C
 
 	if(!best_cam)
-		return ..()
+		return
 	usr:lastDblClick = world.time
 	usr:switchCamera(best_cam)
 
@@ -179,16 +179,16 @@
 
 	if(!t)
 		user.machine = null
-		return 0
+		return FALSE
 
 	var/obj/machinery/camera/C = D[t]
 
 	if (t == "Cancel")
 		user.machine = null
-		return 0
+		return FALSE
 
 	if ((get_dist(user, src) > 1 || user.machine != src || user.blinded || !( user.canmove ) || !( C.status )) && (!istype(user, /mob/living/silicon/ai)))
-		return 0
+		return FALSE
 	else
 		src.current = C
 		use_power(50)
@@ -221,7 +221,7 @@
 
 	if (!t || t == "Cancel")
 		switchCamera(null)
-		return 0
+		return FALSE
 
 	var/obj/machinery/camera/C = D[t]
 

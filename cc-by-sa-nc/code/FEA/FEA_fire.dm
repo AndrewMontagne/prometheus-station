@@ -10,7 +10,7 @@ turf
 		hotspot_expose(exposed_temperature, exposed_volume, soh)
 			var/datum/gas_mixture/air_contents = return_air()
 			if(!air_contents)
-				return 0
+				return FALSE
 			if(active_hotspot)
 				if(soh)
 					if(air_contents.toxins > 0.5 && air_contents.oxygen > 0.5)
@@ -18,7 +18,7 @@ turf
 							active_hotspot.temperature = exposed_temperature
 						if(active_hotspot.volume < exposed_volume)
 							active_hotspot.volume = exposed_volume
-				return 1
+				return TRUE
 
 			var/igniting = 0
 
@@ -27,7 +27,7 @@ turf
 
 			if(igniting)
 				if(air_contents.oxygen < 0.5 || air_contents.toxins < 0.5)
-					return 0
+					return FALSE
 
 				if(parent&&parent.group_processing)
 					parent.suspend_group_processing()
@@ -67,7 +67,7 @@ obj
 		proc/perform_exposure()
 			var/turf/simulated/floor/location = loc
 			if(!istype(location))
-				return 0
+				return FALSE
 
 			if(volume > CELL_VOLUME*0.95)
 				bypassing = 1
@@ -95,7 +95,7 @@ obj
 		proc/process(turf/simulated/list/possible_spread)
 			if(just_spawned)
 				just_spawned = 0
-				return 0
+				return FALSE
 
 			var/turf/simulated/floor/location = loc
 			if(!istype(location))
@@ -130,7 +130,7 @@ obj
 				else
 					icon_state = "1"
 
-			return 1
+			return TRUE
 
 		New()
 			..()

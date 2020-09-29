@@ -51,11 +51,11 @@
 			network.update = 1
 
 		src.updateUsrDialog()
-		return 1
+		return TRUE
 
 
 	allow_drop()
-		return 0
+		return FALSE
 
 
 	relaymove(mob/user as mob)
@@ -262,16 +262,15 @@
 
 /mob/living/carbon/human/abiotic()
 	if ((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )) || (src.back || src.wear_mask || src.head || src.shoes || src.w_uniform || src.wear_suit || src.glasses || src.ears || src.gloves))
-		return 1
+		return TRUE
 	else
-		return 0
-	return
+		return FALSE
 
 /mob/proc/abiotic()
 	if ((src.l_hand && !( src.l_hand.abstract )) || (src.r_hand && !( src.r_hand.abstract )) || src.back || src.wear_mask)
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 	return
 
 /datum/data/function/proc/reset()

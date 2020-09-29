@@ -111,7 +111,7 @@
 	t += "</PRE>"
 	user << browse(t, "window=teg;size=460x300")
 	onclose(user, "teg")
-	return 1
+	return TRUE
 
 /obj/machinery/power/generator_type2/Topic(href, href_list)
 	..()
@@ -119,9 +119,9 @@
 	if( href_list["close"] )
 		usr << browse(null, "window=teg")
 		usr.machine = null
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 /obj/machinery/power/generator_type2/power_change()
 	..()

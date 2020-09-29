@@ -9,17 +9,17 @@ Pod/Blast Doors computer
 /obj/machinery/Topic(href, href_list)
 	..()
 	if(stat & (NOPOWER|BROKEN))
-		return 1
+		return TRUE
 	if(usr.restrained() || usr.lying || usr.stat)
-		return 1
+		return TRUE
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		if (!istype(usr, /mob/living/silicon))
 			usr << "\red You don't have the dexterity to do this!"
-			return 1
+			return TRUE
 	if ((!in_range(src, usr) || !istype(src.loc, /turf)) && !istype(usr, /mob/living/silicon))
-		return 1
+		return TRUE
 	src.add_fingerprint(usr)
-	return 0
+	return FALSE
 
 /obj/machinery/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
@@ -29,26 +29,26 @@ Pod/Blast Doors computer
 
 /obj/machinery/attack_hand(mob/user as mob)
 	if(stat & (NOPOWER|BROKEN))
-		return 1
+		return TRUE
 	if(user.lying || user.stat)
-		return 1
+		return TRUE
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		if (!istype(user, /mob/living/silicon))
 			usr << "\red You don't have the dexterity to do this!"
-			return 1
+			return TRUE
 	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !istype(user, /mob/living/silicon))
-		return 1
+		return TRUE
 	if (ishuman(user))
 		if(user.brainloss >= 60)
 			for(var/mob/M in viewers(src, null))
 				M << "\red [user] stares cluelessly at [src] and drools."
-			return 1
+			return TRUE
 		else if(prob(user.brainloss))
 			user << "\red You momentarily forget how to use [src]."
-			return 1
+			return TRUE
 
 	src.add_fingerprint(user)
-	return 0
+	return FALSE
 
 /obj/machinery/computer/ex_act(severity)
 	switch(severity)
@@ -139,7 +139,7 @@ Pod/Blast Doors computer
 	if ((get_dist(user, src) > 1 || !( user.canmove ) || user.blinded || !( src.current ) || !( src.current.status )) && (!istype(user, /mob/living/silicon)))
 		return null
 	user.reset_view(src.current)
-	return 1
+	return TRUE
 
 
 

@@ -126,7 +126,7 @@
 /datum/light_source/proc/check()
 	if(!source_atom || !light_range || !light_power)
 		destroy()
-		return 1
+		return TRUE
 
 	if(!top_atom)
 		top_atom = source_atom

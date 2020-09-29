@@ -337,13 +337,13 @@
 		return 0 //Kevorkian school of robotic medical assistants.
 
 	if(src.emagged) //Everyone needs our medicine. (Our medicine is toxins)
-		return 1
+		return TRUE
 
 	//If they're injured, we're using a beaker, and don't have one of our WONDERCHEMS.
 	if((src.reagent_glass) && (src.use_beaker) && ((C.bruteloss >= heal_threshold) || (C.toxloss >= heal_threshold) || (C.toxloss >= heal_threshold) || (C.oxyloss >= (heal_threshold + 15))))
 		for(var/datum/reagent/R in src.reagent_glass.reagents.reagent_list)
 			if(!C.reagents.has_reagent(R))
-				return 1
+				return TRUE
 			continue
 
 	//They're injured enough for it!
@@ -351,19 +351,19 @@
 		return 1 //If they're already medicated don't bother!
 
 	if((C.oxyloss >= (15 + heal_threshold)) && (!C.reagents.has_reagent(src.treatment_oxy)))
-		return 1
+		return TRUE
 
 	if((C.fireloss >= heal_threshold) && (!C.reagents.has_reagent(src.treatment_fire)))
-		return 1
+		return TRUE
 
 	if((C.toxloss >= heal_threshold) && (!C.reagents.has_reagent(src.treatment_tox)))
-		return 1
+		return TRUE
 
 	if(C.virus && ((C.virus.stage > 1) || (C.virus.spread == "Airborne")))
 		if (!C.reagents.has_reagent(src.treatment_virus))
 			return 1 //STOP DISEASE FOREVER
 
-	return 0
+	return FALSE
 
 /obj/machinery/bot/medbot/proc/medicate_patient(mob/living/carbon/C as mob)
 	if(!src.on)
@@ -544,15 +544,15 @@
 /proc/TurfBlockedNonWindowNonDoor(turf/loc, var/list/access)
 	for(var/obj/O in loc)
 		if(O.density && !istype(O, /obj/window) && !istype(O, /obj/machinery/door))
-			return 1
+			return TRUE
 
 		if (O.density && (istype(O, /obj/machinery/door)) && (access.len))
 			var/obj/machinery/door/D = O
 			for(var/req in D.req_access)
 				if(!(req in access)) //doesn't have this access
-					return 1
+					return TRUE
 
-	return 0
+	return FALSE
 */
 
 /*

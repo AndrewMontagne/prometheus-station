@@ -55,7 +55,7 @@
 	if(user.stat || user.lying)
 		return
 	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !istype(user, /mob/living/silicon/ai))
-		return 0
+		return FALSE
 
 	var/list/gases = list("O2", "N2", "Plasma", "CO2", "N2O")
 	var/dat

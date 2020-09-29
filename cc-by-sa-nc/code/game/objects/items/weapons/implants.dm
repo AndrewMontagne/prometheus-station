@@ -208,7 +208,7 @@ No Implant Specifics"}
 
 /obj/item/weapon/implant/freedom/trigger(emote, mob/source as mob)
 	if (src.uses < 1)
-		return 0
+		return FALSE
 
 	if (emote == src.activation_emote)
 		src.uses--

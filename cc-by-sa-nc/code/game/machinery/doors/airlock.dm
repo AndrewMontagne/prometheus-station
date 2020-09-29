@@ -251,8 +251,8 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/proc/isElectrified()
 	if(src.secondsElectrified > 0)
-		return 1
-	else return 0
+		return TRUE
+	else return FALSE
 
 /obj/machinery/door/airlock/proc/isWireColorCut(var/wireColor)
 	var/wireFlag = airlockWireColorToFlag[wireColor]
@@ -321,8 +321,8 @@ About the new airlock wires panel:
 
 //borrowed from the grille's get_connection
 /obj/machinery/door/airlock/proc/get_connection()
-	if(stat & NOPOWER)	return 0
-	return 1
+	if(stat & NOPOWER)	return FALSE
+	return TRUE
 
 // shock user with probability prb (if all connections & power are working)
 // returns 1 if shocked, 0 otherwise
@@ -336,19 +336,19 @@ About the new airlock wires panel:
 	var/net = get_connection()		// find the powernet of the connected cable
 
 	if(!net)		// cable is unpowered
-		return 0
+		return FALSE
 
 
 	if (src.airlockelectrocute(user, prb, net))
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /obj/machinery/door/airlock/proc/airlockelectrocute(mob/user, netnum)
 	//You're probably getting shocked deal w/ it
 
 	if(!netnum)		// unconnected cable is unpowered
-		return 0
+		return FALSE
 
 	var/prot = 1
 
@@ -360,10 +360,10 @@ About the new airlock wires panel:
 
 			prot = G.siemens_coefficient
 	else if (istype(user, /mob/living/silicon))
-		return 0
+		return FALSE
 
 	if(prot == 0)		// elec insulted gloves protect completely
-		return 0
+		return FALSE
 
 	//ok you're getting shocked now
 	var/datum/powernet/PN			// find the powernet
@@ -401,7 +401,7 @@ About the new airlock wires panel:
 	for(var/mob/M in viewers(src))
 		if(M == user)	continue
 		M.show_message("\red [user.name] was shocked by the [src.name]!", 3, "\red You hear a heavy electrical crack", 2)
-	return 1
+	return TRUE
 
 
 /obj/machinery/door/airlock/update_icon()
@@ -897,7 +897,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/open()
 	if (src.welded || src.locked || (!src.arePowerSystemsOn()) || (stat & NOPOWER) || src.isWireCut(AIRLOCK_WIRE_OPEN_DOOR))
-		return 0
+		return FALSE
 	use_power(50)
 	playsound(src.loc, 'cc-by-sa-nc/sound/machines/airlock.ogg', 30, 1)
 	if (src.closeOther != null && istype(src.closeOther, /obj/machinery/door/airlock/) && !src.closeOther.density)

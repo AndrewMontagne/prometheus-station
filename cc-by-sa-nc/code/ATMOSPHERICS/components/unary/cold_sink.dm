@@ -24,7 +24,7 @@
 	process()
 		..()
 		if(!on)
-			return 0
+			return FALSE
 		var/air_heat_capacity = air_contents.heat_capacity()
 		var/combined_heat_capacity = current_heat_capacity + air_heat_capacity
 		var/old_temperature = air_contents.temperature
@@ -37,4 +37,4 @@
 
 		if(abs(old_temperature-air_contents.temperature) > 1)
 			network.update = 1
-		return 1
+		return TRUE

@@ -16,7 +16,7 @@
 		air_contents.volume = volume
 		air_contents.temperature = T20C
 
-		return 1
+		return TRUE
 
 	process()
 		if(!connected_port) //only react when pipe_network will ont it do it for you
@@ -33,11 +33,11 @@
 		connect(obj/machinery/atmospherics/portables_connector/new_port)
 			//Make sure not already connected to something else
 			if(connected_port || !new_port || new_port.connected_device)
-				return 0
+				return FALSE
 
 			//Make sure are close enough for a valid connection
 			if(new_port.loc != loc)
-				return 0
+				return FALSE
 
 			//Perform the connection
 			connected_port = new_port
@@ -52,11 +52,11 @@
 
 			update_icon()
 
-			return 1
+			return TRUE
 
 		disconnect()
 			if(!connected_port)
-				return 0
+				return FALSE
 
 			var/datum/pipe_network/network = connected_port.return_network(src)
 			if(network)
@@ -69,7 +69,7 @@
 
 			update_icon()
 
-			return 1
+			return TRUE
 
 /obj/machinery/portable_atmospherics/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	var/obj/icon = src

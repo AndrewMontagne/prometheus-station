@@ -62,7 +62,7 @@
 		air_contents.merge(giver)
 
 		check_status()
-		return 1
+		return TRUE
 
 	proc/remove_air_volume(volume_to_return)
 		if(!air_contents)
@@ -87,7 +87,7 @@
 		//Handle exploding, leaking, and rupturing of the tank
 
 		if(!air_contents)
-			return 0
+			return FALSE
 
 		var/pressure = air_contents.return_pressure()
 		if(pressure > TANK_FRAGMENT_PRESSURE)
@@ -270,15 +270,15 @@
 
 /obj/item/weapon/tank/jetpack/proc/allow_thrust(num, mob/user as mob)
 	if (!( src.on ))
-		return 0
+		return FALSE
 	if ((num < 0.01 || src.air_contents.total_moles() < num))
 		src.ion_trail.stop()
-		return 0
+		return FALSE
 
 	var/datum/gas_mixture/G = src.air_contents.remove(num)
 
 	if (G.oxygen >= 0.01)
-		return 1
+		return TRUE
 	if (G.toxins > 0.001)
 		if (user)
 			var/d = G.toxins / 2
@@ -290,7 +290,7 @@
 		if (G.oxygen >= 0.0075)
 			return 0.5
 		else
-			return 0
+			return FALSE
 	//G = null
 	del(G)
 	return

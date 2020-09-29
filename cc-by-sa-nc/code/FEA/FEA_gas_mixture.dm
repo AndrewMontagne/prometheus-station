@@ -285,30 +285,30 @@ datum
 
 			graphic_archived = graphic
 
-			return 1
+			return TRUE
 
 		check_then_merge(datum/gas_mixture/giver)
 			if(!giver)
-				return 0
+				return FALSE
 			if(((giver.oxygen > MINIMUM_AIR_TO_SUSPEND) && (giver.oxygen >= oxygen*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((giver.carbon_dioxide > MINIMUM_AIR_TO_SUSPEND) && (giver.carbon_dioxide >= carbon_dioxide*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((giver.nitrogen > MINIMUM_AIR_TO_SUSPEND) && (giver.nitrogen >= nitrogen*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((giver.toxins > MINIMUM_AIR_TO_SUSPEND) && (giver.toxins >= toxins*MINIMUM_AIR_RATIO_TO_SUSPEND)))
-				return 0
+				return FALSE
 			if(abs(giver.temperature - temperature) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND)
-				return 0
+				return FALSE
 
 			if(giver.trace_gases.len)
 				for(var/datum/gas/trace_gas in giver.trace_gases)
 					var/datum/gas/corresponding = locate(trace_gas.type) in trace_gases
 					if((trace_gas.moles > MINIMUM_AIR_TO_SUSPEND) && (!corresponding || (trace_gas.moles >= corresponding.moles*MINIMUM_AIR_RATIO_TO_SUSPEND)))
-						return 0
+						return FALSE
 
 			return merge(giver)
 
 		merge(datum/gas_mixture/giver)
 			if(!giver)
-				return 0
+				return FALSE
 
 			if(abs(temperature-giver.temperature)>MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
 				var/self_heat_capacity = heat_capacity()*group_multiplier
@@ -337,7 +337,7 @@ datum
 					corresponding.moles += trace_gas.moles*giver.group_multiplier/group_multiplier
 
 			del(giver)
-			return 1
+			return TRUE
 
 		remove(amount)
 
@@ -409,7 +409,7 @@ datum
 			amount = min(amount,sum) //Can not take more air than tile has!
 
 			if((amount > MINIMUM_AIR_RATIO_TO_SUSPEND) && (amount > sum*MINIMUM_AIR_RATIO_TO_SUSPEND))
-				return 0
+				return FALSE
 
 			return remove(amount)
 
@@ -429,7 +429,7 @@ datum
 
 			temperature = sample.temperature
 
-			return 1
+			return TRUE
 
 		subtract(datum/gas_mixture/right_side)
 			oxygen -= right_side.oxygen
@@ -446,7 +446,7 @@ datum
 
 					corresponding.moles -= trace_gas.moles
 
-			return 1
+			return TRUE
 
 	/*	check_me_then_share(datum/gas_mixture/sharer)
 			var/delta_oxygen = (oxygen_archived - sharer.oxygen_archived)/5
@@ -460,9 +460,9 @@ datum
 				|| ((abs(delta_carbon_dioxide) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_carbon_dioxide) >= carbon_dioxide_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((abs(delta_nitrogen) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_nitrogen) >= nitrogen_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((abs(delta_toxins) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_toxins) >= toxins_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)))
-				return 0
+				return FALSE
 			if(abs(delta_temperature) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND)
-				return 0
+				return FALSE
 
 			return share(sharer)*/
 
@@ -478,10 +478,10 @@ datum
 				|| ((abs(delta_carbon_dioxide) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_carbon_dioxide) >= carbon_dioxide_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((abs(delta_nitrogen) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_nitrogen) >= nitrogen_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((abs(delta_toxins) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_toxins) >= toxins_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)))
-				return 0
+				return FALSE
 
 			if(abs(delta_temperature) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND)
-				return 0
+				return FALSE
 
 			if(sharer.trace_gases.len)
 				for(var/datum/gas/trace_gas in sharer.trace_gases)
@@ -489,15 +489,15 @@ datum
 						var/datum/gas/corresponding = locate(trace_gas.type) in trace_gases
 						if(corresponding)
 							if(trace_gas.moles_archived >= corresponding.moles_archived*MINIMUM_AIR_RATIO_TO_SUSPEND*4)
-								return 0
+								return FALSE
 						else
-							return 0
+							return FALSE
 
 			if(trace_gases.len)
 				for(var/datum/gas/trace_gas in trace_gases)
 					if(trace_gas.moles_archived > MINIMUM_AIR_TO_SUSPEND*4)
 						if(!locate(trace_gas.type) in sharer.trace_gases)
-							return 0
+							return FALSE
 
 			if(((abs(delta_oxygen) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_oxygen) >= sharer.oxygen_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((abs(delta_carbon_dioxide) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_carbon_dioxide) >= sharer.carbon_dioxide_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
@@ -515,7 +515,7 @@ datum
 						else
 							return -1
 
-			return 1
+			return TRUE
 
 		check_turf(turf/model)
 			var/delta_oxygen = (oxygen_archived - model.oxygen)/5
@@ -529,16 +529,16 @@ datum
 				|| ((abs(delta_carbon_dioxide) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_carbon_dioxide) >= carbon_dioxide_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((abs(delta_nitrogen) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_nitrogen) >= nitrogen_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)) \
 				|| ((abs(delta_toxins) > MINIMUM_AIR_TO_SUSPEND) && (abs(delta_toxins) >= toxins_archived*MINIMUM_AIR_RATIO_TO_SUSPEND)))
-				return 0
+				return FALSE
 			if(abs(delta_temperature) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND)
-				return 0
+				return FALSE
 
 			if(trace_gases.len)
 				for(var/datum/gas/trace_gas in trace_gases)
 					if(trace_gas.moles_archived > MINIMUM_AIR_TO_SUSPEND*4)
-						return 0
+						return FALSE
 
-			return 1
+			return TRUE
 
 		share(datum/gas_mixture/sharer)
 			var/delta_oxygen = QUANTIZE(oxygen_archived - sharer.oxygen_archived)/5
@@ -677,7 +677,7 @@ datum
 				return delta_pressure*R_IDEAL_GAS_EQUATION/volume
 
 			else
-				return 0
+				return FALSE
 
 		mimic(turf/model, border_multiplier)
 			var/delta_oxygen = QUANTIZE(oxygen_archived - model.oxygen)/5
@@ -754,7 +754,7 @@ datum
 				var/delta_pressure = temperature_archived*(total_moles() + moved_moles) - model.temperature*(model.oxygen+model.carbon_dioxide+model.nitrogen+model.toxins)
 				return delta_pressure*R_IDEAL_GAS_EQUATION/volume
 			else
-				return 0
+				return FALSE
 
 		check_both_then_temperature_share(datum/gas_mixture/sharer, conduction_coefficient)
 			var/delta_temperature = (temperature_archived - sharer.temperature_archived)
@@ -772,11 +772,11 @@ datum
 				self_temperature_delta = -heat/(self_heat_capacity*group_multiplier)
 				sharer_temperature_delta = heat/(sharer_heat_capacity*sharer.group_multiplier)
 			else
-				return 1
+				return TRUE
 
 			if((abs(self_temperature_delta) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND) \
 				&& (abs(self_temperature_delta) > MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND*temperature_archived))
-				return 0
+				return FALSE
 
 			if((abs(sharer_temperature_delta) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND) \
 				&& (abs(sharer_temperature_delta) > MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND*sharer.temperature_archived))
@@ -785,7 +785,7 @@ datum
 			temperature += self_temperature_delta
 			sharer.temperature += sharer_temperature_delta
 
-			return 1
+			return TRUE
 			//Logic integrated from: temperature_share(sharer, conduction_coefficient) for efficiency
 
 		check_me_then_temperature_share(datum/gas_mixture/sharer, conduction_coefficient)
@@ -804,16 +804,16 @@ datum
 				self_temperature_delta = -heat/(self_heat_capacity*group_multiplier)
 				sharer_temperature_delta = heat/(sharer_heat_capacity*sharer.group_multiplier)
 			else
-				return 1
+				return TRUE
 
 			if((abs(self_temperature_delta) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND) \
 				&& (abs(self_temperature_delta) > MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND*temperature_archived))
-				return 0
+				return FALSE
 
 			temperature += self_temperature_delta
 			sharer.temperature += sharer_temperature_delta
 
-			return 1
+			return TRUE
 			//Logic integrated from: temperature_share(sharer, conduction_coefficient) for efficiency
 
 		check_me_then_temperature_turf_share(turf/simulated/sharer, conduction_coefficient)
@@ -832,16 +832,16 @@ datum
 					self_temperature_delta = -heat/(self_heat_capacity*group_multiplier)
 					sharer_temperature_delta = heat/sharer.heat_capacity
 			else
-				return 1
+				return TRUE
 
 			if((abs(self_temperature_delta) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND) \
 				&& (abs(self_temperature_delta) > MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND*temperature_archived))
-				return 0
+				return FALSE
 
 			temperature += self_temperature_delta
 			sharer.temperature += sharer_temperature_delta
 
-			return 1
+			return TRUE
 			//Logic integrated from: temperature_turf_share(sharer, conduction_coefficient) for efficiency
 
 		check_me_then_temperature_mimic(turf/model, conduction_coefficient)
@@ -859,11 +859,11 @@ datum
 
 			if((abs(self_temperature_delta) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND) \
 				&& (abs(self_temperature_delta) > MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND*temperature_archived))
-				return 0
+				return FALSE
 
 			temperature += self_temperature_delta
 
-			return 1
+			return TRUE
 			//Logic integrated from: temperature_mimic(model, conduction_coefficient) for efficiency
 
 		temperature_share(datum/gas_mixture/sharer, conduction_coefficient)
@@ -909,22 +909,22 @@ datum
 		compare(datum/gas_mixture/sample)
 			if((abs(oxygen-sample.oxygen) > MINIMUM_AIR_TO_SUSPEND) && \
 				((oxygen < (1-MINIMUM_AIR_RATIO_TO_SUSPEND)*sample.oxygen) || (oxygen > (1+MINIMUM_AIR_RATIO_TO_SUSPEND)*sample.oxygen)))
-				return 0
+				return FALSE
 			if((abs(nitrogen-sample.nitrogen) > MINIMUM_AIR_TO_SUSPEND) && \
 				((nitrogen < (1-MINIMUM_AIR_RATIO_TO_SUSPEND)*sample.nitrogen) || (nitrogen > (1+MINIMUM_AIR_RATIO_TO_SUSPEND)*sample.nitrogen)))
-				return 0
+				return FALSE
 			if((abs(carbon_dioxide-sample.carbon_dioxide) > MINIMUM_AIR_TO_SUSPEND) && \
 				((carbon_dioxide < (1-MINIMUM_AIR_RATIO_TO_SUSPEND)*sample.carbon_dioxide) || (oxygen > (1+MINIMUM_AIR_RATIO_TO_SUSPEND)*sample.carbon_dioxide)))
-				return 0
+				return FALSE
 			if((abs(toxins-sample.toxins) > MINIMUM_AIR_TO_SUSPEND) && \
 				((toxins < (1-MINIMUM_AIR_RATIO_TO_SUSPEND)*sample.toxins) || (toxins > (1+MINIMUM_AIR_RATIO_TO_SUSPEND)*sample.toxins)))
-				return 0
+				return FALSE
 
 			if(total_moles() > MINIMUM_AIR_TO_SUSPEND)
 				if((abs(temperature-sample.temperature) > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND) && \
 					((temperature < (1-MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND)*sample.temperature) || (temperature > (1+MINIMUM_TEMPERATURE_RATIO_TO_SUSPEND)*sample.temperature)))
 					//world << "temp fail [temperature] & [sample.temperature]"
-					return 0
+					return FALSE
 
 			if(sample.trace_gases.len)
 				for(var/datum/gas/trace_gas in sample.trace_gases)
@@ -933,9 +933,9 @@ datum
 						if(corresponding)
 							if((abs(trace_gas.moles - corresponding.moles) > MINIMUM_AIR_TO_SUSPEND) && \
 								((corresponding.moles < (1-MINIMUM_AIR_RATIO_TO_SUSPEND)*trace_gas.moles) || (corresponding.moles > (1+MINIMUM_AIR_RATIO_TO_SUSPEND)*trace_gas.moles)))
-								return 0
+								return FALSE
 						else
-							return 0
+							return FALSE
 
 			if(trace_gases.len)
 				for(var/datum/gas/trace_gas in trace_gases)
@@ -944,7 +944,7 @@ datum
 						if(corresponding)
 							if((abs(trace_gas.moles - corresponding.moles) > MINIMUM_AIR_TO_SUSPEND) && \
 								((trace_gas.moles < (1-MINIMUM_AIR_RATIO_TO_SUSPEND)*corresponding.moles) || (trace_gas.moles > (1+MINIMUM_AIR_RATIO_TO_SUSPEND)*corresponding.moles)))
-								return 0
+								return FALSE
 						else
-							return 0
-			return 1
+							return FALSE
+			return TRUE

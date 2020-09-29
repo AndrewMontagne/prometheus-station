@@ -38,54 +38,54 @@
 	proc
 		return_text()
 			if((!src.holder) || (!src.master))
-				return 1
+				return TRUE
 
 			if((!istype(holder)) || (!istype(master)))
-				return 1
+				return TRUE
 
 			if(!(holder in src.master.contents))
 				//world << "Holder [holder] not in [master] of prg:[src]"
 				if(master.active_program == src)
 					master.active_program = null
-				return 1
+				return TRUE
 
 			if(!src.holder.root)
 				src.holder.root = new /datum/computer/folder
 				src.holder.root.holder = src
 				src.holder.root.name = "root"
 
-			return 0
+			return FALSE
 
 		process() //This isn't actually used at the moment
 			if((!src.holder) || (!src.master))
-				return 1
+				return TRUE
 
 			if((!istype(holder)) || (!istype(master)))
-				return 1
+				return TRUE
 
 			if(!(holder in src.master.contents))
 				if(master.active_program == src)
 					master.active_program = null
-				return 1
+				return TRUE
 
 			if(!src.holder.root)
 				src.holder.root = new /datum/computer/folder
 				src.holder.root.holder = src
 				src.holder.root.name = "root"
 
-			return 0
+			return FALSE
 
 		//maybe remove this, I haven't found a good use for it yet
 		send_os_command(list/command_list)
 			if(!src.master || !src.holder || src.master.host_program || !command_list)
-				return 1
+				return TRUE
 
 			if(!istype(src.master.host_program) || src.master.host_program == src)
-				return 1
+				return TRUE
 
 			src.master.host_program.receive_os_command()
 
-			return 0
+			return FALSE
 
 		return_text_header()
 			if(!src.master || !src.holder)
@@ -105,7 +105,7 @@
 		transfer_holder(obj/item/weapon/disk/data/newholder,datum/computer/folder/newfolder)
 
 			if((newholder.file_used + src.size) > newholder.file_amount)
-				return 0
+				return FALSE
 
 			if(!newholder.root)
 				newholder.root = new /datum/computer/folder
@@ -116,7 +116,7 @@
 				newfolder = newholder.root
 
 			if((src.holder && src.holder.read_only) || newholder.read_only)
-				return 0
+				return FALSE
 
 			if((src.holder) && (src.holder.root))
 				src.holder.root.remove_file(src)
@@ -128,58 +128,58 @@
 
 			//world << "Setting [src.holder] to [newholder]"
 			src.holder = newholder
-			return 1
+			return TRUE
 
 
 		receive_signal(datum/signal/signal)
 			if((!src.holder) || (!src.master))
-				return 1
+				return TRUE
 
 			if((!istype(holder)) || (!istype(master)))
-				return 1
+				return TRUE
 
 			if(!(holder in src.master.contents))
 				if(master.active_program == src)
 					master.active_program = null
-				return 1
+				return TRUE
 
-			return 0
+			return FALSE
 
 
 	Topic(href, href_list)
 		if((!src.holder) || (!src.master))
-			return 1
+			return TRUE
 
 		if((!istype(holder)) || (!istype(master)))
-			return 1
+			return TRUE
 
 		if(src.master.active_program != src)
-			return 1
+			return TRUE
 
 		if ((!usr.contents.Find(src.master) && (!in_range(src.master, usr) || !istype(src.master.loc, /turf))) && (!istype(usr, /mob/living/silicon)))
-			return 1
+			return TRUE
 
 		if(!(holder in src.master.contents))
 			if(master.active_program == src)
 				master.active_program = null
-			return 1
+			return TRUE
 
 		usr.machine = src.master
 
 		if (href_list["close"])
 			usr.machine = null
 			usr << browse(null, "window=pda2")
-			return 0
+			return FALSE
 
 		if (href_list["quit"])
 //			src.master.processing_programs.Remove(src)
 			if(src.master.host_program && src.master.host_program.holder && (src.master.host_program.holder in src.master.contents))
 				src.master.run_program(src.master.host_program)
 				src.master.updateSelfDialog()
-				return 1
+				return TRUE
 			else
 				src.master.active_program = null
 			src.master.updateSelfDialog()
-			return 1
+			return TRUE
 
-		return 0
+		return FALSE

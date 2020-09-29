@@ -90,7 +90,7 @@ Atmos alert computer
 			var/list/sources = alarm[3]
 			if (!(alarmsource in sources))
 				sources += alarmsource
-			return 1
+			return TRUE
 	var/obj/machinery/camera/C = null
 	var/list/CL = null
 	if (O && istype(O, /list))
@@ -100,7 +100,7 @@ Atmos alert computer
 	else if (O && istype(O, /obj/machinery/camera))
 		C = O
 	L[A.name] = list(A, (C) ? C : O, list(alarmsource))
-	return 1
+	return TRUE
 
 /obj/machinery/computer/atmosphere/alerts/proc/cancelAlarm(var/class, area/A as area, obj/origin)
 	if(stat & (BROKEN|NOPOWER))

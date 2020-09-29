@@ -12,7 +12,7 @@
 /proc/text2dir(direction)
 	switch(uppertext(direction))
 		if("NORTH")
-			return 1
+			return TRUE
 		if("SOUTH")
 			return 2
 		if("EAST")
@@ -26,7 +26,7 @@
 		if("SOUTHEAST")
 			return 6
 		if("SOUTHWEST")
-			return 10
+			return TRUE
 		else
 	return
 

@@ -2,17 +2,17 @@
 	proc
 		receive_os_command(list/command_list)
 			if((!src.holder) || (!src.master) || (!command_list) || !(command_list["command"]))
-				return 1
+				return TRUE
 
 			if((!istype(holder)) || (!istype(master)))
-				return 1
+				return TRUE
 
 			if(!(holder in src.master.contents))
 				if(master.active_program == src)
 					master.active_program = null
-				return 1
+				return TRUE
 
-			return 0
+			return FALSE
 
 //Main os program: Provides old pda interface and four programs including file browser, notes, messenger, and atmos scan
 	main_os

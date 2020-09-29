@@ -1,8 +1,8 @@
 /mob/living/silicon/robot/say_understands(var/other)
 	if (istype(other, /mob/living/silicon/ai))
-		return 1
+		return TRUE
 	if (istype(other, /mob/living/carbon/human))
-		return 1
+		return TRUE
 	return ..()
 
 /mob/living/silicon/robot/say_quote(var/text)

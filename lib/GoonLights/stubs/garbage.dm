@@ -11,4 +11,4 @@
 // Returns 1 if the datum is deleted.
 // Might seem weird but it makes sense with a custom GC.
 /datum/proc/deleted()
-	return 0
+	return FALSE

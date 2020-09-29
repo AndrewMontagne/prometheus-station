@@ -620,7 +620,7 @@
 		if(!src.amount)
 			user << "\red None of [src] left, oh no!"
 			del(src)
-			return 0
+			return FALSE
 		if(istype(M, /mob/living/carbon/human))
 			if(M == user)
 				M << "\blue You take a bite of [src]."
@@ -636,7 +636,7 @@
 				if(!src.amount)
 					user << "\red You finish eating [src]."
 					del(src)
-				return 1
+				return TRUE
 			else
 				for(var/mob/O in viewers(world.view, user))
 					O.show_message("\red [user] attempts to feed [M] [src].", 1)
@@ -656,10 +656,10 @@
 				if(!src.amount)
 					user << "\red [M] finishes eating [src]."
 					del(src)
-				return 1
+				return TRUE
 
 
-		return 0
+		return FALSE
 
 	attackby(obj/item/I as obj, mob/user as mob)
 		return
@@ -704,7 +704,7 @@
 
 		if(!R.total_volume || !R)
 			user << "\red None of [src] left, oh no!"
-			return 0
+			return FALSE
 
 		if(M == user)
 			M << "\blue You swallow a gulp of [src]."
@@ -715,7 +715,7 @@
 
 			playsound(M.loc,'cc-by-sa-nc/sound/items/drink.ogg', rand(10,50), 1)
 			M.urine += 0.1
-			return 1
+			return TRUE
 
 		else if( istype(M, /mob/living/carbon/human) )
 
@@ -732,9 +732,9 @@
 
 			playsound(M.loc,'cc-by-sa-nc/sound/items/drink.ogg', rand(10,50), 1)
 			M.urine += 0.1
-			return 1
+			return TRUE
 
-		return 0
+		return FALSE
 
 	attackby(obj/item/I as obj, mob/user as mob)
 		return
@@ -801,7 +801,7 @@
 					del(src)
 			else
 				del(src)
-			return 1
+			return TRUE
 
 		else if(istype(M, /mob/living/carbon/human) )
 
@@ -821,9 +821,9 @@
 			else
 				del(src)
 
-			return 1
+			return TRUE
 
-		return 0
+		return FALSE
 
 	attackby(obj/item/I as obj, mob/user as mob)
 		return

@@ -171,7 +171,7 @@ datum/computer/file/embedded_program/airlock_controller
 		memory["processing"] = state != target_state
 		sensor_pressure = null
 
-		return 1
+		return TRUE
 
 
 obj/machinery/embedded_controller/radio/airlock_controller

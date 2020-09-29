@@ -42,7 +42,7 @@ obj/machinery/atmospherics/valve
 				network_node1 = new_network
 
 		if(new_network.normal_members.Find(src))
-			return 0
+			return FALSE
 
 		new_network.normal_members += src
 
@@ -71,7 +71,7 @@ obj/machinery/atmospherics/valve
 
 	proc/open()
 
-		if(open) return 0
+		if(open) return FALSE
 
 		open = 1
 		update_icon()
@@ -85,12 +85,12 @@ obj/machinery/atmospherics/valve
 		else if(network_node2)
 			network_node2.update = 1
 
-		return 1
+		return TRUE
 
 	proc/close()
 
 		if(!open)
-			return 0
+			return FALSE
 
 		open = 0
 		update_icon()
@@ -102,7 +102,7 @@ obj/machinery/atmospherics/valve
 
 		build_network()
 
-		return 1
+		return TRUE
 
 	attack_paw(mob/user as mob)
 		return attack_hand(user)
@@ -187,7 +187,7 @@ obj/machinery/atmospherics/valve
 		if(network_node2 == old_network)
 			network_node2 = new_network
 
-		return 1
+		return TRUE
 
 	return_network_air(datum/network/reference)
 		return null
@@ -231,7 +231,7 @@ obj/machinery/atmospherics/valve
 
 		receive_signal(datum/signal/signal)
 			if(signal.data["tag"] && (signal.data["tag"] != id))
-				return 0
+				return FALSE
 
 			switch(signal.data["command"])
 				if("valve_open")

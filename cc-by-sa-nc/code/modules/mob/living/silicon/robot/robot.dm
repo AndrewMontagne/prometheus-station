@@ -80,7 +80,7 @@
 			stat(null, text("No Cell Inserted!"))
 
 /mob/living/silicon/robot/restrained()
-	return 0
+	return FALSE
 
 /mob/living/silicon/robot/ex_act(severity)
 	flick("flash", src.flash)
@@ -174,14 +174,14 @@
 /mob/living/silicon/robot/proc/firecheck(turf/T as turf)
 
 	if (T.firelevel < 900000.0)
-		return 0
+		return FALSE
 	var/total = 0
 	total += 0.25
 	return total
 */
 /mob/living/silicon/robot/triggerAlarm(var/class, area/A, var/O, var/alarmsource)
 	if (stat == 2)
-		return 1
+		return TRUE
 	var/list/L = src.alarms[class]
 	for (var/I in L)
 		if (I == A.name)
@@ -189,7 +189,7 @@
 			var/list/sources = alarm[3]
 			if (!(alarmsource in sources))
 				sources += alarmsource
-			return 1
+			return TRUE
 	var/obj/machinery/camera/C = null
 	var/list/CL = null
 	if (O && istype(O, /list))
@@ -201,7 +201,7 @@
 	L[A.name] = list(A, (C) ? C : O, list(alarmsource))
 	src << text("--- [class] alarm detected in [A.name]!")
 	if (src.viewalerts) src.robot_alerts()
-	return 1
+	return TRUE
 
 /mob/living/silicon/robot/cancelAlarm(var/class, area/A as area, obj/origin)
 	var/list/L = src.alarms[class]
@@ -328,32 +328,32 @@
 /mob/living/silicon/robot/proc/allowed(mob/M)
 	//check if it doesn't require any access at all
 	if(src.check_access(null))
-		return 1
+		return TRUE
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		//if they are holding or wearing a card that has access, that works
 		if(src.check_access(H.equipped()) || src.check_access(H.wear_id))
-			return 1
+			return TRUE
 	else if(istype(M, /mob/living/carbon/monkey))
 		var/mob/living/carbon/monkey/george = M
 		//they can only hold things :(
 		if(george.equipped() && istype(george.equipped(), /obj/item/weapon/card/id) && src.check_access(george.equipped()))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /mob/living/silicon/robot/proc/check_access(obj/item/weapon/card/id/I)
 	if(!istype(src.req_access, /list)) //something's very wrong
-		return 1
+		return TRUE
 
 	var/list/L = src.req_access
 	if(!L.len) //no requirements
-		return 1
+		return TRUE
 	if(!I || !istype(I, /obj/item/weapon/card/id) || !I.access) //not ID or no access
-		return 0
+		return FALSE
 	for(var/req in src.req_access)
 		if(!(req in I.access)) //doesn't have this access
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 /mob/living/silicon/robot/proc/updateicon()
 
@@ -485,13 +485,13 @@
 
 /mob/living/silicon/robot/proc/activated(obj/item/O)
 	if(src.module_state_1 == O)
-		return 1
+		return TRUE
 	else if(src.module_state_2 == O)
-		return 1
+		return TRUE
 	else if(src.module_state_3 == O)
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /mob/living/silicon/robot/proc/radio_menu()
 	var/obj/item/device/radio/R

@@ -149,7 +149,7 @@
 /area/proc/powered(var/chan)		// return true if the area has power to given channel
 
 	if(!master.requires_power)
-		return 1
+		return TRUE
 	switch(chan)
 		if(EQUIP)
 			return master.power_equip
@@ -158,7 +158,7 @@
 		if(ENVIRON)
 			return master.power_environ
 
-	return 0
+	return FALSE
 
 // called when power status changes
 

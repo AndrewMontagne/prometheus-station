@@ -1,5 +1,5 @@
 /obj/machinery/door/window/update_nearby_tiles(need_rebuild)
-	if(!air_master) return 0
+	if(!air_master) return FALSE
 
 	var/turf/simulated/source = loc
 	var/turf/simulated/target = get_step(source,dir)
@@ -19,7 +19,7 @@
 		if(istype(source)) air_master.tiles_to_update += source
 		if(istype(target)) air_master.tiles_to_update += target
 
-	return 1
+	return TRUE
 
 /obj/machinery/door/window/New()
 	..()
@@ -53,26 +53,26 @@
 
 /obj/machinery/door/window/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(istype(mover, /obj/beam))
-		return 1
+		return TRUE
 	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
-		if(air_group) return 0
+		if(air_group) return FALSE
 		return !density
 	else
-		return 1
+		return TRUE
 
 /obj/machinery/door/window/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
 	if(istype(mover, /obj/beam))
-		return 1
+		return TRUE
 	if(get_dir(loc, target) == dir)
 		return !density
 	else
-		return 1
+		return TRUE
 
 /obj/machinery/door/window/open()
 	if (src.operating == 1) //doors can still open when emag-disabled
-		return 0
+		return FALSE
 	if (!ticker)
-		return 0
+		return FALSE
 	if(!src.operating) //in case of emag
 		src.operating = 1
 	flick(text("[]opening", src.base_state), src)
@@ -86,11 +86,11 @@
 
 	if(operating == 1) //emag again
 		src.operating = 0
-	return 1
+	return TRUE
 
 /obj/machinery/door/window/close()
 	if (src.operating)
-		return 0
+		return FALSE
 	src.operating = 1
 	flick(text("[]closing", src.base_state), src)
 	playsound(src.loc, 'cc-by-sa-nc/sound/machines/windowdoor.ogg', 100, 1)
@@ -104,7 +104,7 @@
 	sleep(10)
 
 	src.operating = 0
-	return 1
+	return TRUE
 
 /obj/machinery/door/window/attackby(obj/item/I as obj, mob/user as mob)
 	if (src.operating)
@@ -118,7 +118,7 @@
 		flick(text("[]spark", src.base_state), src)
 		sleep(6)
 		open()
-		return 1
+		return TRUE
 	if (src.allowed(user))
 		if (src.density)
 			open()

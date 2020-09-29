@@ -219,7 +219,7 @@
 
 				oxygen_alert = max(oxygen_alert, 1)
 
-				return 0
+				return FALSE
 
 			var/safe_oxygen_min = 16 // Minimum safe partial pressure of O2, in kPa
 			//var/safe_oxygen_max = 140 // Maximum safe partial pressure of O2, in kPa (Not used for now)
@@ -301,7 +301,7 @@
 
 			//Temporary fixes to the alerts.
 
-			return 1
+			return TRUE
 
 		handle_environment(datum/gas_mixture/environment)
 			if(!environment)
@@ -434,7 +434,7 @@
 				src.druggy--
 				src.druggy = max(0, src.druggy)
 
-			return 1
+			return TRUE
 
 		handle_regular_hud_updates()
 
@@ -526,7 +526,7 @@
 					if (!( src.machine.check_eye(src) ))
 						src.reset_view(null)
 
-			return 1
+			return TRUE
 
 		handle_random_events()
 			if (prob(1) && prob(2))

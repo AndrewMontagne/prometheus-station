@@ -53,10 +53,10 @@ obj
 			return null
 
 /atom/proc/allow_drop()
-	return 1
+	return TRUE
 
 /atom/proc/CheckExit()
-	return 1
+	return TRUE
 
 /atom/proc/HasEntered(atom/movable/AM as mob|obj)
 	return

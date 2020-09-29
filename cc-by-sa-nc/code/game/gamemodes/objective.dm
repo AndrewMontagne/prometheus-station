@@ -9,7 +9,7 @@ datum
 
 		proc
 			check_completion()
-				return 1
+				return TRUE
 
 		assassinate
 			var/datum/mind/target
@@ -47,21 +47,21 @@ datum
 			check_completion()
 				if(target && target.current)
 					if(target.current.stat == 2)
-						return 1
+						return TRUE
 					else
-						return 0
+						return FALSE
 				else
-					return 1
+					return TRUE
 
 		hijack
 			explanation_text = "Hijack the emergency shuttle by escaping alone."
 
 			check_completion()
 				if(emergency_shuttle.location<2)
-					return 0
+					return FALSE
 
 				if(!owner.current || owner.current.stat ==2)
-					return 0
+					return FALSE
 
 				var/area/shuttle = locate(/area/shuttle/escape/centcom)
 
@@ -69,39 +69,39 @@ datum
 					if (player.mind && (player.mind != owner))
 						if (player.stat != 2) //they're not dead
 							if (get_turf(player) in shuttle)
-								return 0
+								return FALSE
 
-				return 1
+				return TRUE
 
 		escape
 			explanation_text = "Escape on the shuttle alive."
 
 			check_completion()
 				if(emergency_shuttle.location<2)
-					return 0
+					return FALSE
 
 				if(!owner.current || owner.current.stat ==2)
-					return 0
+					return FALSE
 
 				var/turf/location = get_turf(owner.current.loc)
 				if(!location)
-					return 0
+					return FALSE
 
 				var/area/check_area = location.loc
 
 				if(istype(check_area, /area/shuttle/escape/centcom))
-					return 1
+					return TRUE
 				else
-					return 0
+					return FALSE
 
 		survive
 			explanation_text = "Stay alive until the end"
 
 			check_completion()
 				if(!owner.current || owner.current.stat == 2)
-					return 0
+					return FALSE
 
-				return 1
+				return TRUE
 
 
 		steal
@@ -131,9 +131,9 @@ datum
 			check_completion()
 				if(steal_target)
 					if(owner.current.check_contents_for(steal_target))
-						return 1
+						return TRUE
 					else
-						return 0
+						return FALSE
 
 		nuclear
 			explanation_text = "Destroy the station with a nuclear device."

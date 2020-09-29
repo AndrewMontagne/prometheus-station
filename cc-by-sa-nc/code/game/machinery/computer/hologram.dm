@@ -7,7 +7,7 @@
 
 /obj/machinery/computer/hologram_comp/DblClick()
 	if (!in_range(src, usr))
-		return 0
+		return FALSE
 	src.show_console(usr)
 	return
 

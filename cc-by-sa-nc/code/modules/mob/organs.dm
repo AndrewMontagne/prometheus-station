@@ -6,7 +6,7 @@
 
 /datum/organ/external/proc/take_damage(brute, burn)
 	if ((brute <= 0 && burn <= 0))
-		return 0
+		return FALSE
 	if ((src.brute_dam + src.burn_dam + brute + burn) < src.max_damage)
 		src.brute_dam += brute
 		src.burn_dam += burn
@@ -27,7 +27,7 @@
 					burn = can_inflict
 					src.burn_dam += burn
 		else
-			return 0
+			return FALSE
 
 	var/result = src.update_icon()
 
@@ -77,7 +77,7 @@
 	var/n_is = src.damage_state_text()
 	if (n_is != src.damage_state)
 		src.damage_state = n_is
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 	return
