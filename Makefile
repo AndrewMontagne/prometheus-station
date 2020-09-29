@@ -6,7 +6,7 @@ SHELL := /bin/bash
 
 -include /byond/env.sh
 
-all: clean lint mapmerge-test mapmerge build
+all: clean lint mapmerge build
 
 clean:
 	@echo -e '\n${INV} ###   CLEAN   ### ${NC}\n'
