@@ -20,7 +20,6 @@
 	src.permissions[permkey] = perm
 	perm.client = src
 	perm.on_client_add()
-	perm.on_mob_add()
 	if(!islist(src.permissions_to_clients[permkey]))
 		src.permissions_to_clients[permkey] = list()
 	src.permissions_to_clients[permkey] |= src
@@ -31,7 +30,6 @@
 	var/datum/permission/perm = src.permissions[permkey]
 	src.permissions[permkey] = null
 	src.permissions_to_clients.Remove(src)
-	perm.on_mob_remove()
 	perm.on_client_remove()
 	perm.client = null
 	perm.Del()
@@ -41,17 +39,11 @@
 
 //! Called when a client has this permission added
 /datum/permission/proc/on_client_add()
+	src.client.verbs |= src.verbs
 
 //! Called when a client has this permission removed
 /datum/permission/proc/on_client_remove()
-
-//! Called when a clmobient has this permission added
-/datum/permission/proc/on_mob_add()
-	src.client.mob.verbs |= src.verbs
-
-//! Called when a mob has this permission removed
-/datum/permission/proc/on_mob_remove()
-	src.client.mob.verbs |= src.verbs
+	src.client.verbs -= src.verbs
 
 //! Checks if a client has a permission, and that it is valid
 /client/proc/has_permission(permission_name)

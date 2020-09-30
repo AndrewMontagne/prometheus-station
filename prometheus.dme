@@ -413,6 +413,8 @@
 #include "cc-by-sa-nc\code\WorkInProgress\recycling\scrap.dm"
 #include "cc-by-sa-nc\interface\skin.dmf"
 #include "closed-source\list_sort.dm"
+#include "closed-source\code\client.dm"
+#include "closed-source\code\mob.dm"
 #include "closed-source\maps\trunkmap.dmm"
 #include "closed-source\modules\admin\datum\permission.dm"
 #include "closed-source\modules\admin\datum\role.dm"
