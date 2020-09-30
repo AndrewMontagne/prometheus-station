@@ -2,11 +2,13 @@ INV=\033[7m
 NC=\033[0m
 
 SHELL := /bin/bash
-.PHONY: all clean lint mapmerge-test mapmerge build run run-container
+.PHONY: all dev clean lint mapmerge-test mapmerge build run run-container
 
 -include /byond/env.sh
 
 all: clean lint mapmerge build
+
+dev: all run
 
 clean:
 	@echo -e '\n${INV} ###   CLEAN   ### ${NC}\n'
@@ -34,7 +36,7 @@ build:
 run:
 	@echo -e '\n${INV} ###    RUN    ### ${NC}\n'
 	@echo "Starting server... Connect at byond://localhost:5000"
-	@DreamDaemon prometheus.dmb 5000 -safe -invisible
+	@DreamDaemon prometheus.dmb 5000 -once -safe -invisible
 	@echo ""
 
 run-container:

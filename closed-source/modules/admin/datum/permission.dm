@@ -1,7 +1,8 @@
 //! Class to encapsulate specific permissions
 /datum/permission
 	var/name = null
-	var/client/assigned_client = null
+	var/client/client = null
+	var/list/verbs = list()
 
 //! Utility method to allow for additional verification logic
 /datum/permission/proc/verify()
@@ -17,8 +18,9 @@
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/permkey = perm.get_permission_key()
 	src.permissions[permkey] = perm
-	perm.assigned_client = src
-	perm.on_add()
+	perm.client = src
+	perm.on_client_add()
+	perm.on_mob_add()
 	if(!islist(src.permissions_to_clients[permkey]))
 		src.permissions_to_clients[permkey] = list()
 	src.permissions_to_clients[permkey] |= src
@@ -29,20 +31,27 @@
 	var/datum/permission/perm = src.permissions[permkey]
 	src.permissions[permkey] = null
 	src.permissions_to_clients.Remove(src)
-	perm.on_remove()
-	perm.assigned_client = null
+	perm.on_mob_remove()
+	perm.on_client_remove()
+	perm.client = null
 	perm.Del()
 
 /datum/permission/proc/get_permission_key()
 	return uppertext(copytext("[src.type]", 19))
 
 //! Called when a client has this permission added
-/datum/permission/proc/on_add()
-	throw EXCEPTION("No implementation")
+/datum/permission/proc/on_client_add()
 
 //! Called when a client has this permission removed
-/datum/permission/proc/on_remove()
-	throw EXCEPTION("No implementation")
+/datum/permission/proc/on_client_remove()
+
+//! Called when a clmobient has this permission added
+/datum/permission/proc/on_mob_add()
+	src.client.mob.verbs |= src.verbs
+
+//! Called when a mob has this permission removed
+/datum/permission/proc/on_mob_remove()
+	src.client.mob.verbs |= src.verbs
 
 //! Checks if a client has a permission, and that it is valid
 /client/proc/has_permission(permission_name)

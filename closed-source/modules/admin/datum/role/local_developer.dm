@@ -23,7 +23,7 @@
 	return FALSE
 
 //! The local developer role gets every single possible permission.
-/datum/role/local_developer/on_add()
+/datum/role/local_developer/on_client_add()
 	. = ..()
 	
 	for(var/path in typesof(/datum/permission))
@@ -32,4 +32,4 @@
 			continue
 
 		var/datum/permission/perm = new path()
-		src.user_client.add_permission(perm)
+		src.client.add_permission(perm)

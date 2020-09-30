@@ -38,18 +38,13 @@ var/global/datum/controller/gameticker/ticker
 	if(master_mode=="secret")
 		src.hide_mode = 1
 
-	if((master_mode=="random") || (master_mode=="secret"))
-		src.mode = config.pick_random_mode()
-	else
-		src.mode = config.pick_mode(master_mode)
+	src.mode = new /datum/game_mode/extended()
 
 	if(hide_mode)
 		var/modes = sortList(config.get_used_mode_names())
 
 		world << "<B>The current game mode is - Secret!</B>"
 		world << "<B>Possibilities:</B> [english_list(modes)]"
-	else
-		src.mode.announce()
 
 	//Configure mode and assign player to special mode stuff
 	var/can_continue = src.mode.pre_setup()

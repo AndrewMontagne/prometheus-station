@@ -1,23 +1,33 @@
 //! The user role datum. This determines the permissions a user has.
 /datum/role
-	VAR_PROTECTED/client/user_client //! The client this who has this role
+	VAR_PROTECTED/client/client //! The client this who has this role
 	var/priority = 0 //! The priority in which this role will be picked, lower is picked first.
 	var/role_name = null //! The name of the role. Must be set in order to be a candidate
-	var/permissions = list() //! The list of the permissions this role has
+	VAR_PROTECTED/permissions = list() //! The list of the permissions this role has
 
 //! Returns whether a client is eligible for this role
 /datum/role/proc/is_client_eligible(client/user_client)
 	throw EXCEPTION("No implementation")
 
 //! Performs any logic that needs to be done when a client recieves a role.
-/datum/role/proc/on_add(client/new_client)
+/datum/role/proc/on_client_add(client/new_client)
 	SHOULD_CALL_PARENT(TRUE)
-	src.user_client = new_client
+	src.client = new_client
 
 //! Performs any logic that needs to be done when a client recieves a role.
-/datum/role/proc/on_remove()
+/datum/role/proc/on_client_remove()
 	SHOULD_CALL_PARENT(TRUE)
-	src.user_client = null
+	src.client = null
+
+//! Performs any logic that needs to be done when a mob recieves a role.
+/datum/role/proc/on_mob_add(client/new_client)
+	SHOULD_CALL_PARENT(TRUE)
+	src.client = new_client
+
+//! Performs any logic that needs to be done when a mob recieves a role.
+/datum/role/proc/on_mob_remove()
+	SHOULD_CALL_PARENT(TRUE)
+	src.client = null
 
 /datum/role/proc/get_role_key()
 	return copytext("[src.type]", 13)
@@ -30,7 +40,7 @@
 	if (!isnull(src.role))
 		src.remove_role()
 	src.role = new_role
-	src.role.on_add(src)
+	src.role.on_client_add(src)
 	var/rolekey = src.role.get_role_key()
 	if(!islist(src.roles_to_clients[rolekey]))
 		src.roles_to_clients[rolekey] = list()
@@ -38,7 +48,7 @@
 
 /client/proc/remove_role()
 	src.roles_to_clients.Remove(src)
-	src.role.on_remove()
+	src.role.on_client_remove()
 	spawn(0) src.role.Del()
 	src.role = null
 
