@@ -10,6 +10,8 @@
 
 	extools_initialize()
 	tffi_initialize()
+	diary << rustg_url_encode("tes'£t")
+	diary << "dfshkd"
 
 	spawn(30)
 		//EXPERIMENTAL

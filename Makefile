@@ -16,7 +16,7 @@ clean:
 
 lint:
 	@echo -e '\n${INV} ###  LINTER   ### ${NC}\n'
-	@DreamChecker
+	@DreamChecker -c dreamchecker.toml
 
 mapmerge-test:
 	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
@@ -36,7 +36,7 @@ build:
 run:
 	@echo -e '\n${INV} ###    RUN    ### ${NC}\n'
 	@echo "Starting server... Connect at byond://localhost:5000"
-	@DreamDaemon prometheus.dmb 5000 -once -safe -invisible
+	@DreamDaemon prometheus.dmb 5000 -once -trusted -invisible
 	@echo ""
 
 run-container:

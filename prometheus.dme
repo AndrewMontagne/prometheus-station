@@ -2,7 +2,14 @@
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
+#define TRUE 1
+#define FALSE 0
+#define RUSTG_OVERRIDE_BUILTINS 1
+
 #include "lib\DreamChecker\dreamchecker.dm"
+#include "/byond/lib/_extools_api.dm"
+#include "/byond/lib/socket.dm"
+#include "/byond/lib/rust_g.dm"
 
 // BEGIN_INTERNALS
 // END_INTERNALS
@@ -445,7 +452,6 @@
 #include "lib\GoonLights\stubs\logging.dm"
 #include "lib\GoonLights\stubs\pooling.dm"
 #include "lib\GoonLights\stubs\turf.dm"
-#include "mit\_extools_api.dm"
 // END_INCLUDE
 
 // BEGIN_FILE_DIR
