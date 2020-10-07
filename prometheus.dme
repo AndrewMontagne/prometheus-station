@@ -137,7 +137,6 @@
 #include "cc-by-sa-nc\code\game\gamemodes\gameticker.dm"
 #include "cc-by-sa-nc\code\game\gamemodes\intercept_report.dm"
 #include "cc-by-sa-nc\code\game\gamemodes\objective.dm"
-#include "cc-by-sa-nc\code\game\gamemodes\setupgame.dm"
 #include "cc-by-sa-nc\code\game\gamemodes\extended\extended.dm"
 #include "cc-by-sa-nc\code\game\jobs\access.dm"
 #include "cc-by-sa-nc\code\game\jobs\jobprocs.dm"
