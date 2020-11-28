@@ -7,9 +7,16 @@
 #define RUSTG_OVERRIDE_BUILTINS 1
 
 #include "lib\DreamChecker\dreamchecker.dm"
-#include "/byond/lib/_extools_api.dm"
-#include "/byond/lib/socket.dm"
-#include "/byond/lib/rust_g.dm"
+
+#ifdef EXTERNAL_LIB
+	#include "/byond/lib/_extools_api.dm"
+	#include "/byond/lib/socket.dm"
+	#include "/byond/lib/rust_g.dm"
+#else
+	#include "lib/_extools_api.dm"
+	#include "lib/socket.dm"
+	#include "lib/rust_g.dm"
+#endif
 
 // BEGIN_INTERNALS
 // END_INTERNALS
@@ -433,6 +440,10 @@
 #include "closed-source\modules\infobrowser\infobrowser.dm"
 #include "closed-source\modules\map_pane\map_pane.dm"
 #include "closed-source\modules\parallax\parallax.dm"
+#include "lib\_extools_api.dm"
+#include "lib\rust_g.dm"
+#include "lib\socket.dm"
+#include "lib\DreamChecker\dreamchecker.dm"
 #include "lib\GoonLights\helpers\area.dm"
 #include "lib\GoonLights\helpers\atom.dm"
 #include "lib\GoonLights\helpers\dview.dm"
@@ -455,6 +466,4 @@
 
 // BEGIN_FILE_DIR
 #define FILE_DIR .
-#define FILE_DIR "cc-by-sc-nc"
-#define FILE_DIR "closed-source"
 // END_FILE_DIR

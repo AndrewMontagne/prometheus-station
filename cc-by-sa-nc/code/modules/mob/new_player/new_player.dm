@@ -18,7 +18,7 @@
 	canmove = 0
 	sight = BLIND
 	var/global/obj/screen/splash/splashscreen
-	var/global/lobby_music_track = pick('music/robocop.ogg','music/tintin.ogg')
+	var/global/lobby_music_track = pick('closed-source/music/robocop.ogg','closed-source/music/tintin.ogg')
 
 	anchored = 1	//  don't get pushed around
 
