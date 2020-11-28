@@ -81,10 +81,6 @@ obj/hud/New()
 		src.human_hud()
 		return
 
-	if(istype(mymob, /mob/living/carbon/monkey))
-		src.monkey_hud()
-		return
-
 	if(istype(mymob, /mob/living/silicon/ai))
 		src.ai_hud()
 		return
