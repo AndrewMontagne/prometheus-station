@@ -78,12 +78,6 @@ var/global/datum/controller/gameticker/ticker
 	spawn(0)
 		mode.post_setup()
 
-		//Cleanup some stuff
-		for(var/obj/landmark/start/S in world)
-			//Deleting Startpoints but we need the ai point to AI-ize people later
-			if (S.name != "AI")
-				del(S)
-
 		for(var/mob/new_player/P in world)
 			P.reconfigure_window_to_join()
 

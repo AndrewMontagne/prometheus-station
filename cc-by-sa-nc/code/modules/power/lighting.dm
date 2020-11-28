@@ -13,7 +13,7 @@
 
 /obj/machinery/light
 	name = "light fixture"
-	icon = 'cc-by-sa-nc/icons/effects/lighting.dmi'
+	icon = 'cc-by-sa-nc/icons/obj/lighting.dmi'
 	var/base_state = "tube"		// base description and icon_state
 	icon_state = "tube1"
 	desc = "A lighting fixture."

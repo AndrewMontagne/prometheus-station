@@ -1,4 +1,4 @@
-import sys, os, re, hashlib, datetime, time
+import sys, os, re, hashlib, datetime, time, math
 
 def listchunks(l, n):
     """Yield successive n-sized chunks from l."""
@@ -126,8 +126,8 @@ def mapmerge(filepath, test_only=False):
 
             elif state == PARSE_MAP_BODY:
                 if mapwidth == 0:
-                    mapwidth = len(line) // hashLength
-                if len(line) > hashLength:
+                    mapwidth = math.floor(len(line) / hashLength)
+                if len(line) >= mapwidth * hashLength:
                     split = [line[i:i+hashLength] for i in range(0, len(line), hashLength)]
                     for hsh in split:
                         tiles[hsh]['count'] += 1

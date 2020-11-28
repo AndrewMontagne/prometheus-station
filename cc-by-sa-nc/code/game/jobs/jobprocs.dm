@@ -442,35 +442,9 @@
 	src.job = rank
 	src.mind.assigned_role = rank
 
-	if (!joined_late && rank != "Tourist")
-		var/obj/S = null
-		for(var/obj/landmark/start/sloc in world)
-			if (sloc.name != rank)
-				continue
-			if (locate(/mob) in sloc.loc)
-				continue
-			S = sloc
-			break
-		if (!S)
-			S = locate("start*[rank]") // use old stype
-		if (istype(S, /obj/landmark/start) && istype(S.loc, /turf))
-			src.loc = S.loc
-	else
-		var/list/L = list()
-		for(var/area/arrival/start/S in world)
-			L += S
-		var/A = pick(L)
-		var/list/NL = list()
-		for(var/turf/T in A)
-			if(!T.density)
-				var/clear = 1
-				for(var/obj/O in T)
-					if(O.density)
-						clear = 0
-						break
-				if(clear)
-					NL += T
-		src.loc = pick(NL)
+	src.x = 32
+	src.y = 32
+	
 	return
 
 /mob/living/carbon/human/proc/spawnId(rank)
