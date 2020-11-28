@@ -93,23 +93,6 @@
 					<br><a href='?src=\ref[src];vir=dna'>Space Rhinovirus</a>
 					<br><a href='?src=\ref[src];vir=bot'>Robot Transformation</a>
 					<br><a href='?src=\ref[src];screen=1'>Back</a>"}
-				if(6.0)
-					dat += "<center><b>Medical Robot Monitor</b></center>"
-					dat += "<a href='?src=\ref[src];screen=1'>Back</a>"
-					dat += "<br><b>Medical Robots:</b>"
-					var/bdat = null
-					for(var/obj/machinery/bot/medbot/M in world)
-						var/turf/bl = get_turf(M)
-						bdat += "[M.name] - <b>\[[bl.x],[bl.y]\]</b> - [M.on ? "Online" : "Offline"]<br>"
-						if((!isnull(M.reagent_glass)) && M.use_beaker)
-							bdat += "Reservoir: \[[M.reagent_glass.reagents.total_volume]/[M.reagent_glass.reagents.maximum_volume]\]<br>"
-						else
-							bdat += "Using Internal Synthesizer.<br>"
-
-					if(!bdat)
-						dat += "<br><center>None detected</center>"
-					else
-						dat += "<br>[bdat]"
 
 				else
 		else

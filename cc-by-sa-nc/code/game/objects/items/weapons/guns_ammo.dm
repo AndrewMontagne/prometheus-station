@@ -473,11 +473,6 @@ obj/item/weapon/gun/revolver/attackby(obj/item/weapon/ammo/a357/A as obj, mob/us
 		return
 
 	playsound(user, 'cc-by-sa-nc/sound/weapons/Taser.ogg', 50, 1)
-	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		R.cell.charge -= 20
-	else
-		src.charges--
 	update_icon()
 
 	var/turf/T = user.loc

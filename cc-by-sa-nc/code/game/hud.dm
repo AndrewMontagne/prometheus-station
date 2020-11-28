@@ -85,10 +85,6 @@ obj/hud/New()
 		src.ai_hud()
 		return
 
-	if(istype(mymob, /mob/living/silicon/robot))
-		src.robot_hud()
-		return
-
 	if(istype(mymob, /mob/dead/observer))
 		src.ghost_hud()
 		return

@@ -164,52 +164,7 @@
 	receive_signal(datum/signal/signal)
 		var/obj/item/device/pda/P = src.loc
 
-		/*
-		world << "recvd:[P] : [signal.source]"
-		for(var/d in signal.data)
-			world << "- [d] = [signal.data[d]]"
-		*/
-		if(signal.data["type"] == "secbot")
-			if(!botlist)
-				botlist = new()
-
-			if(!(signal.source in botlist))
-				botlist += signal.source
-
-			if(active == signal.source)
-				var/list/b = signal.data
-				botstatus = b.Copy()
-
 		if(istype(P)) P.updateSelfDialog()
-
-
-
-
-	Topic(href, href_list)
-		..()
-		var/obj/item/device/pda/PDA = src.loc
-
-		switch(href_list["op"])
-
-			if("control")
-				active = locate(href_list["bot"])
-				post_signal(control_freq, "command", "bot_status", "active", active)
-
-			if("scanbots")		// find all bots
-				botlist = null
-				post_signal(control_freq, "command", "bot_status")
-
-			if("botlist")
-				active = null
-				PDA.updateSelfDialog()
-
-			if("stop", "go")
-				post_signal(control_freq, "command", href_list["op"], "active", active)
-				post_signal(control_freq, "command", "bot_status", "active", active)
-
-			if("summon")
-				post_signal(control_freq, "command", "summon", "active", active, "target", get_turf(PDA) )
-				post_signal(control_freq, "command", "bot_status", "active", active)
 
 /obj/item/weapon/cartridge/janitor
 	name = "CustodiPRO Cartridge"
@@ -266,10 +221,6 @@
 	desc = "Perfect for the Quartermaster on the go!"
 	icon_state = "cart-q"
 	access_quartermaster = 1
-
-	var/list/botlist = null		// list of bots
-	var/obj/machinery/bot/mulebot/active 	// the active bot; if null, show bot list
-	var/list/botstatus			// the status signal sent by the bot
 	var/list/beacons
 
 	var/beacon_freq = 1445
@@ -284,90 +235,6 @@
 				radio_controller.add_object(src, "[beacon_freq]")
 				spawn(10)
 					post_signal(beacon_freq, "findbeacon", "delivery")
-
-	// receive radio signals
-	// can detect bot status signals
-	// and beacon locations
-	// create/populate lists as they are recvd
-
-	receive_signal(datum/signal/signal)
-		var/obj/item/device/pda/P = src.loc
-
-		/*
-		world << "recvd:[P] : [signal.source]"
-		for(var/d in signal.data)
-			world << "- [d] = [signal.data[d]]"
-		*/
-		if(signal.data["type"] == "mulebot")
-			if(!botlist)
-				botlist = new()
-
-			if(!(signal.source in botlist))
-				botlist += signal.source
-
-			if(active == signal.source)
-				var/list/b = signal.data
-				botstatus = b.Copy()
-
-		else if(signal.data["beacon"])
-			if(!beacons)
-				beacons = new()
-
-			beacons[signal.data["beacon"] ] = signal.source
-
-
-		if(istype(P)) P.updateSelfDialog()
-
-
-
-
-	Topic(href, href_list)
-		..()
-		var/obj/item/device/pda/PDA = src.loc
-		var/cmd = "command"
-		if(active) cmd = "command [active.suffix]"
-
-		switch(href_list["op"])
-
-			if("control")
-				active = locate(href_list["bot"])
-				post_signal(control_freq, cmd, "bot_status")
-
-			if("scanbots")		// find all bots
-				botlist = null
-				post_signal(control_freq, "command", "bot_status")
-
-			if("botlist")
-				active = null
-				PDA.updateSelfDialog()
-
-			if("unload")
-				post_signal(control_freq, cmd, "unload")
-				post_signal(control_freq, cmd, "bot_status")
-			if("setdest")
-				if(beacons)
-					var/dest = input("Select Bot Destination", "Mulebot [active.suffix] Interlink", active.destination) as null|anything in beacons
-					if(dest)
-						post_signal(control_freq, cmd, "target", "destination", dest)
-						post_signal(control_freq, cmd, "bot_status")
-
-			if("retoff")
-				post_signal(control_freq, cmd, "autoret", "value", 0)
-				post_signal(control_freq, cmd, "bot_status")
-			if("reton")
-				post_signal(control_freq, cmd, "autoret", "value", 1)
-				post_signal(control_freq, cmd, "bot_status")
-
-			if("pickoff")
-				post_signal(control_freq, cmd, "autopick", "value", 0)
-				post_signal(control_freq, cmd, "bot_status")
-			if("pickon")
-				post_signal(control_freq, cmd, "autopick", "value", 1)
-				post_signal(control_freq, cmd, "bot_status")
-
-			if("stop", "go", "home")
-				post_signal(control_freq, cmd, href_list["op"])
-				post_signal(control_freq, cmd, "bot_status")
 
 
 /obj/item/weapon/cartridge/syndicate
@@ -768,22 +635,6 @@
 					else
 						dat += "[ldat]"
 
-					dat += "<h4>Located Cleanbots:</h4>"
-
-					ldat = null
-					for (var/obj/machinery/bot/cleanbot/B in world)
-						var/turf/bl = get_turf(B)
-
-						if (bl.z != cl.z)
-							continue
-
-						ldat += "Cleanbot - <b>\[[bl.x],[bl.y]\]</b> - [B.on ? "Online" : "Offline"]<br>"
-
-					if (!ldat)
-						dat += "None"
-					else
-						dat += "[ldat]"
-
 				else
 					dat += "ERROR: Unable to determine current location."
 
@@ -843,120 +694,6 @@ Code:
 					var/datum/supply_order/SO = S
 					dat += "<li>[SO.object.name] requested by [SO.orderedby]</li>"
 				dat += "</ol><font size=\"-3\">Upgrade NOW to Space Parts & Space Vendors PLUS for full remote order control and inventory management."
-
-
-			if(12)		// Quartermaster mulebot control
-				var/obj/item/weapon/cartridge/quartermaster/QC = cartridge
-				if(!QC)
-					dat += "Interlink Error - Please reinsert cartridge."
-					return
-
-				dat += "<h4>M.U.L.E. bot Interlink V0.8</h4>"
-
-				if(!QC.active)
-					// list of bots
-					if(!QC.botlist || (QC.botlist && QC.botlist.len==0))
-						dat += "No bots found.<BR>"
-
-					else
-						for(var/obj/machinery/bot/mulebot/B in QC.botlist)
-							dat += "<A href='byond://?src=\ref[QC];op=control;bot=\ref[B]'>[B] at [B.loc.loc]</A><BR>"
-
-
-
-					dat += "<BR><A href='byond://?src=\ref[QC];op=scanbots'>Scan for active bots</A><BR>"
-
-				else	// bot selected, control it
-
-
-					dat += "<B>[QC.active]</B><BR> Status: (<A href='byond://?src=\ref[QC];op=control;bot=\ref[QC.active]'><i>refresh</i></A>)<BR>"
-
-					if(!QC.botstatus)
-						dat += "Waiting for response...<BR>"
-					else
-
-						dat += "Location: [QC.botstatus["loca"] ]<BR>"
-						dat += "Mode: "
-
-						switch(QC.botstatus["mode"])
-							if(0)
-								dat += "Ready"
-							if(1)
-								dat += "Loading/Unloading"
-							if(2)
-								dat += "Navigating to Delivery Location"
-							if(3)
-								dat += "Navigating to Home"
-							if(4)
-								dat += "Waiting for clear path"
-							if(5,6)
-								dat += "Calculating navigation path"
-							if(7)
-								dat += "Unable to locate destination"
-						var/obj/crate/C = QC.botstatus["load"]
-						dat += "<BR>Current Load: [ !C ? "<i>none</i>" : "[C.name] (<A href='byond://?src=\ref[QC];op=unload'><i>unload</i></A>)" ]<BR>"
-						dat += "Destination: [!QC.botstatus["dest"] ? "<i>none</i>" : QC.botstatus["dest"] ] (<A href='byond://?src=\ref[QC];op=setdest'><i>set</i></A>)<BR>"
-						dat += "Power: [QC.botstatus["powr"]]%<BR>"
-						dat += "Home: [!QC.botstatus["home"] ? "<i>none</i>" : QC.botstatus["home"] ]<BR>"
-						dat += "Auto Return Home: [QC.botstatus["retn"] ? "<B>On</B> <A href='byond://?src=\ref[QC];op=retoff'>Off</A>" : "(<A href='byond://?src=\ref[QC];op=reton'><i>On</i></A>) <B>Off</B>"]<BR>"
-						dat += "Auto Pickup Crate: [QC.botstatus["pick"] ? "<B>On</B> <A href='byond://?src=\ref[QC];op=pickoff'>Off</A>" : "(<A href='byond://?src=\ref[QC];op=pickon'><i>On</i></A>) <B>Off</B>"]<BR><BR>"
-
-						dat += "\[<A href='byond://?src=\ref[QC];op=stop'>Stop</A>\] "
-						dat += "\[<A href='byond://?src=\ref[QC];op=go'>Proceed</A>\] "
-						dat += "\[<A href='byond://?src=\ref[QC];op=home'>Return Home</A>\]<BR>"
-						dat += "<HR><A href='byond://?src=\ref[QC];op=botlist'>Return to bot list</A>"
-
-			if(13)		// Security Bot control
-				var/obj/item/weapon/cartridge/security/SC = cartridge
-				if(!SC)
-					dat += "Interlink Error - Please reinsert cartridge."
-					return
-
-				dat += "<h4>Securitron Interlink</h4>"
-
-				if(!SC.active)
-					// list of bots
-					if(!SC.botlist || (SC.botlist && SC.botlist.len==0))
-						dat += "No bots found.<BR>"
-
-					else
-						for(var/obj/machinery/bot/secbot/B in SC.botlist)
-							dat += "<A href='byond://?src=\ref[SC];op=control;bot=\ref[B]'>[B] at [B.loc.loc]</A><BR>"
-
-
-
-					dat += "<BR><A href='byond://?src=\ref[SC];op=scanbots'>Scan for active bots</A><BR>"
-
-				else	// bot selected, control it
-
-
-					dat += "<B>[SC.active]</B><BR> Status: (<A href='byond://?src=\ref[SC];op=control;bot=\ref[SC.active]'><i>refresh</i></A>)<BR>"
-
-					if(!SC.botstatus)
-						dat += "Waiting for response...<BR>"
-					else
-
-						dat += "Location: [SC.botstatus["loca"] ]<BR>"
-						dat += "Mode: "
-
-						switch(SC.botstatus["mode"])
-							if(0)
-								dat += "Ready"
-							if(1)
-								dat += "Apprehending target"
-							if(2,3)
-								dat += "Arresting target"
-							if(4)
-								dat += "Starting patrol"
-							if(5)
-								dat += "On patrol"
-							if(6)
-								dat += "Responding to summons"
-
-						dat += "<BR>\[<A href='byond://?src=\ref[SC];op=stop'>Stop Patrol</A>\] "
-						dat += "\[<A href='byond://?src=\ref[SC];op=go'>Start Patrol</A>\] "
-						dat += "\[<A href='byond://?src=\ref[SC];op=summon'>Summon Bot</A>\]<BR>"
-						dat += "<HR><A href='byond://?src=\ref[SC];op=botlist'>Return to bot list</A>"
 
 	dat += "</body></html>"
 	user << browse(dat, "window=pda")

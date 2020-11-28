@@ -1202,16 +1202,6 @@
 			namecounts[name] = 1
 		creatures[name] = D
 
-	for (var/obj/machinery/bot/B in world)
-		var/name = "BOT: [B.name]"
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		creatures[name] = B
-
 
 //THIS IS HOW YOU ADD OBJECTS TO BE OBSERVED
 

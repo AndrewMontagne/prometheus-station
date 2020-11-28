@@ -144,27 +144,6 @@
 
 	var/obj/item/W = usr.equipped()
 
-	if(istype(usr, /mob/living/silicon/robot))
-		var/count
-		var/list/objects = list()
-		if(usr:module_state_1)
-			objects += usr:module_state_1
-			count++
-		if(usr:module_state_2)
-			objects += usr:module_state_2
-			count++
-		if(usr:module_state_3)
-			objects += usr:module_state_3
-			count++
-		if(count > 1)
-			var/input = input("Please, select an item!", "Item", null, null) as obj in objects
-			W = input
-		else if(count != 0)
-			for(var/obj in objects)
-				W = obj
-		else if(count == 0)
-			W = null
-
 	if (W == src && usr.stat == 0)
 		spawn (0)
 			W.attack_self(usr)

@@ -1997,11 +1997,3 @@
 /mob/living/carbon/human/verb/fuck()
 	set hidden = 1
 	alert("Go play HellMOO if you wanna do that.")
-
-
-// called when something steps onto a human
-// this could be made more general, but for now just handle mulebot
-/mob/living/carbon/human/HasEntered(var/atom/movable/AM)
-	var/obj/machinery/bot/mulebot/MB = AM
-	if(istype(MB))
-		MB.RunOver(src)

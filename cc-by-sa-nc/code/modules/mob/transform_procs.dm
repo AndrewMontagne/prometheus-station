@@ -130,60 +130,6 @@
 
 	return O
 
-//human -> robot
-/mob/living/carbon/human/proc/Robotize()
-	if (src.monkeyizing)
-		return
-	for(var/obj/item/weapon/W in src)
-		src.u_equip(W)
-		if (src.client)
-			src.client.screen -= W
-		if (W)
-			W.loc = src.loc
-			W.dropped(src)
-			W.layer = initial(W.layer)
-			del(W)
-	src.update_clothing()
-	src.monkeyizing = 1
-	src.canmove = 0
-	src.icon = null
-	src.invisibility = 101
-	for(var/t in src.organs)
-		del(src.organs[text("[t]")])
-	//src.client.screen -= main_hud1.contents
-	src.client.screen -= src.hud_used.contents
-	src.client.screen -= src.hud_used.adding
-	src.client.screen -= src.hud_used.mon_blo
-	src.client.screen -= list( src.oxygen, src.throw_icon, src.i_select, src.m_select, src.toxin, src.internals, src.fire, src.hands, src.healths, src.pullin, src.blind, src.flash, src.rest, src.sleep, src.mach )
-	src.client.screen -= list( src.zone_sel, src.oxygen, src.throw_icon, src.i_select, src.m_select, src.toxin, src.internals, src.fire, src.hands, src.healths, src.pullin, src.blind, src.flash, src.rest, src.sleep, src.mach )
-	var/mob/living/silicon/robot/O = new /mob/living/silicon/robot( src.loc )
-
-	// cyborgs produced by Robotize get an automatic power cell
-	O.cell = new(O)
-	O.cell.maxcharge = 7500
-	O.cell.charge = 1500
-
-
-	O.gender = src.gender
-	O.invisibility = 0
-	O.name = "Cyborg"
-	O.real_name = "Cyborg"
-	O.lastKnownIP = src.client.address
-	if (src.client)
-		src.client.mob = O
-	O.loc = src.loc
-	O << "<B>You are playing a Robot. A Robot can interact with most electronic objects in its view point.</B>"
-	O << "<B>You must follow the laws that the AI has. You are the AI's assistant to the station basically.</B>"
-	O << "To use something, simply double-click it."
-	O << {"Use say ":s to speak to fellow cyborgs and the AI through binary."}
-
-	O.job = "Cyborg"
-
-
-
-	del(src)
-	return O
-
 //human -> alien
 /mob/living/carbon/human/proc/Alienize()
 	if (src.monkeyizing)

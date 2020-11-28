@@ -103,11 +103,6 @@ STUN BATON
 		flick("baton_active", src)
 		if (user.a_intent == "hurt")
 			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 50, 1, -1)
-			if(isrobot(user))
-				var/mob/living/silicon/robot/R = user
-				R.cell.charge -= 20
-			else
-				charges--
 			if (M.weakened < 1)
 				M.weakened = 1
 			if (M.stuttering < 1)
@@ -117,11 +112,6 @@ STUN BATON
 				M.stunned = 1
 		else
 			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Egloves.ogg', 50, 1, -1)
-			if(isrobot(user))
-				var/mob/living/silicon/robot/R = user
-				R.cell.charge -= 20
-			else
-				charges--
 			if (M.weakened < 10)
 				M.weakened = 10
 			if (M.stuttering < 10)
@@ -136,11 +126,6 @@ STUN BATON
 		flick("baton_active", src)
 		if (user.a_intent == "hurt")
 			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 50, 1, -1)
-			if(isrobot(user))
-				var/mob/living/silicon/robot/R = user
-				R.cell.charge -= 20
-			else
-				charges--
 			if (M.weakened < 1)
 				M.weakened = 1
 			if (M.stuttering < 1)
@@ -150,11 +135,6 @@ STUN BATON
 				M.stunned = 1
 		else
 			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Egloves.ogg', 50, 1, -1)
-			if(isrobot(user))
-				var/mob/living/silicon/robot/R = user
-				R.cell.charge -= 20
-			else
-				charges--
 			if (M.weakened < 10)
 				M.weakened = 10
 			if (M.stuttering < 10)

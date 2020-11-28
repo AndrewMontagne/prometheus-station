@@ -29,11 +29,6 @@
 	extra_item = /obj/item/brain
 	creates = "/obj/item/weapon/reagent_containers/food/snacks/brainburger"
 
-/datum/recipe/roburger/
-	flour_amount = 1
-	extra_item = /obj/item/robot_parts/head
-	creates = "/obj/item/weapon/reagent_containers/food/snacks/roburger"
-
 /datum/recipe/waffles
 	egg_amount = 2
 	flour_amount = 2
@@ -67,7 +62,6 @@
 	src.available_recipes += new /datum/recipe/waffles(src)
 	src.available_recipes += new /datum/recipe/brainburger(src)
 	src.available_recipes += new /datum/recipe/faggot(src)
-	src.available_recipes += new /datum/recipe/roburger(src)
 	src.available_recipes += new /datum/recipe/donkpocket(src)
 	src.available_recipes += new /datum/recipe/donkpocket_warm(src)
 	src.available_recipes += new /datum/recipe/pie(src)

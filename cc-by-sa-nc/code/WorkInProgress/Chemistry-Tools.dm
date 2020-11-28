@@ -396,7 +396,7 @@
 			var/trans = src.reagents.trans_to(target, 10)
 			user << "\blue You transfer [trans] units of the solution to [target]."
 
-		else if(reagents.total_volume  && !istype(target,/obj/machinery/chem_master/) && !istype(target,/obj/table) && !istype(target,/obj/secure_closet) && !istype(target,/obj/closet) && !istype(target,/obj/item/weapon/storage) && !istype(target, /obj/machinery/atmospherics/unary/cryo_cell) && !istype(target, /obj/item/weapon/chem_grenade) && !istype(target, /obj/machinery/bot/medbot))
+		else if(reagents.total_volume  && !istype(target,/obj/machinery/chem_master/) && !istype(target,/obj/table) && !istype(target,/obj/secure_closet) && !istype(target,/obj/closet) && !istype(target,/obj/item/weapon/storage) && !istype(target, /obj/machinery/atmospherics/unary/cryo_cell) && !istype(target, /obj/item/weapon/chem_grenade))
 			user << "\blue You splash the solution onto [target]."
 			src.reagents.reaction(target, TOUCH)
 			spawn(5) src.reagents.clear_reagents()
@@ -864,21 +864,6 @@
 		var/datum/reagents/R = new/datum/reagents(30)
 		reagents = R
 		R.my_atom = src
-
-	attackby(var/obj/D, mob/user as mob)
-		if(istype(D, /obj/item/device/prox_sensor))
-			var/obj/item/weapon/bucket_sensor/B = new /obj/item/weapon/bucket_sensor
-			B.loc = user
-			if (user.r_hand == D)
-				user.u_equip(D)
-				user.r_hand = B
-			else
-				user.u_equip(D)
-				user.l_hand = B
-			B.layer = 20
-			user << "You add the sensor to the bucket"
-			del(D)
-			del(src)
 
 /obj/item/weapon/reagent_containers/glass/dispenser
 	name = "reagent glass"
