@@ -14,8 +14,3 @@
 				continue
 
 		getFromPool(/atom/movable/lighting_overlay, T, TRUE)
-
-/world/New()
-	. = ..()
-
-	create_all_lighting_overlays()

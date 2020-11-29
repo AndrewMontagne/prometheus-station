@@ -71,23 +71,8 @@
 	abandon_allowed = config.respawn
 
 /world/New()
-	src.load_configuration()
-
-	if (config && config.server_name != null && config.server_suffix && world.port > 0)
-		// dumb and hardcoded but I don't care~
-		config.server_name += " #[(world.port % 1000) / 100]"
-
-	src.load_mode()
-	src.load_motd()
-	src.load_rules()
-	src.load_admins()
-
-	src.update_status()
-
-	makepowernets()
-
+	
 	sun = new /datum/sun()
-
 	vote = new /datum/vote()
 
 	radio_controller = new /datum/controller/radio()
@@ -111,9 +96,7 @@
 	slmaster.mouse_opacity = 0
 
 	src.update_status()
-
-	master_controller = new /datum/controller/game_controller()
-	spawn(-1) master_controller.setup()
+	
 	return
 
 //Crispy fullban

@@ -54,7 +54,6 @@
 #include "cc-by-sa-nc\code\defines\hub.dm"
 #include "cc-by-sa-nc\code\defines\obj.dm"
 #include "cc-by-sa-nc\code\defines\turf.dm"
-#include "cc-by-sa-nc\code\defines\world.dm"
 #include "cc-by-sa-nc\code\defines\area\Space Station 13 areas.dm"
 #include "cc-by-sa-nc\code\defines\mob\mob.dm"
 #include "cc-by-sa-nc\code\defines\mob\dead\observer.dm"
