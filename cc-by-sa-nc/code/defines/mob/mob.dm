@@ -101,7 +101,6 @@
 	var/obj/item/l_hand = null
 	var/obj/item/r_hand = null
 	var/obj/item/weapon/back = null
-	var/obj/item/weapon/tank/internal = null
 	var/obj/item/weapon/storage/s_active = null
 	var/obj/item/clothing/mask/wear_mask = null
 	var/r_epil = 0

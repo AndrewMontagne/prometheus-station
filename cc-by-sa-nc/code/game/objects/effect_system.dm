@@ -137,25 +137,8 @@ steam.start() -- spawns the effect
 /obj/effects/sparks/New()
 	..()
 	playsound(src.loc, "sparks", 100, 1)
-	var/turf/T = src.loc
-	if (istype(T, /turf))
-		T.hotspot_expose(1000,100)
 	spawn (100)
 		del(src)
-	return
-
-/obj/effects/sparks/Del()
-	var/turf/T = src.loc
-	if (istype(T, /turf))
-		T.hotspot_expose(1000,100)
-	..()
-	return
-
-/obj/effects/sparks/Move()
-	..()
-	var/turf/T = src.loc
-	if (istype(T, /turf))
-		T.hotspot_expose(1000,100)
 	return
 
 /datum/effects/system/spark_spread
@@ -313,30 +296,25 @@ steam.start() -- spawns the effect
 /obj/effects/bad_smoke/Move()
 	..()
 	for(var/mob/living/carbon/M in get_turf(src))
-		if (M.internal != null && M.wear_mask && (M.wear_mask.flags & MASKINTERNALS))
-		else
-			M.drop_item()
-			M.oxyloss += 1
-			if (M.coughedtime != 1)
-				M.coughedtime = 1
-				M.emote("cough")
-				spawn ( 20 )
-					M.coughedtime = 0
+		M.drop_item()
+		M.oxyloss += 1
+		if (M.coughedtime != 1)
+			M.coughedtime = 1
+			M.emote("cough")
+			spawn ( 20 )
+				M.coughedtime = 0
 	return
 
 /obj/effects/bad_smoke/HasEntered(mob/living/carbon/M as mob )
 	..()
 	if(istype(M, /mob/living/carbon))
-		if (M.internal != null && M.wear_mask && (M.wear_mask.flags & MASKINTERNALS))
-			return
-		else
-			M.drop_item()
-			M.oxyloss += 1
-			if (M.coughedtime != 1)
-				M.coughedtime = 1
-				M.emote("cough")
-				spawn ( 20 )
-					M.coughedtime = 0
+		M.drop_item()
+		M.oxyloss += 1
+		if (M.coughedtime != 1)
+			M.coughedtime = 1
+			M.emote("cough")
+			spawn ( 20 )
+				M.coughedtime = 0
 	return
 
 /datum/effects/system/bad_smoke_spread
@@ -409,22 +387,18 @@ steam.start() -- spawns the effect
 /obj/effects/mustard_gas/Move()
 	..()
 	for(var/mob/living/carbon/human/R in get_turf(src))
-		if (R.internal != null && usr.wear_mask && (R.wear_mask.flags & MASKINTERNALS) && R.wear_suit != null && !istype(R.wear_suit, /obj/item/clothing/suit/labcoat) && !istype(R.wear_suit, /obj/item/clothing/suit/straight_jacket) && !istype(R.wear_suit, /obj/item/clothing/suit/straight_jacket && !istype(R.wear_suit, /obj/item/clothing/suit/armor)))
-		else
-			R.burn_skin(0.75)
-			if (R.coughedtime != 1)
-				R.coughedtime = 1
-				R.emote("gasp")
-				spawn (20)
-					R.coughedtime = 0
-			R.updatehealth()
+		R.burn_skin(0.75)
+		if (R.coughedtime != 1)
+			R.coughedtime = 1
+			R.emote("gasp")
+			spawn (20)
+				R.coughedtime = 0
+		R.updatehealth()
 	return
 
 /obj/effects/mustard_gas/HasEntered(mob/living/carbon/human/R as mob )
 	..()
 	if (istype(R, /mob/living/carbon/human))
-		if (R.internal != null && usr.wear_mask && (R.wear_mask.flags & MASKINTERNALS) && R.wear_suit != null && !istype(R.wear_suit, /obj/item/clothing/suit/labcoat) && !istype(R.wear_suit, /obj/item/clothing/suit/straight_jacket) && !istype(R.wear_suit, /obj/item/clothing/suit/straight_jacket && !istype(R.wear_suit, /obj/item/clothing/suit/armor)))
-			return
 		R.burn_skin(0.75)
 		if (R.coughedtime != 1)
 			R.coughedtime = 1
@@ -652,16 +626,6 @@ steam.start() -- spawns the effect
 			F.amount = amount
 		sleep(15)
 
-// foam disolves when heated
-// except metal foams
-/obj/effects/foam/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	if(!metal && prob(max(0, exposed_temperature - 475)))
-		flick("[icon_state]-disolve", src)
-
-		spawn(5)
-			del(src)
-
-
 /obj/effects/foam/HasEntered(var/atom/movable/AM)
 	if(metal)
 		return
@@ -782,47 +746,6 @@ steam.start() -- spawns the effect
 	// shouldn't this be a general procedure?
 	// not sure if this neccessary or overkill
 	proc/update_nearby_tiles(need_rebuild)
-		if(!air_master) return FALSE
-
-		var/turf/simulated/source = loc
-		var/turf/simulated/north = get_step(source,NORTH)
-		var/turf/simulated/south = get_step(source,SOUTH)
-		var/turf/simulated/east = get_step(source,EAST)
-		var/turf/simulated/west = get_step(source,WEST)
-
-		if(need_rebuild)
-			if(istype(source)) //Rebuild/update nearby group geometry
-				if(source.parent)
-					air_master.groups_to_rebuild += source.parent
-				else
-					air_master.tiles_to_update += source
-			if(istype(north))
-				if(north.parent)
-					air_master.groups_to_rebuild += north.parent
-				else
-					air_master.tiles_to_update += north
-			if(istype(south))
-				if(south.parent)
-					air_master.groups_to_rebuild += south.parent
-				else
-					air_master.tiles_to_update += south
-			if(istype(east))
-				if(east.parent)
-					air_master.groups_to_rebuild += east.parent
-				else
-					air_master.tiles_to_update += east
-			if(istype(west))
-				if(west.parent)
-					air_master.groups_to_rebuild += west.parent
-				else
-					air_master.tiles_to_update += west
-		else
-			if(istype(source)) air_master.tiles_to_update += source
-			if(istype(north)) air_master.tiles_to_update += north
-			if(istype(south)) air_master.tiles_to_update += south
-			if(istype(east)) air_master.tiles_to_update += east
-			if(istype(west)) air_master.tiles_to_update += west
-
 		return TRUE
 
 

@@ -139,15 +139,6 @@
 		if (timeleft)
 			stat(null, "ETA-[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
-	if (src.client.statpanel == "Status")
-		if (src.internal)
-			if (!src.internal.air_contents)
-				del(src.internal)
-			else
-				stat("Internal Atmosphere Info", src.internal.name)
-				stat("Tank Pressure", src.internal.air_contents.return_pressure())
-				stat("Distribution Pressure", src.internal.distribute_pressure)
-
 
 /mob/living/carbon/human/bullet_act(flag, A as obj)
 	var/shielded = 0
@@ -433,10 +424,6 @@
 	else if (W == src.belt)
 		src.belt = null
 	else if (W == src.wear_mask)
-		if(internal)
-			if (src.internals)
-				src.internals.icon_state = "internal0"
-			internal = null
 		src.wear_mask = null
 	else if (W == src.wear_id)
 		src.wear_id = null
@@ -848,7 +835,7 @@
 			src.overlays += image("icon" = 'cc-by-sa-nc/icons/mob/suit.dmi', "icon_state" = text("[][]", t1, (!( src.lying ) ? null : "2")), "layer" = MOB_LAYER)
 		if (src.wear_suit.blood_type)
 			var/icon/stain_icon = null
-			if (istype(src.wear_suit, /obj/item/clothing/suit/armor/vest || /obj/item/clothing/suit/wcoat || /obj/item/clothing/suit/armor/a_i_a_ptank))
+			if (istype(src.wear_suit, /obj/item/clothing/suit/armor/vest || /obj/item/clothing/suit/wcoat))
 				stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "armorblood[!src.lying ? "" : "2"]")
 			else if (istype(src.wear_suit, /obj/item/clothing/suit/det_suit || /obj/item/clothing/suit/labcoat))
 				stain_icon = icon('cc-by-sa-nc/icons/effects/blood.dmi', "coatblood[!src.lying ? "" : "2"]")
@@ -1396,11 +1383,6 @@
 					//SN src = null
 					del(src)
 					return
-			if("internal")
-				if ((!( (istype(src.target.wear_mask, /obj/item/clothing/mask) && istype(src.target.back, /obj/item/weapon/tank) && !( src.target.internal )) ) && !( src.target.internal )))
-					//SN src = null
-					del(src)
-					return
 
 	var/list/L = list( "syringe", "pill", "drink", "fuel")
 	if ((src.item && !( L.Find(src.place) )))
@@ -1477,12 +1459,6 @@
 								message = text("\red <B>[] is trying perform CPR on []!</B>", src.source, src.target)
 							if("id")
 								message = text("\red <B>[] is trying to take off [] from []'s uniform!</B>", src.source, src.target.wear_id, src.target)
-							if("internal")
-								if (src.target.internal)
-									message = text("\red <B>[] is trying to remove []'s internals</B>", src.source, src.target)
-								else
-									message = text("\red <B>[] is trying to set on []'s internals.</B>", src.source, src.target)
-							else
 						for(var/mob/M in viewers(src.target, null))
 							M.show_message(message, 1)
 	spawn( 40 )
@@ -1860,21 +1836,6 @@
 					W.dropped(src.target)
 					W.layer = initial(W.layer)
 				W.add_fingerprint(src.source)
-		if("internal")
-			if (src.target.internal)
-				src.target.internal.add_fingerprint(src.source)
-				src.target.internal = null
-			else
-				if (src.target.internal)
-					src.target.internal = null
-				if (!( istype(src.target.wear_mask, /obj/item/clothing/mask) ))
-					return
-				else
-					if (istype(src.target.back, /obj/item/weapon/tank))
-						src.target.internal = src.target.back
-						for(var/mob/M in viewers(src.target, 1))
-							M.show_message(text("[] is now running on internals.", src.target), 1)
-						src.target.internal.add_fingerprint(src.source)
 		else
 	if(src.source)
 		src.source.update_clothing()
@@ -1975,10 +1936,9 @@
 	<BR><B>Belt:</B> <A href='?src=\ref[src];item=belt'>[(src.belt ? src.belt : "Nothing")]</A>
 	<BR><B>Uniform:</B> <A href='?src=\ref[src];item=uniform'>[(src.w_uniform ? src.w_uniform : "Nothing")]</A>
 	<BR><B>(Exo)Suit:</B> <A href='?src=\ref[src];item=suit'>[(src.wear_suit ? src.wear_suit : "Nothing")]</A>
-	<BR><B>Back:</B> <A href='?src=\ref[src];item=back'>[(src.back ? src.back : "Nothing")]</A> [((istype(src.wear_mask, /obj/item/clothing/mask) && istype(src.back, /obj/item/weapon/tank) && !( src.internal )) ? text(" <A href='?src=\ref[];item=internal'>Set Internal</A>", src) : "")]
+	<BR><B>Back:</B> <A href='?src=\ref[src];item=back'>[(src.back ? src.back : "Nothing")]</A> [((istype(src.wear_mask, /obj/item/clothing/mask)) ? text(" <A href='?src=\ref[];item=internal'>Set Internal</A>", src) : "")]
 	<BR><B>ID:</B> <A href='?src=\ref[src];item=id'>[(src.wear_id ? src.wear_id : "Nothing")]</A>
 	<BR>[(src.handcuffed ? text("<A href='?src=\ref[src];item=handcuff'>Handcuffed</A>") : text("<A href='?src=\ref[src];item=handcuff'>Not Handcuffed</A>"))]
-	<BR>[(src.internal ? text("<A href='?src=\ref[src];item=internal'>Remove Internal</A>") : "")]
 	<BR><A href='?src=\ref[src];item=pockets'>Empty Pockets</A>
 	<BR><A href='?src=\ref[user];mach_close=mob[src.name]'>Close</A>
 	<BR>"}

@@ -5,11 +5,6 @@
 /obj/closet/alter_health()
 	return get_turf(src)
 
-/obj/closet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return TRUE
-
-	return opened
-
 /obj/closet/proc/can_open()
 	if (src.welded)
 		return FALSE

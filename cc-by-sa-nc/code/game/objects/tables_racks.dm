@@ -32,16 +32,6 @@
 /obj/table/attack_hand(mob/user as mob)
 	return
 
-
-
-/obj/table/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return TRUE
-
-	if (mover.flags & 2)
-		return TRUE
-	else
-		return FALSE
-
 /obj/table/MouseDrop_T(obj/O as obj, mob/user as mob)
 
 	if ((!( istype(O, /obj/item/weapon) ) || user.equipped() != O))
@@ -131,14 +121,6 @@
 				src.density = 0
 		else
 	return
-
-/obj/rack/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return TRUE
-
-	if (mover.flags & 2)
-		return TRUE
-	else
-		return FALSE
 
 /obj/rack/MouseDrop_T(obj/O as obj, mob/user as mob)
 	if ((!( istype(O, /obj/item/weapon) ) || user.equipped() != O))

@@ -8,7 +8,6 @@
 	var/ini_dir = null
 	var/state = 0
 	var/reinf = 0
-	pressure_resistance = 4*ONE_ATMOSPHERE
 	anchored = 1.0
 	flags = ON_BORDER
 

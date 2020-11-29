@@ -99,12 +99,6 @@
 		del(src.connected)
 	return
 
-/obj/m_tray/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if (istype(mover, /obj/item/weapon/dummy))
-		return TRUE
-	else
-		return ..()
-
 /obj/m_tray/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
 
@@ -298,12 +292,6 @@
 			playsound(src.loc, 'cc-by-sa-nc/sound/machines/ding.ogg', 50, 1)
 
 	return
-
-/obj/c_tray/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if (istype(mover, /obj/item/weapon/dummy))
-		return TRUE
-	else
-		return ..()
 
 /obj/c_tray/attack_paw(mob/user as mob)
 	return src.attack_hand(user)

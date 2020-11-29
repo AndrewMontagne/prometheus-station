@@ -143,25 +143,6 @@ var/supply_shuttle_points = 50
 	containertype = "/obj/crate"
 	containername = "Janitorial supplies"
 
-/datum/supply_packs/plasma
-	name = "Plasma assembly crate"
-	contains = list("/obj/item/weapon/tank/plasma",
-					"/obj/item/weapon/tank/plasma",
-					"/obj/item/weapon/tank/plasma",
-					"/obj/item/device/igniter",
-					"/obj/item/device/igniter",
-					"/obj/item/device/igniter",
-					"/obj/item/device/prox_sensor",
-					"/obj/item/device/prox_sensor",
-					"/obj/item/device/prox_sensor",
-					"/obj/item/device/timer",
-					"/obj/item/device/timer",
-					"/obj/item/device/timer")
-	cost = 10
-	containertype = "/obj/crate/secure/plasma"
-	containername = "Plasma assembly crate"
-	access = access_tox
-
 /datum/supply_packs/weapons
 	name = "Weapons crate"
 	contains = list("/obj/item/weapon/baton",
@@ -179,11 +160,7 @@ var/supply_shuttle_points = 50
 
 /datum/supply_packs/eweapons
 	name = "Experimental weapons crate"
-	contains = list("/obj/item/weapon/flamethrower",
-					"/obj/item/weapon/tank/plasma",
-					"/obj/item/weapon/tank/plasma",
-					"/obj/item/weapon/tank/plasma",
-					"/obj/item/weapon/incendiarygrenade",
+	contains = list("/obj/item/weapon/incendiarygrenade",
 					"/obj/item/weapon/incendiarygrenade",
 					"/obj/item/weapon/incendiarygrenade",
 					"/obj/item/clothing/gloves/stungloves")

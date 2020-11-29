@@ -35,22 +35,6 @@
 		del(src)
 	return
 
-/obj/stool/chair/attackby(obj/item/weapon/W as obj, mob/user as mob)
-	..()
-	if (istype(W, /obj/item/assembly/shock_kit))
-		var/obj/stool/chair/e_chair/E = new /obj/stool/chair/e_chair( src.loc )
-		playsound(src.loc, 'cc-by-sa-nc/sound/items/Deconstruct.ogg', 50, 1)
-		E.dir = src.dir
-		E.part1 = W
-		W.loc = E
-		W.master = E
-		user.u_equip(W)
-		W.layer = initial(W.layer)
-		//SN src = null
-		del(src)
-		return
-	return
-
 /obj/stool/bed/Del()
 	for(var/mob/M in src.loc)
 		if (M.buckled == src)
@@ -117,13 +101,6 @@
 /obj/stool/chair/e_chair/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 	if (istype(W, /obj/item/weapon/wrench))
-		var/obj/stool/chair/C = new /obj/stool/chair( src.loc )
-		playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 50, 1)
-		C.dir = src.dir
-		src.part1.loc = src.loc
-		src.part1.master = null
-		src.part1 = null
-		//SN src = null
 		del(src)
 		return
 	return

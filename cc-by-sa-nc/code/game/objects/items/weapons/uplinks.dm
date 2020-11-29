@@ -7,8 +7,6 @@ SYNDICATE UPLINK
 /obj/item/weapon/syndicate_uplink/proc/explode()
 	var/turf/location = get_turf(src.loc)
 	if(location)
-		location.hotspot_expose(700,125)
-
 		explosion(location, 0, 0, 2, 4)
 
 	del(src.master)

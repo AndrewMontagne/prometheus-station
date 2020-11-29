@@ -1,7 +1,6 @@
 /obj/secure_closet/scientist/New()
 	..()
 	sleep(2)
-	new /obj/item/weapon/tank/air( src )
 	new /obj/item/clothing/mask/gas( src )
 	new /obj/item/clothing/suit/bio_suit( src )
 	new /obj/item/clothing/under/rank/scientist( src )

@@ -1,22 +1,3 @@
-/mob/proc/Cell()
-	set category = "Admin"
-	set hidden = 1
-
-	if(!loc) return FALSE
-
-	var/datum/gas_mixture/environment = loc.return_air()
-
-	var/t = "\blue Coordinates: [x],[y] \n"
-	t+= "\red Temperature: [environment.temperature] \n"
-	t+= "\blue Nitrogen: [environment.nitrogen] \n"
-	t+= "\blue Oxygen: [environment.oxygen] \n"
-	t+= "\blue Plasma : [environment.toxins] \n"
-	t+= "\blue Carbon Dioxide: [environment.carbon_dioxide] \n"
-	for(var/datum/gas/trace_gas in environment.trace_gases)
-		usr << "\blue [trace_gas.type]: [trace_gas.moles] \n"
-
-	usr.show_message(t, 1)
-
 // fun if you want to typecast humans/monkeys/etc without writing long path-filled lines.
 /proc/ishuman(A)
 	if(A && istype(A, /mob/living/carbon/human))
@@ -755,9 +736,6 @@
 			usr.intent = "13,15"
 		if("Reset Machine")
 			usr.machine = null
-		if("internal")
-			if ((!( usr.stat ) && usr.canmove && !( usr.restrained() )))
-				usr.internal = null
 		if("pull")
 			usr.pulling = null
 		if("sleep")
@@ -1021,7 +999,7 @@
 
 /mob/proc/show_inv(mob/user as mob)
 	user.machine = src
-	var/dat = text("<TT>\n<B><FONT size=3>[]</FONT></B><BR>\n\t<B>Head(Mask):</B> <A href='?src=\ref[];item=mask'>[]</A><BR>\n\t<B>Left Hand:</B> <A href='?src=\ref[];item=l_hand'>[]</A><BR>\n\t<B>Right Hand:</B> <A href='?src=\ref[];item=r_hand'>[]</A><BR>\n\t<B>Back:</B> <A href='?src=\ref[];item=back'>[]</A><BR>\n\t[]<BR>\n\t[]<BR>\n\t[]<BR>\n\t<A href='?src=\ref[];item=pockets'>Empty Pockets</A><BR>\n<A href='?src=\ref[];mach_close=mob[]'>Close</A><BR>\n</TT>", src.name, src, (src.wear_mask ? text("[]", src.wear_mask) : "Nothing"), src, (src.l_hand ? text("[]", src.l_hand) : "Nothing"), src, (src.r_hand ? text("[]", src.r_hand) : "Nothing"), src, (src.back ? text("[]", src.back) : "Nothing"), ((istype(src.wear_mask, /obj/item/clothing/mask) && istype(src.back, /obj/item/weapon/tank) && !( src.internal )) ? text(" <A href='?src=\ref[];item=internal'>Set Internal</A>", src) : ""), (src.internal ? text("<A href='?src=\ref[];item=internal'>Remove Internal</A>", src) : ""), (src.handcuffed ? text("<A href='?src=\ref[];item=handcuff'>Handcuffed</A>", src) : text("<A href='?src=\ref[];item=handcuff'>Not Handcuffed</A>", src)), src, user, src.name)
+	var/dat = ""
 	user << browse(dat, text("window=mob[];size=325x500", src.name))
 	onclose(user, "mob[src.name]")
 	return
@@ -1241,9 +1219,6 @@
 		return (!mover.density || !src.density || src.lying)
 	else
 		return (!mover.density || !src.density || src.lying)
-
-/mob/dead/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	return TRUE
 
 /mob/Topic(href, href_list)
 	if(href_list["mach_close"])
@@ -1470,15 +1445,7 @@
 		if ((istype(src.mob.loc, /turf/space)))
 			if (!( src.mob.restrained() ))
 				if (!( (locate(/obj/grille) in oview(1, src.mob)) || (locate(/turf/simulated) in oview(1, src.mob)) || (locate(/obj/lattice) in oview(1, src.mob)) ))
-					if (istype(src.mob.back, /obj/item/weapon/tank/jetpack))
-						var/obj/item/weapon/tank/jetpack/J = src.mob.back
-						j_pack = J.allow_thrust(0.01, src.mob)
-						if(j_pack)
-							src.mob.inertia_dir = 0
-						if (!( j_pack ))
-							return FALSE
-					else
-						return FALSE
+					return FALSE
 			else
 				return FALSE
 

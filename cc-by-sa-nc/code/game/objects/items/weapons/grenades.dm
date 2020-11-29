@@ -25,9 +25,6 @@ FLASHBANG
 /obj/item/weapon/empgrenade/proc/prime()
 	playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder2.ogg', 25, 1)
 	var/turf/T = get_turf(src)
-	if(T)
-		T.hotspot_expose(700,125)
-
 	var/grenade = src // detaching the proc - in theory
 	src = null
 
@@ -38,22 +35,6 @@ FLASHBANG
 	pulse.anchored = 1
 	spawn(20)
 		del(pulse)
-
-	for(var/obj/item/weapon/W in range(world.view-1, T))
-
-		if (istype(W, /obj/item/assembly/m_i_ptank) || istype(W, /obj/item/assembly/r_i_ptank) || istype(W, /obj/item/assembly/t_i_ptank))
-
-			var/fuckthis
-			if(istype(W:part1,/obj/item/weapon/tank/plasma))
-				fuckthis = W:part1
-				fuckthis:ignite()
-			if(istype(W:part2,/obj/item/weapon/tank/plasma))
-				fuckthis = W:part2
-				fuckthis:ignite()
-			if(istype(W:part3,/obj/item/weapon/tank/plasma))
-				fuckthis = W:part3
-				fuckthis:ignite()
-
 
 	for(var/mob/living/M in viewers(world.view-1, T))
 
@@ -247,8 +228,6 @@ FLASHBANG
 /obj/item/weapon/flashbang/proc/prime()
 	playsound(src.loc, 'cc-by-sa-nc/sound/effects/bang.ogg', 25, 1)
 	var/turf/T = get_turf(src)
-	if(T)
-		T.hotspot_expose(700,125)
 
 	for(var/mob/living/carbon/M in viewers(T, null))
 		if (locate(/obj/item/weapon/cloaking_device, M))

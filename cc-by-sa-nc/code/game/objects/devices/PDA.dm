@@ -401,38 +401,7 @@
 			if (3)
 
 				dat += "<h4>Atmospheric Readings</h4>"
-
-				var/turf/T = get_turf_or_move(user.loc)
-				if (isnull(T))
-					dat += "Unable to obtain a reading.<br>"
-				else
-					var/datum/gas_mixture/environment = T.return_air()
-
-					var/pressure = environment.return_pressure()
-					var/total_moles = environment.total_moles()
-
-					dat += "Air Pressure: [round(pressure,0.1)] kPa<br>"
-
-					if (total_moles)
-						var/o2_level = environment.oxygen/total_moles
-						var/n2_level = environment.nitrogen/total_moles
-						var/co2_level = environment.carbon_dioxide/total_moles
-						var/plasma_level = environment.toxins/total_moles
-						var/unknown_level =  1-(o2_level+n2_level+co2_level+plasma_level)
-
-						dat += "Nitrogen: [round(n2_level*100)]%<br>"
-
-						dat += "Oxygen: [round(o2_level*100)]%<br>"
-
-						dat += "Carbon Dioxide: [round(co2_level*100)]%<br>"
-
-						dat += "Plasma: [round(plasma_level*100)]%<br>"
-
-						if(unknown_level > 0.01)
-							dat += "OTHER: [round(unknown_level)]%<br>"
-
-					dat += "Temperature: [round(environment.temperature-T0C)]&deg;C<br>"
-
+				dat += "Unable to obtain a reading.<br>"
 				dat += "<br>"
 
 			if (4)
@@ -926,15 +895,6 @@ Code:
 			playsound(src.loc, 'cc-by-sa-nc/sound/items/bikehorn.ogg', 50, 1)
 			src.last_honk = world.time
 
-		//Toxins PDA signaler stuff
-		else if ((href_list["ssend"]) && (istype(src.cartridge,/obj/item/weapon/cartridge/signal)))
-			for(var/obj/item/assembly/r_i_ptank/R in world) //Bomblist stuff
-				if((R.part1.code == src.cartridge:code) && (R.part1.frequency == src.cartridge:frequency))
-					bombers += "[key_name(usr)] has activated a radio bomb (Freq: [format_frequency(src.cartridge:frequency)], Code: [src.cartridge:code]). Temp = [R.part3.air_contents.temperature-T0C]."
-			spawn( 0 )
-				src.cartridge:send_signal("ACTIVATE")
-				return
-
 		else if ((href_list["sfreq"]) && (istype(src.cartridge,/obj/item/weapon/cartridge/signal)))
 			var/new_frequency = sanitize_frequency(src.cartridge:frequency + text2num(href_list["sfreq"]))
 			src.cartridge:set_frequency(new_frequency)
@@ -1064,8 +1024,6 @@ Code:
 		M.show_message("\red Your [src] explodes!", 1)
 
 	if(T)
-		T.hotspot_expose(700,125)
-
 		explosion(T, -1, -1, 2, 3)
 
 	del(src)

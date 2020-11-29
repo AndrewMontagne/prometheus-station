@@ -6,6 +6,7 @@
 	],
 	"extensions": [
 		"platymuus.dm-langclient",
-		"editorconfig.editorconfig"
+		"editorconfig.editorconfig",
+		"gbasood.byond-dm-language-support"
 	]
 }

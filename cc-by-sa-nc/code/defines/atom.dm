@@ -8,49 +8,12 @@
 	var/blood_type = null
 	var/last_bumped = 0
 
-	///Chemistry.
-	var/datum/reagents/reagents = null
-
-	//var/chem_is_open_container = 0
-	// replaced by OPENCONTAINER flags and atom/proc/is_open_container()
-	///Chemistry.
-
-	proc/assume_air(datum/air_group/giver)
-		del(giver)
-		return null
-
-	proc/remove_air(amount)
-		return null
-
-	proc/return_air()
-		return null
-
 
 // Convenience proc to see if a container is open for chemistry handling
 // returns true if open
 // false if closed
 	proc/is_open_container()
 		return flags & OPENCONTAINER
-
-
-obj
-	assume_air(datum/air_group/giver)
-		if(loc)
-			return loc.assume_air(giver)
-		else
-			return null
-
-	remove_air(amount)
-		if(loc)
-			return loc.remove_air(amount)
-		else
-			return null
-
-	return_air()
-		if(loc)
-			return loc.return_air()
-		else
-			return null
 
 /atom/proc/allow_drop()
 	return TRUE
@@ -113,3 +76,6 @@ obj
 		src.moved_recently = 1
 	return
 ////////////
+
+/atom/proc/CanPass(atom/movable/mover, turf/target, height=1.5, air_group = 0)
+	return (!density || !height || air_group)

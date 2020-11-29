@@ -7,14 +7,7 @@
 
 	proc
 		handle_internal_lifeform(mob/lifeform_inside_me, breath_request)
-			//Return: (NONSTANDARD)
-			//		null if object handles breathing logic for lifeform
-			//		datum/air_group to tell lifeform to process using that breath return
-			//DEFAULT: Take air from turf to give to have mob process
-			if(breath_request>0)
-				return remove_air(breath_request)
-			else
-				return null
+			return null
 
 		initialize()
 
@@ -50,7 +43,6 @@
 		density = 1
 		opacity = 0
 		anchored = 0
-		pressure_resistance = 2*ONE_ATMOSPHERE
 
 /obj/shieldwallgen
 		name = "shieldwall thing"
@@ -62,7 +54,6 @@
 		density = 0
 		opacity = 0
 		anchored = 0
-		pressure_resistance = 2*ONE_ATMOSPHERE
 
 /obj/shield
 		name = "shield"
@@ -196,7 +187,6 @@
 	var/destroyed = 0.0
 	anchored = 1.0
 	flags = FPRINT | CONDUCT
-	pressure_resistance = 5*ONE_ATMOSPHERE
 
 /obj/securearea
 	desc = "A warning sign which reads 'SECURE AREA'"
@@ -241,7 +231,6 @@
 	var/hitsound = null
 	var/w_class = 3.0
 	flags = FPRINT | TABLEPASS
-	pressure_resistance = 50
 	var/obj/item/master = null
 
 /obj/item/device
@@ -583,7 +572,6 @@
 	icon = 'cc-by-sa-nc/icons/obj/objects.dmi'
 	icon_state = "stool"
 	flags = FPRINT
-	pressure_resistance = 3*ONE_ATMOSPHERE
 
 /obj/stool/bed
 	name = "bed"
@@ -628,7 +616,6 @@
 	icon_state = "mopbucket"
 	density = 1
 	flags = FPRINT
-	pressure_resistance = ONE_ATMOSPHERE
 	flags = FPRINT | TABLEPASS | OPENCONTAINER
 
 /obj/kitchenspike

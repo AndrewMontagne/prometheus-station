@@ -45,9 +45,7 @@
 		if(istype(src:head, /obj/item/clothing/head/bio_hood)) score += 5
 	if(src.wear_mask)
 		score += 5
-		if((istype(src:wear_mask, /obj/item/clothing/mask) || istype(src:wear_mask, /obj/item/clothing/mask/surgical)) && !src.internal)
-			score += 5
-		if(src.internal)
+		if((istype(src:wear_mask, /obj/item/clothing/mask) || istype(src:wear_mask, /obj/item/clothing/mask/surgical)))
 			score += 5
 	if(score > 20)
 		return

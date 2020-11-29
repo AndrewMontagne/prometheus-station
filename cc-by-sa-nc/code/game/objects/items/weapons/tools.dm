@@ -82,34 +82,6 @@ WELDINGTOOOL
 	if (status == 0 && istype(W,/obj/item/weapon/screwdriver))
 		status = 1
 		user << "\blue The welder can now be attached and modified."
-	else if (status == 1 && istype(W,/obj/item/weapon/rods))
-		var/obj/item/weapon/rods/R = W
-		R.amount = R.amount - 1
-		if (R.amount == 0)
-			del(R)
-		var/obj/item/assembly/weld_rod/F = new /obj/item/assembly/weld_rod( user )
-		src.loc = F
-		F.part1 = src
-		if (user.client)
-			user.client.screen -= src
-		if (user.r_hand == src)
-			user.u_equip(src)
-			user.r_hand = F
-		else
-			user.u_equip(src)
-			user.l_hand = F
-		R.master = F
-		src.master = F
-		src.layer = initial(src.layer)
-		user.u_equip(src)
-		if (user.client)
-			user.client.screen -= src
-		src.loc = F
-		F.part2 = W
-		F.layer = 20
-		R.layer = 20
-		F.loc = user
-		src.add_fingerprint(user)
 	else if (status == 1 && istype(W,/obj/item/weapon/screwdriver))
 		status = 0
 		user << "\blue You resecure the welder."
@@ -129,17 +101,12 @@ WELDINGTOOOL
 
 	if (src.welding)
 		use_fuel(1)
-
-
 		if (get_fuel() <= 0)
 			usr << "\blue Need more fuel!"
 			src.welding = 0
 			src.force = 3
 			src.damtype = "brute"
 			src.icon_state = "welder"
-		var/turf/location = user.loc
-		if (istype(location, /turf))
-			location.hotspot_expose(700, 50, 1)
 	return
 
 
@@ -213,6 +180,3 @@ WELDINGTOOOL
 		var/mob/M = location
 		if(M.l_hand == src || M.r_hand == src)
 			location = M.loc
-
-	if (istype(location, /turf))
-		location.hotspot_expose(700, 5)

@@ -440,12 +440,10 @@
 						src.break_tile_to_plating()
 					else
 						src.break_tile()
-					src.hotspot_expose(1000,CELL_VOLUME)
 					if(prob(33)) new /obj/item/weapon/sheet/metal(src)
 		if(3.0)
 			if (prob(50))
 				src.break_tile()
-				src.hotspot_expose(1000,CELL_VOLUME)
 	return
 
 /turf/simulated/floor/update_icon()

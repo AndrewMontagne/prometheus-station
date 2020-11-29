@@ -41,14 +41,6 @@
 /obj/machinery/optable/attack_hand(mob/user as mob)
 	return
 
-/obj/machinery/optable/CanPass(atom/movable/O as mob|obj, target as turf)
-	if(!O)
-		return FALSE
-	if (O.flags & 2)
-		return TRUE
-	else
-		return FALSE
-
 /obj/machinery/optable/MouseDrop_T(obj/O as obj, mob/user as mob)
 
 	if ((!( istype(O, /obj/item/weapon) ) || user.equipped() != O))

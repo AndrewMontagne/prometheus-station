@@ -13,10 +13,6 @@ datum/controller/game_controller
 			del(src)
 			//There can be only one master.
 
-		if(!air_master)
-			air_master = new /datum/controller/air_system()
-			air_master.setup()
-
 		setup_objects()
 
 		emergency_shuttle = new /datum/shuttle_controller/emergency_shuttle()
@@ -34,12 +30,6 @@ datum/controller/game_controller
 		for(var/obj/object in world)
 			object.initialize()
 
-		world << "\red \b Initializing pipe networks"
-		sleep(-1)
-
-		for(var/obj/machinery/atmospherics/machine in world)
-			machine.build_network()
-
 		world << "\red \b Initializations complete."
 
 
@@ -50,10 +40,6 @@ datum/controller/game_controller
 		//world << "Processing"
 
 		var/start_time = world.timeofday
-
-		air_master.process()
-
-		sleep(1)
 
 		sun.calc_position()
 
@@ -72,10 +58,6 @@ datum/controller/game_controller
 
 		for(var/obj/item/item in processing_items)
 			item.process()
-
-		for(var/datum/pipe_network/network in pipe_networks)
-			network.process()
-
 		for(var/datum/powernet/P in powernets)
 			P.reset()
 

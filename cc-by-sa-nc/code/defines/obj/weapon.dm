@@ -994,52 +994,6 @@ Total SMES charging rate should not exceed total power generation rate, or an ov
 	icon_state = "reinf_tableparts"
 	flags = FPRINT | TABLEPASS| CONDUCT
 
-/obj/item/weapon/tank
-	name = "tank"
-	icon = 'cc-by-sa-nc/icons/obj/tank.dmi'
-
-	var/datum/gas_mixture/air_contents = null
-	var/distribute_pressure = ONE_ATMOSPHERE
-	flags = FPRINT | TABLEPASS | CONDUCT | ONBACK
-
-	pressure_resistance = ONE_ATMOSPHERE*5
-
-	force = 5.0
-	throwforce = 10.0
-	throw_speed = 1
-	throw_range = 4
-
-/obj/item/weapon/tank/anesthetic
-	name = "Gas Tank (Sleeping Agent)"
-	icon_state = "anesthetic"
-
-/obj/item/weapon/tank/jetpack
-	name = "Jetpack (Oxygen)"
-	icon_state = "jetpack0"
-	var/on = 0.0
-	w_class = 4.0
-	item_state = "jetpack"
-	var/datum/effects/system/ion_trail_follow/ion_trail
-
-/obj/item/weapon/tank/oxygen
-	name = "Gas Tank (Oxygen)"
-	icon_state = "oxygen"
-
-/obj/item/weapon/tank/air
-	name = "Gas Tank (Air Mix)"
-	icon_state = "oxygen"
-
-/obj/item/weapon/tank/plasma
-	name = "Gas Tank (BIOHAZARD)"
-	icon_state = "plasma"
-
-/obj/item/weapon/tank/emergency_oxygen
-	name = "emergency oxygentank"
-	icon_state = "emergency"
-	flags = FPRINT | TABLEPASS | ONBELT | CONDUCT
-	w_class = 2.5
-	force = 4.0
-
 /obj/item/weapon/tile
 	name = "steel floor tile"
 	desc = "... Those could work as a pretty decent throwing weapon"
@@ -1128,7 +1082,6 @@ Total SMES charging rate should not exceed total power generation rate, or an ov
 	throw_speed = 3
 	throw_range = 5
 	w_class = 3.0
-	pressure_resistance = 80
 	var/charge = 0	// note %age conveted to actual charge in New
 	var/maxcharge = 1000
 	m_amt = 700
@@ -1200,7 +1153,6 @@ Total SMES charging rate should not exceed total power generation rate, or an ov
 	icon = 'cc-by-sa-nc/icons/obj/items.dmi'
 	icon_state = "gift"
 	item_state = "gift"
-	pressure_resistance = 70
 
 
 /obj/item/weapon/camera_bug

@@ -206,9 +206,7 @@
 						sense = 0
 
 					if("/turf/simulated/floor", "/turf/simulated/floor/engine")
-						var/datum/gas_mixture/environment = T.return_air()
-						var/turf_total = environment.total_moles()
-						var/t1 = turf_total / MOLES_CELLSTANDARD * 175
+						var/t1 = 175
 
 						if(t1<=100)
 							colour = rgb(0,0,t1*2.55)

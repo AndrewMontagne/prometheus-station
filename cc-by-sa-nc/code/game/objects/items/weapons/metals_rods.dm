@@ -206,62 +206,6 @@ LATTICE
 				src.amount--
 				new /obj/item/weapon/rack_parts( usr.loc )
 
-			if("aircan")
-				if (src.amount < 2)
-					usr << text("\red You haven't got enough metal to build the canister!")
-					return
-				src.amount -= 2
-				var/obj/machinery/portable_atmospherics/canister/C = new /obj/machinery/portable_atmospherics/canister(usr.loc)
-				C.color = "grey"
-				C.icon_state = "grey"
-
-			if("o2can")
-				if (src.amount < 2)
-					usr << text("\red You haven't got enough metal to build the canister!")
-					return
-				src.amount -= 2
-
-				var/obj/machinery/portable_atmospherics/canister/C = new /obj/machinery/portable_atmospherics/canister(usr.loc)
-				C.color = "blue"
-				C.icon_state = "blue"
-
-			if("carboncan")
-				if (src.amount < 2)
-					usr << text("\red You haven't got enough metal to build the canister!")
-					return
-				src.amount -= 2
-
-				var/obj/machinery/portable_atmospherics/canister/C = new /obj/machinery/portable_atmospherics/canister(usr.loc)
-				C.color = "black"
-				C.icon_state = "black"
-
-			if("plcan")
-				if (src.amount < 2)
-					usr << text("\red You haven't got enough metal to build the canister!")
-					return
-				src.amount -= 2
-
-				var/obj/machinery/portable_atmospherics/canister/C = new /obj/machinery/portable_atmospherics/canister(usr.loc)
-				C.color = "orange"
-				C.icon_state = "orange"
-
-			if("n2can")
-				if (src.amount < 2)
-					usr << text("\red You haven't got enough metal to build the canister!")
-					return
-				src.amount -= 2
-				var/obj/machinery/portable_atmospherics/canister/C = new /obj/machinery/portable_atmospherics/canister(usr.loc)
-				C.color = "red"
-				C.icon_state = "red"
-			if("n2ocan")
-				if (src.amount < 2)
-					usr << text("\red You haven't got enough metal to build the canister!")
-					return
-				src.amount -= 2
-				var/obj/machinery/portable_atmospherics/canister/C = new /obj/machinery/portable_atmospherics/canister(usr.loc)
-				C.color = "redws"
-				C.icon_state = "redws"
-
 			if("reinforced")
 				if (src.amount < 2)
 					usr << text("\red You haven't got enough metal to build the reinforced sheet!")
