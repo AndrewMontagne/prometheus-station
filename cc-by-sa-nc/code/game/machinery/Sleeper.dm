@@ -138,9 +138,6 @@
 	if (src.occupant)
 		user << "\blue <B>The sleeper is already occupied!</B>"
 		return
-	if (G.affecting.abiotic())
-		user << "Subject may not have abiotic items on."
-		return
 	var/mob/M = G.affecting
 	if (M.client)
 		M.client.perspective = EYE_PERSPECTIVE
@@ -196,8 +193,6 @@
 		M.weakened = 3
 	if (M.stunned <= 1)
 		M.stunned = 3
-	if (M.reagents.get_reagent_amount("inaprovaline") < 5)
-		M.reagents.add_reagent("inaprovaline", 5)
 	return
 
 /obj/machinery/sleeper/proc/go_out()
@@ -214,12 +209,6 @@
 	return
 
 /obj/machinery/sleeper/proc/inject(mob/user as mob)
-	if (src.occupant)
-		if (src.occupant.reagents.get_reagent_amount("inaprovaline") < 60)
-			src.occupant.reagents.add_reagent("inaprovaline", 30)
-		user << text("Occupant now has [] units of rejuvenation in his/her bloodstream.", src.occupant.reagents.get_reagent_amount("inaprovaline"))
-	else
-		user << "No occupant!"
 	return
 
 /obj/machinery/sleeper/proc/check(mob/user as mob)
@@ -262,9 +251,6 @@
 		return
 	if (src.occupant)
 		usr << "\blue <B>The sleeper is already occupied!</B>"
-		return
-	if (usr.abiotic())
-		usr << "Subject may not have abiotic items on."
 		return
 	usr.pulling = null
 	usr.client.perspective = EYE_PERSPECTIVE

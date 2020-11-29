@@ -599,44 +599,7 @@
 
 				dat += "<h4>Persistent Custodial Object Locator</h4>"
 
-				var/turf/cl = get_turf(src)
-				if (cl)
-					dat += "Current Orbital Location: <b>\[[cl.x],[cl.y]\]</b>"
-
-					dat += "<h4>Located Mops:</h4>"
-
-					var/ldat
-					for (var/obj/item/weapon/mop/M in world)
-						var/turf/ml = get_turf(M)
-
-						if (ml.z != cl.z)
-							continue
-
-						ldat += "Mop - <b>\[[ml.x],[ml.y]\]</b> - [M.reagents.total_volume ? "Wet" : "Dry"]<br>"
-
-					if (!ldat)
-						dat += "None"
-					else
-						dat += "[ldat]"
-
-					dat += "<h4>Located Mop Buckets:</h4>"
-
-					ldat = null
-					for (var/obj/mopbucket/B in world)
-						var/turf/bl = get_turf(B)
-
-						if (bl.z != cl.z)
-							continue
-
-						ldat += "Bucket - <b>\[[bl.x],[bl.y]\]</b> - Water level: [B.reagents.total_volume]/50<br>"
-
-					if (!ldat)
-						dat += "None"
-					else
-						dat += "[ldat]"
-
-				else
-					dat += "ERROR: Unable to determine current location."
+				dat += "ERROR: Unable to determine current location."
 
 			if (9)
 				if (!isnull(src.cartridge) && (istype(src.cartridge, /obj/item/weapon/cartridge/signal)))
@@ -1083,16 +1046,7 @@ Code:
 				user << "\blue \t [i]"
 
 	else if (src.scanmode == 3)
-		if(!isnull(A.reagents))
-			if(A.reagents.reagent_list.len > 0)
-				var/reagents_length = A.reagents.reagent_list.len
-				user << "\blue [reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found."
-				for (var/re in A.reagents.reagent_list)
-					user << "\blue \t [re]"
-			else
-				user << "\blue No active chemical agents found in [A]."
-		else
-			user << "\blue No significant chemical agents found in [A]."
+		user << "\blue No significant chemical agents found in [A]."
 
 	else if (!src.scanmode && istype(A, /obj/item/weapon/paper) && src.owner)
 		if ((!isnull(src.uplink)) && (src.uplink.active))

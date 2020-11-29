@@ -103,37 +103,3 @@
 	new /obj/item/weapon/handcuffs( src )
 	..()
 	return
-
-/obj/item/weapon/storage/donkpocket_kit/New()
-
-	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket( src )
-	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket( src )
-	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket( src )
-	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket( src )
-	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket( src )
-	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket( src )
-	..()
-	return
-/*
-/obj/item/weapon/storage/disk_kit/disks/New()
-
-	new /obj/item/weapon/card/data( src )
-	new /obj/item/weapon/card/data( src )
-	new /obj/item/weapon/card/data( src )
-	new /obj/item/weapon/card/data( src )
-	new /obj/item/weapon/card/data( src )
-	new /obj/item/weapon/card/data( src )
-	new /obj/item/weapon/card/data( src )
-	..()
-	return
-
-/obj/item/weapon/storage/disk_kit/disks2/New()
-
-	spawn( 2 )
-		for(var/obj/item/weapon/card/data/D in src.loc)
-			D.loc = src
-			//Foreach goto(23)
-		return
-	..()
-	return
-*/

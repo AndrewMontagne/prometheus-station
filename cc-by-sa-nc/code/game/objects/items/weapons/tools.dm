@@ -71,10 +71,6 @@ WELDINGTOOOL
 
 // WELDING TOOL
 /obj/item/weapon/weldingtool/New()
-	var/datum/reagents/R = new/datum/reagents(20)
-	reagents = R
-	R.my_atom = src
-	R.add_reagent("fuel", 20)
 	return
 
 /obj/item/weapon/weldingtool/examine()
@@ -123,22 +119,15 @@ WELDINGTOOOL
 
 // return fuel amount
 /obj/item/weapon/weldingtool/proc/get_fuel()
-	return reagents.get_reagent_amount("fuel")
+	return 100
 
 // remove fuel amount
 /obj/item/weapon/weldingtool/proc/use_fuel(var/amount)
-	amount = min( get_fuel() , amount)
-	reagents.remove_reagent("fuel", amount)
 	return
 
 /obj/item/weapon/weldingtool/afterattack(obj/O as obj, mob/user as mob)
 
-	if (istype(O, /obj/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
-		O.reagents.trans_to(src, 20)
-		user << "\blue Welder refueled"
-		playsound(src.loc, 'cc-by-sa-nc/sound/effects/zzzt.ogg', 50, 1, -6)
-
-	else if (src.welding)
+	if (src.welding)
 		use_fuel(1)
 
 

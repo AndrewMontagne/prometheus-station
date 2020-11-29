@@ -72,26 +72,3 @@
 					dat += "\blue \t [i]\n"
 
 			return dat
-
-
-	//Reagent scanning program
-	reagent_scan
-		name = "Reagent Scan"
-		size = 6.0
-
-		scan_atom(atom/A as mob|obj|turf|area)
-			if(..())
-				return
-			var/dat = null
-			if(!isnull(A.reagents))
-				if(A.reagents.reagent_list.len > 0)
-					var/reagents_length = A.reagents.reagent_list.len
-					dat += "\blue [reagents_length] chemical agent[reagents_length > 1 ? "s" : ""] found.\n"
-					for (var/datum/reagent/re in A.reagents.reagent_list)
-						dat += "\blue \t [re] - [re.volume]\n"
-				else
-					dat = "\blue No active chemical agents found in [A]."
-			else
-				dat = "\blue No significant chemical agents found in [A]."
-
-			return dat

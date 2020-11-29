@@ -183,9 +183,6 @@
 
 		breathe()
 
-			if(src.reagents.has_reagent("lexorin")) return
-			if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell)) return
-
 			var/datum/gas_mixture/environment = loc.return_air()
 			var/datum/air_group/breath
 			// HACK NEED CHANGING LATER
@@ -353,9 +350,6 @@
 			if(istype(loc, /turf/space))
 				environment_heat_capacity = loc:heat_capacity
 				loc_temp = 2.7
-			else if(istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))
-				var/obj/machinery/atmospherics/unary/cryo_cell/cryo = loc
-				loc_temp = cryo.air_contents.temperature
 			else
 				loc_temp = environment.temperature
 
@@ -371,7 +365,7 @@
 
 			// lets give them a fair bit of leeway so they don't just start dying
 			//as that may be realistic but it's no fun
-			if((src.bodytemperature > (T0C + 50)) || (src.bodytemperature < (T0C + 10)) && (!istype(loc, /obj/machinery/atmospherics/unary/cryo_cell))) // Last bit is just disgusting, i know
+			if((src.bodytemperature > (T0C + 50)) || (src.bodytemperature < (T0C + 10))) // Last bit is just disgusting, i know
 				if(environment.temperature > (T0C + 50) || (environment.temperature < (T0C + 10)))
 					var/transfer_coefficient
 
@@ -537,8 +531,6 @@
 
 		handle_chemicals_in_body()
 
-			if(reagents) reagents.metabolize(src)
-
 			if (src.nutrition > 0)
 				src.nutrition--
 
@@ -582,8 +574,7 @@
 				if(src.health <= 20 && prob(1)) spawn(0) emote("gasp")
 
 				//if(!src.rejuv) src.oxyloss++
-				if(!src.reagents.has_reagent("inaprovaline")) src.oxyloss++
-
+				
 				if(src.stat != 2)	src.stat = 1
 				src.paralysis = max(src.paralysis, 5)
 

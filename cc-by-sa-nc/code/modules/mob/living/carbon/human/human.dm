@@ -1,8 +1,4 @@
 /mob/living/carbon/human/New()
-	var/datum/reagents/R = new/datum/reagents(1000)
-	reagents = R
-	R.my_atom = src
-
 	spawn (1)
 		var/datum/organ/external/chest/chest = new /datum/organ/external/chest( src )
 		chest.owner = src
@@ -105,8 +101,6 @@
 
 /mob/living/carbon/human/movement_delay()
 	var/tally = 0
-
-	if(src.reagents.has_reagent("hyperzine")) return -1
 
 	var/health_deficiency = (100 - src.health)
 	if(health_deficiency >= 40) tally += (health_deficiency / 25)
@@ -1827,8 +1821,6 @@
 					var/suff = min(src.target.oxyloss, 5)
 					src.target.oxyloss -= suff
 					src.target.updatehealth()
-				if(target.reagents.get_reagent_amount("inaprovaline") < 10)
-					target.reagents.add_reagent("inaprovaline", 10)
 				for(var/mob/O in viewers(src.source, null))
 					O.show_message(text("\red [] performs CPR on []!", src.source, src.target), 1)
 				src.source << "\red Repeat every 7 seconds AT LEAST."

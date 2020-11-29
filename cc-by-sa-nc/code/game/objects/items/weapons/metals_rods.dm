@@ -270,13 +270,6 @@ LATTICE
 				var/obj/item/weapon/sheet/r_metal/C = new /obj/item/weapon/sheet/r_metal( usr.loc )
 				C.amount = 1
 
-			if("casing")
-				if (src.amount < 1) //Not possible!
-					usr << text("\red You haven't got enough metal to create the grenade casing!")
-					return
-				src.amount--
-				new /obj/item/weapon/chem_grenade( usr.loc )
-
 			if("closet")
 				if (src.amount < 2)
 					usr << text("\red You haven't got enough metal to build the reinforced closet!")

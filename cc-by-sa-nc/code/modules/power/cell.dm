@@ -67,17 +67,6 @@
 		updateicon()
 		user << "\red These gloves are now electrically charged!"
 
-	else if(istype(W, /obj/item/weapon/reagent_containers/syringe))
-		var/obj/item/weapon/reagent_containers/syringe/S = W
-
-		user << "You inject the solution into the power cell."
-
-		if(S.reagents.has_reagent("plasma", 5))
-
-			rigged = 1
-
-		S.reagents.clear_reagents()
-
 
 /obj/item/weapon/cell/proc/explode()
 	var/turf/T = get_turf(src.loc)
