@@ -11,6 +11,5 @@
 		src.hud_used = new/obj/hud( src )
 
 	src.next_move = 1
-	src.sight |= SEE_SELF
 	src.logged_in = 1
 	..()

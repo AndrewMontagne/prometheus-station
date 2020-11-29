@@ -212,7 +212,8 @@
 	FOR_DVIEW(var/turf/T, light_range, source_turf, INVISIBILITY_LIGHTING)
 		if (!T.lighting_corners_initialised)
 			T.generate_missing_corners()
-		for(var/datum/lighting_corner/C in T.get_corners())
+		for(var/corner in T.get_corners())
+			var/datum/lighting_corner/C = corner
 			if(C.update_gen == update_gen)
 				continue
 
@@ -243,7 +244,8 @@
 /datum/light_source/proc/remove_lum()
 	applied = FALSE
 
-	for(var/turf/T in affecting_turfs)
+	for(var/turf in affecting_turfs)
+		var/turf/T = turf
 		if (!T.affecting_lights)
 			T.affecting_lights = list()
 		else
@@ -251,7 +253,8 @@
 
 	affecting_turfs.Cut()
 
-	for(var/datum/lighting_corner/C in effect_str)
+	for(var/corner in effect_str)
+		var/datum/lighting_corner/C = corner
 		REMOVE_CORNER(C)
 
 		C.affecting -= src
@@ -275,17 +278,22 @@
 
 	var/list/L = turfs - affecting_turfs // New turfs, add us to the affecting lights of them.
 	affecting_turfs += L
-	for(var/turf/T in L)
+	for(var/turf in L)
+		var/turf/T = turf
 		if(!T.affecting_lights)
 			T.affecting_lights = list()
 		T.affecting_lights += src
 
 	L = affecting_turfs - turfs // Now-gone turfs, remove us from the affecting lights.
 	affecting_turfs -= L
-	for(var/turf/T in L)
+	for(var/turf in L)
+		var/turf/T = turf
 		T.affecting_lights -= src
 
-	for(var/datum/lighting_corner/C in corners - effect_str) // New corners
+	for(var/corner in corners - effect_str) // New corners
+		var/datum/lighting_corner/C = corner
+		if (isnull(C))
+			continue
 		C.affecting += src
 		if(!C.active)
 			effect_str[C] = 0
@@ -293,7 +301,8 @@
 
 		APPLY_CORNER(C)
 
-	for(var/datum/lighting_corner/C in effect_str - corners) // Old, now gone, corners.
+	for(var/corner in effect_str - corners) // Old, now gone, corners.
+		var/datum/lighting_corner/C = corner
 		REMOVE_CORNER(C)
 		C.affecting -= src
 		effect_str -= C

@@ -43,7 +43,6 @@
 	var/list/related			// the other areas of the same type as this
 
 /area/space
-	dynamic_lighting = 0
 
 /area/engine/
 
@@ -467,8 +466,6 @@
 
 /area/solar
 	requires_power = 0
-	luminosity = 1
-	dynamic_lighting = 0
 
 /area/solar/fore
 	name = "Fore Solar Array"

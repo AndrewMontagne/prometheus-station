@@ -1,7 +1,3 @@
-#define PLANE_SPACE -55
-#define PLANE_PARALLAX -50
-#define PLANE_GAME 10
-
 /atom
     plane = PLANE_GAME
 

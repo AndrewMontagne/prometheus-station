@@ -1,13 +1,14 @@
 /atom/movable/lighting_overlay
-	name             = ""
+	name             	= ""
 
-	icon             = 'lib/GoonLights/Lighting/icon.png'
-	color            = LIGHTING_BASE_MATRIX
+	icon             	= 'lib/GoonLights/Lighting/icon.png'
+	color            	= LIGHTING_BASE_MATRIX
 
-	mouse_opacity    = 0
-	layer            = LIGHTING_LAYER
-	invisibility     = INVISIBILITY_LIGHTING
-	anchored				 = 1
+	mouse_opacity    	= 0
+	layer            	= LIGHTING_LAYER
+	plane				= PLANE_DARKNESS
+	anchored		 	= 1
+	infra_luminosity 	= 256
 
 	blend_mode       = BLEND_MULTIPLY
 

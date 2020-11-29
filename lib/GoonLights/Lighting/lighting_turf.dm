@@ -17,14 +17,16 @@
 
 // Causes any affecting light sources to be queued for a visibility update, for example a door got opened.
 /turf/proc/reconsider_lights()
-	for(var/datum/light_source/L in affecting_lights)
+	for(var/light in affecting_lights)
+		var/datum/light_source/L = light
 		L.vis_update()
 
 /turf/proc/lighting_clear_overlay()
 	if(lighting_overlay)
 		returnToPool(lighting_overlay)
 
-	for(var/datum/lighting_corner/C in corners)
+	for(var/corner in corners)
+		var/datum/lighting_corner/C = corner
 		C.update_active()
 
 // Builds a lighting overlay for us, but only if our area is dynamic.
@@ -38,7 +40,8 @@
 			generate_missing_corners()
 		getFromPool(/atom/movable/lighting_overlay, src)
 
-		for(var/datum/lighting_corner/C in corners)
+		for(var/corner in corners)
+			var/datum/lighting_corner/C = corner
 			if(!C.active) // We would activate the corner, calculate the lighting for it.
 				for(var/L in C.affecting)
 					var/datum/light_source/S = L
@@ -52,7 +55,8 @@
 		return 0.5
 
 	var/totallums = 0
-	for(var/datum/lighting_corner/L in corners)
+	for(var/light in corners)
+		var/datum/light_source/L = light
 		totallums += L.lum_r + L.lum_b + L.lum_g
 
 	totallums /= 12 // 4 corners, each with 3 channels, get the average.

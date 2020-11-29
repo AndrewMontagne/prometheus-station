@@ -47,7 +47,6 @@
 
 	new_player_panel()
 
-	src.sight |= SEE_TURFS
 	var/list/watch_locations = list()
 	for(var/obj/landmark/landmark in world)
 		if(landmark.tag == "landmark*new_player")
