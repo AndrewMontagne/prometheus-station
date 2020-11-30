@@ -36,7 +36,7 @@ build:
 run:
 	@echo -e '\n${INV} ###    RUN    ### ${NC}\n'
 	@echo "Starting server... Connect at byond://localhost:5000"
-	@DreamDaemon prometheus.dmb 5000 -once -trusted -invisible
+	@DreamDaemon prometheus.dmb 5000 -once -trusted -invisible -quiet -threads on
 	@echo ""
 
 run-container:

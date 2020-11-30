@@ -34,6 +34,9 @@ var/global/datum/controller/gameticker/ticker
 	spawn setup()
 
 /datum/controller/gameticker/proc/setup()
+
+	LOG_SYSTEM("Starting round with gamemode: [master_mode]")
+
 	//Create and announce mode
 	if(master_mode=="secret")
 		src.hide_mode = 1
@@ -82,6 +85,7 @@ var/global/datum/controller/gameticker/ticker
 			P.reconfigure_window_to_join()
 
 		//Start master_controller.process()
+		LOG_SYSTEM("Round started")
 		world << "<FONT color='blue'><B>Enjoy the game!</B></FONT>"
 
 	spawn (3000)
@@ -130,6 +134,7 @@ var/global/datum/controller/gameticker/ticker
 				declare_completion()
 
 			spawn(50)
+				LOG_SYSTEM("Round ended.")
 				world << "\blue <B>Restarting in 25 seconds</B>"
 
 				sleep(250)

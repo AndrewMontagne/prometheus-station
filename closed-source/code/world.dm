@@ -1,10 +1,3 @@
-#define LOG_ERROR(X)   world.logger(X, "ERROR", "31")
-#define LOG_WARNING(X) world.logger(X, "WARNI", "33")
-#define LOG_SYSTEM(X)  world.logger(X, "SYSTM", "32")
-#define LOG_INFO(X)    world.logger(X, "INFOR", "34")
-#define LOG_DEBUG(X)   world.logger(X, "DEBUG", "35")
-#define LOG_TRACE(X)   world.logger(X, "TRACE", "36")
-
 /world/
 	mob = /mob/new_player
 	turf = /turf/space
@@ -14,7 +7,7 @@
 /world/Error(exception/E, datum/src)
 	if (!istype(E))
 		return ..()
-	world.logger("[E.name] @ [E.file]:[E.line]")
+	LOG_ERROR("[E.name] @ [E.file]:[E.line]")
 
 /world/proc/logger(var/message, level="?????", ansicolor="0")
 	var/timestamp = time2text(world.timeofday, "hh:mm:ss")
@@ -22,7 +15,7 @@
 	world.log << "[timestamp] \[[ansi_level]\] [message]"
 
 /world/New()
-	..()
+	. = ..()
 	LOG_SYSTEM("Initialising BYOND Extensions...")
 	extools_initialize()
 	tffi_initialize()
@@ -50,4 +43,9 @@
 	LOG_SYSTEM("Initialising Powernets...")
 	makepowernets()
 
-	LOG_SYSTEM("Initialisation Completed!")
+	LOG_SYSTEM("Startup Complete!")
+	world.sleep_offline = TRUE
+
+/world/Del()
+	. = ..()
+	LOG_SYSTEM("Shutting down...")

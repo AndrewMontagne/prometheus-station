@@ -18,6 +18,8 @@
 	#include "lib/rust_g.dm"
 #endif
 
+#include "closed-source\code\defines.dm"
+
 // BEGIN_INTERNALS
 // END_INTERNALS
 

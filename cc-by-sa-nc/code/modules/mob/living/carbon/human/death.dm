@@ -65,7 +65,7 @@
 
 			if (!cancel && !abandon_allowed)
 				world << "<B>Everyone is dead! Resetting in 30 seconds!</B>"
-
+				LOG_SYSTEM("Round ended.")
 				spawn (300)
 					log_game("Rebooting because of no live players")
 					world.Reboot()
