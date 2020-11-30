@@ -8,6 +8,7 @@
 	if (!istype(E))
 		return ..()
 	LOG_ERROR("[E.name] @ [E.file]:[E.line]")
+	world.log << E.desc
 
 /world/proc/logger(var/message, level="?????", ansicolor="0")
 	var/timestamp = time2text(world.timeofday, "hh:mm:ss")
