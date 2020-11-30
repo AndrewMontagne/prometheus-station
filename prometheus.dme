@@ -344,6 +344,8 @@
 #include "closed-source\modules\admin\datum\role\mentor.dm"
 #include "closed-source\modules\infobrowser\infobrowser.dm"
 #include "closed-source\modules\map_pane\map_pane.dm"
+#include "closed-source\modules\networks\network.dm"
+#include "closed-source\modules\networks\network_node.dm"
 #include "closed-source\modules\parallax\parallax.dm"
 #include "lib\GoonLights\helpers\area.dm"
 #include "lib\GoonLights\helpers\atom.dm"
