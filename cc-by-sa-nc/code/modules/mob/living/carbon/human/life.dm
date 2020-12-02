@@ -501,7 +501,7 @@
 
 /mob/living/carbon/human/proc/check_if_buckled()
 	if (src.buckled)
-		src.lying = istype(src.buckled, /obj/stool/bed) || istype(src.buckled, /obj/machinery/conveyor)
+		src.lying = istype(src.buckled, /obj/stool/bed)
 		if(src.lying)
 			src.drop_item()
 		src.density = 1

@@ -23,26 +23,9 @@
 	debugger_initialize(FALSE)
 	rustg_url_encode("") // Check for rustg's presence
 
-	LOG_SYSTEM("Loading Configuration...")
-	src.load_configuration()
-	if (config && config.server_name != null && config.server_suffix && world.port > 0)
-		config.server_name += " #[(world.port % 1000) / 100]"
-	src.load_mode()
-	src.load_motd()
-	src.load_rules()
-	src.load_admins()
-	src.update_status()
-
 	LOG_SYSTEM("Initialising Lighting...")
 	lighting_start_process()
 	create_all_lighting_overlays()
-
-	LOG_SYSTEM("Initialising Master Controller...")
-	master_controller = new /datum/controller/game_controller()
-	spawn(-1) master_controller.setup()
-
-	LOG_SYSTEM("Initialising Powernets...")
-	makepowernets()
 
 	LOG_SYSTEM("Startup Complete!")
 	world.sleep_offline = TRUE
