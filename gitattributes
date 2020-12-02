@@ -1,0 +1,11 @@
+# Auto detect text files and perform LF normalization
+* text=eol=crlf
+
+*.dm text eol=crlf
+*.dmm text eol=crlf
+*.dme text eol=crlf
+
+*.png binary
+*.jpg binary
+*.dmi binary
+*.psd binary
