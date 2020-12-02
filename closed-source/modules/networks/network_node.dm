@@ -4,10 +4,15 @@
 	var/enabled = TRUE
 	icon = 'cc-by-sa-nc/icons_new/obj/cable.dmi'
 	icon_state = "0-1"
+	var/list/dirs = list()
 
 
 /obj/network_node/New()
 	. = ..()
+	
+	for (var/dir in splittext(src.icon_state, "-"))
+		dirs.Add(text2num(dir))
+
 	if (isnull(src.network))
 		var/list/obj/network_node/neighbours = src.potential_neighbours()
 		if (neighbours.len == 0)
@@ -68,17 +73,15 @@
 	var/list/my_dirs = splittext(src.icon_state, "-")
 	var/list/their_dirs = splittext(node.icon_state, "-")
 
-	var/list/invert_dir_map = list(SOUTH, NORTH, 0, WEST, 0, 0, EAST)  
+	var/list/invert_dir_map = list("0" = 0, "[NORTH]" = SOUTH, "[SOUTH]" = NORTH, "[EAST]" = WEST, "[WEST]" = EAST)  
 	var/dir_to_them = 0
 	var/dir_from_them = 0
 	if (src.loc != node.loc)
 		dir_to_them = get_dir(src.loc, node.loc)
-		dir_from_them = get_dir(node.loc, src.loc)
+		dir_from_them = invert_dir_map["[dir_to_them]"]
 
 	var/we_can_connect = my_dirs.Find("[dir_to_them]") != FALSE
 	var/they_can_connect = their_dirs.Find("[dir_from_them]") != FALSE
-
-	LOG_TRACE("[src.icon_state] [dir_to_them] [dir_from_them] [node.icon_state] [we_can_connect] [they_can_connect]")
 
 	return we_can_connect && they_can_connect
 
@@ -95,21 +98,17 @@
 /obj/network_node/proc/potential_neighbours()
 	var/list/neighbours = list()
 
-	for (var/obj/network_node/node in locate(src.x, src.y, src.z))
-		if (src.can_connect_to(node))
-			neighbours.Add(node)
-	for (var/obj/network_node/node in locate(src.x + 1, src.y, src.z))
-		if (src.can_connect_to(node))
-			neighbours.Add(node)
-	for (var/obj/network_node/node in locate(src.x - 1, src.y, src.z))
-		if (src.can_connect_to(node))
-			neighbours.Add(node)
-	for (var/obj/network_node/node in locate(src.x, src.y + 1, src.z))
-		if (src.can_connect_to(node))
-			neighbours.Add(node)
-	for (var/obj/network_node/node in locate(src.x, src.y - 1, src.z))
-		if (src.can_connect_to(node))
-			neighbours.Add(node)
+	if (0 in src.dirs)
+		for (var/obj/network_node/node in src.loc)
+			if (src.can_connect_to(node))
+				neighbours.Add(node)
+	
+	for (var/dir in src.dirs)
+		if (dir == 0)
+			continue
+		for (var/obj/network_node/node in get_step(src, dir))
+			if (src.can_connect_to(node))
+				neighbours.Add(node)
 
 	neighbours.Remove(src)
 
