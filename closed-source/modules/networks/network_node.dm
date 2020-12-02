@@ -2,8 +2,9 @@
 /obj/network_node
 	VAR_PRIVATE/datum/network/network = null
 	var/enabled = TRUE
-	icon = 'cc-by-sa-nc/icons/obj/power.dmi'
-	icon_state = "sp_base"
+	icon = 'cc-by-sa-nc/icons_new/obj/cable.dmi'
+	icon_state = "0-1"
+
 
 /obj/network_node/New()
 	. = ..()
@@ -61,7 +62,25 @@
 
 /// Can these two nodes connect?
 /obj/network_node/proc/can_connect_to(obj/network_node/node)
-	return (get_dist(src, node) <= 1) & node.enabled
+	if (!node || !node.enabled || get_dist(src, node) > 1)
+		return FALSE
+
+	var/list/my_dirs = splittext(src.icon_state, "-")
+	var/list/their_dirs = splittext(node.icon_state, "-")
+
+	var/list/invert_dir_map = list(SOUTH, NORTH, 0, WEST, 0, 0, EAST)  
+	var/dir_to_them = 0
+	var/dir_from_them = 0
+	if (src.loc != node.loc)
+		dir_to_them = get_dir(src.loc, node.loc)
+		dir_from_them = get_dir(node.loc, src.loc)
+
+	var/we_can_connect = my_dirs.Find("[dir_to_them]") != FALSE
+	var/they_can_connect = their_dirs.Find("[dir_from_them]") != FALSE
+
+	LOG_TRACE("[src.icon_state] [dir_to_them] [dir_from_them] [node.icon_state] [we_can_connect] [they_can_connect]")
+
+	return we_can_connect && they_can_connect
 
 /// Builds the node graph
 /obj/network_node/proc/build_node_graph(var/list/nodes = list(src))
