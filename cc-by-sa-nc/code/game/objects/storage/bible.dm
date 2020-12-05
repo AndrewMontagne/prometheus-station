@@ -24,7 +24,7 @@
 	if(user.mind && (user.mind.assigned_role == "Chaplain"))
 		chaplain = 1
 
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || ticker))
 		usr << "\red You don't have the dexterity to do this!"
 		return
 	if(!chaplain)

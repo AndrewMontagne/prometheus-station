@@ -52,7 +52,7 @@
 	if (src.shots < 1)
 		user.show_message("\red *click* *click*", 2)
 		return
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || ticker))
 		usr << "\red You don't have the dexterity to do this!"
 		return
 	src.l_time = world.time

@@ -317,15 +317,6 @@
 /proc/call_prison_shuttle(var/mob/usr)
 	if ((!( ticker ) || emergency_shuttle.location == 1))
 		return
-	if(ticker.mode.name == "blob" || ticker.mode.name == "Corporate Restructuring" || ticker.mode.name == "sandbox")
-		usr << "Under directive 7-10, [station_name()] is quarantined until further notice."
-		return
-	if(ticker.mode.name == "revolution")
-		usr << "Centcom will not allow the shuttle to be called, due to the possibility of sabotage by revolutionaries."
-		return
-	if(ticker.mode.name == "AI malfunction")
-		usr << "Centcom will not allow the shuttle to be called."
-		return
 	for(var/obj/machinery/computer/prison_shuttle/PS in world)
 		if(!PS.allowedtocall)
 			usr << "\red Centcom will not allow the shuttle to be called"
@@ -368,14 +359,6 @@
 /proc/call_shuttle_proc(var/mob/user)
 	if ((!( ticker ) || emergency_shuttle.location))
 		return
-
-	if(ticker.mode.name == "blob" || ticker.mode.name == "Corporate Restructuring" || ticker.mode.name == "sandbox")
-		user << "Under directive 7-10, [station_name()] is quarantined until further notice."
-		return
-	if(ticker.mode.name == "revolution" || ticker.mode.name == "AI malfunction" || ticker.mode.name == "confliction")
-		user << "Centcom will not allow the shuttle to be called."
-		return
-
 	emergency_shuttle.incall()
 	world << "\blue <B>Alert: The emergency shuttle has been called. It will arrive in [round(emergency_shuttle.timeleft()/60)] minutes.</B>"
 
@@ -383,8 +366,6 @@
 
 /proc/cancel_call_proc(var/mob/user)
 	if ((!( ticker ) || emergency_shuttle.location || emergency_shuttle.direction == 0 || emergency_shuttle.timeleft() < 300))
-		return
-	if( ticker.mode.name == "blob" )
 		return
 
 	world << "\blue <B>Alert: The shuttle is going back!</B>" //marker4

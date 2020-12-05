@@ -33,8 +33,7 @@ obj/machinery/recharger
 
 
 /obj/machinery/recharger/attack_paw(mob/user as mob)
-	if ((ticker && ticker.mode.name == "monkey"))
-		return src.attack_hand(user)
+	return src.attack_hand(user)
 
 /obj/machinery/recharger/process()
 	if ((src.charging) && ! (stat & NOPOWER) )

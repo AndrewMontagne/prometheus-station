@@ -7,8 +7,6 @@
 	if (!message)
 		return
 
-	log_say("Ghost/[src.key] : [message]")
-
 	if (src.muted)
 		return
 

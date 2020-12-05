@@ -27,6 +27,13 @@
 	lighting_start_process()
 	create_all_lighting_overlays()
 
+	LOG_SYSTEM("Initialising Ticker...")
+	emergency_shuttle = new /datum/shuttle_controller/emergency_shuttle()
+	if (!ticker)
+		ticker = new /datum/controller/gameticker()
+		spawn()
+			ticker.pregame()
+
 	LOG_SYSTEM("Startup Complete!")
 	world.sleep_offline = TRUE
 

@@ -15,7 +15,7 @@
 
 
 /obj/item/weapon/handcuffs/attack(mob/M as mob, mob/user as mob)
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || ticker))
 		usr << "\red You don't have the dexterity to do this!"
 		return
 	if (istype(M, /mob/living/carbon/human))

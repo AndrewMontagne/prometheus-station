@@ -18,10 +18,7 @@
 		var/list/s = list()
 		s["version"] = game_version
 		s["mode"] = master_mode
-		s["respawn"] = config ? abandon_allowed : 0
 		s["enter"] = enter_allowed
-		s["vote"] = config.allow_vote_mode
-		s["ai"] = config.allow_ai
 		s["host"] = host ? host : null
 		s["players"] = list()
 		var/n = 0

@@ -84,7 +84,7 @@ SHARDS
 
 	if (!( istype(usr.loc, /turf/simulated) ))
 		return
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || ticker))
 		usr << "\red You don't have the dexterity to do this!"
 		return
 	switch(alert("Sheet-Glass", "Would you like full tile glass or one direction?", "one direct", "full (2 sheets)", "cancel", null))
@@ -161,7 +161,7 @@ SHARDS
 /obj/item/weapon/sheet/rglass/attack_self(mob/user as mob)
 	if (!istype(usr.loc, /turf/simulated))
 		return
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || ticker))
 		usr << "\red You don't have the dexterity to do this!"
 		return
 	switch(alert("Sheet Reinf. Glass", "Would you like full tile glass or one direction?", "one direct", "full (2 sheets)", "cancel", null))

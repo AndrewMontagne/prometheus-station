@@ -63,13 +63,6 @@
 				var/a_lev = copytext(line, pos + 3, length(line) + 1)
 				admins[m_key] = a_lev
 
-
-/world/proc/load_configuration()
-	config = new /datum/configuration()
-	config.load("config/config.txt")
-	// apply some settings from config..
-	abandon_allowed = config.respawn
-
 /world/New()
 	
 	sun = new /datum/sun()

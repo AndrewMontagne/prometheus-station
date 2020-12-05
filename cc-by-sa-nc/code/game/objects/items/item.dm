@@ -106,25 +106,6 @@
 	user.update_clothing()
 	return
 
-/obj/item/attack_paw(mob/user as mob)
-
-	if (istype(src.loc, /obj/item/weapon/storage))
-		for(var/mob/M in range(1, src.loc))
-			if (M.s_active == src.loc)
-				if (M.client)
-					M.client.screen -= src
-	src.throwing = 0
-	if (src.loc == user)
-		user.u_equip(src)
-	if (user.hand)
-		user.l_hand = src
-	else
-		user.r_hand = src
-	src.loc = user
-	src.layer = 20
-	user.update_clothing()
-	return
-
 /obj/item/proc/attack(mob/M as mob, mob/user as mob, def_zone)
 	if (!M) // not sure if this is the right thing...
 		return

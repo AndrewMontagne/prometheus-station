@@ -26,8 +26,6 @@
 
 /mob/living/silicon/proc/robot_talk(var/message)
 
-	log_say("[key_name(src)] : [message]")
-
 	message = trim(message)
 
 	if (!message)

@@ -1112,24 +1112,16 @@
 		usr << "\blue <B>You must be dead to use this!</B>"
 		return
 
-	log_game("[usr.name]/[usr.key] used abandon mob.")
-
 	usr << "\blue <B>Please roleplay correctly!</B>"
 
-	if(!src.client)
-		log_game("[usr.key] AM failed due to disconnect.")
-		return
 	for(var/obj/screen/t in usr.client.screen)
 		if (t.loc == null)
 			//t = null
 			del(t)
-	if(!src.client)
-		log_game("[usr.key] AM failed due to disconnect.")
 		return
 
 	var/mob/new_player/M = new /mob/new_player()
 	if(!src.client)
-		log_game("[usr.key] AM failed due to disconnect.")
 		del(M)
 		return
 
@@ -1764,23 +1756,11 @@
 		var/obj/screen/boom = M.hud_used.station_explosion
 		M.client.screen += boom
 		if(ticker)
-			switch(ticker.mode.name)
-				if("nuclear emergency")
-					flick("start_nuke", boom)
-				if("AI malfunction")
-					flick("start_malf", boom)
-				else
-					boom.icon_state = "start"
+			boom.icon_state = "start"
 		sleep(40)
 		M << sound('cc-by-sa-nc/sound/effects/explosionfar.ogg')
 		boom.icon_state = "end"
 		flick("explode", boom)
 		sleep(40)
 		if(ticker)
-			switch(ticker.mode.name)
-				if("nuclear emergency")
-					boom.icon_state = "loss_nuke"
-				if("AI malfunction")
-					boom.icon_state = "loss_malf"
-				else
-					boom.icon_state = "loss_general"
+			boom.icon_state = "loss_general"

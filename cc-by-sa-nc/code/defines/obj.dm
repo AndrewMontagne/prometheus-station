@@ -538,6 +538,9 @@
 	var/id = 0.0
 	var/obj/master
 
+/obj/screen/verb/testverb()
+	set src = usr.contents
+
 /obj/screen/close
 	name = "close"
 	master = null

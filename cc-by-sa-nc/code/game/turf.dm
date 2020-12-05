@@ -261,7 +261,7 @@
 
 /turf/simulated/wall/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || ticker))
 		usr << "\red You don't have the dexterity to do this!"
 		return
 
@@ -307,7 +307,7 @@
 
 /turf/simulated/wall/r_wall/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(usr, /mob/living/carbon/human) || ticker))
 		usr << "\red You don't have the dexterity to do this!"
 		return
 
@@ -716,8 +716,6 @@
 					else
 						M.inertia_dir = M.last_move
 						step(M, M.inertia_dir) //TODO: DEFERRED
-	if(ticker && ticker.mode && ticker.mode.name == "nuclear emergency")
-		return
 	if (src.x <= 2)
 		if(prob(50))
 			A.z = 3

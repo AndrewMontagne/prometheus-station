@@ -225,8 +225,6 @@ datum/preferences
 	proc/SetJob(mob/user, occ=1, job="Captain")
 		if ((!( occupations.Find(job) ) && !( assistant_occupations.Find(job) ) && job != "Captain"))
 			return
-		if (job=="AI" && (!config.allow_ai))
-			return
 
 		switch(occ)
 			if(1.0)

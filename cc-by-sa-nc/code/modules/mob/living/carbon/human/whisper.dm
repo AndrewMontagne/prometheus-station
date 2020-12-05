@@ -5,8 +5,6 @@
 	if (!message)
 		return
 
-	log_whisper("[src.name]/[src.key] : [message]")
-
 	if (src.muted)
 		return
 

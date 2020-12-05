@@ -28,26 +28,6 @@
 	var/tod = time2text(world.realtime,"hh:mm:ss") //weasellos time of death patch
 	if(mind)
 		mind.store_memory("Time of death: [tod]", 0)
-	//src.icon_state = "dead"
-
-	ticker.mode.check_win()
-
-	/*
-		if (ticker.mode.name == "Corporate Restructuring" && ticker.target != src)
-			src.unlock_medal("Expendable", 1)
-
-		//For restructuring
-		if (ticker.mode.name == "Corporate Restructuring" || ticker.mode.name == "revolution")
-			ticker.check_win()
-
-		if (ticker.mode.name == "wizard" && src == ticker.killer)
-			world << "<FONT size = 3><B>Research Station Victory</B></FONT>"
-			world << "<B>The Wizard has been killed!</B> The wizards federation has been taught an important lesson."
-			ticker.processing = 0
-			sleep(100)
-			world << "\blue Rebooting due to end of game"
-			world.Reboot()
-	*/ //TODO: FIX
 
 	var/cancel
 	for (var/mob/M in world)
@@ -67,7 +47,6 @@
 				world << "<B>Everyone is dead! Resetting in 30 seconds!</B>"
 				LOG_SYSTEM("Round ended.")
 				spawn (300)
-					log_game("Rebooting because of no live players")
 					world.Reboot()
 
 	return ..(gibbed)

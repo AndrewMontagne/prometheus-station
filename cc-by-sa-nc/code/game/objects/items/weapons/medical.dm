@@ -55,7 +55,7 @@ MEDICAL
 	if (M.health < 0)
 		return
 
-	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(user, /mob/living/carbon/human) || ticker))
 		user << "\red You don't have the dexterity to do this!"
 		return
 

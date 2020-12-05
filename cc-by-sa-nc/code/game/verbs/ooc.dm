@@ -31,8 +31,6 @@
 		src << "<B>Advertising other servers is not allowed.</B>"
 		return
 
-	log_ooc("[src.name]/[src.key] : [msg]")
-
 	for (var/client/C)
 		if (C.listen_ooc)
 			C << "<span class=\"ooc\"><span class=\"prefix\">OOC:</span> <span class=\"name\">[src.key]:</span> <span class=\"message\">[msg]</span></span>"

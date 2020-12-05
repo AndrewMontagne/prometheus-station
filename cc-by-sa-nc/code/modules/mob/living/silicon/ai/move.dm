@@ -32,12 +32,8 @@
 	for(var/obj/machinery/camera/current in world)
 		if(user.network != current.network)
 			continue	//	different network (syndicate)
-		if(ticker.mode.name == "AI malfunction")
-			if(current.z != user.z && (user.network != "Prison") && (user.network != "SS13"))
-				continue
-		else
-			if(current.z != user.z && (user.network != "Prison") && (user.network != "AI Satellite"))
-				continue	//	different viewing plane
+		if(current.z != user.z && (user.network != "Prison") && (user.network != "AI Satellite"))
+			continue	//	different viewing plane
 		if(!current.status)
 			continue	//	ignore disabled cameras
 

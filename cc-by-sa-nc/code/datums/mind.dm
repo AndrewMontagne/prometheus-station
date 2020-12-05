@@ -25,12 +25,4 @@ datum/mind
 		var/output = "<B>[current.real_name]'s Memory</B><HR>"
 		output += memory
 
-		if(objectives.len>0)
-			output += "<HR><B>Objectives:</B>"
-
-			var/obj_count = 1
-			for(var/datum/objective/objective in objectives)
-				output += "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
-				obj_count++
-
 		recipient << browse(output,"window=memory")

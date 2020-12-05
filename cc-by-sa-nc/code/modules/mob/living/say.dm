@@ -4,8 +4,6 @@
 	if (!message)
 		return
 
-	log_say("[src.name]/[src.key] : [message]")
-
 	if (src.muted)
 		return
 

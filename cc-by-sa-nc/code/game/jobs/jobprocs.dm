@@ -72,31 +72,6 @@
 	else
 		captain_choice.mind.assigned_role = "Captain"
 
-	//so that an AI is chosen during this game mode
-	if(ticker.mode.name == "AI malfunction" && unassigned.len > 0)
-		var/mob/new_player/ai_choice = null
-
-		for (var/level = 1 to 3)
-			var/list/ais = FindOccupationCandidates(unassigned, "AI", level)
-			var/mob/new_player/candidate = PickOccupationCandidate(ais)
-
-			if (candidate != null)
-				ai_choice = candidate
-				unassigned -= ai_choice
-				break
-
-		if (ai_choice == null && unassigned.len > 0)
-			unassigned = shuffle(unassigned)
-			for(var/mob/new_player/player in unassigned)
-				ai_choice = player
-				break
-			unassigned -= ai_choice
-
-		if (ai_choice != null)
-			ai_choice.mind.assigned_role = "AI"
-		else
-			world << "It is [ticker.mode.name] and there is no AI, someone should fix this"
-
 	for (var/level = 1 to 3)
 		if (unassigned.len == 0)	//everyone is assigned
 			break
@@ -112,8 +87,6 @@
 		for (var/occupation in occupation_choices)
 			if (unassigned.len == 0)
 				break
-			if(ticker.mode.name == "AI malfunction" && occupation == "AI")
-				continue
 			var/eligible = occupation_eligible[occupation]
 			if (eligible == 0)
 				continue
@@ -133,8 +106,6 @@
 		for (var/occupation in occupation_choices)
 			if (unassigned.len == 0)
 				break
-			if(ticker.mode.name == "AI malfunction" && occupation == "AI")
-				continue
 			var/eligible = occupation_eligible[occupation]
 			while (eligible-- && unassigned.len > 0)
 				var/mob/new_player/candidate = unassigned[1]

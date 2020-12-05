@@ -5,8 +5,6 @@
 	set src in view(1)
 	usr.machine = src
 
-	log_game("[usr]([usr.key]) used station map L[maplevel] in [src.loc.loc]")
-
 	src.drawmap(usr)
 
 /obj/machinery/computer/security/proc/drawmap(var/mob/user as mob)
