@@ -3,33 +3,16 @@
 	name = "space"
 	icon_state = "0"
 
-	dynamic_lighting = TRUE
+	dynamic_lighting = FALSE
 
 /turf/space/New()
 	icon = 'cc-by-sa-nc/icons/turf/space.dmi'
 	icon_state = "black"
-	setup_lighting_overlay()
 
-/turf/space/proc/setup_lighting_overlay()
-	if (src.lighting_overlay)
-		src.show_lighting_overlay = src.has_visible_atom()
-		src.lighting_overlay.color = src.show_lighting_overlay ? src.lighting_overlay.computed_color : rgb(0,0,0,0)
-	else
-		spawn(10)
-			setup_lighting_overlay()
+	// Sun, for global illumination.
+	if (((src.y + 8) % 16 == 0))
+		var/dy = round((src.y + 8) / 16)
+		var/offset = (dy % 2) == 0 ? 9 : 0
+		if ((src.x + offset) % 18 == 0)
+			new /obj/sun(src)
 
-/turf/space/Entered(atom/movable/A)
-	if (!A.is_visible())
-		return ..()
-	if (src.show_lighting_overlay != TRUE)
-		src.show_lighting_overlay = TRUE
-		src.lighting_overlay.update_overlay()
-	. = ..()
-	
-/turf/space/Exited(atom/movable/Obj, atom/newloc)
-	spawn (3)
-		var/new_visible = src.has_visible_atom()
-		if (src.show_lighting_overlay != new_visible)
-			src.show_lighting_overlay = new_visible
-			src.lighting_overlay.update_overlay()
-	. = ..()

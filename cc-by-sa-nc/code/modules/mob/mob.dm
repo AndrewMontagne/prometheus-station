@@ -1434,13 +1434,6 @@
 			src.mob.dir = direct
 
 		var/j_pack = 0
-		if ((istype(src.mob.loc, /turf/space)))
-			if (!( src.mob.restrained() ))
-				if (!( (locate(/obj/grille) in oview(1, src.mob)) || (locate(/turf/simulated) in oview(1, src.mob)) || (locate(/obj/lattice) in oview(1, src.mob)) ))
-					return FALSE
-			else
-				return FALSE
-
 
 		if (isturf(src.mob.loc))
 			src.move_delay = world.time + src.mob.base_movement_delay

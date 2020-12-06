@@ -85,8 +85,7 @@
 		0, 0, 0, 1
 	)
 
-	var/newcolor = T.show_lighting_overlay ? src.computed_color : rgb(0,0,0,0)
-	animate(src, color = newcolor, OVERLAY_ANIMATION_TICKS, 1, QUAD_EASING)
+	animate(src, color = src.computed_color, OVERLAY_ANIMATION_TICKS, 1, QUAD_EASING)
 	
 	if(turf_is_dark)
 		spawn(OVERLAY_ANIMATION_TICKS) T.luminosity = FALSE
