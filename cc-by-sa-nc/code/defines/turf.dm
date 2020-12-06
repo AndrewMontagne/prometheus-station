@@ -5,36 +5,9 @@
 	level = 1.0
 
 	var
-		//Properties for open tiles (/floor)
-		oxygen = 0
-		carbon_dioxide = 0
-		nitrogen = 0
-		toxins = 0
-
-		//Properties for airtight tiles (/wall)
-		thermal_conductivity = 0.05
-		heat_capacity = 1
-
-		//Properties for both
-		temperature = T20C
-
 		blocks_air = 0
 		icon_old = null
 		pathweight = 1
-
-/turf/space
-	icon = 'cc-by-sa-nc/icons/turf/space.dmi'
-	name = "space"
-	icon_state = "0"
-	dynamic_lighting = 0
-
-	temperature = TCMB
-	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
-	heat_capacity = 700000
-
-/turf/space/New()
-	icon = 'cc-by-sa-nc/icons/turf/space.dmi'
-	icon_state = "black"
 
 /turf/simulated
 	name = "station"
@@ -42,37 +15,25 @@
 	var/image/wet_overlay = null
 
 	var/thermite = 0
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
 
 /turf/simulated/floor/engine
 	name = "reinforced floor"
 	icon_state = "engine"
-	thermal_conductivity = 0.025
-	heat_capacity = 325000
 
 /turf/simulated/floor/engine/vacuum
 	name = "vacuum floor"
 	icon_state = "engine"
-	oxygen = 0
-	nitrogen = 0.001
-	temperature = TCMB
 
 
 /turf/simulated/floor
 	name = "floor"
 	icon = 'cc-by-sa-nc/icons/turf/floors.dmi'
 	icon_state = "floor"
-	thermal_conductivity = 0.040
-	heat_capacity = 225000
 	var/broken = 0
 	var/burnt = 0
 
 	airless
 		name = "airless floor"
-		oxygen = 0.01
-		nitrogen = 0.01
-		temperature = TCMB
 
 		New()
 			..()
@@ -85,9 +46,6 @@
 
 /turf/simulated/floor/plating/airless
 	name = "airless plating"
-	oxygen = 0.01
-	nitrogen = 0.01
-	temperature = TCMB
 
 	New()
 		..()
@@ -112,14 +70,9 @@
 	density = 1
 	blocks_air = 1
 
-	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
-	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m steel wall
-
 /turf/simulated/shuttle
 	name = "shuttle"
 	icon = 'cc-by-sa-nc/icons/turf/shuttle.dmi'
-	thermal_conductivity = 0.05
-	heat_capacity = 0
 
 /turf/simulated/shuttle/wall
 	name = "wall"
@@ -134,8 +87,6 @@
 
 /turf/unsimulated
 	name = "command"
-	oxygen = MOLES_O2STANDARD
-	nitrogen = MOLES_N2STANDARD
 
 /turf/unsimulated/floor
 	name = "floor"

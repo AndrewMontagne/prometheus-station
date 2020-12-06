@@ -691,15 +691,6 @@
 					prob_slip -= 1
 				else if (M.r_hand.w_class <= 2)
 					prob_slip -= 0.5
-			prob_slip = round(prob_slip)
-			if (prob_slip < 5) //next to something, but they might slip off
-				if (prob(prob_slip) )
-					M << "\blue <B>You slipped!</B>"
-					M.inertia_dir = M.last_move
-					step(M, M.inertia_dir)
-					return
-				else
-					M.inertia_dir = 0 //no inertia
 			else //not by a wall or anything, they just keep going
 				spawn(5)
 					if ((A && !( A.anchored ) && A.loc == src))

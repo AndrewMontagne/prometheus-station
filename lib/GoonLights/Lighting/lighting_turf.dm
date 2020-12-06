@@ -87,12 +87,19 @@
 		recalc_atom_opacity() // Make sure to do this before reconsider_lights(), incase we're on instant updates.
 		reconsider_lights()
 
+/turf/proc/set_dynamic_lighting(var/on)
+	if (on && !src.dynamic_lighting)
+		lighting_build_overlay()
+		src.reconsider_lights()
+	else if (!on && src.dynamic_lighting)
+		lighting_clear_overlay()
+	src.dynamic_lighting = on
+
 /turf/change_area(var/area/old_area, var/area/new_area)
 	if(new_area.dynamic_lighting != old_area.dynamic_lighting)
 		if(new_area.dynamic_lighting)
 			lighting_build_overlay()
-
-		else
+		else if (lighting_overlay)
 			lighting_clear_overlay()
 
 /turf/proc/generate_missing_corners()

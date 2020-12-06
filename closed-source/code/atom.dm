@@ -11,3 +11,12 @@
 		resolved_loc = resolved_loc.loc
 
 	return resolved_loc
+
+/atom/proc/is_visible()
+	if (istype(src, /atom/movable/lighting_overlay))
+		return FALSE
+	if (src.invisibility > 0)
+		return FALSE
+	if (src.alpha == 0)
+		return FALSE
+	return TRUE

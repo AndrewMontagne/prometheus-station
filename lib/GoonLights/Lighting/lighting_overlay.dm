@@ -10,6 +10,8 @@
 	anchored		 	= 1
 	infra_luminosity 	= 256
 
+	var/computed_color		= rgb(0,0,0,255)
+
 	blend_mode       = BLEND_MULTIPLY
 
 	var/needs_update = FALSE
@@ -75,13 +77,16 @@
 	if(!turf_is_dark)
 		T.luminosity = TRUE
 
-	animate(src, color = list(
+	src.computed_color = list(
 		cr.cache_r, cr.cache_g, cr.cache_b, 0,
 		cg.cache_r, cg.cache_g, cg.cache_b, 0,
 		cb.cache_r, cb.cache_g, cb.cache_b, 0,
 		ca.cache_r, ca.cache_g, ca.cache_b, 0,
 		0, 0, 0, 1
-	), OVERLAY_ANIMATION_TICKS, 1, QUAD_EASING)
+	)
+
+	var/newcolor = T.show_lighting_overlay ? src.computed_color : rgb(0,0,0,0)
+	animate(src, color = newcolor, OVERLAY_ANIMATION_TICKS, 1, QUAD_EASING)
 	
 	if(turf_is_dark)
 		spawn(OVERLAY_ANIMATION_TICKS) T.luminosity = FALSE
