@@ -1,23 +1,3 @@
-/obj/stool/ex_act(severity)
-
-	switch(severity)
-		if(1.0)
-			//SN src = null
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				//SN src = null
-				del(src)
-				return
-		if(3.0)
-			if (prob(5))
-				//SN src = null
-				del(src)
-				return
-		else
-	return
-
 /obj/stool/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/weapon/wrench))
 		playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 50, 1)
@@ -145,24 +125,6 @@
 
 	A.power_light = light
 	A.updateicon()
-	return
-
-/obj/stool/chair/ex_act(severity)
-	for(var/mob/M in src.loc)
-		if(M.buckled == src)
-			M.buckled = null
-	switch(severity)
-		if(1.0)
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				del(src)
-				return
-		if(3.0)
-			if (prob(5))
-				del(src)
-				return
 	return
 
 /obj/stool/chair/New()

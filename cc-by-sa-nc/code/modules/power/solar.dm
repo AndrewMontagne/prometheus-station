@@ -75,21 +75,6 @@
 	updateicon()
 	return
 
-/obj/machinery/power/solar/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			del(src)
-			if(prob(15))
-				new /obj/item/weapon/shard( src.loc )
-			return
-		if(2.0)
-			if (prob(50))
-				broken()
-		if(3.0)
-			if (prob(25))
-				broken()
-	return
-
 /obj/machinery/power/solar_control/New()
 	..()
 	spawn(15)
@@ -246,17 +231,3 @@
 /obj/machinery/power/solar_control/proc/broken()
 	stat |= BROKEN
 	updateicon()
-
-/obj/machinery/power/solar_control/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			//SN src = null
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				broken()
-		if(3.0)
-			if (prob(25))
-				broken()
-	return

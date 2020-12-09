@@ -59,19 +59,6 @@
 		flick("door_deny", src)
 	return
 
-/obj/machinery/door/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			del(src)
-		if(2.0)
-			if(prob(25))
-				del(src)
-		if(3.0)
-			if(prob(80))
-				var/datum/effects/system/spark_spread/s = new /datum/effects/system/spark_spread
-				s.set_up(2, 1, src)
-				s.start()
-
 /obj/machinery/door/update_icon()
 	if(density)
 		icon_state = "door1"

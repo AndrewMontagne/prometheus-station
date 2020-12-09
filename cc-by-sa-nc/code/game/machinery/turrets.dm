@@ -177,29 +177,7 @@
 	A.current = U
 	A.yo = U.y - T.y
 	A.xo = U.x - T.x
-	spawn( 0 )
-		A.process()
-		return
 	return
-
-/obj/machinery/turret/bullet_act(flag)
-	if (flag == PROJECTILE_BULLET)
-		src.health -= 4
-	else if (flag == PROJECTILE_TASER) //taser
-		src.health -= 1
-	else if(flag == PROJECTILE_PULSE)
-		src.health -= 10
-	else
-		src.health -= 2
-
-	if (src.health <= 0)
-		src.die()
-	return
-
-
-/obj/machinery/turret/ex_act(severity)
-	if(severity < 3)
-		src.die()
 
 /obj/machinery/turret/proc/die()
 	src.health = 0

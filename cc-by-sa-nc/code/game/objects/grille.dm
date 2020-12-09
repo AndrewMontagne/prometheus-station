@@ -11,24 +11,6 @@
 
 	return FALSE
 
-
-/obj/grille/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				//SN src = null
-				del(src)
-				return
-		if(3.0)
-			if (prob(25))
-				src.health -= 11
-				healthcheck()
-		else
-	return
-
 /obj/grille/attack_hand(var/obj/M)
 	if(!shock(usr, 70))
 		usr << text("\blue You kick the grille.")

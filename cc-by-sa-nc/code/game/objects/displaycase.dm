@@ -1,35 +1,3 @@
-/obj/displaycase/ex_act(severity)
-	switch(severity)
-		if (1)
-			new /obj/item/weapon/shard( src.loc )
-			if (occupied)
-				new /obj/item/weapon/gun/energy/laser_gun/captain( src.loc )
-				occupied = 0
-			del(src)
-		if (2)
-			if (prob(50))
-				src.health -= 15
-				src.healthcheck()
-		if (3)
-			if (prob(50))
-				src.health -= 5
-				src.healthcheck()
-
-/obj/displaycase/bullet_act(flag)
-
-	if (flag == PROJECTILE_BULLET)
-		src.health -= 10
-		src.healthcheck()
-		return
-	if (flag != PROJECTILE_LASER) //lasers aren't particularly good at breaking glass
-		src.health -= 2
-		src.healthcheck()
-		return
-	else
-		src.health -= 5
-		src.healthcheck()
-		return
-
 /obj/displaycase/proc/healthcheck()
 	if (src.health <= 0)
 		if (!( src.destroyed ))

@@ -51,27 +51,6 @@
 /mob/living/silicon/ai/restrained()
 	return FALSE
 
-/mob/living/silicon/ai/ex_act(severity)
-	flick("flash", src.flash)
-
-	var/b_loss = src.bruteloss
-	var/f_loss = src.fireloss
-	switch(severity)
-		if(1.0)
-			if (src.stat != 2)
-				b_loss += 100
-				f_loss += 100
-		if(2.0)
-			if (src.stat != 2)
-				b_loss += 60
-				f_loss += 60
-		if(3.0)
-			if (src.stat != 2)
-				b_loss += 30
-	src.bruteloss = b_loss
-	src.fireloss = f_loss
-	src.updatehealth()
-
 
 /mob/living/silicon/ai/Topic(href, href_list)
 	..()
@@ -85,31 +64,6 @@
 		switchCamera(locate(href_list["switchcamera"]))
 	if (href_list["showalerts"])
 		ai_alerts()
-	return
-
-/mob/living/silicon/ai/bullet_act(flag)
-	if (flag == PROJECTILE_BULLET)
-		if (src.stat != 2)
-			src.bruteloss += 60
-			src.updatehealth()
-			src.weakened = 10
-	else if (flag == PROJECTILE_TASER)
-		if (prob(75))
-			src.stunned = 15
-		else
-			src.weakened = 15
-	else if(flag == PROJECTILE_LASER)
-		if (src.stat != 2)
-			src.bruteloss += 20
-			src.updatehealth()
-			if (prob(25))
-				src.stunned = 1
-	else if(flag == PROJECTILE_PULSE)
-		if (src.stat != 2)
-			src.bruteloss += 40
-			src.updatehealth()
-			if (prob(50))
-				src.stunned = min(5, src.stunned)
 	return
 
 /mob/living/silicon/ai/proc/show_laws_verb()

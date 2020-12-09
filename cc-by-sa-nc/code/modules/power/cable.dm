@@ -207,22 +207,6 @@
 		return TRUE
 	return FALSE
 
-
-/obj/cable/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			del(src)
-		if(2.0)
-			if (prob(50))
-				new/obj/item/weapon/cable_coil(src.loc, src.d1 ? 2 : 1)
-				del(src)
-
-		if(3.0)
-			if (prob(25))
-				new/obj/item/weapon/cable_coil(src.loc, src.d1 ? 2 : 1)
-				del(src)
-	return
-
 // the cable coil object, used for laying cable
 
 /obj/item/weapon/cable_coil/New(loc, length = MAXCOIL)

@@ -229,13 +229,6 @@
 
 	return
 
-/obj/machinery/camera/ex_act(severity)
-	if(src.invuln)
-		return
-	else
-		..(severity)
-	return
-
 /obj/machinery/camera/attack_ai(var/mob/living/silicon/ai/user as mob)
 	if (src.network != user.network || !(src.status))
 		return

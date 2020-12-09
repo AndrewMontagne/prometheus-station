@@ -266,17 +266,6 @@ var/supply_shuttle_points = 50
 			return FALSE
 	return ..()
 
-/obj/plasticflaps/ex_act(severity)
-	switch(severity)
-		if (1)
-			del(src)
-		if (2)
-			if (prob(50))
-				del(src)
-		if (3)
-			if (prob(5))
-				del(src)
-
 /area/supplyshuttle/
 	name = "Supply Shuttle"
 	icon_state = "supply"

@@ -79,47 +79,6 @@
 		return src.close()
 	return src.open()
 
-/obj/secure_closet/ex_act(severity)
-	switch(severity)
-		if (1)
-			for (var/atom/movable/A as mob|obj in src)
-				A.loc = src.loc
-				ex_act(severity)
-			del(src)
-		if (2)
-			if (prob(50))
-				for (var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
-					ex_act(severity)
-				del(src)
-		if (3)
-			if (prob(5))
-				for (var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
-					ex_act(severity)
-				del(src)
-
-/obj/secure_closet/bullet_act(flag)
-/* Just in case someone gives closets health
-	if (flag == PROJECTILE_BULLET)
-		src.health -= 1
-		src.healthcheck()
-		return
-	if (flag != PROJECTILE_LASER)
-		src.health -= 3
-		src.healthcheck()
-		return
-	else
-		src.health -= 5
-		src.healthcheck()
-		return
-*/
-	if(prob(1.5))
-		for (var/atom/movable/A as mob|obj in src)
-			A.loc = src.loc
-		del(src)
-	return
-
 /obj/secure_closet/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (src.opened)
 		if (istype(W, /obj/item/weapon/grab))

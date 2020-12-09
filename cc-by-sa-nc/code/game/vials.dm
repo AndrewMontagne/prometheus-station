@@ -254,12 +254,6 @@
 	src.canmove = 0
 	spawn(20) canmove = 1
 
-/obj/dummy/liquid/ex_act(blah)
-	return
-/obj/dummy/liquid/bullet_act(blah,blah)
-	return
-
-
 ///atom/relaymove - change to obj to restore
 
 /obj/relaymove(var/mob/user, direction) //testing something

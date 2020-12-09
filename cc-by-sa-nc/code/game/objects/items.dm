@@ -1,49 +1,7 @@
-
-/obj/item/weapon/bedsheet/ex_act(severity)
-	if (severity <= 2)
-		del(src)
-		return
-	return
-
 /obj/item/weapon/bedsheet/attack_self(mob/user as mob)
 	user.drop_item()
 	src.layer = 5
 	add_fingerprint(user)
-	return
-
-
-
-
-/obj/item/weapon/handcuffs/attack(mob/M as mob, mob/user as mob)
-	if (!(istype(usr, /mob/living/carbon/human) || ticker))
-		usr << "\red You don't have the dexterity to do this!"
-		return
-	if (istype(M, /mob/living/carbon/human))
-		var/obj/equip_e/human/O = new /obj/equip_e/human(  )
-		O.source = user
-		O.target = M
-		O.item = user.equipped()
-		O.s_loc = user.loc
-		O.t_loc = M.loc
-		O.place = "handcuff"
-		M.requests += O
-		spawn( 0 )
-			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/handcuffs.ogg', 30, 1, -2)
-			O.process()
-			return
-	else
-		var/obj/equip_e/monkey/O = new /obj/equip_e/monkey(  )
-		O.source = user
-		O.target = M
-		O.item = user.equipped()
-		O.s_loc = user.loc
-		O.t_loc = M.loc
-		O.place = "handcuff"
-		M.requests += O
-		spawn( 0 )
-			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/handcuffs.ogg', 30, 1, -2)
-			O.process()
-			return
 	return
 
 

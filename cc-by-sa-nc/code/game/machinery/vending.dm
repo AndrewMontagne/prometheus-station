@@ -30,24 +30,6 @@
 
 	return
 
-/obj/machinery/vending/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				del(src)
-				return
-		if(3.0)
-			if (prob(25))
-				spawn(0)
-					src.malfunction()
-					return
-				return
-		else
-	return
-
 /obj/machinery/vending/proc/build_inventory(var/list/path_list,var/list/amt_list,hidden=0)
 
 	for(var/p=1, p <= path_list.len ,p++)

@@ -33,14 +33,10 @@
 // use power from a cell
 /obj/item/weapon/cell/proc/use(var/amount)
 	charge = max(0, charge-amount)
-	if(rigged && amount > 0)
-		explode()
 
 // recharge the cell
 /obj/item/weapon/cell/proc/give(var/amount)
 	charge = min(maxcharge, charge+amount)
-	if(rigged && amount > 0)
-		explode()
 
 
 /obj/item/weapon/cell/examine()
@@ -66,12 +62,3 @@
 		use(G.uses*1000)
 		updateicon()
 		user << "\red These gloves are now electrically charged!"
-
-
-/obj/item/weapon/cell/proc/explode()
-	var/turf/T = get_turf(src.loc)
-
-	explosion(T, 0, 1, 2, 2)
-
-	spawn(1)
-		del(src)

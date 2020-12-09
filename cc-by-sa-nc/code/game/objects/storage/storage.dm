@@ -13,17 +13,6 @@
 	return L
 
 /obj/item/weapon/storage/proc/show_to(mob/user as mob)
-	for(var/obj/item/weapon/mousetrap/MT in src)
-		if(MT.armed)
-			for(var/mob/O in viewers(user, null))
-				if(O == user)
-					user.show_message(text("\red <B>You reach into the [src.name], but there was a live mousetrap in there!</B>"), 1)
-				else
-					user.show_message(text("\red <B>[user] reaches into the [src.name] and sets off a hidden mousetrap!</B>"), 1)
-			MT.loc = user.loc
-			MT.triggered(user, user.hand ? "l_hand" : "r_hand")
-			MT.layer = OBJ_LAYER
-			return
 	user.client.screen -= src.boxes
 	user.client.screen -= src.closer
 	user.client.screen -= src.contents

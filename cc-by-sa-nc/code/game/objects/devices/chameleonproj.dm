@@ -13,14 +13,6 @@
 		for(var/mob/M in src)
 			M << "\red Your chameleon-projector deactivates."
 		master.disrupt()
-	ex_act()
-		for(var/mob/M in src)
-			M << "\red Your chameleon-projector deactivates."
-		master.disrupt()
-	bullet_act()
-		for(var/mob/M in src)
-			M << "\red Your chameleon-projector deactivates."
-		master.disrupt()
 	relaymove(var/mob/user, direction)
 		if(can_move)
 			can_move = 0

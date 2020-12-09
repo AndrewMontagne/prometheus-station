@@ -6,24 +6,6 @@
 	spawn(100)
 		process()
 
-/obj/machinery/optable/ex_act(severity)
-
-	switch(severity)
-		if(1.0)
-			//SN src = null
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				//SN src = null
-				del(src)
-				return
-		if(3.0)
-			if (prob(25))
-				src.density = 0
-		else
-	return
-
 /obj/machinery/optable/hand_p(mob/user as mob)
 
 	return src.attack_paw(user)

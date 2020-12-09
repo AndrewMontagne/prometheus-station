@@ -93,8 +93,6 @@
 
 		// now check to see if the bulb is burned out
 		if(status == LIGHT_OK)
-			if(on && rigged)
-				explode()
 			if( prob( min(60, switchcount*switchcount*0.01) ) )
 				status = LIGHT_BURNED
 				icon_state = "[base_state]-burned"
@@ -150,8 +148,6 @@
 				on = has_power()
 				update()
 				user.update_clothing()
-				if(on && rigged)
-					explode()
 			else
 				user << "This type of light requires a [fitting]."
 				return
@@ -273,22 +269,6 @@
 	status = LIGHT_BROKEN
 	update()
 
-// explosion effect
-// destroy the whole light fixture or just shatter it
-
-/obj/machinery/light/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			del(src)
-			return
-		if(2.0)
-			if (prob(75))
-				broken()
-		if(3.0)
-			if (prob(50))
-				broken()
-	return
-
 // timed process
 // use power
 
@@ -308,18 +288,6 @@
 
 
 // explode the light
-
-/obj/machinery/light/proc/explode()
-	var/turf/T = get_turf(src.loc)
-	spawn(0)
-		broken()	// break it first to give a warning
-		sleep(2)
-		explosion(T, 0, 1, 2, 2)
-		sleep(1)
-		del(src)
-
-
-
 
 // special handling for desk lamps
 

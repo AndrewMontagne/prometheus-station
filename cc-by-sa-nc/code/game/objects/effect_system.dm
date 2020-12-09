@@ -701,12 +701,6 @@ steam.start() -- spawns the effect
 			icon_state = "ironfoam"
 
 
-	ex_act(severity)
-		del(src)
-
-	bullet_act()
-		if(metal==1 || prob(50))
-			del(src)
 
 	attack_paw(var/mob/user)
 		attack_hand(user)

@@ -232,24 +232,6 @@
 	usr << "It looks like a regular wall."
 	return
 
-/turf/simulated/wall/ex_act(severity)
-
-	switch(severity)
-		if(1.0)
-			//SN src = null
-			src.ReplaceWithSpace()
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				dismantle_wall()
-			else
-				dismantle_wall(devastated=1)
-		if(3.0)
-			dismantle_wall()
-		else
-	return
-
 /turf/simulated/wall/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
 
@@ -265,150 +247,13 @@
 		usr << "\red You don't have the dexterity to do this!"
 		return
 
-	if (istype(W, /obj/item/weapon/weldingtool) && W:welding)
-		W:eyecheck(user)
-		var/turf/T = user.loc
-		if (!( istype(T, /turf) ))
-			return
-
-		if (thermite)
-			var/obj/overlay/O = new/obj/overlay( src )
-			O.name = "Thermite"
-			O.desc = "Looks hot."
-			O.icon = 'cc-by-sa-nc/icons/effects/fire.dmi'
-			O.icon_state = "2"
-			O.anchored = 1
-			O.density = 1
-			O.layer = 5
-			var/turf/simulated/floor/F = ReplaceWithFloor()
-			F.to_plating()
-			F.burn_tile()
-			user << "\red The thermite melts the wall."
-			spawn(100) del(O)
-			return
-
-		if (W:get_fuel() < 5)
-			user << "\blue You need more welding fuel to complete this task."
-			return
-		W:use_fuel(5)
-
-		user << "\blue Now disassembling the outer wall plating."
-		playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 100, 1)
-
-		sleep(100)
-
-		if ((user.loc == T && user.equipped() == W))
-			user << "\blue You disassembled the outer wall plating."
-			dismantle_wall()
-
-	else
-		return attack_hand(user)
-	return
+	return attack_hand(user)
 
 /turf/simulated/wall/r_wall/attackby(obj/item/weapon/W as obj, mob/user as mob)
 
 	if (!(istype(usr, /mob/living/carbon/human) || ticker))
 		usr << "\red You don't have the dexterity to do this!"
 		return
-
-	if (istype(W, /obj/item/weapon/weldingtool) && W:welding)
-		W:eyecheck(user)
-		var/turf/T = user.loc
-		if (!( istype(T, /turf) ))
-			return
-
-		if (thermite)
-			var/obj/overlay/O = new/obj/overlay( src )
-			O.name = "Thermite"
-			O.desc = "Looks hot."
-			O.icon = 'cc-by-sa-nc/icons/effects/fire.dmi'
-			O.icon_state = "2"
-			O.anchored = 1
-			O.density = 1
-			O.layer = 5
-			var/turf/simulated/floor/F = ReplaceWithFloor()
-			F.to_plating()
-			F.burn_tile()
-			user << "\red The thermite melts the wall."
-			spawn(100) del(O)
-			return
-
-		if (src.d_state == 2)
-			user << "\blue Slicing metal cover."
-			playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 100, 1)
-			sleep(60)
-			if ((user.loc == T && user.equipped() == W))
-				src.d_state = 3
-				user << "\blue You removed the metal cover."
-
-		else if (src.d_state == 5)
-			user << "\blue Removing support rods."
-			playsound(src.loc, 'cc-by-sa-nc/sound/items/Welder.ogg', 100, 1)
-			sleep(100)
-			if ((user.loc == T && user.equipped() == W))
-				src.d_state = 6
-				new /obj/item/weapon/rods( src )
-				user << "\blue You removed the support rods."
-
-	else if (istype(W, /obj/item/weapon/wrench))
-		if (src.d_state == 4)
-			var/turf/T = user.loc
-			user << "\blue Detaching support rods."
-			playsound(src.loc, 'cc-by-sa-nc/sound/items/Ratchet.ogg', 100, 1)
-			sleep(40)
-			if ((user.loc == T && user.equipped() == W))
-				src.d_state = 5
-				user << "\blue You detach the support rods."
-
-	else if (istype(W, /obj/item/weapon/wirecutters))
-		if (src.d_state == 0)
-			playsound(src.loc, 'cc-by-sa-nc/sound/items/Wirecutter.ogg', 100, 1)
-			src.d_state = 1
-			new /obj/item/weapon/rods( src )
-
-	else if (istype(W, /obj/item/weapon/screwdriver))
-		if (src.d_state == 1)
-			var/turf/T = user.loc
-			playsound(src.loc, 'cc-by-sa-nc/sound/items/Screwdriver.ogg', 100, 1)
-			user << "\blue Removing support lines."
-			sleep(40)
-			if ((user.loc == T && user.equipped() == W))
-				src.d_state = 2
-				user << "\blue You removed the support lines."
-
-	else if (istype(W, /obj/item/weapon/crowbar))
-
-		if (src.d_state == 3)
-			var/turf/T = user.loc
-			user << "\blue Prying cover off."
-			playsound(src.loc, 'cc-by-sa-nc/sound/items/Crowbar.ogg', 100, 1)
-			sleep(100)
-			if ((user.loc == T && user.equipped() == W))
-				src.d_state = 4
-				user << "\blue You removed the cover."
-
-		else if (src.d_state == 6)
-			var/turf/T = user.loc
-			user << "\blue Prying outer sheath off."
-			playsound(src.loc, 'cc-by-sa-nc/sound/items/Crowbar.ogg', 100, 1)
-			sleep(100)
-			if ((user.loc == T && user.equipped() == W))
-				user << "\blue You removed the outer sheath."
-				dismantle_wall()
-				return
-
-	else if ((istype(W, /obj/item/weapon/sheet/metal)) && (src.d_state))
-		var/turf/T = user.loc
-		user << "\blue Repairing wall."
-		sleep(100)
-		if ((user.loc == T && user.equipped() == W))
-			src.d_state = 0
-			src.icon_state = initial(src.icon_state)
-			user << "\blue You repaired the wall."
-			if (W:amount > 1)
-				W:amount--
-			else
-				del(W)
 
 	if(src.d_state > 0)
 		src.icon_state = "r_wall-[d_state]"
@@ -422,29 +267,6 @@
 		if (!( locate(/obj/machinery/mass_driver, src) ))
 			return FALSE
 	return ..()
-
-/turf/simulated/floor/ex_act(severity)
-	//set src in oview(1)
-	switch(severity)
-		if(1.0)
-			src.ReplaceWithSpace()
-		if(2.0)
-			switch(pick(1,2;75,3))
-				if (1)
-					src.ReplaceWithLattice()
-					if(prob(33)) new /obj/item/weapon/sheet/metal(src)
-				if(2)
-					src.ReplaceWithSpace()
-				if(3)
-					if(prob(80))
-						src.break_tile_to_plating()
-					else
-						src.break_tile()
-					if(prob(33)) new /obj/item/weapon/sheet/metal(src)
-		if(3.0)
-			if (prob(50))
-				src.break_tile()
-	return
 
 /turf/simulated/floor/update_icon()
 
@@ -621,32 +443,4 @@
 	return
 
 /turf/space/attackby(obj/item/weapon/C as obj, mob/user as mob)
-
-	if (istype(C, /obj/item/weapon/rods))
-		user << "\blue Constructing support lattice ..."
-		playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 50, 1)
-		ReplaceWithLattice()
-		C:amount--
-
-		if (C:amount < 1)
-			user.u_equip(C)
-			del(C)
-			return
-		return
-
-	if (istype(C, /obj/item/weapon/tile))
-		if(locate(/obj/lattice, src))
-			var/obj/lattice/L = locate(/obj/lattice, src)
-			del(L)
-			playsound(src.loc, 'cc-by-sa-nc/sound/weapons/Genhit.ogg', 50, 1)
-			C:build(src)
-			C:amount--
-
-			if (C:amount < 1)
-				user.u_equip(C)
-				del(C)
-				return
-			return
-		else
-			user << "\red The plating is going to need some support."
 	return

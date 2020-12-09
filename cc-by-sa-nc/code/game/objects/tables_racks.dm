@@ -1,21 +1,3 @@
-/obj/table/ex_act(severity)
-
-	switch(severity)
-		if(1.0)
-			//SN src = null
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				//SN src = null
-				del(src)
-				return
-		if(3.0)
-			if (prob(25))
-				src.density = 0
-		else
-	return
-
 /obj/table/hand_p(mob/user as mob)
 	return src.attack_paw(user)
 
@@ -104,22 +86,6 @@
 			return
 	user.drop_item()
 	if(W && W.loc)	W.loc = src.loc
-	return
-
-/obj/rack/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				del(src)
-				return
-		if(3.0)
-			if (prob(25))
-				src.icon_state = "rackbroken"
-				src.density = 0
-		else
 	return
 
 /obj/rack/MouseDrop_T(obj/O as obj, mob/user as mob)

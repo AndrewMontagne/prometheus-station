@@ -50,24 +50,6 @@ Pod/Blast Doors computer
 	src.add_fingerprint(user)
 	return FALSE
 
-/obj/machinery/computer/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				for(var/x in src.verbs)
-					src.verbs -= x
-				set_broken()
-		if(3.0)
-			if (prob(25))
-				for(var/x in src.verbs)
-					src.verbs -= x
-				set_broken()
-		else
-	return
-
 /obj/machinery/computer/power_change()
 	if(!istype(src,/obj/machinery/computer/security/telescreen))
 		if(stat & BROKEN)

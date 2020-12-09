@@ -838,27 +838,7 @@ About the new airlock wires panel:
 				return
 
 	src.add_fingerprint(user)
-	if ((istype(C, /obj/item/weapon/weldingtool) && !( src.operating ) && src.density))
-		var/obj/item/weapon/weldingtool/W = C
-		if(W.welding)
-			if (W.get_fuel() > 2)
-				W.use_fuel(2)
-				W.eyecheck(user)
-			else
-				user << "Need more welding fuel!"
-				return
-			if (!src.welded)
-				src.welded = 1
-			else
-				src.welded = null
-			src.update_icon()
-			return
-	else if (istype(C, /obj/item/weapon/screwdriver))
-		src.p_open = !( src.p_open )
-		src.update_icon()
-	else if (istype(C, /obj/item/weapon/wirecutters))
-		return src.attack_hand(user)
-	else if (istype(C, /obj/item/device/multitool))
+	if (istype(C, /obj/item/device/multitool))
 		return src.attack_hand(user)
 	else if (istype(C, /obj/item/device/radio/signaler))
 		return src.attack_hand(user)

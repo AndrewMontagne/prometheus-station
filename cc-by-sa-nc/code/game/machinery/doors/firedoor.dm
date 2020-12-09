@@ -9,18 +9,7 @@
 
 /obj/machinery/door/firedoor/attackby(obj/item/weapon/C as obj, mob/user as mob)
 	src.add_fingerprint(user)
-	if ((istype(C, /obj/item/weapon/weldingtool) && !( src.operating ) && src.density))
-		var/obj/item/weapon/weldingtool/W = C
-		if(W.welding)
-			if (W.get_fuel() > 2)
-				W.use_fuel(2)
-			if (!( src.blocked ))
-				src.blocked = 1
-			else
-				src.blocked = 0
-			update_icon()
 
-			return
 	if (!( istype(C, /obj/item/weapon/crowbar) ))
 		return
 

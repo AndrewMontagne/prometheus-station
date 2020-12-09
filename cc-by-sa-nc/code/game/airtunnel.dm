@@ -82,26 +82,6 @@
 			return
 	return
 
-/obj/machinery/at_indicator/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				for(var/x in src.verbs)
-					src.verbs -= x
-				src.icon_state = "reader_broken"
-				stat |= BROKEN
-		if(3.0)
-			if (prob(25))
-				for(var/x in src.verbs)
-					src.verbs -= x
-				src.icon_state = "reader_broken"
-				stat |= BROKEN
-		else
-	return
-
 /obj/machinery/at_indicator/update_icon()
 	if(stat & (BROKEN|NOPOWER))
 		icon_state = "reader_broken"

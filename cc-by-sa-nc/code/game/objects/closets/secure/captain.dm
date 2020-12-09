@@ -1,7 +1,6 @@
 /obj/secure_closet/captains/New()
 	..()
 	sleep(2)
-	new /obj/item/weapon/gun/energy/general( src )
 	new /obj/item/weapon/storage/id_kit( src )
 	new /obj/item/clothing/under/rank/captain( src )
 	new /obj/item/clothing/shoes/brown( src )

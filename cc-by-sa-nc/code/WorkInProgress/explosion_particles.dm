@@ -60,7 +60,7 @@
 	else location = get_turf(loca)
 
 /datum/effects/system/explosion/proc/start()
-	new/obj/effects/explosion( location )
+	new/obj/effects///explosion( location )
 	var/datum/effects/system/expl_particles/P = new/datum/effects/system/expl_particles()
 	P.set_up(10,location)
 	P.start()

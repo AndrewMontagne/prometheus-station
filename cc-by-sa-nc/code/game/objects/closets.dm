@@ -85,79 +85,15 @@
 	else
 		overlays += image(icon, icon_closed)
 
-// this should probably use dump_contents()
-/obj/closet/ex_act(severity)
-	switch(severity)
-		if (1)
-			for (var/atom/movable/A as mob|obj in src)
-				A.loc = src.loc
-				ex_act(severity)
-			del(src)
-		if (2)
-			if (prob(50))
-				for (var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
-					ex_act(severity)
-				del(src)
-		if (3)
-			if (prob(5))
-				for (var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
-					ex_act(severity)
-				del(src)
-
-/obj/closet/bullet_act(flag)
-
-/* Just in case someone gives closets health
-	if (flag == PROJECTILE_BULLET)
-		src.health -= 1
-		src.healthcheck()
-		return
-	if (flag != PROJECTILE_LASER)
-		src.health -= 3
-		src.healthcheck()
-		return
-	else
-		src.health -= 5
-		src.healthcheck()
-		return
-*/
-	if(prob(4))
-		for (var/atom/movable/A as mob|obj in src)
-			A.loc = src.loc
-		del(src)
-	return
-
 /obj/closet/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	if (src.opened)
 		if (istype(W, /obj/item/weapon/grab))
 			src.MouseDrop_T(W:affecting, user)      //act like they were dragged onto the closet
 
-		if (istype(W, /obj/item/weapon/weldingtool) && W:welding)
-			if (W:get_fuel() < 2)
-				user << "\blue You need more welding fuel to complete this task."
-				return
-			W:use_fuel(1)
-			new /obj/item/weapon/sheet/metal(src.loc)
-			for (var/mob/M in viewers(src))
-				M.show_message("\red [src] has been cut apart by [user.name] with the weldingtool.", 3, "\red You hear welding.", 2)
-			del(src)
-			return
-
 		usr.drop_item()
 
 		if (W)
 			W.loc = src.loc
-
-	else if(istype(W, /obj/item/weapon/weldingtool) && W:welding)
-		if (W:get_fuel() < 2)
-			user << "\blue You need more welding fuel to complete this task."
-			return
-		W:eyecheck(user)
-		W:use_fuel(1)
-		src.welded =! src.welded
-		for(var/mob/M in viewers(src))
-			M.show_message("\red [src] has been [welded?"welded shut":"unwelded"] by [user.name].", 3, "\red You hear welding.", 2)
 	else
 		src.attack_hand(user)
 	return

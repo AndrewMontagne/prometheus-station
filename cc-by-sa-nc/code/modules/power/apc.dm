@@ -840,23 +840,7 @@
 
 	return val
 
-// damage and destruction acts
 
-/obj/machinery/power/apc/ex_act(severity)
-
-	switch(severity)
-		if(1.0)
-			set_broken()
-			del(src)
-			return
-		if(2.0)
-			if (prob(50))
-				set_broken()
-		if(3.0)
-			if (prob(25))
-				set_broken()
-		else
-	return
 
 
 /obj/machinery/power/apc/proc/set_broken()
