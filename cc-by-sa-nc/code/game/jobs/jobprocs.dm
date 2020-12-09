@@ -152,7 +152,3 @@
 		C.access = get_access(C.assignment)
 		src.equip_if_possible(C, slot_wear_id)
 	src.equip_if_possible(new /obj/item/weapon/pen(src), slot_r_store)
-	src.equip_if_possible(new /obj/item/device/pda(src), slot_belt)
-	if (istype(src.belt, /obj/item/device/pda))
-		src.belt:owner = src.real_name
-		src.belt.name = "PDA-[src.real_name]"

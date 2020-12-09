@@ -190,7 +190,6 @@
 #include "cc-by-sa-nc\code\game\objects\devices\flash.dm"
 #include "cc-by-sa-nc\code\game\objects\devices\flashlight.dm"
 #include "cc-by-sa-nc\code\game\objects\devices\multitool.dm"
-#include "cc-by-sa-nc\code\game\objects\devices\PDA.dm"
 #include "cc-by-sa-nc\code\game\objects\devices\powersink.dm"
 #include "cc-by-sa-nc\code\game\objects\devices\scanners.dm"
 #include "cc-by-sa-nc\code\game\objects\devices\shields.dm"

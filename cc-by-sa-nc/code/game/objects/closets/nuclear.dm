@@ -9,7 +9,4 @@
 	new /obj/item/weapon/gun/energy/general( src )
 	new /obj/item/weapon/gun/energy/general( src )
 	new /obj/item/weapon/gun/energy/general( src )
-	new /obj/item/device/pda/syndicate( src )
-	var/obj/item/weapon/syndicate_uplink/U = new /obj/item/weapon/syndicate_uplink( src )
-	U.uses = 40
 	return

@@ -115,10 +115,6 @@ SYNDICATE UPLINK
 			if (src.uses >= 4)
 				src.uses -= 4
 				new /obj/item/weapon/sword(H.loc)
-		else if (href_list["item_cartridge"])
-			if (src.uses >= 3)
-				src.uses -= 3
-				new /obj/item/weapon/cartridge/syndicate(H.loc)
 		else if (href_list["item_powersink"])
 			if (src.uses >= 5)
 				src.uses -= 5
