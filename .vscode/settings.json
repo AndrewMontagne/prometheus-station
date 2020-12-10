@@ -1,0 +1,9 @@
+{
+    "dreammaker.langserverPath": "/usr/bin/dm-langserver",
+    "dreammaker.autoUpdate": true,
+    "dreammaker.byondPath": [
+        "/byond"
+    ],
+    "dreammaker.objectTreePane": true,
+    "dreammaker.tickOnCreate": true
+}
