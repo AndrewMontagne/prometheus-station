@@ -3,7 +3,8 @@
 	turf = /turf/space
 	area = /area/space
 	view = "19x17"
-
+	loop_checks = FALSE
+	
 /world/Error(exception/E, datum/src)
 	if (!istype(E))
 		return ..()
@@ -34,8 +35,20 @@
 		spawn()
 			ticker.pregame()
 
+	LOG_SYSTEM("Initialising Scheduler...")
+
+	scheduler = new /datum/scheduler()
+	var/controller/C = new /controller/stress("000", PRIORITY_REALTIME)
+	scheduler.add_controller(C)
+	C = new /controller/stress("000", PRIORITY_HIGH)
+	scheduler.add_controller(C)
+	C = new /controller/stress("00000", PRIORITY_MEDIUM)
+	scheduler.add_controller(C)
+	C = new /controller/stress("00000", PRIORITY_LOW)
+	scheduler.add_controller(C)
+
 	LOG_SYSTEM("Startup Complete!")
-	world.sleep_offline = TRUE
+	world.sleep_offline = FALSE
 
 /world/Del()
 	. = ..()

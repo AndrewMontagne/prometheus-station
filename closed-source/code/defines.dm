@@ -6,3 +6,8 @@
 #define LOG_TRACE(X)   world.logger(X, "TRACE", "36")
 
 #define ALL_DIRS list(NORTH, SOUTH, EAST, WEST)
+
+#define PRIORITY_REALTIME 1
+#define PRIORITY_HIGH 2
+#define PRIORITY_MEDIUM 3
+#define PRIORITY_LOW 4
