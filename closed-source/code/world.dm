@@ -38,7 +38,7 @@
 	scheduler.add_controller(C)
 
 	LOG_SYSTEM("Startup Complete!")
-	world.sleep_offline = FALSE
+	world.sleep_offline = TRUE
 
 /world/Del()
 	. = ..()

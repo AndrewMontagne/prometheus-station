@@ -32,6 +32,10 @@ var/global/datum/scheduler/scheduler = null
 
 /// Process a specific queue
 /datum/scheduler/proc/process_queue(list/queue, var/allow_yield = TRUE, var/only_if_time = FALSE, var/debt = FALSE)
+
+	// Sort the queue by when the next controller is due to fire
+	queue = list_bubblesort(queue, "next_fire_time")
+
 	for (var/C in queue)
 		var/controller/controller = C
 
