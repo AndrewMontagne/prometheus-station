@@ -15,8 +15,6 @@
 /controller/stress/process()
 	. = ..()
 
-	src.next_fire_time = world.time + 10
-
 	var/s = rand(5000,50000)
 
 	while (TRUE)

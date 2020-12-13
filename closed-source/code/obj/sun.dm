@@ -8,4 +8,4 @@
 
 /obj/sun/New()
 	..()
-	set_light(25,1000)
+	set_light(12,1000)

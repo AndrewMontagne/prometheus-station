@@ -24,10 +24,6 @@
 	debugger_initialize(FALSE)
 	rustg_url_encode("") // Check for rustg's presence
 
-	LOG_SYSTEM("Initialising Lighting...")
-	lighting_start_process()
-	create_all_lighting_overlays()
-
 	LOG_SYSTEM("Initialising Ticker...")
 	emergency_shuttle = new /datum/shuttle_controller/emergency_shuttle()
 	if (!ticker)
@@ -38,13 +34,7 @@
 	LOG_SYSTEM("Initialising Scheduler...")
 
 	scheduler = new /datum/scheduler()
-	var/controller/C = new /controller/stress("000", PRIORITY_REALTIME)
-	scheduler.add_controller(C)
-	C = new /controller/stress("000", PRIORITY_HIGH)
-	scheduler.add_controller(C)
-	C = new /controller/stress("00000", PRIORITY_MEDIUM)
-	scheduler.add_controller(C)
-	C = new /controller/stress("00000", PRIORITY_LOW)
+	var/controller/C = new /controller/lighting()
 	scheduler.add_controller(C)
 
 	LOG_SYSTEM("Startup Complete!")
