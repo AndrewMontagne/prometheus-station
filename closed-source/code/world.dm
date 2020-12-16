@@ -24,13 +24,6 @@
 	debugger_initialize(FALSE)
 	rustg_url_encode("") // Check for rustg's presence
 
-	LOG_SYSTEM("Initialising Ticker...")
-	emergency_shuttle = new /datum/shuttle_controller/emergency_shuttle()
-	if (!ticker)
-		ticker = new /datum/controller/gameticker()
-		spawn()
-			ticker.pregame()
-
 	LOG_SYSTEM("Initialising Scheduler...")
 
 	scheduler = new /datum/scheduler()

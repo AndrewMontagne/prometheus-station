@@ -5,6 +5,10 @@
 #define LOG_DEBUG(X)   world.logger(X, "DEBUG", "35")
 #define LOG_TRACE(X)   world.logger(X, "TRACE", "36")
 
+#define SECONDS(X) (X * 10)
+#define MINUTES(X) (X * 600)
+#define HOURS(X) (X * 36000)
+
 #define ALL_DIRS list(NORTH, SOUTH, EAST, WEST)
 
 #define PRIORITY_REALTIME 1

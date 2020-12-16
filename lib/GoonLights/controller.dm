@@ -1,5 +1,6 @@
 /// Lighting controller
 /controller/lighting
+	name = "Lighting"
 	priority = PRIORITY_MEDIUM
 
 /controller/lighting/New()

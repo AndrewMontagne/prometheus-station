@@ -1,6 +1,7 @@
 /// Controller class
 /controller
 	parent_type = /datum
+	var/name = ""
 	var/next_fire_time = 0
 	var/priority = PRIORITY_MEDIUM
 	var/average_ticks = 0
