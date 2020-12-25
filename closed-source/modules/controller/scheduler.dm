@@ -1,20 +1,33 @@
 
+/// Global scheduler declaration
 var/global/datum/scheduler/scheduler = null
 
+//! Controller Task Scheduler
+/**
+This is a co-operatively multitasking task scheduler for controllers.
+
+Controllers are run according to the following priorities:
+
+- `PRIORITY_REALTIME` controllers are always executed first, and will overrun the tick.
+- `PRIORITY_HIGH` controllers are executed until one of the controllers yields.
+- `PRIORITY_MEDIUM` controllers are executed if the scheduler predicts there is time to,
+and if there is not, they accrue "execution debt" so that they will eventually be
+scheduled to be run.
+- `PRIORITY_LOW` controllers are executed if there is time, but do not accrue debt.
+**/
 /datum/scheduler
-	var/list/queues
+	/// The controller queues. Each queue represents a priority level.
+	var/list/queues = list(list(),list(),list(),list())
 
 /datum/scheduler/New()
 	if (!isnull(scheduler))
 		CRASH("Initialising the scheduler twice!")
 	scheduler = src
 
-	src.queues = list(list(),list(),list(),list())
-
 	spawn(1)
 		tick()
 
-/// The actual ticker
+/// The "ticker" - This calls itself repeatedly on an infinite loop
 /datum/scheduler/proc/tick()
 	set background = TRUE
 	
@@ -32,6 +45,7 @@ var/global/datum/scheduler/scheduler = null
 
 /// Process a specific queue
 /datum/scheduler/proc/process_queue(list/queue, var/allow_yield = TRUE, var/only_if_time = FALSE, var/debt = FALSE)
+	PRIVATE_PROC(TRUE)
 
 	// Sort the queue by when the next controller is due to fire
 	queue = list_bubblesort(queue, "next_fire_time")
@@ -64,6 +78,8 @@ var/global/datum/scheduler/scheduler = null
 
 /// Process a specific controller
 /datum/scheduler/proc/process_controller(controller/controller)
+	PRIVATE_PROC(TRUE)
+
 	controller.tick_debt = 0
 	var/start = world.time + (world.tick_usage / 100)
 	controller.process()

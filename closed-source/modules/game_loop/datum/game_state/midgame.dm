@@ -1,5 +1,5 @@
 
-/// 
+//! In Progress Game State
 /datum/game_state/midgame 
 	name = "Playing"
 	

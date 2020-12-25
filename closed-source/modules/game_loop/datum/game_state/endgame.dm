@@ -1,6 +1,7 @@
 
+//! Game Over Game State
 /**
-End of game state. Roll the credits, shut down everything when done.
+Roll the credits, shut down everything when done.
 **/
 /datum/game_state/endgame 
 	name = "Game Over"

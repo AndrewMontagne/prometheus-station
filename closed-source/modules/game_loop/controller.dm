@@ -1,7 +1,7 @@
 
 var/global/controller/game_loop/game_loop = null
 
-/// The Game Loop Controller - This controls the overall game state and handles the gamemode logic
+//! The Game Loop Controller - This controls the overall game state and handles the gamemode logic
 /controller/game_loop
 	name = "Game"
 	var/datum/gamemode/running_gamemode = null
@@ -15,15 +15,15 @@ var/global/controller/game_loop/game_loop = null
 	state = new /datum/game_state/pregame()
 	state.state_entry()
 
-/// Helper method to determine if we're in pregame
+//! Helper method to determine if we're in pregame
 /controller/game_loop/proc/is_pre_game()
 	return istype(src.state, /datum/game_state/pregame)
 
-/// Helper method to determine if the game is in progress
+//! Helper method to determine if the game is in progress
 /controller/game_loop/proc/is_game_running()
 	return !(src.is_pre_game() || src.is_game_over())
 
-/// Helper method to determine if we're in postgame
+//! Helper method to determine if we're in postgame
 /controller/game_loop/proc/is_game_over()
 	return istype(src.state, /datum/game_state/endgame)
 

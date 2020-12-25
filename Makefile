@@ -2,11 +2,11 @@ INV=\033[7m
 NC=\033[0m
 
 SHELL := /bin/bash
-.PHONY: all dev clean lint mapmerge-test mapmerge build run run-container
+.PHONY: all dev clean lint docs mapmerge-test mapmerge build run run-container
 
 -include /byond/env.sh
 
-all: clean lint mapmerge build
+all: clean lint mapmerge docs build
 
 dev: all run
 
@@ -17,6 +17,10 @@ clean:
 lint:
 	@echo -e '\n${INV} ###  LINTER   ### ${NC}\n'
 	@DreamChecker -c dreamchecker.toml
+
+docs:
+	@echo -e '\n${INV} ###  DM DOCS  ### ${NC}\n'
+	@dmdoc
 
 mapmerge-test:
 	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
