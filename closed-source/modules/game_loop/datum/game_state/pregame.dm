@@ -1,15 +1,19 @@
 
-/// 
+/**
+The pre-game game state. This is the default game state and cannot be changed.
+The next state is undefined by default, and is set by the gamemode before it exits.
+**/
 /datum/game_state/pregame 
 	name = "Pre-game"
 	
-
-/datum/game_state/pregame/New()
+/datum/game_state/pregame/state_entry()
 	. = ..()
+	src.next_state_time = world.time + MINUTES(3)
 
 /datum/game_state/pregame/state_exit()
 	. = ..()
 	game_loop.running_gamemode = pick(src.available_gamemodes())
+	src.next_state = game_loop.running_gamemode.get_initial_state()
 	
 /// Lists the available gamemodes to play
 /datum/game_state/pregame/proc/available_gamemodes()

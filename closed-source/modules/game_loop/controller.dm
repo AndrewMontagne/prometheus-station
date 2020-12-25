@@ -13,13 +13,17 @@ var/global/controller/game_loop/game_loop = null
 	game_loop = src
 
 	state = new /datum/game_state/pregame()
+	state.state_entry()
 
+/// Helper method to determine if we're in pregame
 /controller/game_loop/proc/is_pre_game()
 	return istype(src.state, /datum/game_state/pregame)
 
+/// Helper method to determine if the game is in progress
 /controller/game_loop/proc/is_game_running()
 	return !(src.is_pre_game() || src.is_game_over())
 
+/// Helper method to determine if we're in postgame
 /controller/game_loop/proc/is_game_over()
 	return istype(src.state, /datum/game_state/endgame)
 
@@ -32,7 +36,7 @@ var/global/controller/game_loop/game_loop = null
 		if (!isnull(src.state.next_state_time) && world.time >= src.state.next_state_time)
 			src.state.state_exit()
 			var/oldstate = src.state
-			src.state = src.running_gamemode.get_initial_state()
+			src.state = src.state.next_state
 			if (!isnull(src.state))
 				src.state.state_entry()
 			del(oldstate)

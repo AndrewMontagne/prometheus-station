@@ -1,4 +1,5 @@
 /data/*
+/dmdoc/*
 *.dmb
 *.rsc
 *.int

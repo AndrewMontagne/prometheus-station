@@ -24,14 +24,18 @@
 	debugger_initialize(FALSE)
 	rustg_url_encode("") // Check for rustg's presence
 
-	LOG_SYSTEM("Initialising Scheduler...")
+	LOG_SYSTEM("Initialising Controllers...")
 
 	scheduler = new /datum/scheduler()
+
 	var/controller/C = new /controller/lighting()
 	scheduler.add_controller(C)
 
+	C = new /controller/game_loop()
+	scheduler.add_controller(C)
+
 	LOG_SYSTEM("Startup Complete!")
-	world.sleep_offline = TRUE
+	world.sleep_offline = FALSE
 
 /world/Del()
 	. = ..()

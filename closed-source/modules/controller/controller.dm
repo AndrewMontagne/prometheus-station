@@ -1,4 +1,6 @@
-/// Controller class
+/**
+Controller base class. All controllers inherit from this
+**/
 /controller
 	parent_type = /datum
 	var/name = ""
@@ -9,6 +11,7 @@
 	var/tick_debt = 0
 	var/tick_rate = 10
 
+/// Called to do work
 /controller/proc/process()
 	src.yielded = FALSE
 	src.next_fire_time = world.time + src.tick_rate

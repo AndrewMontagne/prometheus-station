@@ -294,6 +294,7 @@
 #include "closed-source\modules\game_loop\controller.dm"
 #include "closed-source\modules\game_loop\datum\game_state\base.dm"
 #include "closed-source\modules\game_loop\datum\game_state\endgame.dm"
+#include "closed-source\modules\game_loop\datum\game_state\midgame.dm"
 #include "closed-source\modules\game_loop\datum\game_state\pregame.dm"
 #include "closed-source\modules\game_loop\datum\gamemode\base.dm"
 #include "closed-source\modules\game_loop\datum\gamemode\extended.dm"
