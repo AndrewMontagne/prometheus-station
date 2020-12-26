@@ -1,6 +1,6 @@
-
-//! User Role
 /**
+Role Base Class
+
 Determines what `/datum/permission`s a user has. A user can only have one role.
 **/
 /datum/role

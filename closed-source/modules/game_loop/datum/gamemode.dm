@@ -1,6 +1,6 @@
-
-//! Gamemode Base Class
 /**
+Gamemode Base Class
+
 This class encapsulates gamemode functionality
 **/
 /datum/gamemode
@@ -13,15 +13,15 @@ This class encapsulates gamemode functionality
 	/// A description of this gamemode
 	var/desc = ""
 
-//! Returns whether this gamemode's prerequisites have been met
+/// Returns whether this gamemode's prerequisites have been met
 /datum/gamemode/proc/can_run()
 	return FALSE
 
-//! Called by the game loop controller before we process the game state
+/// Called by the game loop controller before we process the game state
 /datum/gamemode/proc/process()
 	return
 
-//! Returns the initial state for this gamemode
+/// Returns the initial state for this gamemode
 /datum/gamemode/proc/get_initial_state()
 	return new /datum/game_state/midgame()
 

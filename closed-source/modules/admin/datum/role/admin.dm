@@ -1,3 +1,6 @@
+/**
+Admin Role
+**/
 /datum/role/admin
 	priority = 100
 	role_name = "Admin"

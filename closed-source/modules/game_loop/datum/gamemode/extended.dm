@@ -1,6 +1,6 @@
-
-//! Extended roleplay
 /**
+Extended Roleplay
+
 The "default" gamemode. There are no objectives, just play a normal shift.
 **/
 /datum/gamemode/extended

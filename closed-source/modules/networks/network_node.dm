@@ -1,4 +1,8 @@
+/**
+Network Nodes
 
+Intended to be subclassed, this is a generic network piece object that forms [/datum/network]s
+**/
 /obj/network_node
 	VAR_PRIVATE/datum/network/network = null
 	var/enabled = TRUE
@@ -6,7 +10,7 @@
 	icon_state = "0-1"
 	var/list/dirs = list()
 
-
+/// Constructor, handles joining networks
 /obj/network_node/New()
 	. = ..()
 	
@@ -32,6 +36,7 @@
 					var/list/obj/network_node/new_graph = node.build_node_graph()
 					new /datum/network(new_graph)
 
+/// Destructor, handles leaving networks
 /obj/network_node/Del()
 	enabled = FALSE
 	src.network.on_node_remove(src)
@@ -57,7 +62,7 @@
 					continue
 	. = ..()
 
-///
+/// Sets the network for this node
 /obj/network_node/proc/set_network(datum/network/new_network)
 	if (!isnull(src.network))
 		src.network.on_node_remove(src)

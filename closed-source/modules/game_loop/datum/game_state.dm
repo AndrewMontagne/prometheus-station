@@ -1,5 +1,7 @@
 
 /**
+Game State Base Class
+
 This class handles game state logic, and is intended to be used by "phases" of
 gamemodes to encapsulate logic into those phases alone.
 

@@ -1,6 +1,7 @@
 
-//! Stress Test Controller
 /**
+Stress Test Controller
+
 This controller does meaningless work in order to eat up CPU cycles and
 thus stress test the task scheduler. It is well behaved and will yield when appropriate.
 **/

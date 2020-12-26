@@ -1,4 +1,8 @@
+/**
+Network Datum
 
+Intended to be subclassed, this is the logical "network" datum for [/obj/network_node]s to use
+**/
 /datum/network
 	var/list/obj/network_node/nodes = list()
 	var/colour
@@ -15,16 +19,19 @@
 		var/obj/network_node/node = N
 		node.color = "#ffffff"
 
+/// Fired when a node is added to the network
 /datum/network/proc/on_node_add(obj/network_node/node)
 	node.color = src.colour
 	src.nodes.Add(node)
 
+/// Fired when a node is removed from the network
 /datum/network/proc/on_node_remove(obj/network_node/node)
 	src.nodes.Remove(node)
 	node.color = "#ffffff"
 	if (nodes.len == 0)
 		del(src)
 
+/// Merges this network into the other network
 /datum/network/proc/merge_into(datum/network/other_network)
 	for (var/N in src.nodes)
 		var/obj/network_node/node = N

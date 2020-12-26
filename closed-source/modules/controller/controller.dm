@@ -1,16 +1,24 @@
 
-//! Controller Base Class
 /**
+Controller Base Class
+
 All controllers inherit from this
 **/
 /controller
 	parent_type = /datum
+	/// Name of the controller
 	var/name = ""
+	/// The `world.time` the controller will process next
 	var/next_fire_time = 0
+	/// The controller's priority, see [/datum/scheduler] for more details
 	var/priority = PRIORITY_MEDIUM
+	/// The computed average ticks this controller runs
 	var/average_ticks = 0
+	/// Has this controller yielded since it last fired?
 	var/yielded = FALSE
-	var/tick_debt = 0
+	/// For PRIORITY_MEDIUM tasks, this is the accumulated execution debt
+	var/tick_debt = 0 
+	/// Interval in ticks that this controller fires in
 	var/tick_rate = 10
 
 /// Called every `src.tick_rate` ticks

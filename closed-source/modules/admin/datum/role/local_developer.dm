@@ -1,9 +1,11 @@
-//! Local developer role
+/**
+Local developer role
+**/
 /datum/role/local_developer
 	priority = 0
 	role_name = "Local Developer"
 
-//! If the client's IP range is in an IANA-assigned private network block or the loopback block, give them this.
+/// If the client's IP range is in an IANA-assigned private network block or the loopback block, give them this.
 /datum/role/local_developer/is_client_eligible(client/user_client)
 	//TODO: Config check to make sure this can never be invoked on production
 
@@ -22,7 +24,7 @@
 
 	return FALSE
 
-//! The local developer role gets every single possible permission.
+/// The local developer role gets every single possible permission.
 /datum/role/local_developer/on_client_add()
 	. = ..()
 	

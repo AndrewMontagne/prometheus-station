@@ -108,7 +108,8 @@ var/next_promise_id = 0
 		P.__resolve_callback()
 
 /proc/call_wait()
-	return call_async(arglist(args)).resolve()
+	var/datum/promise/P = call_async(arglist(args))
+	return P.resolve()
 	
 /*
 	Extended Profiling - High precision in-depth performance profiling.

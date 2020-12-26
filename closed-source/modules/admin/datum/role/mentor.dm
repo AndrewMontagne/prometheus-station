@@ -1,3 +1,6 @@
+/**
+Mentor Role
+**/
 /datum/role/mentor
 	priority = 300
 	role_name = "Mentor"

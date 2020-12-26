@@ -1,4 +1,8 @@
-/// Lighting controller
+/**
+The Lighting Controller
+
+This controller hooks in the GoonLights lighting processing into the task scheduler.
+**/
 /controller/lighting
 	name = "Lighting"
 	priority = PRIORITY_MEDIUM

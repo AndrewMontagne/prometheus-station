@@ -1,9 +1,7 @@
-
-//! Pregame Game State
 /**
-This is the default game state and cannot be changed.
+Pregame Game State
 
-The next state is undefined by default, and is set by the gamemode before it exits.
+This is the default game state and cannot be changed. The next state is undefined by default, and is set by the gamemode before it exits.
 **/
 /datum/game_state/pregame 
 	name = "Pre-game"
@@ -17,8 +15,9 @@ The next state is undefined by default, and is set by the gamemode before it exi
 	game_loop.running_gamemode = pick(src.available_gamemodes())
 	src.next_state = game_loop.running_gamemode.get_initial_state()
 	
-//! Lists the available gamemodes to play
+/// Lists the available gamemodes to play
 /datum/game_state/pregame/proc/available_gamemodes()
+	PRIVATE_PROC(TRUE)
 	var/list/gamemode_paths = typesof(/datum/gamemode)
 	var/list/gamemodes = list()
 
