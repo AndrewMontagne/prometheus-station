@@ -302,6 +302,7 @@
 #include "closed-source\modules\networks\network.dm"
 #include "closed-source\modules\networks\network_node.dm"
 #include "closed-source\modules\parallax\parallax.dm"
+#include "closed-source\modules\parallax\space.dm"
 #include "lib\GoonLights\controller.dm"
 #include "lib\GoonLights\helpers\area.dm"
 #include "lib\GoonLights\helpers\atom.dm"

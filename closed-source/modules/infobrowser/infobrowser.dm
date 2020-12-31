@@ -1,6 +1,7 @@
-/mob/verb/infotab_change(var/new_tab="" as null|text)
+/// Shows and hides the web browser overlay on the client as needed
+/client/verb/infotab_change(var/new_tab="" as null|text)
 	set name = "OnInfoTabChange"
-	set category = "MOTD"
+	set hidden = TRUE
 
 	if (new_tab == "MOTD")
 		winset(src, "infobrowser", "is-visible=true;")
@@ -8,5 +9,12 @@
 	else
 		winset(src, "infobrowser", "is-visible=false;")
 
+/// Sets up the hook into the frontend to call the OnInfoTabChange verb
 /client/proc/init_infobrowser()
     winset(src, "info", "on-tab = \"OnInfoTabChange \[\[*\]\]\"")
+
+/// Dummy verb for the MOTD tab
+/client/verb/dummy_motd_verb()
+	set name = "Loading MOTD..."
+	set category = "MOTD"
+	return
