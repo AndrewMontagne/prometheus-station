@@ -1,10 +1,3 @@
-/obj/screen/splash
-	icon = 'cc-by-sa-nc/icons/misc/splash.dmi'
-	icon_state = "ss13"
-	screen_loc = "CENTER:-104,CENTER:-16"
-	mouse_over_pointer = MOUSE_INACTIVE_POINTER
-	name = "Splash Screen"
-
 /mob/new_player
 	anchored = 1
 

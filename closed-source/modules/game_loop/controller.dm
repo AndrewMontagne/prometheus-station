@@ -45,3 +45,5 @@ This controls the overall game state and handles the gamemode/gamestate logic.
 			if (!isnull(src.state))
 				src.state.state_entry()
 			del(oldstate)
+		else
+			src.state.process()

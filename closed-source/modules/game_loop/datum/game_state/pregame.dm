@@ -8,12 +8,16 @@ This is the default game state and cannot be changed. The next state is undefine
 	
 /datum/game_state/pregame/state_entry()
 	. = ..()
-	src.next_state_time = world.time + MINUTES(3)
+	src.next_state_time = world.time + MINUTES(1)
 
 /datum/game_state/pregame/state_exit()
 	. = ..()
 	game_loop.running_gamemode = pick(src.available_gamemodes())
 	src.next_state = game_loop.running_gamemode.get_initial_state()
+
+/datum/game_state/pregame/process()
+	for (var/mob/lobby/L in world)
+		L.update_login_window()
 	
 /// Lists the available gamemodes to play
 /datum/game_state/pregame/proc/available_gamemodes()

@@ -276,6 +276,7 @@
 #include "closed-source\code\planes.dm"
 #include "closed-source\code\turf.dm"
 #include "closed-source\code\world.dm"
+#include "closed-source\code\mob\lobby.dm"
 #include "closed-source\code\obj\sun.dm"
 #include "closed-source\code\turf\space.dm"
 #include "closed-source\maps\newmap.dmm"

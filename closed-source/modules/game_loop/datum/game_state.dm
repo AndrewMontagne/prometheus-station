@@ -24,7 +24,7 @@ There are three builtin states for pregame, midgame and endgame.
 	if (isnull(src.next_state_time))
 		return null
 	else
-		return round(src.next_state_time - world.time)
+		return round((src.next_state_time - world.time) / world.fps)
 
 /// Fired when we enter this state
 /datum/game_state/proc/state_entry()
