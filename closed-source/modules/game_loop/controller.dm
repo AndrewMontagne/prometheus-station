@@ -32,6 +32,14 @@ This controls the overall game state and handles the gamemode/gamestate logic.
 /controller/game_loop/proc/is_game_over()
 	return istype(src.state, /datum/game_state/endgame)
 
+/// Helper method to poll the pregame state for ready players, if in pregame
+/controller/game_loop/proc/get_ready_players()
+	if (!src.is_pre_game())
+		return list()
+	else
+		var/datum/game_state/pregame/P = src.state
+		return P.get_ready_players()
+
 /controller/game_loop/process()
 	. = ..()
 	if (!isnull(src.running_gamemode))

@@ -51,8 +51,13 @@
 	return
 
 /mob/lobby/proc/update_login_window()
+	if (isnull(game_loop))
+		winset(src, "loginwindow.loginbutton_ready", "border=line; text=\"Ready Up\"; background-color=#00dc00; focus=false")
+		winset(src, "login_label", "text=\"Starting up...\"")
+		return
+		
 	if (game_loop.is_pre_game())
-		if(ready)
+		if (!ready)
 			winset(src, "loginwindow.loginbutton_ready", "border=line; text=\"Ready Up\"; background-color=#00dc00; focus=false")
 		else
 			winset(src, "loginwindow.loginbutton_ready", "border=sunken; text=\"Cancel\"; background-color=#dc0000; focus=false")

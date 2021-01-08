@@ -21,7 +21,8 @@ This class encapsulates gamemode functionality
 /datum/gamemode/proc/process()
 	return
 
-/// Returns the initial state for this gamemode
-/datum/gamemode/proc/get_initial_state()
-	return new /datum/game_state/midgame()
+/// Initialises the gamemode and returns the initial state for this gamemode
+/datum/gamemode/proc/initialize()
+	if (!game_loop || !game_loop.is_pre_game())
+		throw EXCEPTION("Game loop is in an invalid state for gamemode initialisation!")
 
