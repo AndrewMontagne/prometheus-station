@@ -1,5 +1,5 @@
 {
-	"image": "andrewmontagne/byond:latest",
+	"image": "andrewmontagne/byond:514",
 	"forwardPorts": [5000],
 	"mounts": [
 		"source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached"

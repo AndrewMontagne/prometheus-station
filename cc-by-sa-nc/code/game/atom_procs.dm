@@ -44,7 +44,7 @@
 /atom/proc/add_fingerprint(mob/living/carbon/human/M as mob)
 	if (!istype(M, /mob/living/carbon/human))
 		return FALSE
-	if (!( src.flags ) & 256)
+	if (!(src.flags & 256))
 		return
 	if (M.gloves)
 		if(src.fingerprintslast != M.key)
@@ -73,7 +73,7 @@
 /atom/proc/add_blood(mob/living/carbon/human/M as mob)
 	if (!( istype(M, /mob/living/carbon/human) ))
 		return FALSE
-	if (!( src.flags ) & 256)
+	if (!(( src.flags ) & 256))
 		return
 	if (!( src.blood_type ))
 		if (istype(src, /obj/item))
@@ -103,7 +103,7 @@
 
 /atom/proc/clean_blood()
 
-	if (!( src.flags ) & 256)
+	if (!(( src.flags ) & 256))
 		return
 	if ( src.blood_type )
 		if (istype (src, /obj/item))

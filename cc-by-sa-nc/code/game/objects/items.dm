@@ -51,7 +51,7 @@
 				safe = G.affecting
 		if (safe)
 			return safe.attackby(W, user)
-	if ((!( shielded ) || !( W.flags ) & 32))
+	if (!shielded || !( W.flags  & 32))
 		spawn( 0 )
 			W.attack(src, user)
 			return
