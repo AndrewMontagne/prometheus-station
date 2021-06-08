@@ -10,6 +10,7 @@
 	. = ..()
 	LOG_INFO("[src.key] connected!")
 	src.screen += src.get_parallax()
+	src.init_infobrowser()
 
 /client/Del()
 	. = ..()
