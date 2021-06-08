@@ -4,6 +4,7 @@
 	area = /area/space
 	view = "19x17"
 	loop_checks = FALSE
+	fps = 10
 	
 /world/Error(exception/E, datum/src)
 	if (!istype(E))

@@ -29,17 +29,11 @@
 	src << sound(lobby_music_track, repeat = 0, wait = 0, channel=1337)
 
 	client.screen += splashscreen
-	client.screen += base_hud()
 
 	src << browse_rsc('cc-by-sa-nc/icons/postcardsmall.png')
-	src << browse("<html><body>Message of the day!</body></html>", "window=loginwindow")
+	src << browse("<html><body>[motd]</body></html>", "window=loginwindow")
 	update_login_window()
 	winset(src, "loginwindow", "is-visible=true;")
-
-	if(!mind)
-		mind = new
-		mind.key = key
-		mind.current = src
 
 /mob/lobby/Logout()
 	ready = 0
@@ -99,7 +93,7 @@
 
 /mob/lobby/on_lose_client()
 	. = ..()
-	
+
 	client.screen -= splashscreen
 	winset(src, "loginwindow", "is-visible=false;")
 	src << sound(null, repeat = 0, wait = 0, channel = 1337)

@@ -6,4 +6,8 @@
 	set category = "Commands"
 	set name = "Start Now"
 	set hidden = FALSE
-	ticker.current_state = GAME_STATE_SETTING_UP
+
+	if (game_loop.is_pre_game())
+		game_loop.state.next_state_time = world.time
+	else
+		usr << "We are not in pregame!"

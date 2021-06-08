@@ -1,3 +1,6 @@
+/client
+	fps = 30
+
 /client/proc/change_mob(mob/new_mob)
 	src.mob.on_lose_client()
 	src.mob = new_mob
@@ -6,6 +9,7 @@
 /client/New()
 	. = ..()
 	LOG_INFO("[src.key] connected!")
+	src.screen += src.get_parallax()
 
 /client/Del()
 	. = ..()

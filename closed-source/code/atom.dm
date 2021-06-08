@@ -1,3 +1,6 @@
+/atom
+	var/anchored = FALSE
+
 /// Finds and returns the parent turf of an atom.
 /atom/proc/find_turf()
 	RETURN_TYPE(/turf)
