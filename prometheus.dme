@@ -266,6 +266,7 @@
 #include "cc-by-sa-nc\code\WorkInProgress\KeelinsStuff.dm"
 #include "cc-by-sa-nc\interface\skin.dmf"
 #include "closed-source\list_sort.dm"
+#include "closed-source\code\areas.dm"
 #include "closed-source\code\atom.dm"
 #include "closed-source\code\client.dm"
 #include "closed-source\code\mob.dm"

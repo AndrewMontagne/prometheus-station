@@ -1,5 +1,9 @@
 import sys, os, re, hashlib, datetime, time, math
 
+fixed_tags = {
+    "/turf/space,/area/space": "sss"
+}
+
 def listchunks(l, n):
     """Yield successive n-sized chunks from l."""
     for i in range(0, len(l), n):
@@ -21,7 +25,7 @@ def debug(s):
         print(s)
 
 def version():
-    return "1.2"
+    return "1.3"
 
 def mapmerge(filepath, test_only=False):
     hashLength = 0
@@ -144,6 +148,9 @@ def mapmerge(filepath, test_only=False):
         for tile in sortedtiles:
             data = tile['data']
             while True:
+                if data in fixed_tags:
+                    newhash = fixed_tags[data]
+                    break
                 md5 = hashlib.sha1(data.encode('utf-8')).hexdigest()
                 newhash = hashtobase52(md5)
                 if newhash not in newhashes:
