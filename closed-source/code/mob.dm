@@ -9,3 +9,12 @@
 
 /// Fired when the mob gains a client
 /mob/proc/on_gain_client()
+
+// Handler for the input change button
+/mob/verb/change_input()
+	set name = "ChangeInput"
+	set hidden = 1
+
+	var/verbname = input("Input Verb", "Select your input verb:", "Say") in list("Say", "Whisper", "OOC", "AHelp")
+	var/lowerverb = lowertext(verbname)
+	winset(usr, null, "outputwindow.input.command=\"![lowerverb] \\\"\"; outputwindow.inputbutton.text=\"[verbname]\"")
