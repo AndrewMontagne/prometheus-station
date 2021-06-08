@@ -138,30 +138,6 @@ window "infowindow"
 		text = "Button 1"
 		command = ""
 
-window "inventorywindow"
-	elem "inventorywindow"
-		type = MAIN
-		pos = 281,0
-		size = 640x480
-		anchor1 = none
-		anchor2 = none
-		saved-params = "pos;size;is-minimized;is-maximized"
-		titlebar = false
-		statusbar = false
-		can-close = false
-		can-minimize = false
-		can-resize = false
-		is-pane = true
-	elem "inventory"
-		type = MAP
-		pos = 0,0
-		size = 640x480
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = #272727
-		saved-params = "zoom;letterbox;zoom-mode"
-		icon-size = 64
-		zoom = 2
 
 window "loginwindow"
 	elem "loginwindow"
@@ -259,7 +235,7 @@ window "mainwindow"
 		anchor2 = 100,100
 		background-color = #383838
 		saved-params = "splitter"
-		left = "lpane"
+		left = "mapwindow"
 		right = "rpane"
 		is-vert = true
 
@@ -374,31 +350,4 @@ window "rpane"
 		is-vert = false
 		splitter = 40
 
-window "lpane"
-	elem "lpane"
-		type = MAIN
-		pos = 281,0
-		size = 640x480
-		anchor1 = none
-		anchor2 = none
-		background-color = #383838
-		saved-params = "pos;size;is-minimized;is-maximized"
-		titlebar = false
-		statusbar = false
-		can-close = false
-		can-minimize = false
-		can-resize = false
-		is-pane = true
-	elem "lpanewindow"
-		type = CHILD
-		pos = 0,0
-		size = 640x480
-		anchor1 = 0,0
-		anchor2 = 100,100
-		background-color = #383838
-		saved-params = "splitter"
-		left = "inventorywindow"
-		right = "mapwindow"
-		is-vert = true
-		splitter = 10
 
