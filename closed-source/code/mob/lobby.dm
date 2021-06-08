@@ -32,7 +32,7 @@
 	client.screen += base_hud()
 
 	src << browse_rsc('cc-by-sa-nc/icons/postcardsmall.png')
-	src << browse("<html><body>[join_motd]</body></html>", "window=loginwindow")
+	src << browse("<html><body>Message of the day!</body></html>", "window=loginwindow")
 	update_login_window()
 	winset(src, "loginwindow", "is-visible=true;")
 
@@ -50,6 +50,7 @@
 	..()
 	return
 
+/// Updates the login window
 /mob/lobby/proc/update_login_window()
 	if (isnull(game_loop))
 		winset(src, "loginwindow.loginbutton_ready", "border=line; text=\"Ready Up\"; background-color=#00dc00; focus=false")
@@ -80,7 +81,7 @@
 		winset(src, "loginwindow.loginbutton_ready", "border=line; text=\"Join Round\"; background-color=#00bbdc; focus=false")
 		winset(src, "login_label", "text=\"Welcome to [world.name]!\"")
 
-
+/// Verb used by players in the lobby to toggle their "ready" status
 /mob/lobby/verb/toggle_ready()
 	set name = "toggleready"
 
@@ -98,5 +99,7 @@
 
 /mob/lobby/on_lose_client()
 	. = ..()
+	
+	client.screen -= splashscreen
 	winset(src, "loginwindow", "is-visible=false;")
 	src << sound(null, repeat = 0, wait = 0, channel = 1337)

@@ -21,7 +21,7 @@ def debug(s):
         print(s)
 
 def version():
-    return "1.0.1"
+    return "1.2"
 
 def mapmerge(filepath, test_only=False):
     hashLength = 0
@@ -38,7 +38,6 @@ def mapmerge(filepath, test_only=False):
 
     tilesRegex = re.compile('"([^"]+)" ?= ?\((.+)\)')
     mapHeaderRegex = re.compile('\(([^)]+)\) = {"')
-    nonQuotedSpacesRegex = re.compile('\s+(?=([^"]*"[^"]*")*[^"]*$)')
 
     skip = False
     loadprog = 0
@@ -108,7 +107,6 @@ def mapmerge(filepath, test_only=False):
                 if hashLength is 0:
                     hashLength = len(oldhash)
                 data = match.group(2)
-                data = nonQuotedSpacesRegex.sub('', data)
                 area = data.split(',')[-1]
                 tiles[oldhash] = {"oldhash" : oldhash, "data": data, "area": area, "count": 0}
 
@@ -194,7 +192,7 @@ def mapmerge(filepath, test_only=False):
                         out.flush()
                     lastarea = tile['area']
                     out.write('\n// BEGIN AREA: ' + lastarea + '\n')
-                out.write('"' + tile['newhash'] + '"=(' + tile['data'] + ')\n')
+                out.write('"' + tile['newhash'] + '" = (' + tile['data'] + ')\n')
             print('.', end='', flush=True)
 
             out.write('// END AREA: ' + lastarea + '\n')

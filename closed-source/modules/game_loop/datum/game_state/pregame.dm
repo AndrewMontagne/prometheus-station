@@ -8,7 +8,7 @@ This is the default game state and cannot be changed. The next state is undefine
 	
 /datum/game_state/pregame/state_entry()
 	. = ..()
-	src.next_state_time = world.time + MINUTES(3)
+	src.next_state_time = world.time + MINUTES(1)
 
 /datum/game_state/pregame/state_exit()
 	. = ..()

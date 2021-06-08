@@ -7,11 +7,9 @@
 #include "lib\DreamChecker\dreamchecker.dm"
 
 #ifdef EXTERNAL_LIB
-	#include "/byond/lib/_extools_api.dm"
 	#include "/byond/lib/socket.dm"
 	#include "/byond/lib/rust_g.dm"
 #else
-	#include "lib/_extools_api.dm"
 	#include "lib/socket.dm"
 	#include "lib/rust_g.dm"
 #endif
@@ -275,6 +273,8 @@
 #include "closed-source\code\turf.dm"
 #include "closed-source\code\world.dm"
 #include "closed-source\code\mob\lobby.dm"
+#include "closed-source\code\mob\player.dm"
+#include "closed-source\code\obj\spawnpoint.dm"
 #include "closed-source\code\obj\sun.dm"
 #include "closed-source\code\turf\space.dm"
 #include "closed-source\maps\newmap.dmm"

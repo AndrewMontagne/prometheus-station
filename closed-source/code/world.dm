@@ -19,9 +19,6 @@
 /world/New()
 	. = ..()
 	LOG_SYSTEM("Initialising BYOND Extensions...")
-	extools_initialize()
-	tffi_initialize()
-	debugger_initialize(FALSE)
 	rustg_url_encode("") // Check for rustg's presence
 
 	LOG_SYSTEM("Initialising Controllers...")

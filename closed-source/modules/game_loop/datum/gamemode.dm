@@ -26,3 +26,18 @@ This class encapsulates gamemode functionality
 	if (!game_loop || !game_loop.is_pre_game())
 		throw EXCEPTION("Game loop is in an invalid state for gamemode initialisation!")
 
+	for (var/mob/lobby/new_player in world)
+		if (!new_player.ready || !new_player.client)
+			continue
+		spawn_player(new_player)
+
+/// Spawns a given player
+/datum/gamemode/proc/spawn_player(mob/lobby/new_player)
+
+	for (var/obj/spawnpoint/spawnpoint in world)
+		if (locate(/mob/player) in spawnpoint.loc)
+			continue
+		else
+			var/mob/player/player_mob = new(spawnpoint.loc)
+			new_player.client.change_mob(player_mob)
+			del(new_player)
