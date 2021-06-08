@@ -45,8 +45,8 @@ window "infowindow"
 		type = MAIN
 		pos = 281,0
 		size = 480x320
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		background-color = #383838
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Info"
@@ -56,6 +56,8 @@ window "infowindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 494x334
+		inner-size = 480x320
 	elem "button4"
 		type = BUTTON
 		pos = 288,4
@@ -125,7 +127,6 @@ window "infowindow"
 		background-color = #ff0080
 		is-visible = false
 		saved-params = ""
-		auto-format = false
 	elem "inputbutton"
 		type = BUTTON
 		pos = 0,4
@@ -138,14 +139,13 @@ window "infowindow"
 		text = "Button 1"
 		command = ""
 
-
 window "loginwindow"
 	elem "loginwindow"
 		type = MAIN
 		pos = 992,145
 		size = 472x503
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		background-color = #383838
 		is-visible = false
 		saved-params = "pos;is-minimized;is-maximized"
@@ -153,14 +153,12 @@ window "loginwindow"
 		can-close = false
 		can-minimize = false
 		can-resize = false
-		outer-size = 488x542
-		inner-size = 472x503
 	elem "login_label"
 		type = LABEL
 		pos = 8,424
 		size = 456x32
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		font-style = "bold"
 		text-color = #ffffff
 		background-color = #383838
@@ -171,7 +169,7 @@ window "loginwindow"
 		pos = 168,456
 		size = 138x40
 		anchor1 = 0,100
-		anchor2 = none
+		anchor2 = -1,-1
 		font-size = 14
 		font-style = "bold"
 		background-color = #00dc00
@@ -185,7 +183,7 @@ window "loginwindow"
 		pos = 320,464
 		size = 136x24
 		anchor1 = 0,100
-		anchor2 = none
+		anchor2 = -1,-1
 		text-color = #ffffff
 		background-color = #40628a
 		saved-params = "is-checked"
@@ -196,7 +194,7 @@ window "loginwindow"
 		pos = 16,464
 		size = 136x24
 		anchor1 = 0,100
-		anchor2 = none
+		anchor2 = -1,-1
 		text-color = #ffffff
 		background-color = #40628a
 		saved-params = "is-checked"
@@ -208,25 +206,25 @@ window "loginwindow"
 		size = 456x412
 		anchor1 = 2,2
 		anchor2 = 98,83
-		background-color = none
 		border = sunken
 		saved-params = ""
-		auto-format = false
 
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
 		pos = 281,0
 		size = 640x480
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		background-color = #383838
 		is-default = true
+		is-maximized = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Space Station 13"
-		statusbar = true
 		macro = "macro"
 		menu = "menu"
+		outer-size = 656x558
+		inner-size = 640x499
 	elem "mainvsplit"
 		type = CHILD
 		pos = 0,0
@@ -238,14 +236,15 @@ window "mainwindow"
 		left = "mapwindow"
 		right = "rpane"
 		is-vert = true
+		splitter = 60
 
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
 		pos = 281,0
 		size = 640x480
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -261,6 +260,7 @@ window "mapwindow"
 		anchor2 = 100,100
 		text-color = #000000
 		is-default = true
+		saved-params = "zoom;letterbox;zoom-mode"
 		zoom = 2
 
 window "outputwindow"
@@ -268,8 +268,8 @@ window "outputwindow"
 		type = MAIN
 		pos = 281,0
 		size = 648x426
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		background-color = #383838
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
@@ -278,6 +278,8 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 662x440
+		inner-size = 648x426
 	elem "hotbar"
 		type = MAP
 		pos = 0,0
@@ -286,7 +288,6 @@ window "outputwindow"
 		anchor2 = 100,0
 		background-color = #383838
 		saved-params = "zoom;letterbox;zoom-mode"
-		icon-size = 64
 		zoom = 2
 	elem "input"
 		type = INPUT
@@ -305,7 +306,7 @@ window "outputwindow"
 		pos = 0,400
 		size = 72x20
 		anchor1 = 0,100
-		anchor2 = none
+		anchor2 = -1,-1
 		text-color = #ffffff
 		background-color = #40628a
 		saved-params = "is-checked"
@@ -327,8 +328,8 @@ window "rpane"
 		type = MAIN
 		pos = 281,0
 		size = 640x480
-		anchor1 = none
-		anchor2 = none
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		background-color = #383838
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
@@ -337,6 +338,7 @@ window "rpane"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 654x494
 	elem "rpanewindow"
 		type = CHILD
 		pos = 0,0
@@ -349,5 +351,4 @@ window "rpane"
 		right = "outputwindow"
 		is-vert = false
 		splitter = 40
-
 
