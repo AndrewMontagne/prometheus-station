@@ -62,6 +62,8 @@
 #include "closed-source\modules\game_loop\datum\game_state\pregame.dm"
 #include "closed-source\modules\game_loop\datum\gamemode\extended.dm"
 #include "closed-source\modules\infobrowser\infobrowser.dm"
+#include "closed-source\modules\inventory\inventory.dm"
+#include "closed-source\modules\inventory\inventoryslot.dm"
 #include "closed-source\modules\map_pane\map_pane.dm"
 #include "closed-source\modules\networks\network.dm"
 #include "closed-source\modules\networks\network_node.dm"

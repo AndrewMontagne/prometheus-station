@@ -29,3 +29,23 @@
 #define PRIORITY_MEDIUM 3
 /// Low task priority
 #define PRIORITY_LOW 4
+
+/**
+These are the canonical names for inventory slots, so that they can be used for sprites.
+**/
+
+#define SLOT_ID				= "id_card"
+#define SLOT_GLOVES			= "gloves"
+#define SLOT_GLASSES		= "glasses"
+#define SLOT_EARS			= "ears"
+#define SLOT_MASK			= "mask"
+#define SLOT_SHIRT			= "shirt"
+#define SLOT_TROUSERS		= "trousers"
+#define SLOT_SUIT			= "suit"
+#define SLOT_HAT			= "hat"
+#define SLOT_BELT			= "belt"
+#define SLOT_BACK			= "back"
+
+#define SLOT_BELT_CLIP_R	= "beltclip_r"
+#define SLOT_BELT_CLIP_L	= "beltclip_l"
+#define SLOT_POCKET			= "pocket"

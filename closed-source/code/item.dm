@@ -4,6 +4,7 @@ Parent type for all items that can be picked up
 /item
 	parent_type = /obj
 	mouse_over_pointer = MOUSE_HAND_POINTER
+	var/item_state = "item"
 
 /item/MouseDown(location,control,params)
 	var/icon/I = new(icon, icon_state)
