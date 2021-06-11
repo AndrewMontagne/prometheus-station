@@ -4,14 +4,12 @@
 
 #define RUSTG_OVERRIDE_BUILTINS 1
 
-#include "lib\DreamChecker\dreamchecker.dm"
-
-#ifdef EXTERNAL_LIB
-	#include "/byond/lib/socket.dm"
+#ifdef ENV_EXTERNAL_BYOND_LIBS
 	#include "/byond/lib/rust_g.dm"
+	#include "/byond/lib/dreamchecker.dm"
 #else
-	#include "lib/socket.dm"
 	#include "lib/rust_g.dm"
+	#include "lib/lint.dm"
 #endif
 
 #include "closed-source\code\defines.dm"

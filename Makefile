@@ -34,7 +34,11 @@ build:
 	@echo -e '\n${INV} ###   BUILD   ### ${NC}\n'
 	@mkdir -p /tmp/prometheus-station
 	@rsync -ra --delete --exclude='/.*' --exclude='/data' ./* /tmp/prometheus-station
+	@(cd /tmp/prometheus-station && mv prometheus.dme prometheus.dme.old)
+	@(cd /tmp/prometheus-station && python3 mit/tools/env.py > prometheus.dme)
+	@(cd /tmp/prometheus-station && cat prometheus.dme.old >> prometheus.dme)
 	@(cd /tmp/prometheus-station && DreamMaker -clean prometheus.dme)
+	@(cd /tmp/prometheus-station && cp prometheus.dme.old prometheus.dme && rm prometheus.dme.old)
 	@rsync -rai --delete /tmp/prometheus-station/* .
 
 run:
