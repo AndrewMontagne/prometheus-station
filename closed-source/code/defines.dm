@@ -43,6 +43,7 @@ These are the canonical names for inventory slots, so that they can be used for 
 #define SLOT_MASK			"mask"
 #define SLOT_SHIRT			"shirt"
 #define SLOT_TROUSERS		"trousers"
+#define SLOT_SHOES			"shoes"
 #define SLOT_JACKET			"jacket"
 #define SLOT_SUIT			"suit"
 #define SLOT_HAT			"hat"

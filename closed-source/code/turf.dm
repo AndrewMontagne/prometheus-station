@@ -19,9 +19,12 @@
 /turf/MouseDropOn(obj/O as obj, mob/player/user as mob)
 	if (istype(O,/obj/item))
 		var/obj/item/I = O
-		if (I.equipped && I.slot.can_unequipitem())
-			I.slot.unequipitem()
-			I.loc = src
+		if (I.equipped)
+			if (I.slot.can_unequipitem())
+				I.slot.unequipitem()
+			else
+				return
+		I.loc = src
 
 /turf/find_turf()
 	return src

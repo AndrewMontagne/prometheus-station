@@ -12,5 +12,16 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	. = ..(loc)
 
 	var/obj/screen/inventoryslot/jacket/jacket = new(src)
-	jacket.screen_loc = "CENTER,2"
+	jacket.screen_loc = "CENTER,3"
 	src.screen += jacket
+	var/obj/screen/inventoryslot/gloves/gloves = new(src)
+	gloves.screen_loc = "CENTER:-32,3"
+	src.screen += gloves
+	var/obj/screen/inventoryslot/shoes/shoes = new(src)
+	shoes.screen_loc = "CENTER:32,3"
+	src.screen += shoes
+
+	var/obj/screen/inventoryslot/hand/left/hand_l = new(src)
+	src.screen += hand_l
+	var/obj/screen/inventoryslot/hand/right/hand_r = new(src)
+	src.screen += hand_r

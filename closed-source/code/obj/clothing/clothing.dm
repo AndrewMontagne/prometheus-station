@@ -10,3 +10,14 @@ Clothing
 	icon_state = "grey"
 	slots = list(SLOT_JACKET, SLOT_SUIT)
 
+/obj/item/clothing/gloves
+	name = "gloves"
+	icon = 'cc-by-sa-nc/icons_new/mob/gloves.dmi'
+	icon_state = "yellow"
+	slots = list(SLOT_GLOVES)
+
+/obj/item/clothing/shoes
+	name = "shoes"
+	icon = 'cc-by-sa-nc/icons_new/mob/shoes.dmi'
+	icon_state = "black"
+	slots = list(SLOT_SHOES)

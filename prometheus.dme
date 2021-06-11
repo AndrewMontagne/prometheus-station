@@ -65,6 +65,7 @@
 #include "closed-source\modules\infobrowser\infobrowser.dm"
 #include "closed-source\modules\inventory\inventory.dm"
 #include "closed-source\modules\inventory\slots\clothes.dm"
+#include "closed-source\modules\inventory\slots\hands.dm"
 #include "closed-source\modules\inventory\slots\inventoryslot.dm"
 #include "closed-source\modules\map_pane\map_pane.dm"
 #include "closed-source\modules\networks\network.dm"

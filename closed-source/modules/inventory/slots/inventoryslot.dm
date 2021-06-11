@@ -55,6 +55,8 @@
 	src.equipitem(O)
 	
 /obj/screen/inventoryslot/proc/can_equipitem(obj/item/item)
+	if(!src.fits_in_slot(item))
+		return FALSE
 	if(src.inventory)
 		return FALSE
 	if(!istype(item, /obj/item))
@@ -82,3 +84,6 @@
 	src.inventory.slot = null
 	src.inventory = null
 	src.owner.update_icon()
+
+/obj/screen/inventoryslot/proc/fits_in_slot(obj/item/I)
+	return src.slot_name in I.slots
