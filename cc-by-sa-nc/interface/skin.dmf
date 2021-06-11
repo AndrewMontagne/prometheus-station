@@ -38,6 +38,9 @@ macro "macro"
 	elem 
 		name = "SHIFT+F2+REP"
 		command = ".screenshot"
+	elem 
+		name = "F5"
+		command = ".reconnect"
 
 
 window "infowindow"

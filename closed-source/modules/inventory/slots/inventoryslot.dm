@@ -89,5 +89,9 @@
 	src.inventory = null
 	src.owner.update_icon()
 
-/obj/screen/inventoryslot/proc/fits_in_slot(obj/item/I)
-	return src.slot_name in I.slots
+/obj/screen/inventoryslot/proc/fits_in_slot(atom/A)
+	if (!istype(A,/obj/item))
+		return FALSE
+	else
+		var/obj/item/I = A
+		return src.slot_name in I.slots
