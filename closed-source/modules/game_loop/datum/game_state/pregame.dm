@@ -30,7 +30,7 @@ This is the default game state and cannot be changed. The next state is undefine
 		if (isnull(game_loop.running_gamemode))
 			LOG_ERROR("No candidate gamemodes!")
 		else
-			LOG_ERROR("Could not initialise gamemode [game_loop.running_gamemode.type]: [E.name]")
+			LOG_ERROR("Could not initialise gamemode [game_loop.running_gamemode.type]: [E.name] [E.file]:[E.name] [E.desc]")
 		world << "Could not start the game, restarting lobby..."
 		return
 

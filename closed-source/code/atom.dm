@@ -30,7 +30,8 @@
 		return
 	if(over == src)
 		return usr.client.Click(src, src_location, src_control, params)
-	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows
+	if(!Adjacent(usr) || !over.Adjacent(usr)) 
+		return // should stop you from dragging through windows
 
 	over.MouseDropOn(src,usr)
 	return
@@ -45,7 +46,7 @@
 	if (isnull(self_origin) || isnull(other_origin))
 		return FALSE
 
-	if (self_origin.x != other_origin.z)
+	if (self_origin.z != other_origin.z)
 		return FALSE
 
 	if (abs(self_origin.x - other_origin.x) > 1)

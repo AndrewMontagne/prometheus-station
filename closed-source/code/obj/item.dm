@@ -1,12 +1,18 @@
 /**
 Parent type for all items that can be picked up
 **/
-/item
-	parent_type = /obj
+/obj/item
 	mouse_over_pointer = MOUSE_HAND_POINTER
 	var/item_state = "item"
+	var/list/slots = list()
+	var/equipped = FALSE
+	var/obj/screen/inventoryslot/slot = null
 
-/item/MouseDown(location,control,params)
+/obj/item/New()
+	. = ..()
+	item_state = icon_state
+
+/obj/item/MouseDown(location,control,params)
 	var/icon/I = new(icon, icon_state)
 	I.Scale(64, 64)
 	I.Blend(rgb(0,0,0,100),ICON_SUBTRACT)

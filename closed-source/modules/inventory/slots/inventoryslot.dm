@@ -9,7 +9,7 @@
 	else
 		return null
 
-/mob/player/proc/setinvslot(slotname as text, item/I)
+/mob/player/proc/setinvslot(slotname as text, obj/item/I)
 	if(slotname in src.invslots)
 		var/obj/screen/inventoryslot/IS = src.invslots[slotname]
 		if(IS.can_equipitem(I))
@@ -20,7 +20,7 @@
 	else
 		return FALSE
 
-/mob/player/proc/tryequip(item/I)
+/mob/player/proc/tryequip(obj/item/I)
 	for(var/slotname in src.invslots)
 		var/success = src.setinvslot(slotname, I)
 		if(success)
@@ -28,13 +28,13 @@
 	return FALSE
 
 /obj/screen/inventoryslot
-	name = "pocket"
+	name = SLOT_POCKET
 	var/mob/player/owner = null
-	var/item/inventory = null
-	var/slot_name = "pocket"
+	var/obj/item/inventory = null
+	var/slot_name = SLOT_POCKET
 	var/background = "background"
 	icon = 'cc-by-sa-nc/icons/ui/screen_midnight.dmi'
-	icon_state = "pocket"
+	icon_state = SLOT_POCKET
 	layer = -1
 
 /obj/screen/inventoryslot/New(mob/player/M)
@@ -46,8 +46,6 @@
 /obj/screen/inventoryslot/MouseDropOn(obj/O as obj, mob/player/user as mob)
 	if(!src.can_equipitem(O))
 		return
-	if(O.loc == user)
-		user.client.screen -= O
 	if(istype(O.loc, /obj/screen/inventoryslot))
 		var/obj/screen/inventoryslot/IS = O.loc
 		if(IS.can_unequipitem())
@@ -56,20 +54,23 @@
 			return
 	src.equipitem(O)
 	
-/obj/screen/inventoryslot/proc/can_equipitem(item/item)
+/obj/screen/inventoryslot/proc/can_equipitem(obj/item/item)
 	if(src.inventory)
 		return FALSE
-	if(!istype(item, /item))
+	if(!istype(item, /obj/item))
 		return FALSE
 	return TRUE
 
-/obj/screen/inventoryslot/proc/equipitem(item/item)
+/obj/screen/inventoryslot/proc/equipitem(obj/item/item)
 	src.inventory = item
 	src.vis_contents = list(src.inventory)
 	src.inventory.pixel_x = 0
 	src.inventory.pixel_y = 0
 	src.inventory.loc = src
+	item.equipped = TRUE
+	item.slot = src
 	src.owner.inventory += item
+	src.owner.update_icon()
 
 /obj/screen/inventoryslot/proc/can_unequipitem()
 	return TRUE
@@ -77,4 +78,7 @@
 /obj/screen/inventoryslot/proc/unequipitem(atom/newloc)
 	src.vis_contents = list()
 	src.owner.inventory -= src.inventory
+	src.inventory.equipped = FALSE
+	src.inventory.slot = null
 	src.inventory = null
+	src.owner.update_icon()

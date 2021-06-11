@@ -31,4 +31,3 @@ thus stress test the task scheduler. It is well behaved and will yield when appr
 			break
 		yield()
 	
-	LOG_TRACE("[src.priority] [src.hash]")

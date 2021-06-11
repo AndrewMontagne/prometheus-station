@@ -11,6 +11,8 @@
 /// Log an error at the Trace logging level
 #define LOG_TRACE(X)   world.logger(X, "TRACE", "36")
 
+#define TRACE "[__FILE__]:[__LINE__]"
+
 /// Seconds to ticks
 #define SECONDS(X) (X * 10)
 /// Minutes to ticks
@@ -34,18 +36,21 @@
 These are the canonical names for inventory slots, so that they can be used for sprites.
 **/
 
-#define SLOT_ID				= "id_card"
-#define SLOT_GLOVES			= "gloves"
-#define SLOT_GLASSES		= "glasses"
-#define SLOT_EARS			= "ears"
-#define SLOT_MASK			= "mask"
-#define SLOT_SHIRT			= "shirt"
-#define SLOT_TROUSERS		= "trousers"
-#define SLOT_SUIT			= "suit"
-#define SLOT_HAT			= "hat"
-#define SLOT_BELT			= "belt"
-#define SLOT_BACK			= "back"
+#define SLOT_ID				"id_card"
+#define SLOT_GLOVES			"gloves"
+#define SLOT_GLASSES		"glasses"
+#define SLOT_EARS			"ears"
+#define SLOT_MASK			"mask"
+#define SLOT_SHIRT			"shirt"
+#define SLOT_TROUSERS		"trousers"
+#define SLOT_JACKET			"jacket"
+#define SLOT_SUIT			"suit"
+#define SLOT_HAT			"hat"
+#define SLOT_BELT			"belt"
+#define SLOT_BACK			"back"
+#define SLOT_LEFT_HAND		"lefthand"
+#define SLOT_RIGHT_HAND		"righthand"
 
-#define SLOT_BELT_CLIP_R	= "beltclip_r"
-#define SLOT_BELT_CLIP_L	= "beltclip_l"
-#define SLOT_POCKET			= "pocket"
+#define SLOT_BELT_CLIP_R	"beltclip_r"
+#define SLOT_BELT_CLIP_L	"beltclip_l"
+#define SLOT_POCKET			"pocket"
