@@ -1,6 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=eol=crlf
-
 *.dm text eol=crlf
 *.dmm text eol=crlf
 *.dme text eol=crlf
@@ -11,3 +10,4 @@
 *.png filter=lfs diff=lfs merge=lfs -text
 *.dmi filter=lfs diff=lfs merge=lfs -text
 *.dmm filter=lfs diff=lfs merge=lfs -text
+*.svg filter=lfs diff=lfs merge=lfs -text
