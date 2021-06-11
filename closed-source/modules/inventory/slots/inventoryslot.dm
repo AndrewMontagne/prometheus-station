@@ -31,6 +31,7 @@
 	name = SLOT_POCKET
 	var/mob/player/owner = null
 	var/obj/item/inventory = null
+	var/inventory_plane = 0
 	var/slot_name = SLOT_POCKET
 	var/background = "background"
 	icon = 'cc-by-sa-nc/icons/ui/screen_midnight.dmi'
@@ -71,6 +72,8 @@
 	src.inventory.loc = src
 	item.equipped = TRUE
 	item.slot = src
+	src.inventory_plane = item.plane
+	item.plane = PLANE_SCREEN
 	src.owner.inventory += item
 	src.owner.update_icon()
 
@@ -82,6 +85,7 @@
 	src.owner.inventory -= src.inventory
 	src.inventory.equipped = FALSE
 	src.inventory.slot = null
+	src.inventory.plane = src.inventory_plane
 	src.inventory = null
 	src.owner.update_icon()
 

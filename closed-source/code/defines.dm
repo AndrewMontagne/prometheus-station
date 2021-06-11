@@ -32,6 +32,17 @@
 /// Low task priority
 #define PRIORITY_LOW 4
 
+
+/**
+These are the custom defined planes
+**/
+
+#define PLANE_SPACE -55
+#define PLANE_PARALLAX -50
+#define PLANE_GAME -10
+#define PLANE_DARKNESS 100
+#define PLANE_SCREEN 999
+
 /**
 These are the canonical names for inventory slots, so that they can be used for sprites.
 **/

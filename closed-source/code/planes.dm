@@ -1,4 +1,0 @@
-#define PLANE_SPACE -55
-#define PLANE_PARALLAX -50
-#define PLANE_GAME -10
-#define PLANE_DARKNESS 100
