@@ -6,13 +6,14 @@ SHELL := /bin/bash
 
 -include /byond/env.sh
 
-all: clean lint mapmerge docs build
+all: lint mapmerge docs build
 
 dev: all run
 
 clean:
 	@echo -e '\n${INV} ###   CLEAN   ### ${NC}\n'
 	@rm -fv *.dmb *.rsc *.int *.lk
+	@rm -rfv /tmp/prometheus-station
 
 lint:
 	@echo -e '\n${INV} ###  LINTER   ### ${NC}\n'
