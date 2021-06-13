@@ -12,7 +12,9 @@
 /mob/player/proc/setinvslot(slotname as text, obj/item/I)
 	if(slotname in src.invslots)
 		var/obj/screen/inventoryslot/IS = src.invslots[slotname]
-		if(IS.can_equipitem(I))
+		if (IS.can_equipitem(I))
+			if (I.equipped && I.slot.can_unequipitem())
+				I.slot.unequipitem(IS)
 			IS.equipitem(I)
 			return TRUE
 		else
@@ -21,7 +23,16 @@
 		return FALSE
 
 /mob/player/proc/tryequip(obj/item/I)
+	var/list/hands = list()
 	for(var/slotname in src.invslots)
+		if (copytext(slotname,1,5) == "hand") // Defer hands until last
+			hands += slotname
+			continue
+		var/success = src.setinvslot(slotname, I)
+		if(success)
+			return TRUE
+
+	for(var/slotname in hands)
 		var/success = src.setinvslot(slotname, I)
 		if(success)
 			return TRUE

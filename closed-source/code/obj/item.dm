@@ -18,3 +18,9 @@ Parent type for all items that can be picked up
 	I.Blend(rgb(0,0,0,100),ICON_SUBTRACT)
 	mouse_drag_pointer = I
 	return ..(location,control,params)
+
+/obj/item/OnDoubleClick(mob/source, list/params)
+
+	if (istype(source, /mob/player))
+		var/mob/player/P = source
+		P.tryequip(src)

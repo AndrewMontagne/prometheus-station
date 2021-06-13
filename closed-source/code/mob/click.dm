@@ -6,30 +6,32 @@
 	var/atom/A = object
 
 	if(parameters["shift"] && parameters["middle"])
-		A.OnShiftMiddleClick(object, parameters)
+		A.OnShiftMiddleClick(src, parameters)
 		return
 	if(parameters["ctrl"] && parameters["middle"])
-		A.OnCtrlMiddleClick(object, parameters)
+		A.OnCtrlMiddleClick(src, parameters)
 		return
 	if(parameters["shift"] && parameters["shift"] && parameters["middle"])
-		A.OnCtrlShiftMiddleClick(object, parameters)
+		A.OnCtrlShiftMiddleClick(src, parameters)
 		return
 	if(parameters["middle"])
-		A.OnMiddleClick(object, parameters)
+		A.OnMiddleClick(src, parameters)
 		return
 
 	if(parameters["shift"] && parameters["ctrl"])
-		A.OnCtrlShiftClick(object, parameters)
+		A.OnCtrlShiftClick(src, parameters)
 		return
 	if(parameters["shift"])
-		A.OnShiftClick(object, parameters)
+		A.OnShiftClick(src, parameters)
 		return
 	if(parameters["alt"])
-		A.OnAltClick(object, parameters)
+		A.OnAltClick(src, parameters)
 		return
 	if(parameters["ctrl"])
-		A.OnCtrlClick(object, parameters)
+		A.OnCtrlClick(src, parameters)
 		return
+
+	A.OnClick(src, parameters)
 
 // Double Click handler
 /mob/proc/HandleDoubleClick(object, location, control, params)
@@ -38,15 +40,17 @@
 	var/atom/A = object
 
 	if(parameters["shift"] && parameters["ctrl"])
-		A.OnCtrlShiftClick(object, parameters)
+		A.OnCtrlShiftClick(src, parameters)
 		return
 	if(parameters["shift"])
-		A.OnShiftClick(object, parameters)
+		A.OnShiftClick(src, parameters)
 		return
 	if(parameters["alt"])
-		A.OnAltClick(object, parameters)
+		A.OnAltClick(src, parameters)
 		return
 	if(parameters["ctrl"])
-		A.OnCtrlClick(object, parameters)
+		A.OnCtrlClick(src, parameters)
 		return
+
+	A.OnDoubleClick(src, parameters)
 
