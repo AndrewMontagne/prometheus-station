@@ -15,3 +15,13 @@
 /client/Del()
 	. = ..()
 	LOG_INFO("[src.key] disconnected!")
+
+/client/Click(object, location, control, params)
+	var/result = src.mob.HandleClick(object, location, control, params)
+	if (result)
+		. = ..()
+
+/client/DblClick(object, location, control, params)
+	var/result = src.mob.HandleDoubleClick(object, location, control, params)
+	if (result)
+		. = ..()

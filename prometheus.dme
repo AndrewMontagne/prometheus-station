@@ -32,6 +32,8 @@
 #include "closed-source\code\mob.dm"
 #include "closed-source\code\turf.dm"
 #include "closed-source\code\world.dm"
+#include "closed-source\code\atom\click.dm"
+#include "closed-source\code\mob\click.dm"
 #include "closed-source\code\mob\lobby.dm"
 #include "closed-source\code\mob\player.dm"
 #include "closed-source\code\obj\item.dm"

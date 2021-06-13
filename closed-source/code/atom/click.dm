@@ -1,0 +1,25 @@
+
+/atom/proc/OnShiftMiddleClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnCtrlMiddleClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnCtrlShiftMiddleClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnMiddleClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnCtrlShiftClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnShiftClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnAltClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnCtrlClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnCtrlShiftDoubleClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnShiftDoubleClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnAltDoubleClick(mob/source, list/params)
+	return TRUE
+/atom/proc/OnCtrlDoubleClick(mob/source, list/params)
+	return TRUE
