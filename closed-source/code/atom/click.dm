@@ -1,13 +1,4 @@
 
-/atom/proc/OnShiftMiddleClick(mob/source, list/params)
-	return src.OnMiddleClick(source, params)
-/atom/proc/OnCtrlMiddleClick(mob/source, list/params)
-	return src.OnMiddleClick(source, params)
-/atom/proc/OnCtrlShiftMiddleClick(mob/source, list/params)
-	return src.OnMiddleClick(source, params)
-/atom/proc/OnMiddleClick(mob/source, list/params)
-	return TRUE
-
 /atom/proc/OnCtrlShiftClick(mob/source, list/params)
 	return src.OnClick(source, params)
 /atom/proc/OnShiftClick(mob/source, list/params)

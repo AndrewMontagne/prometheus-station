@@ -1,20 +1,5 @@
 macro "macro"
 	elem 
-		name = "CENTER+REP"
-		command = ".center"
-	elem 
-		name = "NORTHEAST+REP"
-		command = ".northeast"
-	elem 
-		name = "SOUTHEAST+REP"
-		command = ".southeast"
-	elem 
-		name = "SOUTHWEST+REP"
-		command = ".southwest"
-	elem 
-		name = "NORTHWEST+REP"
-		command = ".northwest"
-	elem 
 		name = "WEST+REP"
 		command = ".west"
 	elem 
@@ -28,19 +13,28 @@ macro "macro"
 		command = ".south"
 	elem 
 		name = "F1"
-		command = "adminhelp"
+		command = "helpbutton"
 	elem 
-		name = "CTRL+SHIFT+F1+REP"
+		name = "CTRL+SHIFT+F1"
 		command = ".options"
 	elem 
-		name = "F2+REP"
-		command = ".screenshot auto"
+		name = "F2"
+		command = "discordbutton"
 	elem 
-		name = "SHIFT+F2+REP"
-		command = ".screenshot"
+		name = "F3"
+		command = "forumbutton"
+	elem 
+		name = "F4"
+		command = "wikibutton"
 	elem 
 		name = "F5"
+		command = "settingsbutton"
+	elem 
+		name = "SHIFT+F5"
 		command = ".reconnect"
+	elem 
+		name = "ESCAPE"
+		command = "resist"
 
 
 window "infowindow"
@@ -61,28 +55,20 @@ window "infowindow"
 		is-pane = true
 		outer-size = 494x334
 		inner-size = 480x320
-	elem "button4"
+	elem "button1"
 		type = BUTTON
-		pos = 288,4
+		pos = 0,4
 		size = 88x20
-		anchor1 = 60,0
-		anchor2 = 78,0
+		anchor1 = 0,0
+		anchor2 = 18,0
 		text-color = #ffffff
 		background-color = #40628a
-		saved-params = "is-checked"
-		text = "Button 4"
-		command = ""
-	elem "button3"
-		type = BUTTON
-		pos = 192,4
-		size = 88x20
-		anchor1 = 40,0
-		anchor2 = 58,0
+		font-style = "bold"
 		text-color = #ffffff
-		background-color = #40628a
+		background-color = #ff0000
 		saved-params = "is-checked"
-		text = "Button 3"
-		command = ""
+		text = "Help"
+		command = "helpbutton"
 	elem "button2"
 		type = BUTTON
 		pos = 96,4
@@ -92,20 +78,41 @@ window "infowindow"
 		text-color = #ffffff
 		background-color = #40628a
 		saved-params = "is-checked"
-		text = "Button 2"
-		command = ""
-	elem "button1"
+		text = "Discord"
+		command = "discordbutton"
+	elem "button3"
+		type = BUTTON
+		pos = 192,4
+		size = 88x20
+		anchor1 = 40,0
+		anchor2 = 58,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Forums"
+		command = "forumbutton"
+	elem "button4"
+		type = BUTTON
+		pos = 288,4
+		size = 88x20
+		anchor1 = 60,0
+		anchor2 = 78,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Wiki"
+		command = "wikibutton"
+	elem "button5"
 		type = BUTTON
 		pos = 384,4
 		size = 88x20
 		anchor1 = 80,0
 		anchor2 = 98,0
-		font-style = "bold"
 		text-color = #ffffff
-		background-color = #ff0000
+		background-color = #40628a
 		saved-params = "is-checked"
-		text = "Help"
-		command = ""
+		text = "Settings"
+		command = "settingsbutton"
 	elem "info"
 		type = INFO
 		pos = 0,32
@@ -130,17 +137,7 @@ window "infowindow"
 		background-color = #ff0080
 		is-visible = false
 		saved-params = ""
-	elem "inputbutton"
-		type = BUTTON
-		pos = 0,4
-		size = 88x20
-		anchor1 = 0,0
-		anchor2 = 18,0
-		text-color = #ffffff
-		background-color = #40628a
-		saved-params = "is-checked"
-		text = "Button 1"
-		command = ""
+	
 
 window "loginwindow"
 	elem "loginwindow"
