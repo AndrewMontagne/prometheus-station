@@ -1,6 +1,6 @@
 
 /atom/proc/HarmClick(mob/source, list/params)
-	return src.HelpClick(source, params)
+	return src.recieve_damage(10, DAMAGE_BRUTE, source, source)
 /atom/proc/DisarmClick(mob/source, list/params)
 	return src.HelpClick(source, params)
 /atom/proc/GrabClick(mob/source, list/params)

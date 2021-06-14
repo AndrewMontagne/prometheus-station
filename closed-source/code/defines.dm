@@ -66,3 +66,8 @@ These are the canonical names for inventory slots, so that they can be used for 
 #define SLOT_BELT_CLIP_R	"beltclip_r"
 #define SLOT_BELT_CLIP_L	"beltclip_l"
 #define SLOT_POCKET			"pocket"
+
+/**
+These are the canonical names for damage type
+**/
+#define DAMAGE_BRUTE	"brute"

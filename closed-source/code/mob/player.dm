@@ -7,6 +7,8 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 /mob/player
 	icon = 'cc-by-sa-nc/icons/mob/human.dmi'
 	icon_state = "body_m_s"
+	maximum_hitpoints = 100
+	hitpoints = 100
 
 /mob/player/New(var/loc)
 	. = ..(loc)
