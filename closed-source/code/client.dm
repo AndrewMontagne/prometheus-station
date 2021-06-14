@@ -1,5 +1,6 @@
 /client
 	fps = 30
+	mouse_pointer_icon = 'cc-by-sa-nc/icons_new/cursors/help.dmi'
 
 /client/proc/change_mob(mob/new_mob)
 	src.mob.on_lose_client()
@@ -17,11 +18,13 @@
 	LOG_INFO("[src.key] disconnected!")
 
 /client/Click(object, location, control, params)
-	var/result = src.mob.HandleClick(object, location, control, params)
+	var/list/parameters = params2list(params)
+	var/result = src.mob.HandleClick(object, location, control, parameters)
 	if (result)
 		. = ..()
 
 /client/DblClick(object, location, control, params)
-	var/result = src.mob.HandleDoubleClick(object, location, control, params)
+	var/list/parameters = params2list(params)
+	var/result = src.mob.HandleDoubleClick(object, location, control, parameters)
 	if (result)
 		. = ..()

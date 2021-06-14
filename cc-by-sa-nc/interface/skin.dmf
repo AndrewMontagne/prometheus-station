@@ -36,6 +36,25 @@ macro "macro"
 		name = "ESCAPE"
 		command = "resist"
 
+	elem
+		name = "SHIFT"
+		command = "shiftdown"
+	elem
+		name = "SHIFT+UP"
+		command = "shiftup"
+	elem
+		name = "CTRL"
+		command = "ctrldown"
+	elem
+		name = "CTRL+UP"
+		command = "ctrlup"
+	elem
+		name = "ALT"
+		command = "altdown"
+	elem
+		name = "ALT+UP"
+		command = "altup"
+
 
 window "infowindow"
 	elem "infowindow"

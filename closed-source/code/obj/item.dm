@@ -19,7 +19,7 @@ Parent type for all items that can be picked up
 	mouse_drag_pointer = I
 	return ..(location,control,params)
 
-/obj/item/OnDoubleClick(mob/source, list/params)
+/obj/item/HelpDoubleClick(mob/source, list/params)
 
 	if (istype(source, /mob/player))
 		var/mob/player/P = source
