@@ -5,6 +5,8 @@
 	return src.HelpClick(source, params)
 /atom/proc/GrabClick(mob/source, list/params)
 	return src.HelpClick(source, params)
+/atom/proc/ThrowClick(mob/source, list/params)
+	return src.HarmClick(source, params)
 /atom/proc/HelpClick(mob/source, list/params)
 	return TRUE
 	
@@ -14,5 +16,7 @@
 	return src.DisarmClick(source, params)
 /atom/proc/GrabDoubleClick(mob/source, list/params)
 	return src.GrabClick(source, params)
+/atom/proc/ThrowDoubleClick(mob/source, list/params)
+	return src.HarmClick(source, params)
 /atom/proc/HelpDoubleClick(mob/source, list/params)
 	return src.HelpClick(source, params)
