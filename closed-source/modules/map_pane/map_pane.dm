@@ -3,7 +3,7 @@
 
 /client/proc/init_map_panes()
 	map_panes = list()
-	new /datum/map_pane(src, "inventorywindow.inventory")
+	new /datum/map_pane(src, "infowindow.inventorymap")
 
 /mob/verb/interface_resize(var/pane_name as null|text, var/new_size as null|text)
 	set name = "OnInterfaceResize"
@@ -37,7 +37,12 @@
 
 
 /datum/map_pane/proc/update(size = winget(player, skin_id, "size"))
-	var/raw =  splittext(size , "x")
+	var/raw = list()
+	if (findtext(size, "x"))
+		raw = splittext(size , "x")
+	else
+		raw = splittext(size , ",")
+	
 	width = round(text2num(raw[1]) / 2)
 	height = round(text2num(raw[2]) / 2)
 
@@ -50,7 +55,7 @@
 	right_offset = left_offset + (width - 32) - 2
 
 	if (background)
-		background.screen_loc = "inventory:0,0 to [tiles_x],[tiles_y]"
+		background.screen_loc = "[src.skin_id]:0,0 to [tiles_x],[tiles_y]"
 
 /datum/map_pane/proc/add_background()
 	background = new /obj/screen(null)

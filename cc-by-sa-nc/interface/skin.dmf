@@ -156,6 +156,16 @@ window "infowindow"
 		background-color = #ff0080
 		is-visible = false
 		saved-params = ""
+	elem "inventorymap"
+		type = MAP
+		pos = 7,57
+		size = 458x256
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-visible = false
+		background-color = #272727
+		saved-params = "zoom;letterbox;zoom-mode"
+		zoom = 2
 	
 
 window "loginwindow"

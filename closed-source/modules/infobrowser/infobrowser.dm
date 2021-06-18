@@ -9,6 +9,11 @@
 	else
 		winset(src, "infobrowser", "is-visible=false;")
 
+	if (new_tab == "Inventory")
+		winset(src, "inventorymap", "is-visible=true;")
+	else
+		winset(src, "inventorymap", "is-visible=false;")
+
 /// Sets up the hook into the frontend to call the OnInfoTabChange verb
 /client/proc/init_infobrowser()
     winset(src, "info", "on-tab = \"OnInfoTabChange \[\[*\]\]\"")
@@ -17,4 +22,10 @@
 /client/verb/dummy_motd_verb()
 	set name = "Loading MOTD..."
 	set category = "MOTD"
+	return
+
+/// Dummy verb for the MOTD tab
+/client/verb/dummy_inventory_verb()
+	set name = "Loading Inventory..."
+	set category = "Inventory"
 	return
