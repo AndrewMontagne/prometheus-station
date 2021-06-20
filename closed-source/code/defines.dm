@@ -9,7 +9,11 @@
 /// Log an error at the Debug logging level
 #define LOG_DEBUG(X)   world.logger(X, "DEBUG", "35")
 /// Log an error at the Trace logging level
+#ifndef ENV_BUILD_RELEASE
 #define LOG_TRACE(X)   world.logger(X, "TRACE", "36")
+#else
+#define LOG_TRACE(X)   // NO OP
+#endif
 
 #define TRACE "[__FILE__]:[__LINE__]"
 

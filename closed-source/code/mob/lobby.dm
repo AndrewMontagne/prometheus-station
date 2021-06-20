@@ -1,5 +1,5 @@
 /obj/screen/splash
-	icon = 'cc-by-sa-nc/icons/misc/splash.dmi'
+	icon = 'assets/cc-by-sa-nc/icons/misc/splash.dmi'
 	icon_state = "ss13"
 	screen_loc = "CENTER:-104,CENTER:-16"
 	mouse_over_pointer = MOUSE_INACTIVE_POINTER
@@ -30,7 +30,7 @@
 
 	client.screen += splashscreen
 
-	src << browse_rsc('cc-by-sa-nc/icons/postcardsmall.png')
+	src << browse_rsc('assets/cc-by-sa-nc/icons/postcardsmall.png')
 	src << browse("<html><body>[motd]</body></html>", "window=loginwindow")
 	update_login_window()
 	winset(src, "loginwindow", "is-visible=true;")

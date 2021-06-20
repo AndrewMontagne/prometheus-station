@@ -2,20 +2,31 @@
 	var/modifier_shift = FALSE
 	var/modifier_ctrl = FALSE
 	var/modifier_alt = FALSE
-	mouse_pointer_icon = 'cc-by-sa-nc/icons_new/cursors/help.dmi'
+	mouse_pointer_icon = 'assets/cc-by-sa-nc/icons_new/cursors/help.dmi'
+
+/client/Click(object, location, control, params)
+	var/list/parameters = params2list(params)
+	var/result = src.mob.HandleClick(object, location, control, parameters)
+	if (result)
+		. = ..()
+
+/client/DblClick(object, location, control, params)
+	var/list/parameters = params2list(params)
+	var/result = src.mob.HandleDoubleClick(object, location, control, parameters)
+	if (result)
+		. = ..()
 
 /client/proc/update_cursor()
 	if (src.modifier_shift && src.modifier_ctrl)
-		src.mouse_pointer_icon = 'cc-by-sa-nc/icons_new/cursors/throw.dmi'
+		src.mouse_pointer_icon = 'assets/cc-by-sa-nc/icons_new/cursors/throw.dmi'
 	else if (src.modifier_shift)
-		src.mouse_pointer_icon = 'cc-by-sa-nc/icons_new/cursors/harm.dmi'
+		src.mouse_pointer_icon = 'assets/cc-by-sa-nc/icons_new/cursors/harm.dmi'
 	else if (src.modifier_ctrl)
-		src.mouse_pointer_icon = 'cc-by-sa-nc/icons_new/cursors/grab.dmi'
+		src.mouse_pointer_icon = 'assets/cc-by-sa-nc/icons_new/cursors/grab.dmi'
 	else if (src.modifier_alt)
-		src.mouse_pointer_icon = 'cc-by-sa-nc/icons_new/cursors/disarm.dmi'
+		src.mouse_pointer_icon = 'assets/cc-by-sa-nc/icons_new/cursors/disarm.dmi'
 	else
-		src.mouse_pointer_icon = 'cc-by-sa-nc/icons_new/cursors/help.dmi'
-
+		src.mouse_pointer_icon = 'assets/cc-by-sa-nc/icons_new/cursors/help.dmi'
 
 // Modifier Handlers
 /client/verb/shiftdown()

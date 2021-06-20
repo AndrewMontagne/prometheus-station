@@ -1,12 +1,12 @@
 /turf/space
-	icon = 'cc-by-sa-nc/icons/turf/space.dmi'
+	icon = 'assets/cc-by-sa-nc/icons/turf/space.dmi'
 	name = "space"
 	icon_state = "0"
 
 	dynamic_lighting = FALSE
 
 /turf/space/New()
-	icon = 'cc-by-sa-nc/icons/turf/space.dmi'
+	icon = 'assets/cc-by-sa-nc/icons/turf/space.dmi'
 	icon_state = "black"
 
 	// Sun, for global illumination.

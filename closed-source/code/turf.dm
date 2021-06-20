@@ -6,12 +6,12 @@
 
 /turf/basic/floor
 	name = "floor"
-	icon = 'cc-by-sa-nc/icons/turf/floors.dmi'
+	icon = 'assets/cc-by-sa-nc/icons/turf/floors.dmi'
 	icon_state = "floor"
 
 /turf/basic/wall
 	name = "wall"
-	icon = 'cc-by-sa-nc/icons/turf/wall.dmi'
+	icon = 'assets/cc-by-sa-nc/icons/turf/wall.dmi'
 	icon_state = "wall"
 	opacity = 1
 	density = 1

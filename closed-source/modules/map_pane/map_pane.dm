@@ -54,6 +54,8 @@
 	top_offset = bottom_offset + (height - 32) - 2
 	right_offset = left_offset + (width - 32) - 2
 
+	LOG_TRACE("T: [top_offset] R: [right_offset] B: [bottom_offset] L: [left_offset]")
+
 	if (background)
 		background.screen_loc = "[src.skin_id]:0,0 to [tiles_x],[tiles_y]"
 

@@ -6,7 +6,7 @@ The HUD element that gets drawn behind the game world to show the space overlay
 /obj/screen/space
     screen_loc = "SOUTH, WEST"
     plane = PLANE_PARALLAX
-    icon = 'cc-by-sa-nc/icons/turf/space.dmi'
+    icon = 'assets/cc-by-sa-nc/icons/turf/space.dmi'
     icon_state = "animate"
     name = "space"
     mouse_opacity = 1

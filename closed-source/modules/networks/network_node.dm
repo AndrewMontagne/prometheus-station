@@ -6,7 +6,7 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 /obj/network_node
 	VAR_PRIVATE/datum/network/network = null
 	var/enabled = TRUE
-	icon = 'cc-by-sa-nc/icons_new/obj/cable.dmi'
+	icon = 'assets/cc-by-sa-nc/icons_new/obj/cable.dmi'
 	icon_state = "0-1"
 	var/list/dirs = list()
 

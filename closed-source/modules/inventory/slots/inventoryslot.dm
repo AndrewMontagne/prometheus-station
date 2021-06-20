@@ -45,7 +45,7 @@
 	var/inventory_plane = 0
 	var/slot_name = SLOT_POCKET
 	var/background = "background"
-	icon = 'cc-by-sa-nc/icons/ui/screen_midnight.dmi'
+	icon = 'assets/cc-by-sa-nc/icons/ui/screen_midnight.dmi'
 	icon_state = SLOT_POCKET
 	layer = -1
 

@@ -14,12 +14,9 @@
 
 #include "closed-source\code\defines.dm"
 
-// BEGIN_INTERNALS
-// END_INTERNALS
-
-// BEGIN_PREFERENCES
-#define DEBUG
-// END_PREFERENCES
+#ifndef ENV_BUILD_RELEASE
+	#define DEBUG
+#endif
 
 // BEGIN_INCLUDE
 #include "cc-by-sa-nc\interface\skin.dmf"
@@ -34,6 +31,7 @@
 #include "closed-source\code\world.dm"
 #include "closed-source\code\atom\click.dm"
 #include "closed-source\code\atom\movable.dm"
+#include "closed-source\code\client\click.dm"
 #include "closed-source\code\mob\click.dm"
 #include "closed-source\code\mob\lobby.dm"
 #include "closed-source\code\mob\player.dm"
