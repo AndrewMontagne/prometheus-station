@@ -5,10 +5,12 @@ This is the default game state and cannot be changed. The next state is undefine
 **/
 /datum/game_state/pregame 
 	name = "Pre-game"
+
+/datum/game_state/pregame/proc/round_start_time()
+	return world.time + MINUTES(3)
 	
 /datum/game_state/pregame/state_entry()
 	. = ..()
-	src.next_state_time = world.time + MINUTES(3)
 
 /datum/game_state/pregame/state_exit()
 	. = ..()
@@ -35,6 +37,15 @@ This is the default game state and cannot be changed. The next state is undefine
 		return
 
 /datum/game_state/pregame/process()
+	var/n = 0
+	for (var/client/C)
+		n++
+	if (n == 0 && src.next_state_time != null)
+		src.next_state_time = null
+		spawn(10) world.sleep_offline = TRUE
+	else if (n != 0  && src.next_state_time == null)
+		src.next_state_time = src.round_start_time()
+		world.sleep_offline = FALSE
 	for (var/mob/lobby/L in world)
 		L.update_login_window()
 	

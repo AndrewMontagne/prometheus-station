@@ -42,7 +42,7 @@
 		client.screen -= splashscreen
 
 	..()
-	return
+	del(src)
 
 /// Updates the login window
 /mob/lobby/proc/update_login_window()

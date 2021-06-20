@@ -19,6 +19,7 @@
 
 /world/New()
 	. = ..()
+	world.sleep_offline = FALSE
 	LOG_SYSTEM("Initialising BYOND Extensions...")
 	rustg_url_encode("") // Check for rustg's presence
 
@@ -33,7 +34,7 @@
 	scheduler.add_controller(C)
 
 	LOG_SYSTEM("Startup Complete!")
-	world.sleep_offline = FALSE
+	world.sleep_offline = TRUE
 
 /world/Del()
 	. = ..()

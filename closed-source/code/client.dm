@@ -1,6 +1,5 @@
 /client
 	fps = 30
-	mouse_pointer_icon = 'cc-by-sa-nc/icons_new/cursors/help.dmi'
 
 /client/proc/change_mob(mob/new_mob)
 	src.mob.on_lose_client()
