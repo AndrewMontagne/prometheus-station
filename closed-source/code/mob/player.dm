@@ -27,3 +27,6 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	src.screen += hand_l
 	var/obj/screen/inventoryslot/hand/right/hand_r = new(src)
 	src.screen += hand_r
+
+	src.tryequip(new /obj/item/clothing/jumpsuit())
+	src.tryequip(new /obj/item/clothing/shoes())

@@ -16,7 +16,9 @@
 
 /// Sets up the hook into the frontend to call the OnInfoTabChange verb
 /client/proc/init_infobrowser()
-    winset(src, "info", "on-tab = \"OnInfoTabChange \[\[*\]\]\"")
+	while (winget(src, "mainwindow", "is-visible") == FALSE)
+		sleep(10)
+	winset(src, "info", "on-tab = \"OnInfoTabChange \[\[*\]\]\"")
 
 /// Dummy verb for the MOTD tab
 /client/verb/dummy_motd_verb()
