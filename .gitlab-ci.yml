@@ -26,7 +26,7 @@ compile:
   stage: build
   variables:
     TERM: dumb
-	BUILD_RELEASE: "true"
+    BUILD_RELEASE: "true"
   needs: [lint, mapmerge]
   tags:
     - docker-runner
