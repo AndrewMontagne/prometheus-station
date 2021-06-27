@@ -19,6 +19,7 @@
 #endif
 
 // BEGIN_INCLUDE
+#include "cc-by-sa-nc\code\view_variables.dm"
 #include "cc-by-sa-nc\interface\skin.dmf"
 #include "closed-source\list_sort.dm"
 #include "closed-source\code\areas.dm"
@@ -46,6 +47,7 @@
 #include "closed-source\modules\admin\datum\permission.dm"
 #include "closed-source\modules\admin\datum\role.dm"
 #include "closed-source\modules\admin\datum\permission\ban.dm"
+#include "closed-source\modules\admin\datum\permission\debug.dm"
 #include "closed-source\modules\admin\datum\permission\player.dm"
 #include "closed-source\modules\admin\datum\role\admin.dm"
 #include "closed-source\modules\admin\datum\role\developer.dm"

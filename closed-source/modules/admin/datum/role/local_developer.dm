@@ -7,8 +7,8 @@ Local developer role
 
 /// If the client's IP range is in an IANA-assigned private network block or the loopback block, give them this.
 /datum/role/local_developer/is_client_eligible(client/user_client)
-	//TODO: Config check to make sure this can never be invoked on production
-
+	
+#ifndef ENV_BUILD_RELEASE
 	var/list/address_components = splittext(user_client.address, ".")
 	var/address_A = text2num(address_components[1])
 	var/address_B = text2num(address_components[2])
@@ -21,6 +21,7 @@ Local developer role
 		return TRUE
 	if (address_A == 172 && (address_B >= 16 && address_B <= 31))
 		return TRUE
+#endif
 
 	return FALSE
 
