@@ -19,7 +19,9 @@
 #endif
 
 // BEGIN_INCLUDE
-#include "cc-by-sa-nc\code\view_variables.dm"
+#include "cc-by-sa-nc\code\helpers.dm"
+#include "cc-by-sa-nc\code\vv\mod_list.dm"
+#include "cc-by-sa-nc\code\vv\view_variables.dm"
 #include "cc-by-sa-nc\interface\skin.dmf"
 #include "closed-source\list_sort.dm"
 #include "closed-source\code\areas.dm"
@@ -33,6 +35,7 @@
 #include "closed-source\code\atom\click.dm"
 #include "closed-source\code\atom\movable.dm"
 #include "closed-source\code\client\click.dm"
+#include "closed-source\code\client\output.dm"
 #include "closed-source\code\mob\click.dm"
 #include "closed-source\code\mob\lobby.dm"
 #include "closed-source\code\mob\player.dm"
