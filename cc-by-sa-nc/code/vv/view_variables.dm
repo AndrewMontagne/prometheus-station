@@ -9,7 +9,7 @@
 	var/body = ""
 
 	if (!src.has_permission("DEBUG"))
-		LOG_WARNING("[usr.ckey] tried to use VV without the debug permission!")
+		LOG_ADMIN("[usr.ckey] tried to use VV without the debug permission!")
 		src.stdout("You don't have permission to do this")
 		return
 
@@ -55,7 +55,7 @@ body
 	html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D]'>Set Direction</a> "
 	html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=R45'>=></a> "
 	html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=R90'>==>></a><br>"
-	
+
 	html += "<br><small> (A) = Edit all entities of same type <br> (S) = Set this var on all entities of same type <br> (P) = Call Proc</small>"
 	html += body
 	html += "</body></html>"
@@ -170,7 +170,7 @@ body
 		return
 
 	if (!src.has_permission("DEBUG"))
-		LOG_WARNING("[usr.ckey] tried to use VV without the debug permission!")
+		LOG_ADMIN("[usr.ckey] tried to use VV without the debug permission!")
 		src.stdout("You don't have permission to do this")
 		return
 
@@ -186,7 +186,7 @@ body
 		return
 
 	if (!src.has_permission("DEBUG"))
-		LOG_WARNING("[usr.ckey] tried to use VV without the debug permission!")
+		LOG_ADMIN("[usr.ckey] tried to use VV without the debug permission!")
 		src.stdout("You don't have permission to do this")
 		return
 
@@ -195,7 +195,7 @@ body
 	var/dir
 
 	if (!src.has_permission("DEBUG"))
-		LOG_WARNING("[usr.ckey] tried to use VV without the debug permission!")
+		LOG_ADMIN("[usr.ckey] tried to use VV without the debug permission!")
 		src.stdout("You don't have permission to do this")
 		return
 
@@ -424,7 +424,7 @@ body
 						D.vars[variable] = new match(D)
 			else
 				return
-	LOG_WARNING("[usr.ckey] modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""))
+	LOG_ADMIN("[usr.ckey] modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""))
 	//logTheThing("admin", src, null, "modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""))
 	//logTheThing("diary", src, null, "modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""), "admin")
 	//message_admins("[key_name(src)] modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""), 1)
@@ -437,7 +437,7 @@ body
 	set category = "Debug"
 	switch (alert("Are you sure you wish to delete \the [A.name] at ([A.x],[A.y],[A.z]) ?", "Admin Delete Object","Yes","No"))
 		if("Yes")
-			LOG_WARNING("[usr.ckey] deleted [A.name] at ([A.x],[A.y],[A.z])")
+			LOG_ADMIN("[usr.ckey] deleted [A.name] at ([A.x],[A.y],[A.z])")
 			//logTheThing("admin", usr, null, "deleted [A.name] at ([showCoords(A.x, A.y, A.z)])")
 			//logTheThing("diary", usr, null, "deleted [A.name] at ([showCoords(A.x, A.y, A.z, 1)])", "admin")
 
@@ -620,7 +620,7 @@ body
 			O.vars[variable] = input("Pick color:","Color",O.vars[variable]) \
 				as color
 
-	LOG_WARNING("[usr.ckey] modified [original_name]'s [variable] to [O.vars[variable]]")
+	LOG_ADMIN("[usr.ckey] modified [original_name]'s [variable] to [O.vars[variable]]")
 	//logTheThing("admin", src, null, "modified [original_name]'s [variable] to [O.vars[variable]]")
 	//logTheThing("diary", src, null, "modified [original_name]'s [variable] to [O.vars[variable]]", "admin")
 	//message_admins("[key_name(src)] modified [original_name]'s [variable] to [O.vars[variable]]")
