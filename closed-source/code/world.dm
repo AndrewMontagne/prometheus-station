@@ -19,6 +19,12 @@
 
 /world/New()
 	. = ..()
+
+	var/startup_profile = file2text("config/startup_profile")
+	if (findtext(startup_profile, "TRUE") != 0)
+		LOG_ADMIN("Startup Profiling Enabled!!!")
+		world.Profile(PROFILE_START | PROFILE_AVERAGE, "json")
+
 	world.sleep_offline = FALSE
 	LOG_SYSTEM("Initialising BYOND Extensions...")
 	rustg_url_encode("") // Check for rustg's presence
@@ -32,6 +38,12 @@
 
 	C = new /controller/game_loop()
 	scheduler.add_controller(C)
+
+	if (startup_profile)
+		var/json_str = world.Profile(PROFILE_STOP | PROFILE_AVERAGE, "json")
+		var/filename = "data/profile_startup.json"
+		text2file(json_str, filename)
+		world.Profile(PROFILE_CLEAR)
 
 	LOG_SYSTEM("Startup Complete!")
 	world.sleep_offline = TRUE
