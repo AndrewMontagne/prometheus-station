@@ -119,9 +119,5 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 
 	return neighbours
 
-/obj/network_node/verb/destroy()
-	set src in oview()
-	del(src)
-
 /mob/verb/makenode()
 	new /obj/network_node(src.loc)

@@ -3,7 +3,7 @@
 	turf = /turf/space
 	area = /area/space
 	view = "19x17"
-	loop_checks = FALSE
+	loop_checks = TRUE
 	fps = 10
 	
 /world/Error(exception/E, datum/src)
@@ -38,6 +38,9 @@
 
 	C = new /controller/game_loop()
 	scheduler.add_controller(C)
+
+	//C = new /controller/stress("0000", PRIORITY_LOW)
+	//scheduler.add_controller(C)
 
 	if (startup_profile)
 		var/json_str = world.Profile(PROFILE_STOP | PROFILE_AVERAGE, "json")

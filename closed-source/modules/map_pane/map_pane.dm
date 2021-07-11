@@ -3,7 +3,7 @@
 
 /client/proc/init_map_panes()
 	map_panes = list()
-	new /datum/map_pane(src, "infowindow.inventorymap")
+	//new /datum/map_pane(src, "infowindow.inventorymap")
 
 /mob/verb/interface_resize(var/pane_name as null|text, var/new_size as null|text)
 	set name = "OnInterfaceResize"

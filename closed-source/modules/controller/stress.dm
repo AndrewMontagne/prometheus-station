@@ -28,6 +28,7 @@ thus stress test the task scheduler. It is well behaved and will yield when appr
 		proof = "[a]::[s]"
 		hash = md5(proof)
 		if (copytext(hash,1,length(match) + 1) == match)
+			LOG_INFO("HASH: [hash]")
 			break
 		yield()
 	

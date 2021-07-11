@@ -19,10 +19,10 @@
 #endif
 
 // BEGIN_INCLUDE
+#include "assets\cc-by-sa-nc\interface\skin.dmf"
 #include "cc-by-sa-nc\code\helpers.dm"
 #include "cc-by-sa-nc\code\vv\mod_list.dm"
 #include "cc-by-sa-nc\code\vv\view_variables.dm"
-#include "cc-by-sa-nc\interface\skin.dmf"
 #include "closed-source\list_sort.dm"
 #include "closed-source\code\areas.dm"
 #include "closed-source\code\atom.dm"
@@ -39,12 +39,12 @@
 #include "closed-source\code\mob\click.dm"
 #include "closed-source\code\mob\lobby.dm"
 #include "closed-source\code\mob\player.dm"
-#include "closed-source\code\obj\item.dm"
 #include "closed-source\code\obj\screen.dm"
 #include "closed-source\code\obj\spawnpoint.dm"
-#include "closed-source\code\obj\structure.dm"
 #include "closed-source\code\obj\sun.dm"
-#include "closed-source\code\obj\clothing\clothing.dm"
+#include "closed-source\code\obj\item\item.dm"
+#include "closed-source\code\obj\item\clothing\clothing.dm"
+#include "closed-source\code\obj\structure\structure.dm"
 #include "closed-source\code\turf\space.dm"
 #include "closed-source\maps\newmap.dmm"
 #include "closed-source\modules\admin\datum\permission.dm"

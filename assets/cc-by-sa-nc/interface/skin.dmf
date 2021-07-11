@@ -1,0 +1,383 @@
+macro "macro"
+	elem 
+		name = "WEST+REP"
+		command = ".west"
+	elem 
+		name = "NORTH+REP"
+		command = ".north"
+	elem 
+		name = "EAST+REP"
+		command = ".east"
+	elem 
+		name = "SOUTH+REP"
+		command = ".south"
+	elem 
+		name = "F1"
+		command = "helpbutton"
+	elem 
+		name = "CTRL+SHIFT+F1"
+		command = ".options"
+	elem 
+		name = "F2"
+		command = "discordbutton"
+	elem 
+		name = "F3"
+		command = "forumbutton"
+	elem 
+		name = "F4"
+		command = "wikibutton"
+	elem 
+		name = "F5"
+		command = "settingsbutton"
+	elem 
+		name = "SHIFT+F5"
+		command = ".reconnect"
+	elem 
+		name = "ESCAPE"
+		command = "resist"
+
+	elem
+		name = "SHIFT"
+		command = "shiftdown"
+	elem
+		name = "SHIFT+UP"
+		command = "shiftup"
+	elem
+		name = "CTRL"
+		command = "ctrldown"
+	elem
+		name = "CTRL+UP"
+		command = "ctrlup"
+	elem
+		name = "ALT"
+		command = "altdown"
+	elem
+		name = "ALT+UP"
+		command = "altup"
+
+
+window "infowindow"
+	elem "infowindow"
+		type = MAIN
+		pos = 281,0
+		size = 480x320
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = #383838
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Info"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		outer-size = 494x334
+		inner-size = 480x320
+	elem "button1"
+		type = BUTTON
+		pos = 0,4
+		size = 88x20
+		anchor1 = 0,0
+		anchor2 = 18,0
+		text-color = #ffffff
+		background-color = #40628a
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #ff0000
+		saved-params = "is-checked"
+		text = "Help"
+		command = "helpbutton"
+	elem "button2"
+		type = BUTTON
+		pos = 96,4
+		size = 88x20
+		anchor1 = 20,0
+		anchor2 = 38,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Discord"
+		command = "discordbutton"
+	elem "button3"
+		type = BUTTON
+		pos = 192,4
+		size = 88x20
+		anchor1 = 40,0
+		anchor2 = 58,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Forums"
+		command = "forumbutton"
+	elem "button4"
+		type = BUTTON
+		pos = 288,4
+		size = 88x20
+		anchor1 = 60,0
+		anchor2 = 78,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Wiki"
+		command = "wikibutton"
+	elem "button5"
+		type = BUTTON
+		pos = 384,4
+		size = 88x20
+		anchor1 = 80,0
+		anchor2 = 98,0
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Settings"
+		command = "settingsbutton"
+	elem "info"
+		type = INFO
+		pos = 0,32
+		size = 472x288
+		anchor1 = 0,0
+		anchor2 = 100,100
+		text-color = #ffffff
+		background-color = #272727
+		is-default = true
+		saved-params = ""
+		highlight-color = #00aa00
+		tab-text-color = #ffffff
+		tab-background-color = #383838
+		allow-html = false
+		multi-line = false
+	elem "infobrowser"
+		type = BROWSER
+		pos = 7,57
+		size = 458x256
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #ff0080
+		is-visible = false
+		saved-params = ""
+	elem "inventorymap"
+		type = MAP
+		pos = 7,57
+		size = 458x256
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-visible = false
+		background-color = #272727
+		saved-params = "zoom;letterbox;zoom-mode"
+		zoom = 2
+	
+
+window "loginwindow"
+	elem "loginwindow"
+		type = MAIN
+		pos = 992,145
+		size = 472x503
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = #383838
+		is-visible = false
+		saved-params = "pos;is-minimized;is-maximized"
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+	elem "login_label"
+		type = LABEL
+		pos = 8,424
+		size = 456x32
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #383838
+		saved-params = ""
+		text = "Please wait..."
+	elem "loginbutton_ready"
+		type = BUTTON
+		pos = 168,456
+		size = 138x40
+		anchor1 = 0,100
+		anchor2 = -1,-1
+		font-size = 14
+		font-style = "bold"
+		background-color = #00dc00
+		is-default = true
+		border = line
+		saved-params = "is-checked"
+		text = "Ready Up"
+		command = "toggleready"
+	elem "loginbutton_preferences"
+		type = BUTTON
+		pos = 320,464
+		size = 136x24
+		anchor1 = 0,100
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Edit Preferences"
+		command = "showpreferences"
+	elem "loginbutton_observe"
+		type = BUTTON
+		pos = 16,464
+		size = 136x24
+		anchor1 = 0,100
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Observe Round"
+		command = "toggleobserve"
+	elem "loginwindow_browser"
+		type = BROWSER
+		pos = 8,12
+		size = 456x412
+		anchor1 = 2,2
+		anchor2 = 98,83
+		border = sunken
+		saved-params = ""
+
+window "mainwindow"
+	elem "mainwindow"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = #383838
+		is-default = true
+		is-maximized = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Space Station 13"
+		macro = "macro"
+		menu = "menu"
+		outer-size = 656x558
+		inner-size = 640x499
+	elem "mainvsplit"
+		type = CHILD
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #383838
+		saved-params = "splitter"
+		left = "mapwindow"
+		right = "rpane"
+		is-vert = true
+		splitter = 60
+
+window "mapwindow"
+	elem "mapwindow"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+	elem "map"
+		type = MAP
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		text-color = #000000
+		is-default = true
+		saved-params = "zoom;letterbox;zoom-mode"
+		zoom = 2
+
+window "outputwindow"
+	elem "outputwindow"
+		type = MAIN
+		pos = 281,0
+		size = 648x426
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = #383838
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		outer-size = 662x440
+		inner-size = 648x426
+	elem "hotbar"
+		type = MAP
+		pos = 0,0
+		size = 640x72
+		anchor1 = 0,0
+		anchor2 = 100,0
+		background-color = #383838
+		saved-params = "zoom;letterbox;zoom-mode"
+		zoom = 2
+	elem "input"
+		type = INPUT
+		pos = 80,400
+		size = 560x20
+		anchor1 = 0,100
+		anchor2 = 100,100
+		text-color = #ffffff
+		background-color = #272727
+		is-default = true
+		border = sunken
+		saved-params = "command"
+		command = "!say \""
+	elem "inputbutton"
+		type = BUTTON
+		pos = 0,400
+		size = 72x20
+		anchor1 = 0,100
+		anchor2 = -1,-1
+		text-color = #ffffff
+		background-color = #40628a
+		saved-params = "is-checked"
+		text = "Say"
+		command = "ChangeInput"
+	elem "output"
+		type = OUTPUT
+		pos = 0,80
+		size = 640x312
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-default = true
+		border = sunken
+		saved-params = "max-lines"
+		style = ".system {color:#ff0000;}"
+
+window "rpane"
+	elem "rpane"
+		type = MAIN
+		pos = 281,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = #383838
+		saved-params = "pos;size;is-minimized;is-maximized"
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+		is-pane = true
+		outer-size = 654x494
+	elem "rpanewindow"
+		type = CHILD
+		pos = 0,0
+		size = 640x480
+		anchor1 = 0,0
+		anchor2 = 100,100
+		background-color = #383838
+		saved-params = "splitter"
+		left = "infowindow"
+		right = "outputwindow"
+		is-vert = false
+		splitter = 40
+

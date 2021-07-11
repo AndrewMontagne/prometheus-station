@@ -1,36 +1,3 @@
-/proc/hex2num(hex)
-
-	if (!( istext(hex) ))
-		CRASH("hex2num not given a hexadecimal string argument (user error)")
-	var/num = 0
-	var/power = 0
-	var/i = null
-	i = length(hex)
-	while(i > 0)
-		var/char = copytext(hex, i, i + 1)
-		switch(char)
-			if("0")
-				power++
-				i--
-			if("9", "8", "7", "6", "5", "4", "3", "2", "1")
-				num += text2num(char) * 16 ** power
-			if("a", "A")
-				num += 16 ** power * 10
-			if("b", "B")
-				num += 16 ** power * 11
-			if("c", "C")
-				num += 16 ** power * 12
-			if("d", "D")
-				num += 16 ** power * 13
-			if("e", "E")
-				num += 16 ** power * 14
-			if("f", "F")
-				num += 16 ** power * 15
-			else
-				CRASH("hex2num given non-hexadecimal string (user error)")
-		power++
-	return num
-
 /proc/num2hex(num, placeholder)
 
 	if (placeholder == null)

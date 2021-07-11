@@ -9,6 +9,7 @@ This controls the overall game state and handles the gamemode/gamestate logic.
 **/
 /controller/game_loop
 	name = "Game"
+	priority = PRIORITY_HIGH
 	var/datum/gamemode/running_gamemode = null
 	var/datum/game_state/state = null;
 

@@ -1,11 +1,25 @@
 /obj/sun
-	name = "Sun"
-	desc = "The Sun. You shouldn't see this, kinda."
-	icon = 'assets/cc-by-sa-nc/icons/obj/janitor.dmi'
-	icon_state = "caution"
+	name = "light"
+	desc = "light"
+	icon = 'assets/cc-by-sa-nc/icons/obj/lighting.dmi'
+	icon_state = "tube1"
 	anchored = TRUE
-	invisibility = 101
 
 /obj/sun/New()
 	..()
-	set_light(12,1000)
+	set_light(l_power = 2, l_range = 6, l_color = "#FFFFEE")
+
+/obj/sun/verb/change_color(var/new_color as color)
+	set src in view()
+	set_light(l_color = new_color)
+
+/obj/sun/verb/change_range(var/new_range as num)
+	set src in view()
+	set_light(new_range)
+
+	if(!light_range)
+		icon_state = "lamp-off"
+
+/obj/sun/verb/change_power(var/new_power as num)
+	set src in view()
+	set_light(l_power = new_power)
