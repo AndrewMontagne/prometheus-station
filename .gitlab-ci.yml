@@ -1,4 +1,4 @@
-image: andrewmontagne/byond:latest
+image: andrewmontagne/byond:514
 
 stages:
   - lint
