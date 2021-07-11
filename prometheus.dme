@@ -3,7 +3,6 @@
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
 #define RUSTG_OVERRIDE_BUILTINS 1
-#define ENV_BUILD_RELEASE 1
 
 #ifdef ENV_EXTERNAL_BYOND_LIBS
 	#include "/byond/lib/rust_g.dm"

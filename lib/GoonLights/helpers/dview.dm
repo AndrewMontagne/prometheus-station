@@ -1,7 +1,7 @@
 // Dummy mob.
 /mob/dview
 	// Can't make it invisible enough.
-	invisibility = 101
+	invisibility = ALWAYS_INVISIBLE
 	density      = 0
 	alpha        = 0
 	opacity      = 0

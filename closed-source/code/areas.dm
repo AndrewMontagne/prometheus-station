@@ -1,6 +1,9 @@
 /area
-	icon = 'assets/cc-by-sa-nc/icons/turf/floors.dmi'
+	icon = 'assets/cc-by-sa-nc/icons/turf/areas.dmi'
 	icon_state = "unknown"
+	invisibility = ALWAYS_INVISIBLE
+	layer = 10
+	plane = 0
 
 /**
 Space Area

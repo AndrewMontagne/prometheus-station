@@ -38,6 +38,11 @@
 /// Low task priority
 #define PRIORITY_LOW 4
 
+/**
+Visibility Defines
+**/
+
+#define ALWAYS_INVISIBLE 101
 
 /**
 These are the custom defined planes
