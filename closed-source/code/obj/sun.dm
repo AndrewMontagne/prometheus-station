@@ -7,7 +7,7 @@
 
 /obj/sun/New()
 	..()
-	set_light(l_power = 2, l_range = 6, l_color = "#FFFFEE")
+	set_light(l_power = 2, l_range = 4, l_color = "#FFFFEE")
 
 /obj/sun/verb/change_color(var/new_color as color)
 	set src in view()

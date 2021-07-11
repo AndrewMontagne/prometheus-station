@@ -459,8 +459,8 @@ body
 	//Let's prevent people from promoting themselves, yes?
 #ifdef ENV_BUILD_RELEASE
 	//Let's prevent people from promoting themselves, yes?
-	if (initial(D.NO_DEBUG) == TRUE || D.NO_DEBUG == TRUE)
-		usr.stdout( "<span style=\"color:red\">You're not allowed to edit [D.type] for security reasons!</span>")
+	if (initial(O.NO_DEBUG) == TRUE || O.NO_DEBUG == TRUE)
+		usr.stdout( "<span style=\"color:red\">You're not allowed to edit [O.type] for security reasons!</span>")
 		//logTheThing("admin", usr, null, "tried to varedit [D.type] but was denied!")
 		//logTheThing("diary", usr, null, "tried to varedit [D.type] but was denied!", "admin")
 		//message_admins("[key_name(usr)] tried to varedit [D.type] but was denied.") //If someone tries this let's make sure we all know it.
