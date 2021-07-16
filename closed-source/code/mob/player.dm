@@ -12,6 +12,7 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 
 /mob/player/New(var/loc)
 	. = ..(loc)
+	src.init_chat()
 
 	var/obj/screen/inventoryslot/jacket/jacket = new(src)
 	jacket.screen_loc = "inventorymap:1,1"
