@@ -10,6 +10,7 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	maximum_hitpoints = 100
 	hitpoints = 100
 	var/datum/toolbar/toolbar
+	var/list/hands
 
 /mob/player/New(var/loc)
 	. = ..(loc)
@@ -26,11 +27,19 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	src.screen += shoes
 
 	var/obj/screen/inventoryslot/hand/left/hand_l = new(src)
-	src.screen += hand_l
 	var/obj/screen/inventoryslot/hand/right/hand_r = new(src)
-	src.screen += hand_r
-
-	//src.toolbar = New()
+	
+	src.hands = list(hand_r, hand_l)
+	src.screen |= src.hands
 
 	src.tryequip(new /obj/item/clothing/jumpsuit())
 	src.tryequip(new /obj/item/clothing/shoes())
+
+/mob/player/on_gain_client()
+	. = ..()
+	src.toolbar = new /datum/toolbar(src.client.map_panes["mapwindow.map"], src.hands)
+
+/mob/player/on_lose_client()
+	. = ..()
+	del(src.toolbar)
+	src.toolbar = null

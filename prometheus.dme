@@ -72,6 +72,7 @@
 #include "closed-source\modules\inventory\slots\inventoryslot.dm"
 #include "closed-source\modules\map_pane\map_pane.dm"
 #include "closed-source\modules\map_pane\screen.dm"
+#include "closed-source\modules\map_pane\toolbar.dm"
 #include "closed-source\modules\networks\network.dm"
 #include "closed-source\modules\networks\network_node.dm"
 #include "closed-source\modules\parallax\parallax.dm"
