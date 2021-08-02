@@ -9,6 +9,7 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	icon_state = "body_m_s"
 	maximum_hitpoints = 100
 	hitpoints = 100
+	var/datum/toolbar/toolbar
 
 /mob/player/New(var/loc)
 	. = ..(loc)
@@ -28,6 +29,8 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	src.screen += hand_l
 	var/obj/screen/inventoryslot/hand/right/hand_r = new(src)
 	src.screen += hand_r
+
+	//src.toolbar = New()
 
 	src.tryequip(new /obj/item/clothing/jumpsuit())
 	src.tryequip(new /obj/item/clothing/shoes())

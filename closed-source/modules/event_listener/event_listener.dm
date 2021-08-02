@@ -34,16 +34,16 @@ Subscribes to an event.
 	if (src.subscribed_events.Find(event_name) == 0)
 		src.subscribed_events[event_name] = list(src)
 	else
-		src.subscribed_events[event_name].Add(src)
+		src.subscribed_events[event_name]:Add(src)
 
 	if (global_event_listeners.Find(event_name) == 0)
 		global_event_listeners[event_name] = list(src)
 	else
-		global_event_listeners[event_name].Add(src)
+		global_event_listeners[event_name]:Add(src)
 
 /datum/proc/unsubscribe_from_events(var/event_name)
-	src.subscribed_events[event_name].Remove(src)
-	global_event_listeners[event_name].Remove(src)
+	src.subscribed_events[event_name]:Remove(src)
+	global_event_listeners[event_name]:Remove(src)
 
 /datum/Del()
 	. = ..()

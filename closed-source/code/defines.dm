@@ -28,6 +28,7 @@
 
 /// A list of all cardinal directions
 #define ALL_DIRS list(NORTH, SOUTH, EAST, WEST)
+#define MIDDLE -1 // Not a real direction, for the toolbar system
 
 /// Realtime task priority
 #define PRIORITY_REALTIME 1
