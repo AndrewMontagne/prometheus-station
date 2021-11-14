@@ -8,3 +8,10 @@ Ancestor for all GUI objects.
 	plane = PLANE_SCREEN
 	var/width = 32
 	var/height = 32
+
+/obj/screen/Del()
+	if (src.loc && istype(src.loc, /obj/toolbar))
+		var/obj/toolbar/T = src.loc
+		T.remove_screen(src)
+
+	. = ..()

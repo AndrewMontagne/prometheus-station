@@ -48,6 +48,7 @@ body
 </style>"}
 	html += "</head><body>"
 	html += "<a href='byond://?src=\ref[src];Refresh=\ref[D]'>Refresh</a>"
+	html += " | <a href='byond://?src=\ref[src];Delete=\ref[D]'>Delete</a>"
 	html += " | <a href='byond://?src=\ref[src];CallProc=\ref[D]'>Call Proc</a> <br>"
 
 	html += "<br><a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=L90'><<==</a> "
@@ -121,6 +122,9 @@ body
 /client/Topic(href, href_list, hsrc)
 	if (href_list["Refresh"])
 		src.debug_variables(locate(href_list["Refresh"]))
+	if (href_list["Delete"])
+		var/atom/A = locate(href_list["Delete"])
+		del(A)
 	if (href_list["SetDirection"])
 		var/atom/A = locate(href_list["SetDirection"])
 		if (istype(A))

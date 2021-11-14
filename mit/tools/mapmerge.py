@@ -60,7 +60,7 @@ def mapmerge(filepath, test_only=False):
 
             lineNum += 1
 
-            if lineNum is 1:
+            if lineNum == 1:
                 if test_only:
                     if line.startswith("// Merged with version " + version()):
                         print(filepath + ' is merged.', flush=True)
@@ -81,14 +81,14 @@ def mapmerge(filepath, test_only=False):
                 print('.', end='', flush=True)
                 loadprog += 1
 
-            if line is '':
+            if line == '':
                 break
 
             if line[:2] == '//' or line[:1] == '#':
                 continue
             line = line.rstrip()
 
-            if line is '' or line is '"}':
+            if line == '' or line == '"}':
                 if len(tiles) > 0:
                     state = DETERMINE_NEXT
                 continue
@@ -108,7 +108,7 @@ def mapmerge(filepath, test_only=False):
                     break
 
                 oldhash = match.group(1)
-                if hashLength is 0:
+                if hashLength == 0:
                     hashLength = len(oldhash)
                 data = match.group(2)
                 area = data.split(',')[-1]

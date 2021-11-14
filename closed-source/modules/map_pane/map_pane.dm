@@ -66,7 +66,7 @@
 		background.screen_loc = "[src.skin_id]:0,0 to [tiles_x],[tiles_y]"
 
 	for (var/listener in src.listeners)
-		var/datum/toolbar/T = listener
+		var/obj/toolbar/T = listener
 		T.update()
 
 /datum/map_pane/proc/add_background()
