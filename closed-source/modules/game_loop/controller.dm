@@ -56,3 +56,7 @@ This controls the overall game state and handles the gamemode/gamestate logic.
 			del(oldstate)
 		else
 			src.state.process()
+
+/world/init_controllers(datum/scheduler/scheduler)
+	. = ..()
+	scheduler.add_controller(new /controller/game_loop())

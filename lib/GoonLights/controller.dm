@@ -14,3 +14,7 @@ This controller hooks in the GoonLights lighting processing into the task schedu
 /controller/lighting/process()
 	. = ..()
 	lighting_process()
+
+/world/init_controllers(datum/scheduler/scheduler)
+	. = ..()
+	scheduler.add_controller(new /controller/lighting())

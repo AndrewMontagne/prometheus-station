@@ -26,7 +26,7 @@
 	opacity = TRUE
 	density = TRUE
 
-/turf/MouseDropOn(obj/O as obj, mob/player/user as mob)
+/turf/MouseDropOn(obj/O as obj, mob/player/user as mob, params)
 	if (istype(O,/obj/item))
 		var/obj/item/I = O
 		if (I.equipped)
@@ -34,6 +34,9 @@
 				I.slot.unequipitem()
 			else
 				return
+		var/list/P = params2list(params)
+		I.pixel_x = text2num(P["icon-x"]) - 16
+		I.pixel_y = text2num(P["icon-y"]) - 16
 		I.loc = src
 
 /turf/find_turf()

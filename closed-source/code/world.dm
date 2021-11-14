@@ -33,11 +33,7 @@
 
 	scheduler = new /datum/scheduler()
 
-	var/controller/C = new /controller/lighting()
-	scheduler.add_controller(C)
-
-	C = new /controller/game_loop()
-	scheduler.add_controller(C)
+	src.init_controllers(scheduler)
 
 	//C = new /controller/stress("0000", PRIORITY_LOW)
 	//scheduler.add_controller(C)
@@ -50,6 +46,10 @@
 
 	LOG_SYSTEM("Startup Complete!")
 	world.sleep_offline = TRUE
+
+/world/proc/init_controllers(datum/scheduler/scheduler)
+	SHOULD_CALL_PARENT(TRUE)
+	return
 
 /world/Del()
 	. = ..()

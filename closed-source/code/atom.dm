@@ -30,10 +30,10 @@
 	if(!Adjacent(usr) || !over.Adjacent(usr)) 
 		return // should stop you from dragging through windows
 
-	over.MouseDropOn(src,usr)
+	over.MouseDropOn(src,usr,params)
 	return
 
-/atom/proc/MouseDropOn(atom/dropping, mob/user)
+/atom/proc/MouseDropOn(atom/dropping, mob/user, params)
 	return
 
 /atom/proc/Adjacent(atom/neighbour)
