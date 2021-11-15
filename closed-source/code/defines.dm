@@ -55,6 +55,15 @@ These are the custom defined planes
 #define PLANE_SCREEN 999
 
 /**
+These are defines for screen anchors
+**/
+#define ANCHOR_LEFT			"LEFT"
+#define ANCHOR_RIGHT		"RIGHT"
+#define ANCHOR_CENTER		"CENTER"
+#define ANCHOR_TOP			"TOP"
+#define ANCHOR_BOTTOM		"BOTTOM"
+
+/**
 These are the canonical names for inventory slots, so that they can be used for sprites.
 **/
 

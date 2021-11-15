@@ -9,7 +9,7 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	icon_state = "body_m_s"
 	maximum_hitpoints = 100
 	hitpoints = 100
-	var/obj/toolbar/toolbar
+	var/obj/screen/toolbar/toolbar
 	var/list/hands
 
 /mob/player/New(var/loc)
@@ -37,7 +37,7 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 
 /mob/player/on_gain_client()
 	. = ..()
-	src.toolbar = new /obj/toolbar(src.client.map_panes["mapwindow.map"], src.hands)
+	src.toolbar = new /obj/screen/toolbar(src.client.map_panes["mapwindow.map"], src.hands)
 	src.toolbar.loc = src
 
 /mob/player/on_lose_client()
