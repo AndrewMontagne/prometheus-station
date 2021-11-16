@@ -53,12 +53,13 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 			else
 				var/list/obj/network_node/new_graph = node.build_node_graph()
 				var/list/obj/network_node/prime_graph = network_prime.nodes
-				if (new_graph.len != prime_graph.len)
-					new /datum/network(new_graph)
-					continue
-				var/list/xor_nodes = new_graph ^ prime_graph
-				if (xor_nodes.len > 0)
-					new /datum/network(new_graph)
+
+				if (new_graph.len != prime_graph.len || length(new_graph ^ prime_graph) > 0)
+					var/list/obj/network_node/inverted_nodes = prime_graph - new_graph
+					if (length(new_graph) < length(inverted_nodes))
+						new /datum/network(new_graph)
+					else
+						new /datum/network(inverted_nodes)
 					continue
 	. = ..()
 
