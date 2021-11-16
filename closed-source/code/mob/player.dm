@@ -17,19 +17,19 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	src.init_chat()
 
 	var/obj/screen/inventoryslot/jacket/jacket = new(src)
-	jacket.screen_loc = "inventorymap:1,1"
-	src.screen += jacket
 	var/obj/screen/inventoryslot/gloves/gloves = new(src)
-	gloves.screen_loc = "inventorymap:2,1"
-	src.screen += gloves
 	var/obj/screen/inventoryslot/shoes/shoes = new(src)
-	shoes.screen_loc = "inventorymap:3,1"
-	src.screen += shoes
+	var/obj/screen/inventoryslot/belt/belt = new(src)
+	var/obj/screen/inventoryslot/hat/hat = new(src)
+	var/obj/screen/inventoryslot/ears/ears = new(src)
+	var/obj/screen/inventoryslot/glasses/glasses = new(src)
 
 	var/obj/screen/inventoryslot/hand/left/hand_l = new(src)
 	var/obj/screen/inventoryslot/hand/right/hand_r = new(src)
+
+	var/obj/screen/craft/drop = new(src)
 	
-	src.hands = list(hand_r, hand_l)
+	src.hands = list(hand_r, hand_l, drop, jacket, gloves, shoes, belt, hat, ears, glasses)
 	src.screen |= src.hands
 
 	src.tryequip(new /obj/item/clothing/jumpsuit())

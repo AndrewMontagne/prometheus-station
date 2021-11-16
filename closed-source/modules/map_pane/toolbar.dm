@@ -20,19 +20,23 @@
 	. = ..()
 
 /obj/screen/toolbar/proc/add_screen(var/obj/screen/S)
-	LOG_TRACE("ADD SCREEN")
 	screens.Add(S)
 	S.loc = src
 	update()
 
 /obj/screen/toolbar/proc/remove_screen(var/obj/screen/S)
-	LOG_TRACE("REMOVE SCREEN")
 	screens.Remove(S)
 	update()
 
 /obj/screen/toolbar/proc/update()
 	var/total_size = 0
+	var/max_width = 0
+	var/max_height = 0
 	for (var/obj/screen/S in src.screens)
+		if (S.width > max_width)
+			max_width = S.width
+		if (S.height > max_height)
+			max_height = S.height
 		if (src.is_horizontal)
 			total_size += S.width
 		else
@@ -40,16 +44,17 @@
 
 	var/position = 16 - (total_size / 2)
 
-	if (src.is_horizontal)
-		if (src.h_anchor == ANCHOR_LEFT)
-			position = 0
-		else if (src.h_anchor == ANCHOR_RIGHT)
-			position = -total_size + 32
-	else
-		if (src.v_anchor == ANCHOR_TOP)
-			position = -total_size + 32
-		else if (src.v_anchor == ANCHOR_BOTTOM)
-			position = 0
+	if (!istype(src.loc, /obj/screen/toolbar))
+		if (src.is_horizontal)
+			if (src.h_anchor == ANCHOR_LEFT)
+				position = 0
+			else if (src.h_anchor == ANCHOR_RIGHT)
+				position = -total_size + 32
+		else
+			if (src.v_anchor == ANCHOR_TOP)
+				position = -total_size + 32
+			else if (src.v_anchor == ANCHOR_BOTTOM)
+				position = 0
 
 	for (var/obj/screen/S in src.screens)
 		S.v_anchor = src.v_anchor
@@ -57,10 +62,20 @@
 		S.x_offset = src.x_offset
 		S.y_offset = src.y_offset
 		if (src.is_horizontal)
+			if (S.height != max_height)
+				if (src.align == ANCHOR_TOP)
+					S.y_offset += (max_height - S.height)
+				if (src.align == ANCHOR_CENTER)
+					S.y_offset += (max_height / 2) - (S.height / 2)
 			S.x_offset += position
 			S.update_screen_loc()
 			position += S.width
 		else
+			if (S.width != max_width)
+				if (src.align == ANCHOR_RIGHT)
+					S.x_offset += (max_width - S.width)
+				if (src.align == ANCHOR_CENTER)
+					S.x_offset += (max_width / 2) - (S.width / 2)
 			S.y_offset += position
 			S.update_screen_loc()
 			position += S.height
