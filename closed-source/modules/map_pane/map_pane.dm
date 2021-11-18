@@ -65,9 +65,9 @@
 	if (background)
 		background.screen_loc = "[src.skin_id]:0,0 to [tiles_x],[tiles_y]"
 
-	for (var/listener in src.listeners)
-		var/obj/screen/toolbar/T = listener
-		T.update()
+	//for (var/listener in src.listeners)
+	//	var/obj/screen/toolbar/T = listener
+	//	T.update_position()
 
 /datum/map_pane/proc/add_background()
 	background = new /obj/screen(null)

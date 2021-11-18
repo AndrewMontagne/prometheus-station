@@ -26,10 +26,8 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 
 	var/obj/screen/inventoryslot/hand/left/hand_l = new(src)
 	var/obj/screen/inventoryslot/hand/right/hand_r = new(src)
-
-	var/obj/screen/craft/drop = new(src)
 	
-	src.hands = list(hand_r, hand_l, drop, jacket, gloves, shoes, belt, hat, ears, glasses)
+	src.hands = list(hand_r, hand_l, jacket, gloves, shoes, belt, hat, ears, glasses)
 	src.screen |= src.hands
 
 	src.tryequip(new /obj/item/clothing/jumpsuit())
@@ -37,7 +35,16 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 
 /mob/player/on_gain_client()
 	. = ..()
-	src.toolbar = new /obj/screen/toolbar(src.client.map_panes["mapwindow.map"], src.hands)
+
+	var/obj/screen/inventoryslot/ears/drop = new(src)
+	var/obj/screen/inventoryslot/ears/drop2 = new(src)
+	var/obj/screen/inventoryslot/ears/drop3 = new(src)
+	var/list/obj/screen/aaaa = list(drop, drop2, drop3)
+	src.client.screen |= aaaa
+	var/obj/screen/toolbar/nested_toolbar = null
+	nested_toolbar =	new /obj/screen/toolbar(src.client.map_panes["mapwindow.map"], aaaa,      TRUE, ANCHOR_CENTER)
+	src.toolbar = 		new /obj/screen/toolbar(src.client.map_panes["mapwindow.map"], src.hands, FALSE, ANCHOR_CENTER, ANCHOR_RIGHT, ANCHOR_CENTER)
+	src.toolbar.add_screen(nested_toolbar)
 	src.toolbar.loc = src
 
 /mob/player/on_lose_client()
