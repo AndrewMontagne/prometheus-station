@@ -7,8 +7,9 @@
 	var/max_width = 0
 	var/max_height = 0
 
-/obj/screen/toolbar/New(var/datum/map_pane/_map, var/list/_screens, var/_is_horizontal, var/_align=ANCHOR_CENTER, var/_h_anchor=ANCHOR_CENTER, var/_v_anchor=ANCHOR_CENTER)
-	src.map = _map
+/obj/screen/toolbar/New(var/mob/_mob, var/datum/map_pane/_map, var/list/_screens, var/_is_horizontal, var/_align=ANCHOR_CENTER, var/_h_anchor=ANCHOR_CENTER, var/_v_anchor=ANCHOR_CENTER)
+	src.map = _mob.client.map_panes[_map]
+	src.loc = _mob
 	src.map.listeners.Add(src)
 	src.is_horizontal = _is_horizontal
 
@@ -17,20 +18,27 @@
 	src.align = _align
 
 	for (var/obj/screen/S in _screens)
-		src.add_screen(S)
+		src.add_screen(S, FALSE)
+	_mob.rebuild_screen()
 
 /obj/screen/toolbar/Del()
 	src.map.listeners.Remove(src)
 	. = ..()
 
 /obj/screen/toolbar/proc/add_screen(var/obj/screen/S)
+	var/mob/M = src.loc
+	M.ui.Add(S)
 	screens.Add(S)
 	S.loc = src
 	update_size()
+	M.rebuild_screen()
 
 /obj/screen/toolbar/proc/remove_screen(var/obj/screen/S)
+	var/mob/M = src.loc
+	M.ui.Remove(S)
 	screens.Remove(S)
 	update_size()
+	M.rebuild_screen()
 
 /obj/screen/toolbar/proc/update_size()
 	var/total_size = 0

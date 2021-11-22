@@ -24,11 +24,13 @@
 	z = 2
 
 	if(isnull(splashscreen))
-		splashscreen = new /obj/screen/splash()
+		src.splashscreen = new /obj/screen/splash()
+		src.ui = list(src.splashscreen)
+
+	src.rebuild_screen()
 
 	src << sound(lobby_music_track, repeat = 0, wait = 0, channel=1337)
 
-	client.screen += splashscreen
 
 	src << browse_rsc('assets/cc-by-sa-nc/icons/postcardsmall.png')
 	src << browse("<html><body>[motd]</body></html>", "window=loginwindow")
@@ -37,10 +39,6 @@
 
 /mob/lobby/Logout()
 	ready = 0
-
-	if(!isnull(client))
-		client.screen -= splashscreen
-
 	..()
 	del(src)
 
@@ -93,7 +91,5 @@
 
 /mob/lobby/on_lose_client()
 	. = ..()
-
-	client.screen -= splashscreen
 	winset(src, "loginwindow", "is-visible=false;")
 	src << sound(null, repeat = 0, wait = 0, channel = 1337)

@@ -74,4 +74,5 @@
 	background.icon_state = "blank"
 	background.layer--
 	background.name = "pane background"
-	player.screen += background
+	player.ui += background
+	player.rebuild_screen()

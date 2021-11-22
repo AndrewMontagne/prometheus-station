@@ -13,11 +13,26 @@ Ancestor for all GUI objects.
 	var/x_offset = 0
 	var/y_offset = 0
 
+
+/obj/screen/New(var/atom/_loc)
+	src.loc = _loc
+	if (src.loc && istype(src.loc, /mob))
+		var/mob/M = src.loc
+		M.ui.Add(src)
+		if (M.client)
+			M.rebuild_screen()
+	else if (src.loc && istype(src.loc, /obj/screen/toolbar))
+		var/obj/screen/toolbar/T = src.loc
+		T.add_screen(src)
+
 /obj/screen/Del()
 	if (src.loc && istype(src.loc, /obj/screen/toolbar))
 		var/obj/screen/toolbar/T = src.loc
 		T.remove_screen(src)
-
+	else if (src.loc && istype(src.loc, /mob))
+		var/mob/M = src.loc
+		M.ui.Remove(src)
+		M.rebuild_screen()
 	. = ..()
 
 /obj/screen/proc/update_screen_loc()

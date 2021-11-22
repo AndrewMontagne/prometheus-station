@@ -3,15 +3,19 @@
 	animate_movement = 2
 	glide_size = 16
 	mouse_over_pointer = MOUSE_HAND_POINTER
-	var/list/screen = list()
+	var/list/ui = list()
 
 /// Fired when the mob loses its client
 /mob/proc/on_lose_client()
-	client.screen -= src.screen
+	client.screen -= src.ui
 
 /// Fired when the mob gains a client
 /mob/proc/on_gain_client()
-	client.screen += src.screen
+	src.rebuild_screen()
+
+/mob/proc/rebuild_screen()
+	if (src.client)
+		src.client.rebuild_screen()
 
 // Handler for the input change button
 /mob/verb/change_input()
