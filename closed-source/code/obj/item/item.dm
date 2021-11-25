@@ -5,6 +5,7 @@ Parent type for all items that can be picked up
 	mouse_over_pointer = MOUSE_HAND_POINTER
 	var/item_state = "item"
 	var/list/slots = list()
+	var/list/obj/screen/inventoryslot/internal_slots = list()
 	var/equipped = FALSE
 	var/obj/screen/inventoryslot/slot = null
 

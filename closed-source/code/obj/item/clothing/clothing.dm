@@ -9,6 +9,7 @@ Clothing
 	icon = 'assets/cc-by-sa-nc/icons_new/mob/jumpsuits.dmi'
 	icon_state = "grey"
 	slots = list(SLOT_JACKET, SLOT_SUIT)
+	internal_slots = list(new /obj/screen/inventoryslot/pocket(), new /obj/screen/inventoryslot/pocket())
 
 /obj/item/clothing/gloves
 	name = "gloves"
@@ -20,4 +21,4 @@ Clothing
 	name = "shoes"
 	icon = 'assets/cc-by-sa-nc/icons_new/mob/shoes.dmi'
 	icon_state = "black"
-	slots = list(SLOT_SHOES)
+	slots = list(SLOT_SHOES, SLOT_POCKET)

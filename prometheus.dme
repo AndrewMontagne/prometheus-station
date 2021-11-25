@@ -2,6 +2,8 @@
 // All manual changes should be made outside the BEGIN_ and END_ blocks.
 // New source code should be placed in .dm files: choose File/New --> Code File.
 
+#define DEBUG
+
 #define RUSTG_OVERRIDE_BUILTINS 1
 
 #ifdef ENV_EXTERNAL_BYOND_LIBS

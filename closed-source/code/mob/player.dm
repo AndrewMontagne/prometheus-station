@@ -17,13 +17,12 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	. = ..(loc)
 	src.init_chat()
 
-	var/obj/screen/inventoryslot/jacket/jacket = new(src)
-	var/obj/screen/inventoryslot/gloves/gloves = new(src)
-	var/obj/screen/inventoryslot/shoes/shoes = new(src)
-	var/obj/screen/inventoryslot/belt/belt = new(src)
-	var/obj/screen/inventoryslot/hat/hat = new(src)
-	var/obj/screen/inventoryslot/ears/ears = new(src)
-	var/obj/screen/inventoryslot/glasses/glasses = new(src)
+	new /obj/screen/inventoryslot/jacket(src)
+	new /obj/screen/inventoryslot/gloves(src)
+	new /obj/screen/inventoryslot/shoes(src)
+	new /obj/screen/inventoryslot/hat(src)
+	new /obj/screen/inventoryslot/ears(src)
+	new /obj/screen/inventoryslot/glasses(src)
 
 	var/obj/screen/inventoryslot/hand/left/hand_l = new(src)
 	var/obj/screen/inventoryslot/hand/right/hand_r = new(src)
@@ -36,19 +35,21 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 /mob/player/on_gain_client()
 	. = ..()
 
-	var/list/toolbar_slots = list()
-	for (var/slotname in src.invslots)
-		var/obj/screen/inventoryslot/S = src.invslots[slotname]
-		if (istype(S, /obj/screen/inventoryslot/hand))
-			continue
-		toolbar_slots.Add(S)
+	src.hand_toolbar = new /obj/screen/toolbar(src, src.hands, TRUE, ANCHOR_CENTER, ANCHOR_CENTER, ANCHOR_BOTTOM)
+	src.slot_toolbar = new /obj/screen/toolbar(src, list(), FALSE, ANCHOR_LEFT, ANCHOR_LEFT, ANCHOR_CENTER)
 
-	src.hand_toolbar = new /obj/screen/toolbar(src, "mapwindow.map", src.hands, TRUE, ANCHOR_CENTER, ANCHOR_CENTER, ANCHOR_BOTTOM)
-	src.slot_toolbar = new /obj/screen/toolbar(src, "mapwindow.map", toolbar_slots, FALSE, ANCHOR_CENTER, ANCHOR_LEFT, ANCHOR_CENTER)
+	var/list/toolbar_slots = src.build_slot_toolbars()
+	for (var/obj/screen/toolbar/T in toolbar_slots)
+		slot_toolbar.add_screen(T)
 
 
 /mob/player/on_lose_client()
 	. = ..()
+
+	for (var/slotname in src.slot_toolbars)
+		del(src.slot_toolbars[slotname])
+	src.slot_toolbars = list()
+
 	del(src.hand_toolbar)
 	src.hand_toolbar = null
 	del(src.slot_toolbar)

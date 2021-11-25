@@ -1,16 +1,24 @@
 
 /obj/screen/toolbar
-	var/datum/map_pane/map = null
 	var/list/screens = list()
 	var/is_horizontal = FALSE
 	var/align = ANCHOR_CENTER
 	var/max_width = 0
 	var/max_height = 0
+	var/mob/mob_loc = null
 
-/obj/screen/toolbar/New(var/mob/_mob, var/datum/map_pane/_map, var/list/_screens, var/_is_horizontal, var/_align=ANCHOR_CENTER, var/_h_anchor=ANCHOR_CENTER, var/_v_anchor=ANCHOR_CENTER)
-	src.map = _mob.client.map_panes[_map]
-	src.loc = _mob
-	src.map.listeners.Add(src)
+/obj/screen/toolbar/New(var/atom/_loc, var/list/_screens, var/_is_horizontal, var/_align=ANCHOR_CENTER, var/_h_anchor=ANCHOR_CENTER, var/_v_anchor=ANCHOR_CENTER)
+	src.loc = _loc
+
+	if (istype(src.loc, /mob))
+		src.mob_loc = src.loc
+	else if (istype(src.loc, /obj/screen/toolbar))
+		var/obj/screen/toolbar/T = src.loc
+		src.mob_loc = T.mob_loc
+
+	if (isnull(src.mob_loc))
+		EXCEPTION("NO MOB_LOC FOR TOOLBAR")
+
 	src.is_horizontal = _is_horizontal
 
 	src.h_anchor = _h_anchor
@@ -19,26 +27,24 @@
 
 	for (var/obj/screen/S in _screens)
 		src.add_screen(S, FALSE)
-	_mob.rebuild_screen()
+
+	mob_loc.rebuild_screen()
 
 /obj/screen/toolbar/Del()
-	src.map.listeners.Remove(src)
 	. = ..()
 
 /obj/screen/toolbar/proc/add_screen(var/obj/screen/S)
-	var/mob/M = src.loc
-	M.ui.Add(S)
+	mob_loc.ui.Add(S)
 	screens.Add(S)
 	S.loc = src
 	update_size()
-	M.rebuild_screen()
+	mob_loc.rebuild_screen()
 
 /obj/screen/toolbar/proc/remove_screen(var/obj/screen/S)
-	var/mob/M = src.loc
-	M.ui.Remove(S)
+	mob_loc.ui.Remove(S)
 	screens.Remove(S)
 	update_size()
-	M.rebuild_screen()
+	mob_loc.rebuild_screen()
 
 /obj/screen/toolbar/proc/update_size()
 	var/total_size = 0

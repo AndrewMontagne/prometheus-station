@@ -25,7 +25,6 @@
 			src.screen |= src.ui
 			src.screen |= src.mob.ui
 			src._screen_dirty = FALSE
-			LOG_TRACE("REBUILD_SCREEN")
 
 /client/Del()
 	. = ..()
