@@ -17,6 +17,9 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	. = ..(loc)
 	src.init_chat()
 
+	src.chat_verbs = list("Say", "Whisper", "Shout") + src.chat_verbs
+	src.default_chat_verb = "Say"
+
 	new /obj/screen/inventoryslot/jacket(src)
 	new /obj/screen/inventoryslot/gloves(src)
 	new /obj/screen/inventoryslot/shoes(src)

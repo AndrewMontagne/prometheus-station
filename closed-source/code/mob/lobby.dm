@@ -31,11 +31,11 @@
 
 	src << sound(lobby_music_track, repeat = 0, wait = 0, channel=1337)
 
-
 	src << browse_rsc('assets/cc-by-sa-nc/icons/postcardsmall.png')
 	src << browse("<html><body>[motd]</body></html>", "window=loginwindow")
 	update_login_window()
 	winset(src, "loginwindow", "is-visible=true;")
+	src.set_chat_verb("OOC")
 
 /mob/lobby/Logout()
 	ready = 0
