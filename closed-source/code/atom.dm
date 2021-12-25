@@ -57,3 +57,15 @@
 /atom/proc/update_icon()
 	src.overlays.Cut()
 	src.underlays.Cut()
+
+/atom/var/needs_init = FALSE
+/atom/proc/Initialise()
+	src.needs_init = FALSE
+
+/atom/New(var/atom/location, var/list/params=null)
+	. = ..(location)
+
+	if (!isnull(params))
+		for (var/variable in params)
+			src.vars[variable] = params[variable]
+	

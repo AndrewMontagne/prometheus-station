@@ -9,14 +9,16 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 	icon = 'assets/cc-by-sa-nc/icons_new/obj/cable.dmi'
 	icon_state = "0-1"
 	var/list/dirs = list()
+	needs_init = TRUE
 
-/// Constructor, handles joining networks
 /obj/network_node/New()
 	. = ..()
-	
 	for (var/dir in splittext(src.icon_state, "-"))
 		dirs.Add(text2num(dir))
 
+/// Handles joining networks
+/obj/network_node/Initialise()
+	. = ..()
 	if (isnull(src.network))
 		var/list/obj/network_node/neighbours = src.potential_neighbours()
 		if (neighbours.len == 0)
@@ -121,4 +123,5 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 	return neighbours
 
 /mob/verb/makenode()
-	new /obj/network_node(src.loc)
+	var/obj/network_node/N = new /obj/network_node(src.loc)
+	N.Initialise()

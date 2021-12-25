@@ -29,6 +29,13 @@
 	LOG_SYSTEM("Initialising BYOND Extensions...")
 	rustg_url_encode("") // Check for rustg's presence
 
+	LOG_SYSTEM("Loading Map...")
+
+	var/datum/map_loader/loader = new(TRUE)
+	loader.load_map("/app/closed-source/maps/newmap.dmm")
+	loader.write_map(1, 1, 1)
+	loader.init_atoms()
+
 	LOG_SYSTEM("Initialising Controllers...")
 
 	scheduler = new /datum/scheduler()
