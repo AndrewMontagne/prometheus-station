@@ -23,11 +23,8 @@
 	src.tile_defs = list()
 
 	var/regex/z_level_start_regex = regex(@'^\((\d+),(\d+),(\d+)\) = \{"$')
-	var/origin_x = 0
-	var/origin_y = 0
 	var/origin_z = 0
 	var/current_y = 0
-	var/current_z = 0
 	var/list/z_level_data = list()
 	src.map_data = list()
 
@@ -49,13 +46,10 @@
 				src.tile_defs[key] = tile_def_regex.group[2]
 
 			else if (z_level_start_regex.Find(line) != 0)
-				origin_x = text2num(z_level_start_regex.group[1])
-				origin_y = text2num(z_level_start_regex.group[2])
 				origin_z = text2num(z_level_start_regex.group[3])
 				state = STATE_Z_LEVEL
 				z_level_data = list()
 				current_y = 1
-				current_z++
 
 		else if (state == STATE_Z_LEVEL)
 			if (line == "\"}")
@@ -158,7 +152,6 @@
 /datum/map_loader/proc/init_atoms()
 	for (var/i in src.atoms_to_init)
 		var/atom/A = i
-		LOG_TRACE(text("Init []", A))
 		A.Initialise()
 		sleep(-1)
 	src.atoms_to_init = list()

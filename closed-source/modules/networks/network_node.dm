@@ -121,7 +121,3 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 	neighbours.Remove(src)
 
 	return neighbours
-
-/mob/verb/makenode()
-	var/obj/network_node/N = new /obj/network_node(src.loc)
-	N.Initialise()

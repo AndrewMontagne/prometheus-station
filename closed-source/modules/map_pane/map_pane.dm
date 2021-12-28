@@ -55,13 +55,6 @@
 	src.top_offset = bottom_offset + (height - 32) - 2
 	src.right_offset = left_offset + (width - 32) - 2
 
-	var/view_width = player.view
-	var/view_height = player.view
-	if (findtext(player.view, "x"))
-		raw = splittext(player.view , "x")
-		view_width = raw[1]
-		view_height = raw[2]
-
 	if (background)
 		background.screen_loc = "[src.skin_id]:0,0 to [tiles_x],[tiles_y]"
 
