@@ -36,6 +36,10 @@
 	loader.write_map(1, 1, 1)
 	loader.init_atoms()
 
+	for (var/turf/space/S in world.contents)
+		if (S.needs_init)
+			S.Initialise()
+
 	LOG_SYSTEM("Initialising Controllers...")
 
 	scheduler = new /datum/scheduler()

@@ -1,3 +1,7 @@
+/turf
+	vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_ID
+	plane = PLANE_TURF
+
 /turf/proc/has_visible_atom()
 	for (var/atom/A in src.contents)
 		if (A.is_visible())

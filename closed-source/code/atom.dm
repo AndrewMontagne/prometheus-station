@@ -1,3 +1,9 @@
+/atom
+	plane = PLANE_GAME
+
+/mob/vis_flags = VIS_INHERIT_LAYER
+/obj/vis_flags = VIS_INHERIT_LAYER
+
 /// Finds and returns the parent turf of an atom.
 /atom/proc/find_turf()
 	RETURN_TYPE(/turf)
