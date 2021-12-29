@@ -16,6 +16,10 @@
 	var/global/obj/screen/splash/splashscreen
 	var/global/lobby_music_track = pick('closed-source/music/robocop.ogg','closed-source/music/tintin.ogg')
 
+/mob/lobby/New()
+	. = ..()
+	src.init_chat()
+
 /mob/lobby/Login()
 	..()
 

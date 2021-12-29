@@ -1,9 +1,6 @@
 /atom
     plane = PLANE_GAME
 
-/turf/space
-    plane = PLANE_SPACE
-
 /mob/Move()
 	. = ..()
 	if (client && client.eye == src)

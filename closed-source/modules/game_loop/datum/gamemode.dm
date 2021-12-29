@@ -41,3 +41,4 @@ This class encapsulates gamemode functionality
 			var/mob/player/player_mob = new(spawnpoint.loc)
 			new_player.client.change_mob(player_mob)
 			del(new_player)
+			break

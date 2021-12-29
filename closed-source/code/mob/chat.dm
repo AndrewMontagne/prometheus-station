@@ -5,6 +5,6 @@
 /mob/proc/init_chat()
 	src.subscribe_to_events("ooc_message")
 
-/mob/player/proc/recv_ooc_message(var/payload)
+/mob/proc/recv_ooc_message(var/payload)
 	src << payload
 

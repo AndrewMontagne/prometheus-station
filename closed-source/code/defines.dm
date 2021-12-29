@@ -50,6 +50,7 @@ These are the custom defined planes
 
 #define PLANE_SPACE -55
 #define PLANE_PARALLAX -50
+#define PLANE_TURF -11
 #define PLANE_GAME -10
 #define PLANE_DARKNESS 100
 #define PLANE_SCREEN 999
