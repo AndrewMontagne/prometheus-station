@@ -125,6 +125,7 @@
 
 					var/list/params = list()
 					for (var/datum in data)
+						datum = trimAll(datum)
 						if (param_extract_regex.Find(datum) == 0)
 							LOG_WARNING("Unable to process map datum: '" + datum + "'")
 						else
