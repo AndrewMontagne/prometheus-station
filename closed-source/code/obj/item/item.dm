@@ -24,4 +24,5 @@ Parent type for all items that can be picked up
 
 	if (istype(source, /mob/player))
 		var/mob/player/P = source
-		P.tryequip(src)
+		if (src.Adjacent(source))
+			P.tryequip(src)

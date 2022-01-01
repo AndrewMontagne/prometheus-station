@@ -6,3 +6,9 @@
 	density = TRUE
 	icon = 'assets/cc-by-sa/icons/structure/reinforced_window.dmi'
 	icon_state = "r_window"
+
+/obj/structure/lattice
+	density = FALSE
+	name = "lattice"
+	icon = 'assets/cc-by-sa-nc/icons/obj/structures.dmi'
+	icon_state = "lattice"

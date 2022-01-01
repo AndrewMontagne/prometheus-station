@@ -1,9 +1,6 @@
 /atom
 	plane = PLANE_GAME
 
-/mob/vis_flags = VIS_INHERIT_LAYER
-/obj/vis_flags = VIS_INHERIT_LAYER
-
 /// Finds and returns the parent turf of an atom.
 /atom/proc/find_turf()
 	RETURN_TYPE(/turf)
@@ -68,10 +65,16 @@
 /atom/proc/Initialise()
 	src.needs_init = FALSE
 
-/atom/New(var/atom/location, var/list/params=null)
+/atom/New(var/atom/location, var/list/params=null, var/auto_init=TRUE)
+	SHOULD_CALL_PARENT(TRUE)
 	. = ..(location)
 
 	if (!isnull(params))
 		for (var/variable in params)
 			src.vars[variable] = params[variable]
-	
+	if (auto_init)
+		spawn(0)
+			src.Initialise()
+
+/atom/proc/Bumped(var/atom/movable/source)
+	return

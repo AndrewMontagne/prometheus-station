@@ -19,6 +19,8 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 /// Handles joining networks
 /obj/network_node/Initialise()
 	. = ..()
+	if (istype(src.loc, /turf/basic/open/floor))
+		src.invisibility = VISIBLITY_UNDER_TILE
 	if (isnull(src.network))
 		var/list/obj/network_node/neighbours = src.potential_neighbours()
 		if (neighbours.len == 0)

@@ -121,6 +121,10 @@
 					if (path == world.turf || path == world.area)
 						continue
 
+					if (isnull(path))
+						LOG_WARNING("Unknown Path: [object]")
+						continue
+
 					var/loc = locate(current_x + start_x, current_y + start_y, current_z + start_z)
 
 					var/list/params = list()
@@ -139,7 +143,7 @@
 
 							params[variable] = var_value
 
-					var/atom/A = new path(loc, params)
+					var/atom/A = new path(loc, params, FALSE)
 
 					try
 						if (A.needs_init)

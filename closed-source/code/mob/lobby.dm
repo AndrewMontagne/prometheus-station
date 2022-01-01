@@ -7,7 +7,7 @@
 
 /mob/lobby
 	var/ready = 0
-	invisibility = ALWAYS_INVISIBLE
+	invisibility = VISIBLITY_NEVER
 	density = FALSE
 	sight = BLIND
 

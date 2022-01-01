@@ -5,4 +5,4 @@
 	icon = 'assets/cc-by-sa-nc/icons/mob/screen1.dmi'
 	icon_state = "x"
 	var/label = "any"
-	invisibility = ALWAYS_INVISIBLE
+	invisibility = VISIBLITY_NEVER

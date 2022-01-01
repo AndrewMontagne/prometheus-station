@@ -42,7 +42,10 @@
 Visibility Defines
 **/
 
-#define ALWAYS_INVISIBLE 101
+#define VISIBLITY_ALWAYS      0
+#define VISIBLITY_UNDER_TILE  1
+#define VISIBLITY_SUPER       100
+#define VISIBLITY_NEVER       101
 
 /**
 These are the custom defined planes
@@ -56,6 +59,16 @@ These are the custom defined planes
 #define PLANE_SCREEN 999
 
 /**
+These are layer definitions
+**/
+#define LAYER_AREA 1
+#define LAYER_TURF 2
+#define LAYER_OBJ  3
+#define LAYER_MOB  4
+#define LAYER_CEIL 4.9
+#define LAYER_FLY  5
+
+/**
 These are defines for screen anchors
 **/
 #define ANCHOR_LEFT			"LEFT"
@@ -63,6 +76,13 @@ These are defines for screen anchors
 #define ANCHOR_CENTER		"CENTER"
 #define ANCHOR_TOP			"TOP"
 #define ANCHOR_BOTTOM		"BOTTOM"
+
+/**
+Multi-z defines
+**/
+
+#define MULTI_Z_START 2
+#define MULTI_Z_END   4
 
 /**
 These are the canonical names for inventory slots, so that they can be used for sprites.
