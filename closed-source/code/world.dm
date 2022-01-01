@@ -33,7 +33,7 @@
 
 	var/datum/map_loader/loader = new(TRUE)
 	loader.load_map("/app/closed-source/maps/newmap.dmm")
-	loader.write_map(1, 1, 1)
+	loader.write_map(1, 1, 2)
 	loader.init_atoms()
 
 	for (var/turf/space/S in world.contents)

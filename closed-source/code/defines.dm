@@ -61,12 +61,13 @@ These are the custom defined planes
 /**
 These are layer definitions
 **/
-#define LAYER_AREA 1
-#define LAYER_TURF 2
-#define LAYER_OBJ  3
-#define LAYER_MOB  4
-#define LAYER_CEIL 4.9
-#define LAYER_FLY  5
+#define LAYER_AREA   1
+#define LAYER_TURF   2
+#define LAYER_FLOOR  2.1
+#define LAYER_OBJ    3
+#define LAYER_MOB    4
+#define LAYER_CEIL   4.9
+#define LAYER_FLY    5
 
 /**
 These are defines for screen anchors

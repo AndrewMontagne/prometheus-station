@@ -12,3 +12,8 @@
 	name = "lattice"
 	icon = 'assets/cc-by-sa-nc/icons/obj/structures.dmi'
 	icon_state = "lattice"
+
+/obj/structure/signage
+	density = FALSE
+	layer = LAYER_FLOOR
+	icon = 'assets/cc-by-sa/icons/structure/signage.dmi'
