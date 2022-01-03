@@ -104,12 +104,13 @@ body
 	else if (islist(value))
 		var/list/L = value
 		html += "[name] = /list ([L.len])"
-
-		if (!isnull(L) && L.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || name == "verbs" || L.len > 500))
+		var/list/forbidden_vars = list("underlays", "overlays", "vars", "verbs")
+		if (!isnull(L) && L.len > 0 && !(name in forbidden_vars || L.len > 500))
 			html += "<ul>"
 			for (var/index = 1, index <= L.len, index++)
 				html += debug_variable("[index]", L[index], level + 1)
-				if (name != "contents" && !isnum(L[index]) && L["[L[index]]"])
+				var/list/forbidden_vars2 = list("contents", "vis_contents", "vis_locs")
+				if (!(name in forbidden_vars2) && !isnum(L[index]) && L["[L[index]]"])
 					html += "[debug_variable("&nbsp;&nbsp;&nbsp;", L["[L[index]]"], level + 1)]"
 			html += "</ul>"
 	else
