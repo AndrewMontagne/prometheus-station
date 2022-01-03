@@ -10,6 +10,8 @@
 	anchored		 	= 1
 	infra_luminosity 	= 256
 
+	vis_flags           = VIS_HIDE 
+
 	var/computed_color		= rgb(0,0,0,255)
 
 	blend_mode       = BLEND_MULTIPLY

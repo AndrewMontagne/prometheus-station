@@ -5,7 +5,7 @@
 	icon_state = "tube1"
 	anchored = TRUE
 	var/default_range = 6
-	var/default_color = "#cccccc"
+	var/default_color = "#ffffff"
 	layer = LAYER_CEIL
 
 /obj/machine/light/bulb
