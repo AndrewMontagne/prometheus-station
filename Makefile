@@ -2,24 +2,31 @@ INV=\033[7m
 NC=\033[0m
 
 SHELL := /bin/bash
-.PHONY: all dev clean lint docs mapmerge-test mapmerge build run run-container
+.PHONY: help build dev clean lint docs mapmerge-test mapmerge compile build run run-container
 
 -include /byond/env.sh
 
-all: lint mapmerge docs build
+help: ## Shows this help prompt
+	@echo "Usage: make target1 [target2] ..."
+	@echo ""
+	@echo "Target                          Description"
+	@echo "================================================================================"
+	@awk -F ':|##' '/^[^\t].+?:.*?##/ {printf "\033[36m%-30s\033[0m %s\n", $$1, $$NF }' $(MAKEFILE_LIST)
 
-dev: all run
+dev: build run ## Builds and runs
 
-clean:
+build: lint mapmerge docs ## Runs all the build stages
+
+clean: ## Removes any intermediate files
 	@echo -e '\n${INV} ###   CLEAN   ### ${NC}\n'
 	@rm -fv *.dmb *.rsc *.int *.lk
 	@rm -rfv /tmp/prometheus-station
 
-lint:
+lint: ## Runs linting checks on the codebase
 	@echo -e '\n${INV} ###  LINTER   ### ${NC}\n'
 	@DreamChecker -c dreamchecker.toml
 
-docs:
+docs: ## Generates documentation
 	@echo -e '\n${INV} ###  DM DOCS  ### ${NC}\n'
 	@dmdoc
 
@@ -27,11 +34,11 @@ mapmerge-test:
 	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
 	@python3 ./mit/tools/mapmerge.py --test-only ./closed-source/maps/*.dmm
 
-mapmerge:
+mapmerge: ## Merges any maps
 	@echo -e '\n${INV} ### MAP MERGE ### ${NC}\n'
 	@python3 ./mit/tools/mapmerge.py ./closed-source/maps/*.dmm
 
-build:
+compile: ## Compiles the project proper
 	@echo -e '\n${INV} ###   BUILD   ### ${NC}\n'
 	@mkdir -p /tmp/prometheus-station
 	@rsync -ra --delete --exclude='/.*' --exclude='/data' ./* /tmp/prometheus-station
@@ -42,11 +49,8 @@ build:
 	@(cd /tmp/prometheus-station && cp prometheus.dme.old prometheus.dme && rm prometheus.dme.old)
 	@rsync -rai --delete /tmp/prometheus-station/* .
 
-run:
+run: ## Runs the project
 	@echo -e '\n${INV} ###    RUN    ### ${NC}\n'
 	@echo "Starting server... Connect at byond://localhost:5000"
 	@DreamDaemon prometheus.dmb 5000 -once -trusted -invisible -quiet -threads on
 	@echo ""
-
-run-container:
-	@docker pull -q andrewmontagne/byond:latest && docker run --rm -it -p 5000:5000/tcp --mount type=bind,src=$(shell pwd -P),dst=/app andrewmontagne/byond:latest /bin/bash
