@@ -22,6 +22,7 @@
 	icon = 'assets/cc-by-sa-nc/icons_new/areas.dmi'
 	icon_state = "void"
 	color = "#b1b1b1"
+	dynamic_lighting = FALSE
 
 /turf/basic/open/void/Entered(atom/movable/A, atom/OldLoc)
 	. = ..()

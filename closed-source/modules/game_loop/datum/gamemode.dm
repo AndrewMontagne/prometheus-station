@@ -34,11 +34,13 @@ This class encapsulates gamemode functionality
 /// Spawns a given player
 /datum/gamemode/proc/spawn_player(mob/lobby/new_player)
 
-	for (var/obj/spawnpoint/spawnpoint in world)
-		if (locate(/mob/player) in spawnpoint.loc)
+	var/list/obj/spawnpoint/spawns = list()
+	for (var/obj/spawnpoint/S in world)
+		if (locate(/mob/player) in S.loc)
 			continue
-		else
-			var/mob/player/player_mob = new(spawnpoint.loc)
-			new_player.client.change_mob(player_mob)
-			del(new_player)
-			break
+		spawns.Add(S)
+	
+	var/obj/spawnpoint/S = pick(spawns)
+	var/mob/player/player_mob = new(S.loc)
+	new_player.client.change_mob(player_mob)
+	del(new_player)
