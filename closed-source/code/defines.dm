@@ -113,3 +113,18 @@ These are the canonical names for inventory slots, so that they can be used for 
 These are the canonical names for damage type
 **/
 #define DAMAGE_BRUTE	"brute"
+
+/**
+These are the kinds of tile smoothing
+**/
+#define SMOOTHING_NONE		0
+#define SMOOTHING_SIMPLE	1
+
+#define SMOOTHING_DIR_N		1
+#define SMOOTHING_DIR_E		2
+#define SMOOTHING_DIR_S		4
+#define SMOOTHING_DIR_W		8
+#define SMOOTHING_DIR_NE	1
+#define SMOOTHING_DIR_SE	2
+#define SMOOTHING_DIR_SW	4
+#define SMOOTHING_DIR_NW	8
