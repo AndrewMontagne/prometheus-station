@@ -15,7 +15,7 @@ help: ## Shows this help prompt
 
 dev: build run ## Builds and runs
 
-build: lint mapmerge docs ## Runs all the build stages
+build: lint mapmerge docs compile ## Runs all the build stages
 
 clean: ## Removes any intermediate files
 	@echo -e '\n${INV} ###   CLEAN   ### ${NC}\n'
