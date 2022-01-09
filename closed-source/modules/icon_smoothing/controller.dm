@@ -4,6 +4,7 @@ var/global/list/icon_smoothing_cache = list()
 
 /controller/smoothing
 	//priority = PRIORITY_LOW
+	tick_rate = 1
 
 /controller/smoothing/process()
 	. = ..()

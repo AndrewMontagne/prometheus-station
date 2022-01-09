@@ -4,14 +4,19 @@
 
 /obj/structure/glass
 	density = TRUE
-	icon = 'assets/cc-by-sa/icons/structure/reinforced_window.dmi'
-	icon_state = "r_window"
+	icon = 'assets/cc-by-sa-nc/icons_new/obj/structure/smooth/reinforced_window.dmi'
+	icon_state = "placeholder"
+	smoothing_type = SMOOTHING_SIMPLE
 
 /obj/structure/lattice
 	density = FALSE
 	name = "lattice"
-	icon = 'assets/cc-by-sa-nc/icons/obj/structures.dmi'
-	icon_state = "lattice"
+	icon = 'assets/cc-by-sa-nc/icons_new/obj/structure/smooth/lattice.dmi'
+	icon_state = "placeholder"
+	smoothing_type = SMOOTHING_SIMPLE
+
+/obj/structure/lattice/can_smooth_with(atom/neighbor)
+	return istype(neighbor, /turf/space) == FALSE
 
 /obj/structure/signage
 	density = FALSE

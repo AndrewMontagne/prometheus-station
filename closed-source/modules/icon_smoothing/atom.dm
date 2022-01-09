@@ -2,31 +2,46 @@
 /atom
 	var/smoothing_type = SMOOTHING_NONE
 
-/atom/proc/queue_for_smoothing()
-	atoms_to_smooth |= list(src)
+/atom/proc/queue_for_smoothing(var/include_self = TRUE)
+	var/list/dirty = list()
+	if (include_self)
+		dirty.Add(src)
+
+	for(var/dir in ALL_DIRS)
+		var/turf/T = get_step(src, dir)
+		if (src.can_smooth_with(T))
+			dirty.Add(T)
+		for (var/atom/A in T.contents)
+			if (src.can_smooth_with(A))
+				dirty.Add(A)
+
+	atoms_to_smooth |= dirty
+
 
 /atom/proc/icon_smooth()
 	if (src.smoothing_type != SMOOTHING_SIMPLE)
 		return
 
+	src.icon = initial(src.icon)
+
 	var/edges = 0
-	if (src.can_smooth_with(get_step(src, NORTH)))
+	if (src.check_smoothing_neighbour(get_step(src, NORTH)))
 		edges |= SMOOTHING_DIR_N
-	if (src.can_smooth_with(get_step(src, EAST)))
+	if (src.check_smoothing_neighbour(get_step(src, EAST)))
 		edges |= SMOOTHING_DIR_E
-	if (src.can_smooth_with(get_step(src, SOUTH)))
+	if (src.check_smoothing_neighbour(get_step(src, SOUTH)))
 		edges |= SMOOTHING_DIR_S
-	if (src.can_smooth_with(get_step(src, WEST)))
+	if (src.check_smoothing_neighbour(get_step(src, WEST)))
 		edges |= SMOOTHING_DIR_W
 
 	var/corners = 0
-	if (src.can_smooth_with(get_step(src, NORTHEAST)))
+	if (src.check_smoothing_neighbour(get_step(src, NORTHEAST)))
 		corners |= SMOOTHING_DIR_NE
-	if (src.can_smooth_with(get_step(src, NORTHWEST)))
+	if (src.check_smoothing_neighbour(get_step(src, NORTHWEST)))
 		corners |= SMOOTHING_DIR_NW
-	if (src.can_smooth_with(get_step(src, SOUTHEAST)))
+	if (src.check_smoothing_neighbour(get_step(src, SOUTHEAST)))
 		corners |= SMOOTHING_DIR_SE
-	if (src.can_smooth_with(get_step(src, SOUTHWEST)))
+	if (src.check_smoothing_neighbour(get_step(src, SOUTHWEST)))
 		corners |= SMOOTHING_DIR_SW
 
 	var/cachekey = "[src.icon]-[edges]-[corners]"
@@ -36,13 +51,21 @@
 		src.icon = cached_icon
 		return
 
-	var/icon/I = icon(src.icon, src.icon_state)
+	var/icon/I = icon(src.icon, "base")
 	var/list/pieces = icon_smoothing_lut["[edges][corners]"]
 
 	for (var/piece in pieces)
 		I.Blend(icon(src.icon, piece), ICON_OVERLAY)
 
 	src.icon = I
+
+/atom/proc/check_smoothing_neighbour(var/turf/T)
+	if (src.can_smooth_with(T))
+		return TRUE
+	for (var/atom/A in T.contents)
+		if (src.can_smooth_with(A))
+			return TRUE
+	return FALSE
 
 /atom/proc/can_smooth_with(var/atom/neighbor)
 	return istype(neighbor, src.type)

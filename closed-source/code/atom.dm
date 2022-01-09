@@ -65,6 +65,11 @@
 /atom/proc/Initialise()
 	src.needs_init = FALSE
 
+/atom/Del()
+	if (src.smoothing_type != SMOOTHING_NONE)
+		src.queue_for_smoothing(FALSE)
+	. = ..()
+
 /atom/New(var/atom/location, var/list/params=null, var/auto_init=TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..(location)
@@ -72,6 +77,8 @@
 	if (!isnull(params))
 		for (var/variable in params)
 			src.vars[variable] = params[variable]
+	if (src.smoothing_type != SMOOTHING_NONE)
+		src.queue_for_smoothing(TRUE)
 	if (auto_init)
 		spawn(0)
 			src.Initialise()

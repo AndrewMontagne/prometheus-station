@@ -27,7 +27,7 @@
 #define HOURS(X) (X * 36000)
 
 /// A list of all cardinal directions
-#define ALL_DIRS list(NORTH, SOUTH, EAST, WEST)
+#define ALL_DIRS list(NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST)
 
 /// Realtime task priority
 #define PRIORITY_REALTIME 1
