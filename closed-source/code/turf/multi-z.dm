@@ -5,7 +5,7 @@
 /turf/vis_flags = VIS_INHERIT_LAYER | VIS_INHERIT_ID | VIS_UNDERLAY
 
 /turf/space
-	color = "#b1b1b1"
+	color = "#808080"
 
 /turf/space/New()
 	. = ..()

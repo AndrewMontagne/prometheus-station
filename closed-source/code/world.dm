@@ -55,6 +55,10 @@
 		text2file(json_str, filename)
 		world.Profile(PROFILE_CLEAR)
 
+	LOG_SYSTEM("Performing First Tick")
+
+	scheduler.tick()
+
 	LOG_SYSTEM("Startup Complete!")
 	world.sleep_offline = TRUE
 

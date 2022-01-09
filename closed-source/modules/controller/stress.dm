@@ -10,6 +10,7 @@ thus stress test the task scheduler. It is well behaved and will yield when appr
 	var/proof = ""
 	var/match = ""
 	var/a = "1:16:220813:andrew@montagne.uk"
+	name = "Stress Test"
 
 /controller/stress/New(var/newmatch, var/newpriority)
 	. = ..()

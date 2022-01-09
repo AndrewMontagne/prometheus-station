@@ -1,6 +1,6 @@
 
 /controller/machines
-	
+	name = "Machinery"
 
 /controller/machines/process()
 	. = ..()
