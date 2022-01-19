@@ -128,3 +128,17 @@ These are the kinds of tile smoothing
 #define SMOOTHING_DIR_SE	2
 #define SMOOTHING_DIR_SW	4
 #define SMOOTHING_DIR_NW	8
+
+/**
+These define the types of tools
+**/
+#define TOOL_PROPER			1
+#define TOOL_IMPROPER		2
+
+#define TOOL_NONE			0
+#define TOOL_SCREWDRIVER	1
+#define TOOL_WRENCH			2
+#define	TOOL_CUTTERS		3
+#define TOOL_WELDING		4
+#define TOOL_CROWBAR		5
+#define TOOL_MULTITOOL		6

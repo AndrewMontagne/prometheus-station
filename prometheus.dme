@@ -39,6 +39,7 @@
 #include "closed-source\code\mob\player.dm"
 #include "closed-source\code\obj\spawnpoint.dm"
 #include "closed-source\code\obj\item\item.dm"
+#include "closed-source\code\obj\item\tools.dm"
 #include "closed-source\code\obj\item\clothing\clothing.dm"
 #include "closed-source\code\obj\machine\controller.dm"
 #include "closed-source\code\obj\machine\door.dm"

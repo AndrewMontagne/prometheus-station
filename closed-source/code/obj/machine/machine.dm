@@ -1,8 +1,9 @@
-/// Machines - Onjects that perform periodic processing and require power
 
 var/global/list/global_all_machines = list()
 
+/// Machines - Objects that perform periodic processing and require power
 /obj/machine
+	parent_type = /obj/structure
 	needs_init = TRUE
 
 /obj/machine/proc/process()
