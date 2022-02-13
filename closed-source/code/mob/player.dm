@@ -35,6 +35,9 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	src.tryequip(new /obj/item/clothing/jumpsuit())
 	src.tryequip(new /obj/item/clothing/shoes())
 
+/mob/player/get_held_object()
+	return src.hands[1]:inventory
+
 /mob/player/on_gain_client()
 	. = ..()
 

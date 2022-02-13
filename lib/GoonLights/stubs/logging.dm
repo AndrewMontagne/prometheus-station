@@ -1,2 +1,2 @@
 /proc/warning(var/text)
-	world.log << "## WARNING: [text]"
+	LOG_WARNING(text)

@@ -151,3 +151,5 @@
 
 		else
 			lighting_clear_overlay()
+
+	src.queue_for_smoothing()

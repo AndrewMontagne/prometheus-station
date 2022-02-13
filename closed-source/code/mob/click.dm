@@ -1,38 +1,49 @@
 
+/mob/proc/get_held_object()
+	return null
+
 // Click handler
 /mob/proc/HandleClick(object, location, control, parameters)
 	var/atom/A = object
 
+	var/atom/held_object = src.get_held_object()
+	if (isnull(held_object))
+		held_object = src
+
 	if(parameters["shift"] && parameters["ctrl"])
-		A.ThrowClick(src, parameters)
+		A.ThrowClick(src, held_object, parameters)
 		return
 	if(parameters["shift"])
-		A.HarmClick(src, parameters)
+		A.HarmClick(src, held_object, parameters)
 		return
 	if(parameters["alt"])
-		A.DisarmClick(src, parameters)
+		A.DisarmClick(src, held_object, parameters)
 		return
 	if(parameters["ctrl"])
-		A.GrabClick(src, parameters)
+		A.GrabClick(src, held_object, parameters)
 		return
 
-	A.HelpClick(src, parameters)
+	A.HelpClick(src, held_object, parameters)
 
 // Double Click handler
 /mob/proc/HandleDoubleClick(object, location, control, parameters)
 	var/atom/A = object
 
+	var/atom/held_object = src.get_held_object()
+	if (isnull(held_object))
+		held_object = src
+
 	if(parameters["shift"] && parameters["ctrl"])
-		A.ThrowDoubleClick(src, parameters)
+		A.ThrowDoubleClick(src, held_object, parameters)
 		return
 	if(parameters["shift"])
-		A.HarmDoubleClick(src, parameters)
+		A.HarmDoubleClick(src, held_object, parameters)
 		return
 	if(parameters["alt"])
-		A.DisarmDoubleClick(src, parameters)
+		A.DisarmDoubleClick(src, held_object, parameters)
 		return
 	if(parameters["ctrl"])
-		A.GrabDoubleClick(src, parameters)
+		A.GrabDoubleClick(src, held_object, parameters)
 		return
 
-	A.HelpDoubleClick(src, parameters)
+	A.HelpDoubleClick(src, held_object, parameters)
