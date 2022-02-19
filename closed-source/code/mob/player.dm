@@ -60,3 +60,10 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	src.hand_toolbar = null
 	del(src.slot_toolbar)
 	src.slot_toolbar = null
+
+/mob/player/MouseDropOn(atom/dropping, mob/user, params)
+	. = ..()
+	if (src == user && istype(dropping, /obj/item))
+		var/obj/item/I = dropping
+		if (src.Adjacent(I))
+			src.tryequip(I)

@@ -27,6 +27,18 @@
 	src.update_icon()
 	return amount
 
+/obj/item/stack/HelpClick(mob/holder, atom/item, list/params)
+	if (!src.Adjacent(holder))
+		return
+
+	if (istype(item, src.type))
+		if (item:add(1))
+			src.remove(1)
+			holder.stdout("You take one [item.name]")
+			return
+
+	..()
+
 /obj/item/stack/floor_tile
 	icon = 'assets/cc-by-sa-nc/icons_new/item/tools.dmi'
 	icon_state = "floor-tile"
