@@ -2,6 +2,8 @@
 /obj/item/stack
 	var/count = 10
 	var/max_stack = 10
+	maptext_width = 16
+	maptext_x = 16
 
 /obj/item/stack/proc/add(var/amount)
 	if (src.count + amount > src.max_stack)
@@ -26,6 +28,13 @@
 
 	src.update_icon()
 	return amount
+
+/obj/item/stack/update_icon()
+	. = ..()
+	if (src.equipped)
+		src.maptext = "<font color='white'>[src.count]</font>"
+	else
+		src.maptext = ""
 
 /obj/item/stack/HelpClick(mob/holder, atom/item, list/params)
 	if (!src.Adjacent(holder))

@@ -10,13 +10,14 @@
 		var/mob/M = hearer
 		if (!M.client)
 			continue
-		
-		var/distance = sqrt(((loc.x - M.x) ** 2) + ((loc.y - M.y) ** 2))
-		var/mul = (range - distance) / range
-		LOG_TRACE("[mul]")
 
 		var/sound/S = sound(filename)
-		S.volume = volume * mul
+		S.falloff = 1
+		S.x = (loc.x - M.x)
+		S.y = (loc.y - M.y)
+		S.volume = volume
 		S.frequency = rand(8,12) / 10
+		var/area/A = M.find_turf():loc
+		S.environment = A.sound_environment
 
 		M.client << S

@@ -147,6 +147,7 @@
 			P.rebuild_inventory()
 			P.update_icon()
 			P.update_slot_toolbars()
+	item.update_icon()
 
 /obj/screen/inventoryslot/proc/can_unequipitem()
 	return TRUE
@@ -156,6 +157,8 @@
 	src.inventory.equipped = FALSE
 	src.inventory.slot = null
 	src.inventory.plane = src.inventory_plane
+	src.inventory.loc = newloc
+	src.inventory.update_icon()
 	src.inventory = null
 	if (src.owner)
 		if (istype(src.owner, /mob/player))

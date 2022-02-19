@@ -4,6 +4,7 @@
 	invisibility = VISIBLITY_NEVER
 	layer = 10
 	plane = 0
+	var/sound_environment = -1
 
 /**
 Space Area
@@ -21,6 +22,10 @@ Base class for all "rooms"
 **/
 /area/station
 	name = "Station"
+	sound_environment = 12
+
+/area/station/maint
+	sound_environment = 21
 
 /area/station/maint/deck1
 	name = "Deck 1 Maintenance Hall"
