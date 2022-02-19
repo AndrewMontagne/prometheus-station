@@ -20,6 +20,7 @@
 			F.pixel_y = rand(-8,8)
 			F.count = 1
 			src.change_turf(/turf/basic/open/plating)
+			play_sound('assets/cc-by-sa-nc/sound/items/Crowbar.ogg', src)
 
 /turf/basic/open/plating
 	name = "floor"
@@ -38,3 +39,4 @@
 			for (var/obj/network_node/N in src.contents)
 				N.invisibility = VISIBLITY_UNDER_TILE
 			src.change_turf(/turf/basic/open/floor)
+			play_sound('assets/cc-by-sa-nc/sound/items/Deconstruct.ogg', src)

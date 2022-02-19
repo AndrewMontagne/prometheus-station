@@ -42,6 +42,7 @@
 
 /obj/machine/door/proc/open()
 	if (!src.is_open && !src.in_motion)
+		play_sound('assets/cc-by-sa-nc/sound/machines/airlock.ogg', src)
 		flick("door_opening", src)
 		src.in_motion = TRUE
 		spawn(6)
@@ -55,6 +56,7 @@
 
 /obj/machine/door/proc/close()
 	if (src.is_open && !src.in_motion)
+		play_sound('assets/cc-by-sa-nc/sound/machines/airlock.ogg', src)
 		flick("door_closing", src)
 		src.in_motion = TRUE
 		src.density = TRUE

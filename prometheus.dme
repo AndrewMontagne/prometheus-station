@@ -28,6 +28,7 @@
 #include "closed-source\code\globals.dm"
 #include "closed-source\code\helpers.dm"
 #include "closed-source\code\mob.dm"
+#include "closed-source\code\sound.dm"
 #include "closed-source\code\world.dm"
 #include "closed-source\code\atom\click.dm"
 #include "closed-source\code\atom\movable.dm"
