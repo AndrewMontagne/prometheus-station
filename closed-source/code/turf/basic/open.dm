@@ -17,3 +17,10 @@
 	icon = 'assets/cc-by-sa-nc/icons_new/turf/floors/smooth/plating.dmi'
 	icon_state = "placeholder"
 	smoothing_type = SMOOTHING_SIMPLE
+
+/turf/basic/open/plating/HelpClick(mob/holder, atom/item, list/params)
+	. = ..()
+	if (istype(item, /obj/item/stack/floor_tile))
+		var/obj/item/stack/floor_tile/T = item
+		if (T.remove(1))
+			src.change_turf(/turf/basic/open/floor)
