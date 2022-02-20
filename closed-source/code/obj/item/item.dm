@@ -23,5 +23,7 @@ Parent type for all items that can be picked up
 /obj/item/HelpClick(mob/source, atom/item, list/params)
 	if (istype(source, /mob/player) && item == source)
 		var/mob/player/P = source
+		var/obj/screen/inventoryslot/hand/active_hand = P.get_active_hand()
 		if (src.Adjacent(source))
-			P.tryequip(src)
+			if (active_hand.can_equipitem(src))
+				active_hand.equipitem(src)

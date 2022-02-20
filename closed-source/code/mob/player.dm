@@ -12,6 +12,7 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	var/obj/screen/toolbar/hand_toolbar
 	var/obj/screen/toolbar/slot_toolbar
 	var/list/obj/screen/hands
+	var/active_hand_index = 1
 
 /mob/player/New(var/loc)
 	. = ..(loc)
@@ -29,14 +30,33 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 
 	var/obj/screen/inventoryslot/hand/left/hand_l = new(src)
 	var/obj/screen/inventoryslot/hand/right/hand_r = new(src)
+
+	var/obj/screen/swap_hands/swap_hands_1 = new(src)
+	var/obj/screen/swap_hands/second/swap_hands_2 = new(src)
 	
 	src.hands = list(hand_r, hand_l)
 
 	src.tryequip(new /obj/item/clothing/jumpsuit())
 	src.tryequip(new /obj/item/clothing/shoes())
 
+/mob/player/verb/change_active_hand()
+	var/obj/screen/inventoryslot/hand/active_hand = src.get_active_hand()
+	active_hand.is_active = FALSE
+	active_hand.update_icon()
+	src.active_hand_index += 1
+
+	if (src.active_hand_index > src.hands.len)
+		src.active_hand_index = 1
+
+	active_hand = src.get_active_hand()
+	active_hand.is_active = TRUE
+	active_hand.update_icon()
+
+/mob/player/proc/get_active_hand()
+	return src.hands[src.active_hand_index]
+
 /mob/player/get_held_object()
-	return src.hands[1]:inventory
+	return src.get_active_hand():inventory
 
 /mob/player/on_gain_client()
 	. = ..()
