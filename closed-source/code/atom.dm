@@ -57,6 +57,7 @@
 
 	return TRUE
 
+/// Statelessly updates this atom's icon.
 /atom/proc/update_icon()
 	src.overlays.Cut()
 	src.underlays.Cut()

@@ -31,8 +31,8 @@ All playable mobs should inherit from this class. Mobs not inheriting from this 
 	var/obj/screen/inventoryslot/hand/left/hand_l = new(src)
 	var/obj/screen/inventoryslot/hand/right/hand_r = new(src)
 
-	var/obj/screen/swap_hands/swap_hands_1 = new(src)
-	var/obj/screen/swap_hands/second/swap_hands_2 = new(src)
+	new /obj/screen/swap_hands(src)
+	new /obj/screen/swap_hands/second(src)
 	
 	src.hands = list(hand_r, hand_l)
 

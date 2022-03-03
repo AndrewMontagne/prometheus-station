@@ -1,9 +1,14 @@
 /mob/player/
+	/// The items in the player's inventory
 	var/list/obj/item/inventory = list()
+	/// The inventory slots that this player has
 	var/list/obj/screen/inventoryslot/invslots = list()
+	/// The toolbars on the left of the screen denoting slots and sub-slots
 	var/list/obj/screen/toolbar/slot_toolbars = list()
+	/// Are we currently updating the slot toolbars?
 	var/_updating_slot_toolbars = FALSE
 
+/// Statelessly rebuild the list containing the player's inventory
 /mob/player/proc/rebuild_inventory()
 	var/list/obj/item/new_inventory = list()
 
@@ -16,6 +21,7 @@
 	src.inventory = new_inventory
 	return new_inventory
 
+/// Builds the slot toolbars from scratch
 /mob/player/proc/build_slot_toolbars()
 	var/list/obj/screen/toolbar/toolbars = list()
 	for (var/slotname in src.invslots)
@@ -28,6 +34,7 @@
 	src.update_slot_toolbars()
 	return toolbars
 
+/// Updates the slot toolbars in response to an inventory change, so subslots are updated
 /mob/player/proc/update_slot_toolbars()
 	if (src._updating_slot_toolbars)
 		return
@@ -48,6 +55,7 @@
 						T.add_screen(SC)
 			src._updating_slot_toolbars = FALSE
 
+/// Returns a list of all items in a given inventory slot, including nested subslots.
 /mob/player/proc/_recursive_inventory_search(var/obj/screen/inventoryslot/I)
 	var/list/inv_items = list()
 	if (istype(I.inventory, /obj/item))
@@ -56,6 +64,7 @@
 			inv_items |= src._recursive_inventory_search(inv_items, IN)
 	return inv_items
 
+/// Returns what is in a given inventory slot, or null.
 /mob/player/proc/inv(slotname as text)
 	if(slotname in src.invslots)
 		var/obj/screen/inventoryslot/IS = src.invslots[slotname]
@@ -63,6 +72,7 @@
 	else
 		return null
 
+/// Sets the contents of an inventory slot to an item, unequipping it from the previous slot, if any. Returns whether it succeeded.
 /mob/player/proc/setinvslot(slotname as text, obj/item/I)
 	if(slotname in src.invslots)
 		var/obj/screen/inventoryslot/IS = src.invslots[slotname]
@@ -76,6 +86,7 @@
 	else
 		return FALSE
 
+/// Attempts to equip a given item in any free slot. Returns whether it succeeded.
 /mob/player/proc/tryequip(obj/item/I)
 	var/list/hands = list()
 	for(var/slotname in src.invslots)
@@ -92,6 +103,11 @@
 			return TRUE
 	return FALSE
 
+/**
+Inventory Slots
+
+A UI element that represents an inventory slot such as hands, clothes, etc. It can contain nested slots to represent things like pockets.
+**/
 /obj/screen/inventoryslot
 	name = SLOT_POCKET
 	var/atom/owner = null
@@ -111,6 +127,7 @@
 	src.owner = M
 	underlays.Add(src.background)
 
+/// Handler for when an inventory item is dropped onto the slot
 /obj/screen/inventoryslot/MouseDropOn(obj/O as obj, mob/player/user as mob)
 	if(!src.can_equipitem(O))
 		return
@@ -122,6 +139,7 @@
 			return
 	src.equipitem(O)
 	
+/// Returns whether this slot can equip a given item. Don't override this, override [/obj/screen/inventoryslot/proc/fits_in_slot] instead.
 /obj/screen/inventoryslot/proc/can_equipitem(obj/item/item)
 	if(!src.fits_in_slot(item))
 		return FALSE
@@ -131,6 +149,7 @@
 		return FALSE
 	return TRUE
 
+/// Equips a given item. Performs no checks, intended to be called by other functions that do check.
 /obj/screen/inventoryslot/proc/equipitem(obj/item/item)
 	src.inventory = item
 	src.vis_contents = list(src.inventory)
@@ -149,6 +168,7 @@
 			P.update_slot_toolbars()
 	item.update_icon()
 
+/// Can we UNequip a given item? (Think chinese finger traps)
 /obj/screen/inventoryslot/proc/can_unequipitem()
 	return TRUE
 
@@ -167,6 +187,7 @@
 			P.update_icon()
 			P.update_slot_toolbars()
 
+/// Does a this item fit in this slot? Intended to be overriden for custom behaviour.
 /obj/screen/inventoryslot/proc/fits_in_slot(atom/A)
 	if (!istype(A,/obj/item))
 		return FALSE

@@ -1,10 +1,18 @@
-
+/**
+  * A toolbar implementation for arranging other screens programatticaly
+**/
 /obj/screen/toolbar
+	/// The screen objects we handle
 	var/list/screens = list()
+	/// Are we a horizontal or vertical toolbar? 
 	var/is_horizontal = FALSE
+	/// The alignment of the toolbar relative to the viewport
 	var/align = ANCHOR_CENTER
+	/// The total width of the toolbar
 	var/max_width = 0
+	/// The total height of the toolbar
 	var/max_height = 0
+	/// Toolbars can be nested, this is the actual mob we're attached to
 	var/mob/mob_loc = null
 
 /obj/screen/toolbar/New(var/atom/_loc, var/list/_screens, var/_is_horizontal, var/_align=ANCHOR_CENTER, var/_h_anchor=ANCHOR_CENTER, var/_v_anchor=ANCHOR_CENTER)
@@ -33,6 +41,7 @@
 /obj/screen/toolbar/Del()
 	. = ..()
 
+/// Adds a given screen object to the end of the toolbar
 /obj/screen/toolbar/proc/add_screen(var/obj/screen/S)
 	mob_loc.ui.Add(S)
 	screens.Add(S)
@@ -40,12 +49,14 @@
 	update_size()
 	mob_loc.rebuild_screen()
 
+/// Removes a given screen object from the toolbar
 /obj/screen/toolbar/proc/remove_screen(var/obj/screen/S)
 	mob_loc.ui.Remove(S)
 	screens.Remove(S)
 	update_size()
 	mob_loc.rebuild_screen()
 
+/// Updates the total sizes of the toolbar
 /obj/screen/toolbar/proc/update_size()
 	var/total_size = 0
 	src.max_height = 0
@@ -74,6 +85,7 @@
 	else
 		src.update_position()
 
+/// Updates the toolbar's position on the screen, and its screens
 /obj/screen/toolbar/proc/update_position()
 
 	if (istype(src.loc, /obj/screen/toolbar))

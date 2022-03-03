@@ -1,4 +1,4 @@
-
+/// Clickable UI element to swap hands
 /obj/screen/swap_hands
 	name = "Swap Hands"
 	icon = 'assets/cc-by-sa-nc/icons/ui/screen_midnight.dmi'

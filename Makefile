@@ -28,6 +28,7 @@ lint: ## Runs linting checks on the codebase
 
 docs: ## Generates documentation
 	@echo -e '\n${INV} ###  DM DOCS  ### ${NC}\n'
+	@rm -rf ./dmdoc/*
 	@dmdoc
 
 mapmerge-test:

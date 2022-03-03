@@ -1,4 +1,8 @@
+/**
+Map loader class
 
+Loads maps from disk and writes them to the game world.
+**/
 /datum/map_loader
 	var/should_sleep = TRUE
 	var/list/map_data = null
@@ -9,6 +13,7 @@
 /datum/map_loader/New(var/_should_sleep=TRUE)
 	src.should_sleep = _should_sleep
 
+/// Loads a given map from disk
 /datum/map_loader/proc/load_map(var/map_file)
 	
 	if (!fexists(map_file))
@@ -73,7 +78,12 @@
 			z_level_data[num2text(current_y)] = current_z_data
 			current_y += 1
 
+/**
+Writes the loaded map to the world. You should call [/datum/map_loader/proc/load_map] before this.
 
+`start_x`, `start_y` and `start_z` specify the origin of the map in the world.
+`should_sleep` determines whether the call should block or not.
+**/
 /datum/map_loader/proc/write_map(start_x, start_y, start_z, should_sleep)
 	var/total_width = length(src.map_data["1"]["1"])
 	var/total_height = length(src.map_data["1"])
@@ -154,6 +164,7 @@
 				current_x++
 			current_y--
 
+/// Initialises any atoms which were loaded, and need it.
 /datum/map_loader/proc/init_atoms()
 	for (var/i in src.atoms_to_init)
 		var/atom/A = i
