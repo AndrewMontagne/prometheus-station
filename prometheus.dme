@@ -9,9 +9,11 @@
 #ifdef ENV_EXTERNAL_BYOND_LIBS
 	#include "/byond/lib/rust_g.dm"
 	#include "/byond/lib/dreamchecker.dm"
+	#include "/byond/lib/debug_server.dm"
 #else
 	#include "lib/rust_g.dm"
 	#include "lib/lint.dm"
+	#include "lib/debug_server.dm"
 #endif
 
 #include "closed-source\code\defines.dm"
@@ -84,7 +86,6 @@
 #include "closed-source\modules\inventory\slots\clothes.dm"
 #include "closed-source\modules\inventory\slots\hands.dm"
 #include "closed-source\modules\inventory\slots\inventoryslot.dm"
-#include "closed-source\modules\map_pane\map_pane.dm"
 #include "closed-source\modules\map_pane\screen.dm"
 #include "closed-source\modules\map_pane\toolbar.dm"
 #include "closed-source\modules\maploader\maploader.dm"

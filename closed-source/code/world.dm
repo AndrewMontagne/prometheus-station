@@ -28,6 +28,7 @@
 	world.sleep_offline = FALSE
 	LOG_SYSTEM("Initialising BYOND Extensions...")
 	rustg_url_encode("") // Check for rustg's presence
+	debug_initialise()
 
 	LOG_SYSTEM("Loading Map...")
 
