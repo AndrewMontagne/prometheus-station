@@ -14,16 +14,19 @@
 	src.ui = list(src.get_parallax())
 	src.rebuild_screen()
 	src.init_infobrowser()
-	src.init_map_panes()
+
 
 /// We use this instead 
 /client/proc/rebuild_screen()
 	if (src._screen_dirty == FALSE)
 		src._screen_dirty = TRUE
 		spawn(1)
-			src.screen = list()
-			src.screen |= src.ui
-			src.screen |= src.mob.ui
+			var/list/tmp_screen = list()
+			tmp_screen |= src.ui
+			tmp_screen |= src.mob.ui
+			while (null in tmp_screen)
+				tmp_screen.Remove(null)
+			src.screen = tmp_screen
 			src._screen_dirty = FALSE
 
 /client/Del()
