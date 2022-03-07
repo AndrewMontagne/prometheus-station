@@ -4,11 +4,11 @@
 	icon_state = "placeholder"
 	opacity = TRUE
 	density = TRUE
-	smoothing_type = SMOOTHING_SIMPLE
+	smoothing_type = SMOOTHING_TURFS
 
 
 /turf/basic/closed/reinforced
 	name = "reinforced wall"
 	icon = 'assets/cc-by-sa-nc/icons_new/turf/walls/smooth/reinforced_wall.dmi'
 	icon_state = "placeholder"
-	smoothing_type = SMOOTHING_SIMPLE
+	smoothing_type = SMOOTHING_TURFS

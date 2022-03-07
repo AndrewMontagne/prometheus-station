@@ -1,5 +1,6 @@
 var/global/list/icon_smoothing_lut = list()
 
+/// This contains a lookup table for every possible icon smoothing combination
 /controller/smoothing/New()
 	. = ..()
 	

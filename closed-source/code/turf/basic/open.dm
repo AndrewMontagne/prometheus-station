@@ -26,7 +26,7 @@
 	name = "floor"
 	icon = 'assets/cc-by-sa-nc/icons_new/turf/floors/smooth/plating.dmi'
 	icon_state = "placeholder"
-	smoothing_type = SMOOTHING_SIMPLE
+	smoothing_type = SMOOTHING_TURFS
 
 /turf/basic/open/plating/HelpClick(mob/holder, atom/item, list/params)
 	. = ..()

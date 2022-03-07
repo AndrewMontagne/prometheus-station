@@ -118,7 +118,9 @@ These are the canonical names for damage type
 These are the kinds of tile smoothing
 **/
 #define SMOOTHING_NONE		0
-#define SMOOTHING_SIMPLE	1
+#define SMOOTHING_ALL		1
+#define SMOOTHING_TURFS		2
+#define SMOOTHING_STRUCTS	3
 
 #define SMOOTHING_DIR_N		1
 #define SMOOTHING_DIR_E		2

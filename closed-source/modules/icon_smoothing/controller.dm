@@ -2,6 +2,7 @@
 var/global/list/atoms_to_smooth = list()
 var/global/list/icon_smoothing_cache = list()
 
+/// Icon Smoothing Controller
 /controller/smoothing
 	priority = PRIORITY_LOW
 	tick_rate = 1

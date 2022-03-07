@@ -1,7 +1,9 @@
 
 /atom
+	/// What is the smoothing type for this atom?
 	var/smoothing_type = SMOOTHING_NONE
 
+/// Queues a given atom to be smoothed on the next controller tick
 /atom/proc/queue_for_smoothing(var/include_self = TRUE)
 	var/list/dirty = list()
 	if (include_self)
@@ -17,9 +19,9 @@
 
 	atoms_to_smooth |= dirty
 
-
+/// Smooths an atom. Should only be called by [/controller/smoothing]
 /atom/proc/icon_smooth()
-	if (src.smoothing_type != SMOOTHING_SIMPLE)
+	if (src.smoothing_type == SMOOTHING_NONE)
 		return
 
 	src.icon = initial(src.icon)
@@ -59,13 +61,22 @@
 
 	src.icon = I
 
+/// Checks the turf for tiles to smooth with.
 /atom/proc/check_smoothing_neighbour(var/turf/T)
 	if (src.can_smooth_with(T))
 		return TRUE
-	for (var/atom/A in T.contents)
-		if (src.can_smooth_with(A))
-			return TRUE
+	/// Optimisation to speed up tile smoothing for turfs
+	if (src.smoothing_type != SMOOTHING_TURFS)
+		if (src.smoothing_type == SMOOTHING_STRUCTS)
+			for (var/obj/structure/A in T.contents)
+				if (src.can_smooth_with(A))
+					return TRUE
+		else
+			for (var/atom/A in T.contents)
+				if (src.can_smooth_with(A))
+					return TRUE
 	return FALSE
 
+/// Intended to be overriden. Can we smooth with this atom?
 /atom/proc/can_smooth_with(var/atom/neighbor)
 	return istype(neighbor, src.type)
