@@ -2,7 +2,7 @@
 	name = "Debugging"
 	verbs = list(/client/proc/debug_variables,/client/proc/call_proc,/client/proc/toggle_profile)
 
-
+/// Toggles profiling off and on
 /client/proc/toggle_profile()
 	var/global/currently_profiling = FALSE
 

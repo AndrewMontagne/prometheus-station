@@ -1,6 +1,7 @@
 /turf
 	plane = PLANE_TURF
 
+/// Returns whether a given turf has a visible atom.
 /turf/proc/has_visible_atom()
 	for (var/atom/A in src.contents)
 		if (A.is_visible())

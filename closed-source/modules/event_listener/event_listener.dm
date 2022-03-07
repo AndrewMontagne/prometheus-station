@@ -28,7 +28,7 @@ Called when an event is recieved. Default implementation tries to call a functio
 	return call(src, "recv_[event_name]")(payload)
 
 /**
-Subscribes to an event.
+Subscribes to an event topic.
 **/
 /datum/proc/subscribe_to_events(var/event_name)
 	if (src.subscribed_events.Find(event_name) == 0)
@@ -41,6 +41,7 @@ Subscribes to an event.
 	else
 		global_event_listeners[event_name]:Add(src)
 
+/// Unsubscribes from an event topic.
 /datum/proc/unsubscribe_from_events(var/event_name)
 	src.subscribed_events[event_name]:Remove(src)
 	global_event_listeners[event_name]:Remove(src)

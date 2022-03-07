@@ -12,6 +12,7 @@
 	LOG_ERROR("[E.name] @ [E.file]:[E.line]")
 	world.log << E.desc
 
+/// World logging procedure
 /world/proc/logger(var/message, level="?????", ansicolor="0")
 	var/timestamp = time2text(world.timeofday, "hh:mm:ss")
 	var/ansi_level = "\u001b\[[ansicolor]m[level]\u001b\[0m"
@@ -22,7 +23,7 @@
 
 	var/startup_profile = file2text("config/startup_profile")
 	if (findtext(startup_profile, "TRUE") != 0)
-		LOG_ADMIN(src.ckey, "Startup Profiling Enabled!!!")
+		LOG_ADMIN("NO CKEY", "Startup Profiling Enabled!!!")
 		world.Profile(PROFILE_START | PROFILE_AVERAGE, "json")
 
 	world.sleep_offline = FALSE
@@ -63,6 +64,7 @@
 	LOG_SYSTEM("Startup Complete!")
 	world.sleep_offline = TRUE
 
+/// Overrided in each controller definition, this allows us to inject our controller dependencies.
 /world/proc/init_controllers(datum/scheduler/scheduler)
 	SHOULD_CALL_PARENT(TRUE)
 	return

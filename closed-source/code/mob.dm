@@ -19,10 +19,12 @@
 		src.current_chat_verb = src.default_chat_verb
 		src.set_chat_verb(src.default_chat_verb)
 
+/// Passthrough to the client for [/client/proc/rebuild_screen]
 /mob/proc/rebuild_screen()
 	if (src.client)
 		src.client.rebuild_screen()
 
+/// Sets the chat verb in the UI
 /mob/proc/set_chat_verb(verbname)
 	src.current_chat_verb = verbname
 	if (src.client)

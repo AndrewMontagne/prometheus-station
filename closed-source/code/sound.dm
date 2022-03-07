@@ -1,4 +1,4 @@
-
+/// Simple function to play a sound in the world
 /proc/play_sound(var/filename, atom/loc, var/range = 12, var/volume = 100)
 	var/list/mob/can_hear = null
 	if (istype(loc, /mob))

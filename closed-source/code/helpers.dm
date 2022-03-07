@@ -1,5 +1,5 @@
+/// Converts a given number to a hex string
 /proc/num2hex(num, placeholder)
-
 	if (placeholder == null)
 		placeholder = 2
 	if (!( isnum(num) ))

@@ -28,7 +28,7 @@
 	. = ..()
 
 	if (src.z >= MULTI_Z_START && src.z < MULTI_Z_END)
-		if (locate(src.x, src.y, src.z + 1).density)
+		if (locate(src.x, src.y, src.z + 1):density)
 			return
 		spawn(1)
 			A.z = A.z + 1

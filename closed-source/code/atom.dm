@@ -15,6 +15,7 @@
 
 	return resolved_loc
 
+/// Returns whether this atom is considered "visible"
 /atom/proc/is_visible()
 	if (istype(src, /atom/movable/lighting_overlay))
 		return FALSE
@@ -39,6 +40,7 @@
 /atom/proc/MouseDropOn(atom/dropping, mob/user, params)
 	return
 
+/// Returns whether a given atom is adjacent to another
 /atom/proc/Adjacent(atom/neighbour)
 	var/turf/self_origin = src.find_turf()
 	var/turf/other_origin = neighbour.find_turf()
@@ -63,6 +65,7 @@
 	src.underlays.Cut()
 
 /atom/var/needs_init = FALSE
+/// As we are using the maploader, we cannot rely on the constructor all the time. This is called after the map is loaded.
 /atom/proc/Initialise()
 	src.needs_init = FALSE
 
