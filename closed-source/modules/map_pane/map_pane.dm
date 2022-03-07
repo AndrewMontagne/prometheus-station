@@ -5,6 +5,7 @@
 	map_panes = list()
 	new /datum/map_pane(src, "mapwindow.map")
 
+/// Technical verb for tracking the size of map panes.
 /mob/verb/interface_resize(var/pane_name as null|text, var/new_size as null|text)
 	set name = "OnInterfaceResize"
 	set hidden = 1
@@ -12,6 +13,11 @@
 	var/datum/map_pane/pane = client.map_panes[pane_name]
 	pane.update(new_size)
 
+/**
+This is a datum for tracking the size of a given map pane on a client.
+
+Can be used for advanced layout stuff. Isn't used at the moment.
+**/
 /datum/map_pane
 	var/client/player
 	var/skin_id
@@ -36,7 +42,7 @@
 	winset(player, skin_id, "on-size=\"OnInterfaceResize \\\"[skin_id]\\\" \\\"\[\[*\]\]\\\"\"")
 	player.map_panes[skin_id] = src
 
-
+/// Updates the size of the map pane. Called by a verb hooked into the client's interface.
 /datum/map_pane/proc/update(size = winget(player, skin_id, "size"))
 	var/raw = list()
 	if (findtext(size, "x"))
@@ -62,6 +68,7 @@
 	//	var/obj/screen/toolbar/T = listener
 	//	T.update_position()
 
+/// Adds a background to the given map window; this is useful as it forces the map size to match the element size.
 /datum/map_pane/proc/add_background()
 	background = new /obj/screen(null)
 	background.icon_state = "blank"

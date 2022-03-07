@@ -17,6 +17,7 @@
 /mob/player/proc/clothing_offset_for_slot(var/slot)
 	return 0
 
+/// The icon state of the overlay
 /obj/item/var/worn_overlay_state = null
 
 /// Add the overlays to the player M, given the provided inventory slot

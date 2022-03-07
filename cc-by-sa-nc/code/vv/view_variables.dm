@@ -9,7 +9,7 @@
 	var/body = ""
 
 	if (!src.has_permission("DEBUG"))
-		LOG_ADMIN("[usr.ckey] tried to use VV without the debug permission!")
+		LOG_ADMIN(src.ckey, "[src.ckey] tried to use VV without the debug permission!")
 		src.stdout("You don't have permission to do this")
 		return
 
@@ -125,7 +125,9 @@ body
 		src.debug_variables(locate(href_list["Refresh"]))
 	if (href_list["Delete"])
 		var/atom/A = locate(href_list["Delete"])
-		del(A)
+		if (A)
+			LOG_ADMIN(src.ckey, "[src.ckey] deleted [A]")
+			del(A)
 	if (href_list["SetDirection"])
 		var/atom/A = locate(href_list["SetDirection"])
 		if (istype(A))
@@ -148,6 +150,9 @@ body
 				if (new_dir)
 					A.dir = text2dir(new_dir)
 					src.stdout( "Set [A]'s direction to [new_dir]")
+				else
+					return
+			LOG_ADMIN(src.ckey, "[src.ckey] set [A]'s direction to [A.dir]")
 		return
 	if (href_list["CallProc"])
 		doCallProc(locate(href_list["CallProc"]))
@@ -175,7 +180,7 @@ body
 		return
 
 	if (!src.has_permission("DEBUG"))
-		LOG_ADMIN("[usr.ckey] tried to use VV without the debug permission!")
+		LOG_ADMIN(src.ckey, "[src.ckey] tried to use VV without the debug permission!")
 		src.stdout("You don't have permission to do this")
 		return
 
@@ -191,7 +196,7 @@ body
 		return
 
 	if (!src.has_permission("DEBUG"))
-		LOG_ADMIN("[usr.ckey] tried to use VV without the debug permission!")
+		LOG_ADMIN(src.ckey, "[src.ckey] tried to use VV without the debug permission!")
 		src.stdout("You don't have permission to do this")
 		return
 
@@ -200,7 +205,7 @@ body
 	var/dir
 
 	if (!src.has_permission("DEBUG"))
-		LOG_ADMIN("[usr.ckey] tried to use VV without the debug permission!")
+		LOG_ADMIN(src.ckey, "[src.ckey] tried to use VV without the debug permission!")
 		src.stdout("You don't have permission to do this")
 		return
 
@@ -429,10 +434,9 @@ body
 						D.vars[variable] = new match(D)
 			else
 				return
-	LOG_ADMIN("[usr.ckey] modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""))
-	//logTheThing("admin", src, null, "modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""))
-	//logTheThing("diary", src, null, "modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""), "admin")
-	//message_admins("[key_name(src)] modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""), 1)
+
+	LOG_ADMIN(src.ckey, "[src.ckey] modified [original_name]'s [variable] to [D.vars[variable]]" + (set_global ? " on all entities of same type" : ""))
+
 	spawn(0)
 		if (istype(D, /datum))
 			D.onVarChanged(variable, oldVal, D.vars[variable])
@@ -442,9 +446,8 @@ body
 	set category = "Debug"
 	switch (alert("Are you sure you wish to delete \the [A.name] at ([A.x],[A.y],[A.z]) ?", "Admin Delete Object","Yes","No"))
 		if("Yes")
-			LOG_ADMIN("[usr.ckey] deleted [A.name] at ([A.x],[A.y],[A.z])")
-			//logTheThing("admin", usr, null, "deleted [A.name] at ([showCoords(A.x, A.y, A.z)])")
-			//logTheThing("diary", usr, null, "deleted [A.name] at ([showCoords(A.x, A.y, A.z, 1)])", "admin")
+			LOG_ADMIN(src.ckey, "[src.ckey] deleted [A.name] at ([A.x],[A.y],[A.z])")
+
 
 /client/proc/modify_variables(var/atom/O)
 
@@ -625,10 +628,8 @@ body
 			O.vars[variable] = input("Pick color:","Color",O.vars[variable]) \
 				as color
 
-	LOG_ADMIN("[usr.ckey] modified [original_name]'s [variable] to [O.vars[variable]]")
-	//logTheThing("admin", src, null, "modified [original_name]'s [variable] to [O.vars[variable]]")
-	//logTheThing("diary", src, null, "modified [original_name]'s [variable] to [O.vars[variable]]", "admin")
-	//message_admins("[key_name(src)] modified [original_name]'s [variable] to [O.vars[variable]]")
+	LOG_ADMIN(src.ckey, "[src.ckey] modified [original_name]'s [variable] to [O.vars[variable]]")
+
 	spawn(0)
 		O.onVarChanged(variable, oldVal, O.vars[variable])
 

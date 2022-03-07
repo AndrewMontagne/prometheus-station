@@ -15,7 +15,7 @@
 #define LOG_TRACE(X)   // NO OP
 #endif
 /// Log an error at the Error logging level
-#define LOG_ADMIN(X)   admin_log(X)
+#define LOG_ADMIN(C,X)   admin_log(C,X)
 
 #define TRACE "[__FILE__]:[__LINE__]"
 

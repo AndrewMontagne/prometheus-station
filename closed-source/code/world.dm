@@ -22,7 +22,7 @@
 
 	var/startup_profile = file2text("config/startup_profile")
 	if (findtext(startup_profile, "TRUE") != 0)
-		LOG_ADMIN("Startup Profiling Enabled!!!")
+		LOG_ADMIN(src.ckey, "Startup Profiling Enabled!!!")
 		world.Profile(PROFILE_START | PROFILE_AVERAGE, "json")
 
 	world.sleep_offline = FALSE
