@@ -155,11 +155,9 @@ Writes the loaded map to the world. You should call [/datum/map_loader/proc/load
 
 					var/atom/A = new path(loc, params, FALSE)
 
-					try
+					if (istype(A, /atom))
 						if (A.needs_init)
 							src.atoms_to_init.Add(A)
-					catch
-						//NOOP
 
 				current_x++
 			current_y--
