@@ -28,6 +28,7 @@
 		
 	world.sleep_offline = FALSE
 	LOG_SYSTEM("Initialising BYOND Extensions...")
+
 	rustg_url_encode("") // Check for rustg's presence
 	debug_initialise()
 
@@ -45,7 +46,6 @@
 	LOG_SYSTEM("Initialising Controllers...")
 
 	GLOBALS.scheduler = new /datum/scheduler()
-
 	src.init_controllers(GLOBALS.scheduler)
 
 	//C = new /controller/stress("0000", PRIORITY_LOW)

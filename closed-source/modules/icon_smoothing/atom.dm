@@ -17,7 +17,7 @@
 			if (src.can_smooth_with(A))
 				dirty.Add(A)
 
-	atoms_to_smooth |= dirty
+	GLOBALS.smoothing_controller.atoms_to_smooth |= dirty
 
 /// Smooths an atom. Should only be called by [/controller/smoothing]
 /atom/proc/icon_smooth()
@@ -48,18 +48,19 @@
 
 	var/cachekey = "[src.icon]-[edges]-[corners]"
 
-	var/cached_icon = icon_smoothing_cache[cachekey]
+	var/cached_icon = GLOBALS.smoothing_controller.icon_cache[cachekey]
 	if (!isnull(cached_icon))
 		src.icon = cached_icon
 		return
 
 	var/icon/I = icon(src.icon, "base")
-	var/list/pieces = icon_smoothing_lut["[edges][corners]"]
+	var/list/pieces = GLOBALS.smoothing_controller.icon_smoothing_lut["[edges][corners]"]
 
 	for (var/piece in pieces)
 		I.Blend(icon(src.icon, piece), ICON_OVERLAY)
 
 	src.icon = I
+	GLOBALS.smoothing_controller.icon_cache[cachekey] = I
 
 /// Checks the turf for tiles to smooth with.
 /atom/proc/check_smoothing_neighbour(var/turf/T)
