@@ -7,7 +7,7 @@
 	set name = "Start Now"
 	set hidden = FALSE
 
-	if (game_loop.is_pre_game())
-		game_loop.state.next_state_time = world.time
+	if (GLOBALS.game_loop.is_pre_game())
+		GLOBALS.game_loop.state.next_state_time = world.time
 	else
 		usr << "We are not in pregame!"

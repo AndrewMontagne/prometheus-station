@@ -1,10 +1,12 @@
 /datum/permission/debug 
 	name = "Debugging"
-	verbs = list(/client/proc/debug_variables,/client/proc/call_proc,/client/proc/toggle_profile)
+	verbs = list(/client/proc/debug_variables,/client/proc/view_globals,/client/proc/call_proc,/client/proc/toggle_profile)
 
 /// Toggles profiling off and on
 /client/proc/toggle_profile()
-	var/global/currently_profiling = FALSE
+	set category = "Debug"
+	set name = "Toggle Profiling"
+	VAR_STATIC(currently_profiling) = FALSE
 
 	if (!src.has_permission("DEBUG"))
 		LOG_ADMIN(src.ckey, "[usr.ckey] tried to use the profiler without the debug permission!")
@@ -26,3 +28,8 @@
 		currently_profiling = FALSE
 		world.Profile(PROFILE_CLEAR)
 		
+/client/proc/view_globals()
+	set category = "Debug"
+	set name = "View Global Variables"
+
+	src.debug_variables(GLOBALS)

@@ -1,6 +1,6 @@
 
 /// Global scheduler declaration
-var/global/datum/scheduler/scheduler = null
+VAR_GLOBAL(datum/scheduler/scheduler) = null
 
 //! Controller Task Scheduler
 /**
@@ -20,9 +20,9 @@ scheduled to be run.
 	var/list/queues = list(list(),list(),list(),list())
 
 /datum/scheduler/New()
-	if (!isnull(scheduler))
+	if (!isnull(GLOBALS.scheduler))
 		CRASH("Initialising the scheduler twice!")
-	scheduler = src
+	GLOBALS.scheduler = src
 
 	spawn(1)
 		tick()

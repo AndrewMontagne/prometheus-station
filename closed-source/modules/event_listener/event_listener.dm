@@ -1,5 +1,5 @@
 
-var/global/list/global_event_listeners = list()
+VAR_GLOBAL(list/event_listeners) = list()
 
 /datum
 	var/list/subscribed_events = list()
@@ -12,9 +12,9 @@ returns whether the event was processed by a listener
 **/
 /datum/proc/send_event(var/event_name, var/payload, var/broadcast = TRUE)
 	var/handled = FALSE
-	if (global_event_listeners.Find(event_name) == 0)
+	if (GLOBALS.event_listeners.Find(event_name) == 0)
 		return FALSE
-	for (var/datum/D in global_event_listeners[event_name])
+	for (var/datum/D in GLOBALS.event_listeners[event_name])
 		var/ret = D.recieve_event(origin=src, event_name=event_name, payload=payload)
 		handled |= ret
 		if (ret && broadcast)
@@ -36,15 +36,15 @@ Subscribes to an event topic.
 	else
 		src.subscribed_events[event_name]:Add(src)
 
-	if (global_event_listeners.Find(event_name) == 0)
-		global_event_listeners[event_name] = list(src)
+	if (GLOBALS.event_listeners.Find(event_name) == 0)
+		GLOBALS.event_listeners[event_name] = list(src)
 	else
-		global_event_listeners[event_name]:Add(src)
+		GLOBALS.event_listeners[event_name]:Add(src)
 
 /// Unsubscribes from an event topic.
 /datum/proc/unsubscribe_from_events(var/event_name)
 	src.subscribed_events[event_name]:Remove(src)
-	global_event_listeners[event_name]:Remove(src)
+	GLOBALS.event_listeners[event_name]:Remove(src)
 
 /datum/Del()
 	. = ..()

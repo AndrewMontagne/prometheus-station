@@ -27,7 +27,7 @@
 #include "closed-source\code\areas.dm"
 #include "closed-source\code\atom.dm"
 #include "closed-source\code\client.dm"
-#include "closed-source\code\globals.dm"
+#include "closed-source\code\global.dm"
 #include "closed-source\code\helpers.dm"
 #include "closed-source\code\mob.dm"
 #include "closed-source\code\sound.dm"

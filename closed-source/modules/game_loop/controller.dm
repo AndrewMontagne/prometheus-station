@@ -1,6 +1,6 @@
 
 /// The global game loop controller instance
-var/global/controller/game_loop/game_loop = null
+VAR_GLOBAL(controller/game_loop/game_loop) = null
 
 /**
 The Game Loop Controller
@@ -14,9 +14,9 @@ This controls the overall game state and handles the gamemode/gamestate logic.
 	var/datum/game_state/state = null;
 
 /controller/game_loop/New()
-	if (!isnull(game_loop))
+	if (!isnull(GLOBALS.game_loop))
 		CRASH("Initialising the game loop twice!")
-	game_loop = src
+	GLOBALS.game_loop = src
 
 	state = new /datum/game_state/pregame()
 	state.state_entry()

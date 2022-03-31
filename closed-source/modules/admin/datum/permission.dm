@@ -11,7 +11,7 @@
 //! Associative array of permissions
 /client
 	VAR_PRIVATE/list/permissions = list()
-	var/global/list/permissions_to_clients = list()
+	VAR_STATIC(list/permissions_to_clients) = list()
 
 //! Adds a permission to a client
 /client/proc/add_permission(datum/permission/perm)

@@ -1,3 +1,8 @@
+/// Defines a global variable
+#define VAR_GLOBAL(X) /datum/globals/var/X
+/// Defines a static variable
+#define VAR_STATIC(X) var/global/X
+
 /// Log an error at the Error logging level
 #define LOG_ERROR(X)   world.logger(X, "ERROR", "31")
 /// Log an error at the Warning logging level

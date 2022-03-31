@@ -23,7 +23,11 @@
 
 	names = sortList(names)
 
+	VAR_STATIC(hidden_vars) = list("NO_DEBUG", "vars", "parent_type", "type")
+
 	for (var/V in names)
+		if (V in hidden_vars)
+			continue
 		body += debug_variable(V, D.vars[V], 0)
 		body += " - <a href='byond://?src=\ref[src];Vars=\ref[D];varToEdit=[V]'><font size=1>Edit</font></a> <a href='byond://?src=\ref[src];Vars=\ref[D];varToEditAll=[V]'><font size=1>(A)</font></a>  <a href='byond://?src=\ref[src];Vars=\ref[D];setAll=[V]'><font size=1>(S)</font></a>"
 		if (istype(D.vars[V], /datum))
@@ -31,7 +35,7 @@
 
 	body += "</ol>"
 
-	var/html = "<html><head>"
+	var/html = "<!doctype html><html><meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><head>"
 	if (title)
 		html += "<title>[title]</title>"
 	html += {"<style>
@@ -51,11 +55,12 @@ body
 	html += " | <a href='byond://?src=\ref[src];Delete=\ref[D]'>Delete</a>"
 	html += " | <a href='byond://?src=\ref[src];CallProc=\ref[D]'>Call Proc</a> <br>"
 
-	html += "<br><a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=L90'><<==</a> "
-	html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=L45'><=</a> "
-	html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D]'>Set Direction</a> "
-	html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=R45'>=></a> "
-	html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=R90'>==>></a><br>"
+	if (istype(D, /atom))
+		html += "<br><a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=L90'><<==</a> "
+		html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=L45'><=</a> "
+		html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D]'>Set Direction</a> "
+		html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=R45'>=></a> "
+		html += "<a href='byond://?src=\ref[src];SetDirection=\ref[D];DirectionToSet=R90'>==>></a><br>"
 
 	html += "<br><small> (A) = Edit all entities of same type <br> (S) = Set this var on all entities of same type <br> (P) = Call Proc</small>"
 	html += body

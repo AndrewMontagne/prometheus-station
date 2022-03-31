@@ -1,5 +1,5 @@
 
-var/global/list/global_all_machines = list()
+VAR_GLOBAL(list/all_machines) = list()
 
 /// Machines - Objects that perform periodic processing and require power
 /obj/machine
@@ -10,8 +10,8 @@ var/global/list/global_all_machines = list()
 
 /obj/machine/New()
 	. = ..()
-	global_all_machines.Add(src)
+	GLOBALS.all_machines.Add(src)
 
 /obj/machine/Del()
-	global_all_machines.Remove(src)
+	GLOBALS.all_machines.Remove(src)
 	. = ..()

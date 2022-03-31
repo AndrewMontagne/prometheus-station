@@ -15,12 +15,12 @@ This is the default game state and cannot be changed. The next state is undefine
 /datum/game_state/pregame/state_exit()
 	. = ..()
 	var/list/datum/gamemode/candidates = src.available_gamemodes()
-	game_loop.running_gamemode = candidates.len > 0 ? pick(candidates) : null
+	GLOBALS.game_loop.running_gamemode = candidates.len > 0 ? pick(candidates) : null
 
 	try
-		if (isnull(game_loop.running_gamemode))
+		if (isnull(GLOBALS.game_loop.running_gamemode))
 			throw EXCEPTION("No gamemode candidates!")
-		src.next_state = game_loop.running_gamemode.initialize()
+		src.next_state = GLOBALS.game_loop.running_gamemode.initialize()
 		for (var/mob/lobby/L in world)
 			if (isnull(L.client))
 				del(L)
@@ -29,10 +29,10 @@ This is the default game state and cannot be changed. The next state is undefine
 			winset(L, "login_label", "text=\"Welcome to [world.name]!\"")
 	catch (var/exception/E)
 		src.next_state = new /datum/game_state/pregame()
-		if (isnull(game_loop.running_gamemode))
+		if (isnull(GLOBALS.game_loop.running_gamemode))
 			LOG_ERROR("No candidate gamemodes!")
 		else
-			LOG_ERROR("Could not initialise gamemode [game_loop.running_gamemode.type]: [E.name] [E.file]:[E.name] [E.desc]")
+			LOG_ERROR("Could not initialise gamemode [GLOBALS.game_loop.running_gamemode.type]: [E.name] [E.file]:[E.name] [E.desc]")
 		world << "Could not start the game, restarting lobby..."
 		return
 

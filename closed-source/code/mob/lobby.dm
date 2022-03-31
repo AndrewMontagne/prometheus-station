@@ -13,8 +13,8 @@
 
 	ready = FALSE
 
-	var/global/obj/screen/splash/splashscreen
-	var/global/lobby_music_track = pick('closed-source/music/robocop.ogg','closed-source/music/tintin.ogg')
+	VAR_STATIC(obj/screen/splash/splashscreen)
+	VAR_STATIC(lobby_music_track) = pick('closed-source/music/robocop.ogg','closed-source/music/tintin.ogg')
 
 /mob/lobby/New()
 	. = ..()
@@ -36,7 +36,7 @@
 	src << sound(lobby_music_track, repeat = 0, wait = 0, channel=1337)
 
 	src << browse_rsc('assets/cc-by-sa-nc/icons/postcardsmall.png')
-	src << browse("<html><body>[motd]</body></html>", "window=loginwindow")
+	src << browse("<html><body>[GLOBALS.motd]</body></html>", "window=loginwindow")
 	update_login_window()
 	winset(src, "loginwindow", "is-visible=true;")
 	src.set_chat_verb("OOC")
@@ -48,18 +48,18 @@
 
 /// Updates the login window
 /mob/lobby/proc/update_login_window()
-	if (isnull(game_loop))
+	if (isnull(GLOBALS.game_loop))
 		winset(src, "loginwindow.loginbutton_ready", "border=line; text=\"Ready Up\"; background-color=#00dc00; focus=false")
 		winset(src, "login_label", "text=\"Starting up...\"")
 		return
 		
-	if (game_loop.is_pre_game())
+	if (GLOBALS.game_loop.is_pre_game())
 		if (!ready)
 			winset(src, "loginwindow.loginbutton_ready", "border=line; text=\"Ready Up\"; background-color=#00dc00; focus=false")
 		else
 			winset(src, "loginwindow.loginbutton_ready", "border=sunken; text=\"Cancel\"; background-color=#dc0000; focus=false")
 
-		var/secs = game_loop.state.seconds_left()
+		var/secs = GLOBALS.game_loop.state.seconds_left()
 		var/label = "Round start has been delayed"
 		if (!isnull(secs))
 			secs -= 2
@@ -69,7 +69,7 @@
 			if (mins > 0)
 				time += " [mins] min"
 			time += " [secs] secs"
-			if (game_loop.state.seconds_left() <= 1)
+			if (GLOBALS.game_loop.state.seconds_left() <= 1)
 				time = "shortly..."
 			label = "Round starts [time]"
 		winset(src, "login_label", "text=\"[label]\"")
@@ -81,7 +81,7 @@
 /mob/lobby/verb/toggle_ready()
 	set name = "toggleready"
 
-	if(game_loop.is_pre_game())
+	if(GLOBALS.game_loop.is_pre_game())
 		if (!usr.client.has_permission("BAN"))
 			src << "You are not authorized to enter the game."
 			return

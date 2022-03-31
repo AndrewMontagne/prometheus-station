@@ -5,7 +5,7 @@
 
 	if (new_tab == "MOTD")
 		winset(src, "infobrowser", "is-visible=true;")
-		src << browse("<html><body>[motd]</body></html>", "window=infobrowser")
+		src << browse("<html><body>[GLOBALS.motd]</body></html>", "window=infobrowser")
 	else
 		winset(src, "infobrowser", "is-visible=false;")
 

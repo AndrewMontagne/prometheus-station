@@ -25,7 +25,7 @@
 	if (findtext(startup_profile, "TRUE") != 0)
 		LOG_ADMIN("NO CKEY", "Startup Profiling Enabled!!!")
 		world.Profile(PROFILE_START | PROFILE_AVERAGE, "json")
-
+		
 	world.sleep_offline = FALSE
 	LOG_SYSTEM("Initialising BYOND Extensions...")
 	rustg_url_encode("") // Check for rustg's presence
@@ -44,9 +44,9 @@
 
 	LOG_SYSTEM("Initialising Controllers...")
 
-	scheduler = new /datum/scheduler()
+	GLOBALS.scheduler = new /datum/scheduler()
 
-	src.init_controllers(scheduler)
+	src.init_controllers(GLOBALS.scheduler)
 
 	//C = new /controller/stress("0000", PRIORITY_LOW)
 	//scheduler.add_controller(C)
@@ -59,7 +59,7 @@
 
 	LOG_SYSTEM("Performing First Tick")
 
-	scheduler.tick()
+	GLOBALS.scheduler.tick()
 
 	LOG_SYSTEM("Startup Complete!")
 	world.sleep_offline = TRUE

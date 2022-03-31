@@ -36,9 +36,10 @@ Determines what `/datum/permission`s a user has. A user can only have one role.
 /datum/role/proc/get_role_key()
 	return copytext("[src.type]", 13)
 
+VAR_GLOBAL(list/client/roles_to_clients) = list()
+
 /client
 	VAR_PRIVATE/datum/role/role = null
-	var/global/list/client/roles_to_clients = list()
 
 /client/proc/give_role(datum/role/new_role)
 	if (!isnull(src.role))
@@ -46,12 +47,12 @@ Determines what `/datum/permission`s a user has. A user can only have one role.
 	src.role = new_role
 	src.role.on_client_add(src)
 	var/rolekey = src.role.get_role_key()
-	if(!islist(src.roles_to_clients[rolekey]))
-		src.roles_to_clients[rolekey] = list()
-	src.roles_to_clients[rolekey] |= src
+	if(!islist(GLOBALS.roles_to_clients[rolekey]))
+		GLOBALS.roles_to_clients[rolekey] = list()
+	GLOBALS.roles_to_clients[rolekey] |= src
 
 /client/proc/remove_role()
-	src.roles_to_clients.Remove(src)
+	GLOBALS.roles_to_clients.Remove(src)
 	src.role.on_client_remove()
 	spawn(0) src.role.Del()
 	src.role = null

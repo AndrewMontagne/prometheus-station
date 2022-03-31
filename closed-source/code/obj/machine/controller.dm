@@ -4,10 +4,10 @@
 
 /controller/machines/process()
 	. = ..()
-	if (!game_loop.is_game_running())
+	if (!GLOBALS.game_loop.is_game_running())
 		return
 
-	for (var/i in global_all_machines)
+	for (var/i in GLOBALS.all_machines)
 		var/obj/machine/M = i
 		M.process()
 

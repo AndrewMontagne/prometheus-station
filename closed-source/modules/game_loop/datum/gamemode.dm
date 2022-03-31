@@ -23,7 +23,7 @@ This class encapsulates gamemode functionality
 
 /// Initialises the gamemode and returns the initial state for this gamemode
 /datum/gamemode/proc/initialize()
-	if (!game_loop || !game_loop.is_pre_game())
+	if (!GLOBALS.game_loop || !GLOBALS.game_loop.is_pre_game())
 		throw EXCEPTION("Game loop is in an invalid state for gamemode initialisation!")
 
 	for (var/mob/lobby/new_player in world)
