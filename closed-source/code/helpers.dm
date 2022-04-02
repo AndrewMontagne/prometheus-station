@@ -35,3 +35,7 @@
 	while(length(hex) < placeholder)
 		hex = text("0[]", hex)
 	return hex
+
+/proc/clear_nulls(var/list/L)
+	while (null in L)
+		L.Remove(null)
