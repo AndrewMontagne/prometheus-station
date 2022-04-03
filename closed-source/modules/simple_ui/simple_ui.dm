@@ -10,16 +10,17 @@
 	var/auto_check_view = TRUE
 	var/auto_refresh = FALSE
 	var/atom/datasource = null
-	var/datum/sui_theme/assets = null
+	var/datum/asset/assets = null
 
 /datum/simple_ui/New(atom/n_datasource, n_width = 512, n_height = 512, n_assets = null)
-	datasource = n_datasource
-	window_id = "\ref[src]"
-	width = n_width
-	height = n_height
+	src.datasource = n_datasource
+	src.window_id = "\ref[src]"
+	src.width = n_width
+	src.height = n_height
+	src.assets = n_assets
 
 /datum/simple_ui/Destroy()
-	close_all()
+	src.close_all()
 	GLOBALS.ui_controller.stop_processing(src)
 	return ..()
 
@@ -63,7 +64,7 @@
 	if(!updating && assets)
 		assets.send(target)
 	//Add them to the viewers if they aren't there already
-	viewers |= target
+	src.viewers |= target
 	if(auto_refresh | auto_check_view)
 		GLOBALS.ui_controller.start_processing(src) //Start processing to poll for viewability
 	//Send the content
@@ -74,20 +75,20 @@
 	src.steal_focus(target)
 
 /datum/simple_ui/proc/render_all()
-	for(var/viewer in viewers)
-		render(viewer, TRUE)
+	for(var/viewer in src.viewers)
+		src.render(viewer, TRUE)
 
 /datum/simple_ui/proc/close(mob/target)
 	if(target && target.client)
 		target << browse(null, "window=[window_id]")
 
 /datum/simple_ui/proc/close_all()
-	for(var/viewer in viewers)
-		close(viewer)
-	viewers = list()
+	for(var/viewer in src.viewers)
+		src.close(viewer)
+	src.viewers = list()
 
 /datum/simple_ui/proc/check_view_all()
-	for(var/viewer in viewers)
+	for(var/viewer in src.viewers)
 		src.check_view(viewer)
 
 /datum/simple_ui/proc/check_view(mob/target)
@@ -102,7 +103,7 @@
 	target << output(list2params(parameters),"[window_id].browser:[js_func]")
 
 /datum/simple_ui/proc/call_js_all(js_func, list/parameters = list())
-	for(var/viewer in viewers)
+	for(var/viewer in src.viewers)
 		src.call_js(viewer, js_func, parameters)
 
 /datum/simple_ui/proc/steal_focus(mob/target)
@@ -110,7 +111,7 @@
 	winset(target, "[window_id]","focus=true")
 
 /datum/simple_ui/proc/steal_focus_all()
-	for(var/viewer in viewers)
+	for(var/viewer in src.viewers)
 		src.steal_focus(viewer)
 
 /datum/simple_ui/proc/flash(mob/target, times = -1)
@@ -118,7 +119,7 @@
 	winset(target, "[window_id]","flash=[times]")
 
 /datum/simple_ui/proc/flash_all(times = -1)
-	for(var/viewer in viewers)
+	for(var/viewer in src.viewers)
 		src.flash(viewer, times)
 
 /datum/simple_ui/proc/href(mob/user, action, list/parameters = list())

@@ -1,10 +1,28 @@
-/datum/sui_theme
+/client/var/downloaded_assets = list()
+
+/datum/asset
 	var/list/assets = list()
 
-/datum/sui_theme/proc/send(mob/target)
-	//NOOP, for now
+/datum/asset/proc/asset_key()
+	return "[src.type]"
 
-/datum/sui_theme/nano
+/datum/asset/proc/send(mob/target)
+	if (!target.client)
+		return
+
+	if (src.asset_key() in target.client.downloaded_assets)
+		return
+
+	for (var/asset in src.assets)
+		target.client << browse_rsc(src.assets[asset], asset)
+
+	target.client.downloaded_assets += src.asset_key()
+
+/datum/asset/sui_theme
+	var/theme_root = null
+
+/datum/asset/sui_theme/nano
+	theme_root = "assets/mit/simple_ui/themes/nano"
 	assets = list(
 		// JavaScript
 		"sui-nano-common.js"		= 'assets/mit/simple_ui/themes/nano/sui-nano-common.js',
@@ -13,7 +31,8 @@
 		"sui-nano-common.css"		= 'assets/mit/simple_ui/themes/nano/sui-nano-common.css',
 	)
 
-/datum/sui_theme/sui_theme_paper
+/datum/asset/sui_theme/sui_theme_paper
+	theme_root = "assets/mit/simple_ui/themes/paper"
 	assets = list(
 		// JavaScript
 		"sui-paper-common.js"		= 'assets/mit/simple_ui/themes/paper/sui-paper-common.js',

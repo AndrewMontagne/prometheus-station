@@ -7,6 +7,10 @@ VAR_GLOBAL(controller/simple_ui/ui_controller)
 	tick_rate = 5
 	var/list/datum/simple_ui/processing_uis = list()
 
+/controller/simple_ui/New()
+	. = ..()
+	GLOBALS.ui_controller = src
+
 /controller/simple_ui/process()
 	. = ..()
 	for (var/simple_ui in processing_uis)
