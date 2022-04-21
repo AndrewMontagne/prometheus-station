@@ -13,7 +13,8 @@ help: ## Shows this help prompt
 	@echo "================================================================================"
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ {printf "\033[36m%-30s\033[0m %s\n", $$1, $$NF }' $(MAKEFILE_LIST)
 
-dev: build run ## Builds and runs
+dev: build ## Builds and runs
+	@bash -c "AUXTOOLS_DEBUG=TRUE make run"
 
 build: lint mapmerge docs compile ## Runs all the build stages
 

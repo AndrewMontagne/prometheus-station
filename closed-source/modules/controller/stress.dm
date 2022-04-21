@@ -31,5 +31,6 @@ thus stress test the task scheduler. It is well behaved and will yield when appr
 		if (copytext(hash,1,length(match) + 1) == match)
 			LOG_INFO("HASH: [hash]")
 			break
-		yield()
+		if (rand(0,10) == 0)
+			src.yield()
 	

@@ -30,7 +30,12 @@
 	LOG_SYSTEM("Initialising BYOND Extensions...")
 
 	rustg_url_encode("") // Check for rustg's presence
-	debug_initialise()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG")
+	if (debug_server)
+		LOG_SYSTEM("Debugging enabled! Waiting 3 seconds to let you attach a debugger")
+		debug_initialise()
+		for(var/i=0, i < 6, i++)
+			sleep(SECONDS(0.5))
 
 	LOG_SYSTEM("Loading Map...")
 
@@ -48,8 +53,7 @@
 	GLOBALS.scheduler = new /datum/scheduler()
 	src.init_controllers(GLOBALS.scheduler)
 
-	//C = new /controller/stress("0000", PRIORITY_LOW)
-	//scheduler.add_controller(C)
+	//GLOBALS.scheduler.add_controller(new /controller/stress("0000", PRIORITY_LOW))
 
 	if (startup_profile)
 		var/json_str = world.Profile(PROFILE_STOP | PROFILE_AVERAGE, "json")
