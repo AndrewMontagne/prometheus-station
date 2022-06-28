@@ -149,3 +149,19 @@ These define the types of tools
 #define TOOL_WELDING		4
 #define TOOL_CROWBAR		5
 #define TOOL_MULTITOOL		6
+
+/**
+These define network stuff
+**/
+#define NET_OFFSET_LEFT 	0
+#define NET_OFFSET_MIDDLE 	1
+#define NET_OFFSET_RIGHT 	2
+
+#define NET_LAYER_PLATING	0
+#define NET_LAYER_TILE		1
+
+#define NET_KIND_UNDEFINED 	0
+#define NET_KIND_POWER		1
+#define NET_KIND_DATA		2
+#define NET_KIND_ATMOS		3
+#define NET_KIND_BLOB		4

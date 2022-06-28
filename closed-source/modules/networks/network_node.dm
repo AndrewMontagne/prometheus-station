@@ -6,59 +6,72 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 /obj/network_node
 	VAR_PRIVATE/datum/network/network = null
 	var/enabled = TRUE
-	icon = 'assets/cc-by-sa-nc/icons_new/obj/cable.dmi'
+	icon = 'assets/cc-by-sa-nc/icons_new/obj/network/debug.dmi'
 	icon_state = "0-1"
 	var/list/dirs = list()
 	needs_init = TRUE
+	var/offset = NET_OFFSET_MIDDLE
+	var/z_layer = NET_LAYER_PLATING
+	var/node_kind = NET_KIND_UNDEFINED
 
 /obj/network_node/New()
 	. = ..()
-	for (var/dir in splittext(src.icon_state, "-"))
-		dirs.Add(text2num(dir))
+	var/tmp_icon = src.icon_state
+	src.dirs = splittext(tmp_icon, "-")
 
 /// Handles joining networks
 /obj/network_node/Initialise()
 	. = ..()
+
+	// Set ourselves to be invisible if we're on a tile
 	if (istype(src.loc, /turf/basic/open/floor))
 		src.invisibility = VISIBLITY_UNDER_TILE
+
+	// If we don't have a network, we need one!
 	if (isnull(src.network))
 		var/list/obj/network_node/neighbours = src.potential_neighbours()
 		if (neighbours.len == 0)
-			src.network = new /datum/network(list(src))
+			// We have no neighbours, so create a new network
+			src.network = src.create_network(list(src))
 		else
 			for (var/N in neighbours)
 				var/obj/network_node/node = N
 				if (!isnull(node.network))
+					// The other node has a network!
 					if (isnull(src.network))
+						// We don't have one, let's join!
 						src.set_network(node.network)
 					else if(node.network != src.network)
+						// We have one, and it's different from the other, have the smaller net merge into the bigger one
 						if (node.network.nodes.len > src.network.nodes.len)
 							src.network.merge_into(node.network)
 						else
 							node.network.merge_into(src.network)
 				else
+					// The other node does not have a network, propagate the graph outwards and form a new net with it
 					var/list/obj/network_node/new_graph = node.build_node_graph()
-					new /datum/network(new_graph)
+					src.create_network(new_graph)
 
 /// Destructor, handles leaving networks
 /obj/network_node/Del()
 	enabled = FALSE
 	src.network.on_node_remove(src)
 	var/list/obj/network_node/neighbours = src.potential_neighbours()
+
 	if (neighbours.len > 1)
-		var/datum/network/network_prime = null
+		// If we have more than one neighbour, we need to make sure we don't split the net in two
 		for (var/N in neighbours)
 			var/obj/network_node/node = N
-			if (isnull(network_prime))
-				network_prime = node.network
-				continue
-			else if (node.network != network_prime)
+			if (node.network != src.network)
+				// Ignore other networks
 				continue
 			else
+				// Build a graph from this other neighbour, and confirm it matches out net's graph
 				var/list/obj/network_node/new_graph = node.build_node_graph()
-				var/list/obj/network_node/prime_graph = network_prime.nodes
+				var/list/obj/network_node/prime_graph = src.network.nodes
 
 				if (new_graph.len != prime_graph.len || length(new_graph ^ prime_graph) > 0)
+					// The graph does not match, so we split the net. Make a new net using the smaller subset.
 					var/list/obj/network_node/inverted_nodes = prime_graph - new_graph
 					if (length(new_graph) < length(inverted_nodes))
 						new /datum/network(new_graph)
@@ -74,14 +87,17 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 	src.network = new_network
 	src.network.on_node_add(src)
 
+/// Designed to be overriden
+/obj/network_node/proc/can_connect_to(obj/network_node/node)
+	return (src.offset == node.offset && src.z_layer == node.z_layer)
 
 /// Can these two nodes connect?
-/obj/network_node/proc/can_connect_to(obj/network_node/node)
-	if (!node || !node.enabled || get_dist(src, node) > 1)
-		return FALSE
-
+/obj/network_node/proc/_is_neighbour_candidate(obj/network_node/node)
 	var/list/my_dirs = splittext(src.icon_state, "-")
 	var/list/their_dirs = splittext(node.icon_state, "-")
+	
+	if (!node || !node.enabled || get_dist(src, node) > 1 || src.node_kind != node.node_kind)
+		return FALSE
 
 	var/list/invert_dir_map = list("0" = 0, "[NORTH]" = SOUTH, "[SOUTH]" = NORTH, "[EAST]" = WEST, "[WEST]" = EAST)  
 	var/dir_to_them = 0
@@ -90,8 +106,8 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 		dir_to_them = get_dir(src.loc, node.loc)
 		dir_from_them = invert_dir_map["[dir_to_them]"]
 
-	var/we_can_connect = my_dirs.Find("[dir_to_them]") != FALSE
-	var/they_can_connect = their_dirs.Find("[dir_from_them]") != FALSE
+	var/we_can_connect = src.dirs.Find("[dir_to_them]") != FALSE
+	var/they_can_connect = node.dirs.Find("[dir_from_them]") != FALSE
 
 	return we_can_connect && they_can_connect
 
@@ -108,18 +124,24 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 /obj/network_node/proc/potential_neighbours()
 	var/list/neighbours = list()
 
-	if (0 in src.dirs)
-		for (var/obj/network_node/node in src.loc)
-			if (src.can_connect_to(node))
-				neighbours.Add(node)
-	
 	for (var/dir in src.dirs)
+		dir = text2num(dir)
 		if (dir == 0)
+			for (var/obj/network_node/node in src.loc)
+				if (src._is_neighbour_candidate(node))
+					neighbours.Add(node)
 			continue
 		for (var/obj/network_node/node in get_step(src, dir))
-			if (src.can_connect_to(node))
+			if (src._is_neighbour_candidate(node))
 				neighbours.Add(node)
 
 	neighbours.Remove(src)
 
 	return neighbours
+
+/// Create a fresh instance of the network type
+/obj/network_node/proc/create_network(var/list/nodes)
+	switch (src.node_kind)
+		if (NET_KIND_POWER) return new /datum/network/power(nodes)
+		if (NET_KIND_ATMOS) return new /datum/network/atmos(nodes)
+		else				return new /datum/network(nodes)

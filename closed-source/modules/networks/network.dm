@@ -36,3 +36,4 @@ Intended to be subclassed, this is the logical "network" datum for [/obj/network
 	for (var/N in src.nodes)
 		var/obj/network_node/node = N
 		node.set_network(other_network)
+
