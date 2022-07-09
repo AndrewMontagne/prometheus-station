@@ -13,6 +13,7 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 	var/offset = NET_OFFSET_MIDDLE
 	var/z_layer = NET_LAYER_PLATING
 	var/node_kind = NET_KIND_UNDEFINED
+	var/list/obj/machine/connected_devices = list()
 
 /obj/structure/network_node/New()
 	. = ..()
@@ -93,9 +94,6 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 
 /// Can these two nodes connect?
 /obj/structure/network_node/proc/_is_neighbour_candidate(obj/structure/network_node/node)
-	var/list/my_dirs = splittext(src.icon_state, "-")
-	var/list/their_dirs = splittext(node.icon_state, "-")
-	
 	if (!node || !node.enabled || get_dist(src, node) > 1 || src.node_kind != node.node_kind)
 		return FALSE
 
@@ -145,3 +143,12 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 		if (NET_KIND_POWER) return new /datum/network/power(nodes)
 		if (NET_KIND_ATMOS) return new /datum/network/atmos(nodes)
 		else				return new /datum/network(nodes)
+
+/obj/structure/network_node/proc/add_device(var/obj/machine/machine)
+	src.connected_devices.Add(machine)
+	src.network.connected_devices.Add(machine)
+
+/obj/structure/network_node/proc/remove_device(var/obj/machine/machine)
+	src.connected_devices.Remove(machine)
+	src.network.connected_devices.Remove(machine)
+	machine.on_network_lost()

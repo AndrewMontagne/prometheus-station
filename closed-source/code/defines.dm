@@ -165,3 +165,14 @@ These define network stuff
 #define NET_KIND_DATA		2
 #define NET_KIND_ATMOS		3
 #define NET_KIND_BLOB		4
+
+/**
+Power Defines
+**/
+#define WATTS(X) 			(X)
+#define KILOWATTS(X) 		(X * 1000)
+#define MEGAWATTS(X) 		(X * 1000000)
+
+#define JOULES(X) (X)
+#define KILOJOULES(X) 		(X * 1000)
+#define MEGAJOULES(X) 		(X * 1000000)
