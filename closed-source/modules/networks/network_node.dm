@@ -146,9 +146,9 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 
 /obj/structure/network_node/proc/add_device(var/obj/machine/machine)
 	src.connected_devices.Add(machine)
-	src.network.connected_devices.Add(machine)
+	src.network.on_device_add(machine)
 
 /obj/structure/network_node/proc/remove_device(var/obj/machine/machine)
 	src.connected_devices.Remove(machine)
-	src.network.connected_devices.Remove(machine)
+	src.network.on_device_remove(machine)
 	machine.on_network_lost()

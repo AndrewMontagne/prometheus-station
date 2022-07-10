@@ -143,3 +143,8 @@
 	return TRUE
 
 /datum/proc/onVarChanged(variable, oldval, newval)
+
+/proc/shuffle_list(var/list/L)
+	for (var/i = 1; i <= L.len; i++)
+		L.Swap(i, rand(1,L.len))
+	return L

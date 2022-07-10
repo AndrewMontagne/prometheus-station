@@ -11,7 +11,7 @@ VAR_GLOBAL(list/all_machines) = list()
 	var/area/A = src.find_turf().loc
 	var/obj/machine/power/apc/APC = A.apc
 	if (!isnull(APC))
-		APC.consume_energy(src.idle_power)
+		APC.draw_apc_power(src.idle_power)
 
 /obj/machine/New()
 	. = ..()

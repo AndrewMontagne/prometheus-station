@@ -2,12 +2,16 @@
 
 /// Area power controller
 /obj/machine/power/apc
+	name = "area power controller"
 	var/apc_charge = JOULES(0)
 	var/apc_charge_max = KILOJOULES(10)
+	var/max_charge_rate = KILOWATTS(1)
 	var/consumed = 0
 	var/consumed_last = 0
-	icon = 'assets/cc-by-sa-nc/icons/obj/pipes/disposal.dmi'
-	icon_state = "disposal"
+	icon = 'assets/cc-by-sa-nc/icons_new/obj/machine/apc.dmi'
+	icon_state = "apc"
+
+	var/display_state = "charging"
 	
 /obj/machine/power/apc/Initialise()
 	. = ..()
@@ -23,13 +27,36 @@
 
 	if (isnull(src.connected_node))
 		if (src.connect_to_node() == FALSE)
+			src.display_state = "discharging"
+			src.update_icon()
 			return
 
 	if (src.apc_charge < src.apc_charge_max)
 		var/datum/network/power/N = src.connected_node.network
-		src.apc_charge += N.consume_energy(src.apc_charge_max - src.apc_charge)
+		var/desired_charge = src.apc_charge_max - src.apc_charge
+		if (desired_charge > src.max_charge_rate)
+			desired_charge = src.max_charge_rate
+		var/charge_amount = N.consume_energy(desired_charge)
+		src.apc_charge += charge_amount
 
-/obj/machine/power/apc/proc/consume_energy(var/amount)
+		if (src.apc_charge < 10)
+			src.display_state = "none"
+		else if (src.apc_charge == src.apc_charge_max)
+			src.display_state = "charged"
+		else if (charge_amount >= src.consumed_last)
+			src.display_state = "charging"
+		else
+			src.display_state = "discharging"
+	else
+		src.display_state = "charged"
+
+	src.update_icon()
+
+/obj/machine/power/apc/update_icon()
+	. = ..()
+	src.overlays += src.display_state
+
+/obj/machine/power/apc/proc/draw_apc_power(var/amount)
 	var/consumed = amount
 	if (src.apc_charge < amount)
 		consumed = src.apc_charge

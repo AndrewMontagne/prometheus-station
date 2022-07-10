@@ -29,5 +29,5 @@
 		return src in P.inventory
 	return ..()
 
-/obj/machinery/sui_canview(mob/user)
+/obj/machine/sui_canview(mob/user)
 	return ..()

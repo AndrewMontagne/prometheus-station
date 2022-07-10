@@ -41,3 +41,8 @@ Intended to be subclassed, this is the logical "network" datum for [/obj/structu
 		var/obj/structure/network_node/node = N
 		node.set_network(other_network)
 
+/datum/network/proc/on_device_add(obj/machine/device)
+	src.connected_devices.Add(device)
+
+/datum/network/proc/on_device_remove(obj/machine/device)
+	src.connected_devices.Remove(device)
