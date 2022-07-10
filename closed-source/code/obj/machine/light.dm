@@ -13,10 +13,10 @@
 	icon_state = "bulb1"
 	default_color = "#8f8f8f"
 
-/obj/machine/light/Initialise()
+/obj/machine/light/on_powerup()
 	. = ..()
 	set_light(l_power = 1, l_range = src.default_range, l_color = src.default_color)
 
-/obj/machine/light/process()
+/obj/machine/light/on_powerdown()
 	. = ..()
-	//
+	set_light(l_power = 0, l_range = src.default_range, l_color = src.default_color)

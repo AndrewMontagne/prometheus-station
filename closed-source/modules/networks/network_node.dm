@@ -75,9 +75,9 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 					// The graph does not match, so we split the net. Make a new net using the smaller subset.
 					var/list/obj/structure/network_node/inverted_nodes = prime_graph - new_graph
 					if (length(new_graph) < length(inverted_nodes))
-						new /datum/network(new_graph)
+						src.create_network(new_graph)
 					else
-						new /datum/network(inverted_nodes)
+						src.create_network(inverted_nodes)
 					continue
 	. = ..()
 

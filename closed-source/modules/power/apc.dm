@@ -18,6 +18,7 @@
 	var/turf/T = src.find_turf()
 	var/area/A = T.loc
 	A.apc = src
+	src.apc_charge = src.apc_charge_max
 
 /obj/machine/power/apc/process()
 	. = ..()
@@ -27,7 +28,10 @@
 
 	if (isnull(src.connected_node))
 		if (src.connect_to_node() == FALSE)
-			src.display_state = "discharging"
+			if (src.apc_charge < 10)
+				src.display_state = "none"
+			else
+				src.display_state = "discharging"
 			src.update_icon()
 			return
 
@@ -36,14 +40,17 @@
 		var/desired_charge = src.apc_charge_max - src.apc_charge
 		if (desired_charge > src.max_charge_rate)
 			desired_charge = src.max_charge_rate
-		var/charge_amount = N.consume_energy(desired_charge)
+		var/charge_amount = 0
+		if (!isnull(N))
+			charge_amount = N.consume_energy(desired_charge)
+		var/previous_charge = src.apc_charge
 		src.apc_charge += charge_amount
 
 		if (src.apc_charge < 10)
 			src.display_state = "none"
 		else if (src.apc_charge == src.apc_charge_max)
 			src.display_state = "charged"
-		else if (charge_amount >= src.consumed_last)
+		else if (previous_charge < src.apc_charge)
 			src.display_state = "charging"
 		else
 			src.display_state = "discharging"
