@@ -47,10 +47,13 @@
 		var/supplied_joules = net.consume_energy(needed_joules)
 		src.consumed_last = supplied_joules
 		src.internal_storage_amount += supplied_joules
-		if (src.internal_storage_amount < start_buffer)
-			src.state = "smes-discharging"
+		if (src.internal_storage_amount >= src.internal_storage_max)
+			src.state = "smes-charged"
 		else
-			src.state = "smes-charging"
+			if (src.internal_storage_amount < start_buffer)
+				src.state = "smes-discharging"
+			else
+				src.state = "smes-charging"
 	else
 		src.state = "smes-err"
 
@@ -61,7 +64,7 @@
 	src.overlays += src.state
 
 	var/percent = src.internal_storage_amount / src.internal_storage_max
-	var/level = round(percent * 6) + 1
+	var/level = clamp(round(percent * 7) + 1, 1, 7)
 	src.overlays += "smes-og[level]"
 
 
@@ -70,12 +73,15 @@
 /obj/machine/power/smes/sui_data(mob/user)
 	var/list/data = list()
 	switch (src.state)
+		if ("smes-charged")
+			data["state"] = "Charged"
 		if ("smes-charging")
 			data["state"] = "Charging"
 		if ("smes-discharging")
 			data["state"] = "Discharging"
-		if ("smes-error")
+		if ("smes-err")
 			data["state"] = "ERROR!"
+			
 	var/per = (src.internal_storage_amount / src.internal_storage_max) * 100
 	data["per"] = "[round(per, 1)]%"
 	data["battery"] = "[unitize(src.internal_storage_amount, "J")] / [unitize(src.internal_storage_max, "J")]"
