@@ -8,6 +8,7 @@
 	var/default_color = "#ffffff"
 	layer = LAYER_CEIL
 	idle_power = WATTS(10)
+	density = FALSE
 
 /obj/machine/light/bulb
 	icon_state = "bulb1"

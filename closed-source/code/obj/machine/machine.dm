@@ -7,6 +7,7 @@ VAR_GLOBAL(list/all_machines) = list()
 	needs_init = TRUE
 	var/idle_power = WATTS(0)
 	var/power_on = FALSE
+	density = TRUE
 
 /obj/machine/proc/process()
 	var/area/A = src.find_turf().loc

@@ -39,3 +39,23 @@
 /proc/clear_nulls(var/list/L)
 	while (null in L)
 		L.Remove(null)
+
+/proc/unitize(var/value, var/unit, var/min_base=0, var/max_base=12)
+	if (!isnum(value))
+		value = 0
+
+	if (value == 0)
+		return "0 [unit]"
+
+	var/list/prefixes = list("p","n","μ","m","","k","M","G","T")
+	var/base = log(10, value)
+	base = round(base, 3)
+	base = clamp(base, min_base, max_base)
+
+	if (base == 0)
+		return "[round(value, 0.01)] [unit]"
+
+	var/modified_value = value / (10 ** base)
+	var/index = clamp((base / 3) + 5, 1, prefixes.len)
+
+	return "[round(modified_value, 0.01)] [prefixes[index]][unit]"

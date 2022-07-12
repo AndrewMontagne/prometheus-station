@@ -6,19 +6,17 @@
 /datum/network/power
 	var/joules_consumed = 0
 	var/joules_consumed_last = 0
-	var/list/obj/machine/power_providers = list()
 
 /datum/network/power/process()
 	src.joules_consumed_last = src.joules_consumed
 	src.joules_consumed = 0
 
-	shuffle_list(src.power_providers)
+	shuffle_list(src.connected_devices)
 
 /// Can we consume this much energy from the network?
 /datum/network/power/proc/energy_available(var/joules)
 	var/total_available = 0
-	for (var/provider in src.power_providers)
-		var/obj/machine/power/P = provider
+	for (var/obj/machine/power/P in src.connected_devices)
 		total_available += P.joule_output_buffer
 	return total_available
 
@@ -29,8 +27,7 @@
 		joules = available
 	
 	var/consumed = 0
-	for (var/provider in src.power_providers)
-		var/obj/machine/power/P = provider
+	for (var/obj/machine/power/P in src.connected_devices)
 		if (P.joule_output_buffer == 0)
 			continue
 		var/supplied = P.consume_energy(joules)
@@ -40,21 +37,4 @@
 			break
 
 	return consumed
-
-/datum/network/power/on_node_remove(obj/structure/network_node/node)
-	. = ..()
-	// Make sure after the node removal, power_providers is a subset of connected_devices
-	src.power_providers &= src.connected_devices
-
-/datum/network/power/on_device_add(obj/machine/M)
-	. = ..()
-	if (istype(M, /obj/machine/power))
-		src.power_providers.Add(M)
-	
-/datum/network/power/on_device_remove(obj/machine/M)
-	. = ..()
-	if (istype(M, /obj/machine/power))
-		src.power_providers.Remove(M)
-
-	
 
