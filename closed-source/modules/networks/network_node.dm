@@ -10,6 +10,7 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 	icon_state = "0-1"
 	var/list/dirs = list()
 	needs_init = TRUE
+	layer = LAYER_FLOOR
 	var/offset = NET_OFFSET_MIDDLE
 	var/z_layer = NET_LAYER_PLATING
 	var/node_kind = NET_KIND_UNDEFINED
@@ -97,7 +98,7 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 	if (!node || !node.enabled || get_dist(src, node) > 1 || src.node_kind != node.node_kind)
 		return FALSE
 
-	var/list/invert_dir_map = list("0" = 0, "[NORTH]" = SOUTH, "[SOUTH]" = NORTH, "[EAST]" = WEST, "[WEST]" = EAST)  
+	var/list/invert_dir_map = INVERT_DIR_MAP
 	var/dir_to_them = 0
 	var/dir_from_them = 0
 	if (src.loc != node.loc)

@@ -10,6 +10,7 @@
 
 /obj/structure/lattice
 	density = FALSE
+	layer = LAYER_TURF + 0.1
 	name = "lattice"
 	icon = 'assets/cc-by-sa-nc/icons_new/obj/structure/smooth/lattice.dmi'
 	icon_state = "placeholder"

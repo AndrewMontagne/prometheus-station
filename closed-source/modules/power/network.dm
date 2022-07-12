@@ -41,6 +41,11 @@
 
 	return consumed
 
+/datum/network/power/on_node_remove(obj/structure/network_node/node)
+	. = ..()
+	// Make sure after the node removal, power_providers is a subset of connected_devices
+	src.power_providers &= src.connected_devices
+
 /datum/network/power/on_device_add(obj/machine/M)
 	. = ..()
 	if (istype(M, /obj/machine/power))

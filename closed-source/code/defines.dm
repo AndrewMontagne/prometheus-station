@@ -33,6 +33,7 @@
 
 /// A list of all cardinal directions
 #define ALL_DIRS list(NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST)
+#define INVERT_DIR_MAP list("0" = 0, "[NORTH]" = SOUTH, "[SOUTH]" = NORTH, "[EAST]" = WEST, "[WEST]" = EAST)  
 
 /// Realtime task priority
 #define PRIORITY_REALTIME 1
@@ -172,7 +173,9 @@ Power Defines
 #define WATTS(X) 			(X)
 #define KILOWATTS(X) 		(X * 1000)
 #define MEGAWATTS(X) 		(X * 1000000)
+#define GIGAWATTS(X) 		(X * 1000000000)
 
 #define JOULES(X) (X)
 #define KILOJOULES(X) 		(X * 1000)
 #define MEGAJOULES(X) 		(X * 1000000)
+#define GIGAJOULES(X) 		(X * 1000000000)
