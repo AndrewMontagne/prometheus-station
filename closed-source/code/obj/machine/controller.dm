@@ -10,7 +10,6 @@
 	var/list/obj/machine/shuffled_machines = list()
 	for (var/i in GLOBALS.all_machines)
 		shuffled_machines.Add(i)
-	shuffle_list(shuffled_machines)
 	
 	for (var/i in shuffled_machines)
 		var/obj/machine/M = i

@@ -80,7 +80,7 @@
 	data["per"] = "[round(per, 1)]%"
 	data["battery"] = "[unitize(src.internal_storage_amount, "J")] / [unitize(src.internal_storage_max, "J")]"
 	data["input"] = "[unitize(src.consumed_last, "W")] / [unitize(src.input_amount, "W")]"
-	data["output"] = "[unitize(src.joules_output, "W")] / [unitize(src.output_amount, "W")]"
+	data["output"] = "[unitize(src.joules_output_last, "W")] / [unitize(src.output_amount, "W")]"
 	return data
 
 /obj/machine/power/smes/HelpClick(mob/holder, atom/item, list/params)
