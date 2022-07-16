@@ -9,6 +9,7 @@
 	var/in_motion = FALSE
 	var/timer = 0
 	var/MAX_TIMER = 10
+	idle_power = WATTS(20)
 
 /obj/machine/door/glass
 	icon = 'assets/cc-by-sa-nc/icons/obj/doors/Doorglass.dmi'
@@ -20,6 +21,10 @@
 		src.set_opacity(TRUE)
 
 /obj/machine/door/process()
+	. = ..()
+	if (src.power_on == FALSE)
+		return
+
 	if (src.timer > 0)
 		src.timer--
 		if (src.timer == 0)
@@ -29,7 +34,28 @@
 			else
 				src.close()
 
+/obj/machine/door/HelpClick(mob/holder, atom/item, list/params)
+	. = ..()
+	if (!src.Adjacent(holder))
+		return
+
+	if (src.in_motion)
+		return
+
+	if (src.power_on)
+		src.toggle()
+	else if (istype(item, /obj/item/tool))
+		var/obj/item/tool/T = item
+		if (T.tool_act(TOOL_CROWBAR, TRUE) && holder.can_perform_long_action())
+			play_sound('assets/cc-by-sa-nc/sound/machines/airlockpry.ogg', src)
+			if (holder.perform_long_action(SECONDS(3)))
+				src.toggle()
+			
+
 /obj/machine/door/Bumped(var/atom/movable/source)
+	if (src.power_on == FALSE)
+		return
+
 	if (!src.in_motion && !src.is_open)
 		src.timer = src.MAX_TIMER
 		src.open()
@@ -42,7 +68,10 @@
 
 /obj/machine/door/proc/open()
 	if (!src.is_open && !src.in_motion)
-		play_sound('assets/cc-by-sa-nc/sound/machines/airlock.ogg', src)
+		if (src.power_on)
+			play_sound('assets/cc-by-sa-nc/sound/machines/airlockopen.ogg', src)
+		else
+			play_sound('assets/cc-by-sa-nc/sound/machines/airlockforced.ogg', src)
 		flick("door_opening", src)
 		src.in_motion = TRUE
 		spawn(6)
@@ -56,8 +85,12 @@
 
 /obj/machine/door/proc/close()
 	if (src.is_open && !src.in_motion)
-		play_sound('assets/cc-by-sa-nc/sound/machines/airlock.ogg', src)
+		if (src.power_on)
+			play_sound('assets/cc-by-sa-nc/sound/machines/airlockclose.ogg', src)
+		else
+			play_sound('assets/cc-by-sa-nc/sound/machines/airlockforced.ogg', src)
 		flick("door_closing", src)
+		src.timer = 0
 		src.in_motion = TRUE
 		src.density = TRUE
 		spawn(6)

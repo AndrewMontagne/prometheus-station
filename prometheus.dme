@@ -39,6 +39,7 @@
 #include "closed-source\code\mob\chat.dm"
 #include "closed-source\code\mob\click.dm"
 #include "closed-source\code\mob\lobby.dm"
+#include "closed-source\code\mob\long_action.dm"
 #include "closed-source\code\mob\player.dm"
 #include "closed-source\code\obj\spawnpoint.dm"
 #include "closed-source\code\obj\item\item.dm"
