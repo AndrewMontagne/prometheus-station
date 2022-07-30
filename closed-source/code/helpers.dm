@@ -59,3 +59,13 @@
 	var/index = clamp((base / 3) + 5, 1, prefixes.len)
 
 	return "[round(modified_value, 0.01)] [prefixes[index]][unit]"
+
+/proc/angle_to_dir(var/angle)
+	if (angle < -135 || angle > 135)
+		return WEST
+	else if (angle < -45)
+		return SOUTH
+	else if (angle > 45)
+		return NORTH
+	else
+		return EAST

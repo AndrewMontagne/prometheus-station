@@ -5,21 +5,13 @@
 // Click handler
 /mob/proc/HandleClick(object, location, control, parameters)
 	var/atom/A = object
-
+	
 	var/dy = ((A.y - src.y) * 32) + (text2num(parameters["icon-y"]) - 16)
 	var/dx = ((A.x - src.x) * 32) + (text2num(parameters["icon-x"]) - 16)
 	var/angle = arctan(dx, dy)
 
-	if (angle < -135 || angle > 135)
-		src.dir = WEST
-	else if (angle < -45)
-		src.dir = SOUTH
-	else if (angle > 45)
-		src.dir = NORTH
-	else
-		src.dir = EAST
-
 	parameters["angle"] = angle
+	src.dir = angle_to_dir(angle)
 
 	var/atom/held_object = src.get_held_object()
 	if (isnull(held_object))
