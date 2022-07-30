@@ -8,6 +8,9 @@
 /atom/proc/ThrowClick(mob/holder, atom/item, list/params)
 	return src.HarmClick(holder, item, params)
 /atom/proc/HelpClick(mob/holder, atom/item, list/params)
+	if (istype(item, /obj/item) && src.Adjacent(holder))
+		var/obj/item/I = item
+		return I.UseOn(holder, src, params)
 	return TRUE
 	
 /atom/proc/HarmDoubleClick(mob/holder, atom/item, list/params)

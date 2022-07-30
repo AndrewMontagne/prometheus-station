@@ -46,7 +46,7 @@
 		src.toggle()
 	else if (istype(item, /obj/item/tool))
 		var/obj/item/tool/T = item
-		if (T.tool_act(TOOL_CROWBAR, TRUE) && holder.can_perform_long_action())
+		if (T.is_valid_tool(TOOL_CROWBAR, TRUE) && holder.can_perform_long_action())
 			play_sound('assets/cc-by-sa-nc/sound/machines/airlockpry.ogg', src)
 			if (holder.perform_long_action(SECONDS(3)))
 				src.toggle()

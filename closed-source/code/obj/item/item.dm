@@ -27,3 +27,7 @@ Parent type for all items that can be picked up
 		if (src.Adjacent(source))
 			if (active_hand.can_equipitem(src))
 				active_hand.equipitem(src)
+
+/// Default method for clicking something with an item.
+/obj/item/proc/UseOn(mob/holder, atom/target, list/params)
+	// NOOP
