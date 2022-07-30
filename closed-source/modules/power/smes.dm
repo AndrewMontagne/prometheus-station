@@ -33,7 +33,7 @@
 	src.internal_storage_amount -= amount_to_output
 
 	var/turf/candidate_turf = get_step(src.loc, src.input_direction)
-	var/inverted_dir = INVERT_DIR_MAP[src.input_direction]
+	var/inverted_dir = invert_dir(src.input_direction)
 
 	var/datum/network/power/net = null
 	

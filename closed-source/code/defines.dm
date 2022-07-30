@@ -33,7 +33,6 @@
 
 /// A list of all cardinal directions
 #define ALL_DIRS list(NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST)
-#define INVERT_DIR_MAP list("0" = 0, "[NORTH]" = SOUTH, "[SOUTH]" = NORTH, "[EAST]" = WEST, "[WEST]" = EAST)  
 
 /// Realtime task priority
 #define PRIORITY_REALTIME 1

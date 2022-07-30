@@ -8,7 +8,10 @@
 		var/obj/item/stack/cable/F = new(src.loc)
 		F.pixel_x = rand(-8,8)
 		F.pixel_y = rand(-8,8)
-		F.count = 1
+		if ("0" in src.dirs)
+			F.count = 1
+		else
+			F.count = 2
 		tool.play_tool_sound()
 		del(src)
 

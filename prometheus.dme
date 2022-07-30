@@ -45,6 +45,8 @@
 #include "closed-source\code\obj\item\item.dm"
 #include "closed-source\code\obj\item\tools.dm"
 #include "closed-source\code\obj\item\clothing\clothing.dm"
+#include "closed-source\code\obj\item\stack\cable.dm"
+#include "closed-source\code\obj\item\stack\floor_tile.dm"
 #include "closed-source\code\obj\item\stack\stack.dm"
 #include "closed-source\code\obj\machine\controller.dm"
 #include "closed-source\code\obj\machine\door.dm"

@@ -16,14 +16,10 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 	var/node_kind = NET_KIND_UNDEFINED
 	var/list/obj/machine/connected_devices = list()
 
-/obj/structure/network_node/New()
-	. = ..()
-	var/tmp_icon = src.icon_state
-	src.dirs = splittext(tmp_icon, "-")
-
 /// Handles joining networks
 /obj/structure/network_node/Initialise()
 	. = ..()
+	src.dirs = splittext(src.icon_state, "-")
 
 	// Set ourselves to be invisible if we're on a tile
 	if (istype(src.loc, /turf/basic/open/floor))
@@ -98,12 +94,11 @@ Intended to be subclassed, this is a generic network piece object that forms [/d
 	if (!node || !node.enabled || get_dist(src, node) > 1 || src.node_kind != node.node_kind)
 		return FALSE
 
-	var/list/invert_dir_map = INVERT_DIR_MAP
 	var/dir_to_them = 0
 	var/dir_from_them = 0
 	if (src.loc != node.loc)
 		dir_to_them = get_dir(src.loc, node.loc)
-		dir_from_them = invert_dir_map["[dir_to_them]"]
+		dir_from_them = invert_dir_str("[dir_to_them]")
 
 	var/we_can_connect = src.dirs.Find("[dir_to_them]") != FALSE
 	var/they_can_connect = node.dirs.Find("[dir_from_them]") != FALSE

@@ -69,3 +69,19 @@
 		return NORTH
 	else
 		return EAST
+
+/proc/invert_dir(var/dir)
+	switch (dir)
+		if (NORTH) 		return SOUTH
+		if (NORTHEAST) 	return SOUTHWEST
+		if (EAST) 		return WEST
+		if (SOUTHEAST) 	return NORTHWEST
+		if (SOUTH) 		return NORTH
+		if (SOUTHWEST) 	return NORTHEAST
+		if (WEST) 		return EAST
+		if (NORTHWEST) 	return SOUTHEAST
+		else 			return dir
+
+/proc/invert_dir_str(var/dir)
+	var/numdir = text2num(dir)
+	return "[invert_dir(numdir)]"
