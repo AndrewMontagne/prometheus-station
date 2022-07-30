@@ -1,5 +1,5 @@
 /turf
-	plane = PLANE_TURF
+	plane = PLANE_GAME
 
 /// Returns whether a given turf has a visible atom.
 /turf/proc/has_visible_atom()
