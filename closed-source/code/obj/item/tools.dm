@@ -3,6 +3,7 @@
 	VAR_PRIVATE/list/proper_tool_types = null
 	VAR_PRIVATE/list/improper_tool_types = null
 	var/tool_use_sound = 'assets/cc-by-sa-nc/sound/items/Deconstruct.ogg'
+	slots = list(SLOT_POCKET, SLOT_BELT_CLIP_L, SLOT_BELT_CLIP_R)
 
 /obj/item/tool/proc/is_valid_tool(var/tool_type, var/proper_only = FALSE)
 	if (tool_type in src.proper_tool_types)

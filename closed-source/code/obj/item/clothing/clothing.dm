@@ -5,7 +5,7 @@ Clothing
 /obj/item/clothing
 
 /obj/item/clothing/jumpsuit
-	name = "jumpsuit"
+	name = "grey jumpsuit"
 	icon = 'assets/cc-by-sa-nc/icons_new/item/clothing/jumpsuits.dmi'
 	icon_state = "grey"
 	slots = list(SLOT_JACKET, SLOT_SUIT)

@@ -50,6 +50,7 @@
 #include "closed-source\code\obj\item\stack\stack.dm"
 #include "closed-source\code\obj\machine\controller.dm"
 #include "closed-source\code\obj\machine\door.dm"
+#include "closed-source\code\obj\machine\itemspawner.dm"
 #include "closed-source\code\obj\machine\light.dm"
 #include "closed-source\code\obj\machine\machine.dm"
 #include "closed-source\code\obj\machine\test.dm"

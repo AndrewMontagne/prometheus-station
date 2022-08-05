@@ -1,5 +1,6 @@
 /atom
 	plane = PLANE_GAME
+	name = "unnamed"
 
 /// Finds and returns the parent turf of an atom.
 /atom/proc/find_turf()

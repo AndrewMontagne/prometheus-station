@@ -11,7 +11,8 @@
 	var/angle = arctan(dx, dy)
 
 	parameters["angle"] = angle
-	src.dir = angle_to_dir(angle)
+	if (istype(A, /turf))
+		src.dir = angle_to_dir(angle)
 
 	var/atom/held_object = src.get_held_object()
 	if (isnull(held_object))
