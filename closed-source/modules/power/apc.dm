@@ -10,6 +10,7 @@
 	var/consumed_last = 0
 	icon = 'assets/cc-by-sa-nc/icons_new/obj/machine/apc.dmi'
 	icon_state = "apc"
+	density = FALSE
 
 	var/display_state = "charging"
 	
@@ -17,8 +18,12 @@
 	. = ..()
 	var/turf/T = src.find_turf()
 	var/area/A = T.loc
-	A.apc = src
-	src.apc_charge = src.apc_charge_max
+	if (!isnull(A.apc))
+		LOG_ERROR("Duplicate apc for [A.name]")
+	else
+		A.apc = src
+		src.apc_charge = src.apc_charge_max
+		src.name = "[A.name] apc"
 
 /obj/machine/power/apc/process()
 	. = ..()

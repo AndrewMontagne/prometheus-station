@@ -12,7 +12,6 @@ Space Area
 /area/space
 	name = "Space"
 	desc = "It's cold outside, there's no kind of atmosphere."
-	dynamic_lighting = FALSE
 	icon_state = "space"
 
 /**
@@ -26,18 +25,6 @@ Base class for all "rooms"
 
 /area/station/maint
 	sound_environment = 21
-
-/area/station/maint/deck1
-	name = "Deck 1 Maintenance Hall"
-	icon_state = "deck1_maint"
-
-/area/station/maint/deck2
-	name = "Deck 2 Maintenance Hall"
-	icon_state = "deck2_maint"
-
-/area/station/maint/deck3
-	name = "Deck 3 Maintenance Hall"
-	icon_state = "deck3_maint"
 
 /area/station/main_hallway/aft
 	name = "Aft Main Hallway"
@@ -58,3 +45,31 @@ Base class for all "rooms"
 /area/station/main_hallway/center
 	name = "Central Main Hallway"
 	icon_state = "center_main_hall"
+
+/area/station/service
+	name = "Station Services"
+	icon_state = "svc_generic"
+
+/area/station/service/kitchen
+	name = "Kitchen"
+	icon_state = "svc_kitchen"
+
+/area/station/service/cafeteria
+	name = "Cafeteria"
+	icon_state = "svc_cafe"
+
+/area/station/engineering
+	name = "Engineering"
+	icon_state = "eng_generic"
+
+/area/station/engineering/main
+	name = "Main Engineering"
+	icon_state = "eng_main"
+
+/area/station/engineering/main
+	name = "Atmospherics"
+	icon_state = "eng_atmos"
+
+/area/station/engineering/solars_airlock
+	name = "Solars Airlock"
+	icon_state = "eng_solars"

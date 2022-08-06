@@ -1,5 +1,6 @@
 
 /obj/machine/door
+	name = "airlock"
 	icon = 'assets/cc-by-sa-nc/icons/obj/doors/Doormaint.dmi'
 	icon_state = "door_closed"
 	opacity = FALSE

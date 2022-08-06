@@ -13,7 +13,7 @@
 
 #define INVISIBILITY_LIGHTING   20
 
-#define LIGHTING_SOFT_THRESHOLD 0.0 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
+#define LIGHTING_SOFT_THRESHOLD 0.0001 // If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
 
 // If I were you I'd leave this alone.
 #define LIGHTING_BASE_MATRIX \

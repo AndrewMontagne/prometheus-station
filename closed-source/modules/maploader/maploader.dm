@@ -135,7 +135,7 @@ Writes the loaded map to the world. You should call [/datum/map_loader/proc/load
 						LOG_WARNING("Unknown Path: [object]")
 						continue
 
-					var/loc = locate(current_x + start_x, current_y + start_y, current_z + start_z)
+					var/turf/loc = locate(current_x + start_x, current_y + start_y, current_z + start_z)
 
 					var/list/params = list()
 					for (var/datum in data)

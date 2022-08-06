@@ -23,7 +23,7 @@
 	. = ..()
 	src.icon_state = "rock[src.x % 3],[src.y % 3]"
 
-/obj/basic/closed/rock/can_smooth_with(atom/neighbor)
-	return istype(neighbor, /turf/basic/closed/rock)
+/turf/basic/closed/can_smooth_with(atom/neighbor)
+	return istype(neighbor, /turf/basic/closed)
 
 

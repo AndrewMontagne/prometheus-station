@@ -14,6 +14,9 @@ help: ## Shows this help prompt
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ {printf "\033[36m%-30s\033[0m %s\n", $$1, $$NF }' $(MAKEFILE_LIST)
 
 dev: build ## Builds and runs
+	@bash -c "make run"
+
+debug: build ## Builds and runs, with debugging enabled
 	@bash -c "AUXTOOLS_DEBUG=TRUE make run"
 
 build: lint mapmerge docs compile ## Runs all the build stages

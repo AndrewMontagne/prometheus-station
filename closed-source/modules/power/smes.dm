@@ -1,4 +1,5 @@
 /obj/machine/power/smes
+	name = "smes"
 	var/input_amount = MEGAWATTS(1)
 	var/input_direction = SOUTH
 	var/output_amount = MEGAWATTS(1)
