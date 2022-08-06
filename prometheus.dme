@@ -55,7 +55,6 @@
 #include "closed-source\code\obj\machine\machine.dm"
 #include "closed-source\code\obj\machine\test.dm"
 #include "closed-source\code\obj\structure\structure.dm"
-#include "closed-source\code\turf\multi-z.dm"
 #include "closed-source\code\turf\space.dm"
 #include "closed-source\code\turf\turf.dm"
 #include "closed-source\code\turf\basic\closed.dm"
