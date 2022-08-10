@@ -2,7 +2,7 @@ INV=\033[7m
 NC=\033[0m
 
 SHELL := /bin/bash
-.PHONY: help build dev clean lint docs mapmerge-test mapmerge compile build run run-container
+.PHONY: *
 
 -include /byond/env.sh
 

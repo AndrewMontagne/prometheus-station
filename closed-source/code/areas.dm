@@ -66,7 +66,7 @@ Base class for all "rooms"
 	name = "Main Engineering"
 	icon_state = "eng_main"
 
-/area/station/engineering/main
+/area/station/engineering/atmos
 	name = "Atmospherics"
 	icon_state = "eng_atmos"
 

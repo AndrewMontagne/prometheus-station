@@ -23,7 +23,6 @@
 
 			var/obj/structure/network_node/power/P = new(T)
 			P.icon_state = cable_state
-			LOG_TRACE(cable_state)
 	else if (istype(target, /obj/structure/network_node/power))
 		var/obj/structure/network_node/power/P = target
 		var/turf/basic/open/T = target.find_turf()
@@ -31,7 +30,8 @@
 		var/cable_dir = invert_dir(holder.dir)
 		if (target == origin)
 			return FALSE
-		for (var/obj/structure/network_node/power/PO in target.contents)
+
+		for (var/obj/structure/network_node/power/PO in T.contents)
 			if ("[cable_dir]" in PO.dirs)
 				holder.stdout("There is already a cable in that direction there!")
 				return
@@ -41,6 +41,11 @@
 			return
 
 		var/other_dir = text2num(P.dirs[2])
+
+		if (other_dir == cable_dir)
+			holder.stdout("You cannot join with this cable")
+			LOG_WARNING("Tried to join a cable to the same output dir")
+
 		var/cable_state = "[cable_dir]-[other_dir]"
 		if (other_dir < cable_dir)
 			cable_state = "[other_dir]-[cable_dir]"
