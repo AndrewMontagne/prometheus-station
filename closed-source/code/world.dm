@@ -4,7 +4,7 @@
 	area = /area/space
 	view = "19x17"
 	loop_checks = TRUE
-	fps = 10
+	fps = FRAMES_PER_SECOND
 	
 /world/Error(exception/E, datum/src)
 	if (!istype(E))

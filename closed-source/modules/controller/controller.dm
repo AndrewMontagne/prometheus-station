@@ -19,7 +19,7 @@ All controllers inherit from this
 	/// For PRIORITY_MEDIUM tasks, this is the accumulated execution debt
 	var/tick_debt = 0 
 	/// Interval in ticks that this controller fires in
-	var/tick_rate = 10
+	var/tick_rate = FRAMES_PER_SECOND
 
 /// Called every `src.tick_rate` ticks
 /controller/proc/process()

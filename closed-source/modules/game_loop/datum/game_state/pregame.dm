@@ -42,7 +42,7 @@ This is the default game state and cannot be changed. The next state is undefine
 		n++
 	if (n == 0 && src.next_state_time != null)
 		src.next_state_time = null
-		spawn(10) world.sleep_offline = TRUE
+		spawn(SECONDS(1)) world.sleep_offline = TRUE
 	else if (n != 0  && src.next_state_time == null)
 		src.next_state_time = src.round_start_time()
 		world.sleep_offline = FALSE
