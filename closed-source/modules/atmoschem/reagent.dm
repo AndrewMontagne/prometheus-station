@@ -9,8 +9,8 @@
 	var/decomposition_reaction       = null
 	var/decomposition_temperature	 = CELSIUS(5000)
 	var/molar_mass					 = GRAMS(18)
-	var/density_solid				 = KG_PER_L(0.916)
-	var/density_liquid				 = KG_PER_L(1)
+	var/density_solid				 = KGS_PER_LITRE(0.916)
+	var/density_liquid				 = KGS_PER_LITRE(1)
 
 /// Calculates the volume of a reagent, as a solid/liquid
 /datum/chem/reagent/proc/fluid_volume(var/moles, var/solid)
@@ -18,7 +18,7 @@
 
 /// Calculates the volume of a reagent, as a gas
 /datum/chem/reagent/proc/gas_pressure(var/moles, var/temperature, var/volume)
-	return (moles * temperature * IDEAL_GAS_CONSTANT)
+	return (moles * temperature * IDEAL_GAS_CONSTANT) / volume
 
 /datum/chem/reagent/proc/melting_point(var/pressure)
 	return src.std_melting_point
