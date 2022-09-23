@@ -1,16 +1,16 @@
 // Singletons defining each reagent
 /datum/chem/reagent
 	var/key = null
-	var/latent_heat_of_vapourisation = JOULES(2257)
-	var/latent_heat_of_fusion		 = JOULES(333.55)
-	var/std_melting_point			 = CELSIUS(0)
-	var/std_boiling_point			 = CELSIUS(100)
-	var/triple_point_pres			 = ATM(0.06)
-	var/decomposition_reaction       = null
-	var/decomposition_temperature	 = CELSIUS(5000)
-	var/molar_mass					 = GRAMS(18)
-	var/density_solid				 = KGS_PER_LITRE(0.916)
-	var/density_liquid				 = KGS_PER_LITRE(1)
+	var/latent_heat_of_vapour 		= JOULES(2257)
+	var/latent_heat_of_fusion		= JOULES(333.55)
+	var/std_melting_point			= CELSIUS(0)
+	var/std_boiling_point			= CELSIUS(100)
+	var/triple_point_pres			= ATM(0.06)
+	var/decomposition_reaction      = null
+	var/decomposition_temperature	= null
+	var/molar_mass					= GRAMS(18)
+	var/density_solid				= KGS_PER_LITRE(0.916)
+	var/density_liquid				= KGS_PER_LITRE(1)
 
 /// Calculates the volume of a reagent, as a solid/liquid
 /datum/chem/reagent/proc/fluid_volume(var/moles, var/solid)

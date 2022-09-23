@@ -184,6 +184,7 @@ Scientific Defines
 * I am not looking again.
 **/
 #define GAS_EXCHANGE_CONST			20
+
 #define IDEAL_GAS_CONSTANT			8.314462
 
 // Mass
@@ -195,7 +196,7 @@ Scientific Defines
 #define SOLAR_MASS(X)				(X * 1.988 * 10E30)
 
 // Temperature
-#define CELSIUS(X)					(X - 273.15)
+#define CELSIUS(X)					(273.15 + X)
 #define KELVINS(X)					(X)
 
 // Pressure
@@ -205,22 +206,25 @@ Scientific Defines
 #define MPA(X)						(X * 10E6)
 
 // Density
+#define GS_PER_LITRE(X)				(X * 10E-3)
 #define KGS_PER_LITRE(X)			(X)
 #define KGS_PER_M3(X)				(X * 10E3)
 
 // Length
-#define MILLIMETRES(X)				(X * 10-3)
-#define CENTIMETRES(X)				(X * 10-2)
+#define MILLIMETRES(X)				(X * 10E-3)
+#define CENTIMETRES(X)				(X * 10E-2)
 #define METRES(X)					(X)
 #define TILES(X)					(X * 2)
 #define KILOMETERS(X)				(X * 10E3)
 #define MEGAMETERS(X)				(X * 10E6)
 #define ASTRONOMICAL_UNITS(X)		(X * 1.495 * 10E11)
+#define LIGHT_YEAR(X)				(X * 9.361 * 10E15)
 
 // Volume
 #define MILLILITRES(X)				(X * 10E-3)
 #define LITRES(X)					(X)
 #define CUBIC_METRES(X)				(X * 10E3)
+#define CUBIC_TILES(X)				(X * 8 * 10E3)
 
 // Power
 #define MILLIWATTS(X)				(X * 10E-3)
@@ -234,3 +238,15 @@ Scientific Defines
 #define KILOJOULES(X)				(X * 10E3)
 #define MEGAJOULES(X)				(X * 10E6)
 #define GIGAJOULES(X)				(X * 10E9)
+
+/**
+Atmoschem Defines
+**/
+
+#define ONE_L_PARTIAL_PRES_MOL		41.57
+#define O2_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.22)
+#define N2_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.78)
+#define DEFAULT_GAS_MIX				list(\
+	"o2" = list(O2_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)), \
+	"n2" = list(N2_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)) \
+)

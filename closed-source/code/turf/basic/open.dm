@@ -1,5 +1,11 @@
 /turf/basic/open
 	icon = 'assets/cc-by-sa-nc/icons/turf/floors.dmi'
+	var/datum/chem/mixture/atmos
+
+/turf/basic/open/New()
+	. = ..()
+	src.atmos = new /datum/chem/mixture(CUBIC_TILES(1), DEFAULT_GAS_MIX)
+	src.atmos.name = "atmosphere ([src.name])"
 
 /turf/basic/open/floor
 	name = "floor"
