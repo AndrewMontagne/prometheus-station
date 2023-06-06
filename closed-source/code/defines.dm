@@ -165,9 +165,9 @@ Scientific Defines
 **/
 
 // Matter phase enum
-#define PHASE_SOLID					0
-#define PHASE_LIQUID				1
-#define PHASE_GAS					2
+#define PHASE_SOLID					"SOLID"
+#define PHASE_LIQUID				"LIQUID"
+#define PHASE_GAS					"GAS"
 
 /**
 * Okay so. There are 41.58 moles per cubic meter of dinitrogen at STP.
@@ -246,7 +246,7 @@ Atmoschem Defines
 #define ONE_L_PARTIAL_PRES_MOL		41.57
 #define O2_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.22)
 #define N2_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.78)
-#define DEFAULT_GAS_MIX				list(\
+#define DEFAULT_GAS_MIX				list(PHASE_GAS = list(\
 	"o2" = list(O2_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)), \
 	"n2" = list(N2_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)) \
-)
+))

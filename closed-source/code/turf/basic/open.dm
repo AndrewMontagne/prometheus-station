@@ -1,6 +1,11 @@
 /turf/basic/open
 	icon = 'assets/cc-by-sa-nc/icons/turf/floors.dmi'
 	var/datum/chem/mixture/atmos
+	var/list/inbound_atmos
+
+/turf/basic/open/proc/start_diffuse_atmos()
+	
+
 
 /turf/basic/open/New()
 	. = ..()

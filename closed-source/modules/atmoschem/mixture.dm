@@ -5,7 +5,12 @@
 
 	/**
 	* This is a data structure that maps the key of the reagent to the
-	* number of moles, and the temperature
+	* number of moles, the temperature, and the phase of matter:
+	*
+	* "PHASE":
+	*	"KEY":
+	*	  - MOLES
+	*	  - TEMPERATURE
 	**/
 	var/list/reagents = list()
 
@@ -16,15 +21,34 @@
 
 /// Calculates the solid/liquid volume of the mixture
 /datum/chem/mixture/proc/volume()
+	var/volume = LITRES(0)
 
+	for (var/phase in src.reagents)
+		if (phase == PHASE_GAS) // Gases fill their entire volume, so any gas would make this meaningless
+			continue
+		var/list/reagents_by_phase = src.reagents[phase]
+		for (var/key in reagents_by_phase)
+			var/datum/chem/reagent/R = GLOBALS.atmoschem_controller.reagents[key]
+			var/list/data = reagents_by_phase[key]
+			var/partial_volume = R.fluid_volume(data[1], phase)
+			volume += partial_volume
+
+	return volume
+
+/// Calculates the gas pressure of the mixture
 /datum/chem/mixture/proc/pressure()
 	var/pressure = PA(0)
+	var/remaining_volume = clamp(src.container_volume - src.volume, MILLILITRES(0.1), src.container_volume)
 
-	for (var/key in src.reagents)
-		var/datum/chem/reagent/R = GLOBALS.atmoschem_controller.reagents[key]
-		var/list/data = src.reagents[key]
-		var/partial_pressure = R.gas_pressure(data[1], data[2], src.container_volume)
-		pressure += partial_pressure
+	for (var/phase in src.reagents)
+		if (phase != PHASE_GAS)
+			continue
+		var/list/reagents_by_phase = src.reagents[phase]
+		for (var/key in reagents_by_phase)
+			var/datum/chem/reagent/R = GLOBALS.atmoschem_controller.reagents[key]
+			var/list/data = reagents_by_phase[key]
+			var/partial_pressure = R.gas_pressure(data[1], data[2], src.container_volume)
+			pressure += partial_pressure
 	
 	return pressure
 
