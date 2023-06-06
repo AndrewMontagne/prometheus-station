@@ -12,10 +12,16 @@
 /client/New()
 	. = ..()
 	LOG_INFO("[src.key] connected!")
-	src.ui = list(src.get_parallax())
-	src.rebuild_screen()
-	src.init_infobrowser()
+	if (src.connection == "seeker")
+		src.ui = list(src.get_parallax())
+		src.rebuild_screen()
+		src.init_infobrowser()
+	else if (src.connection == "telnet")
+		src << "Welcome BYOND!"
 
+/client/Command(command)
+	. = ..()
+	LOG_INFO("COMMAND [command]")
 
 /// We use this instead 
 /client/proc/rebuild_screen()
