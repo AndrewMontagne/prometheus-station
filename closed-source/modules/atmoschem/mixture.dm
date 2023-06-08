@@ -20,6 +20,25 @@
 	src.reagents = new_reagents
 
 
+/datum/chem/mixture/proc/test()
+	src.add_reagents(list(PHASE_GAS = list("co2" = list(ATMOSCHEM_MOLES = 1000, ATMOSCHEM_TEMP = CELSIUS(20)))))
+
+/datum/chem/mixture/proc/add_reagents(var/list/reagent_data)
+	for (var/phase in reagent_data)
+		if (islist(src.reagents[phase]) == FALSE)
+			src.reagents[phase] = list()
+
+		var/list/reagents_by_phase = reagent_data[phase]
+		for (var/key in reagents_by_phase)
+			if (islist(src.reagents[phase][key]) == FALSE)
+				src.reagents[phase][key] = list(ATMOSCHEM_MOLES = 0, ATMOSCHEM_TEMP = 0)
+			var/total_moles = src.reagents[phase][key][ATMOSCHEM_MOLES] + reagents_by_phase[key][ATMOSCHEM_MOLES]
+			var/total_therm_energy = (src.reagents[phase][key][ATMOSCHEM_MOLES] * src.reagents[phase][key][ATMOSCHEM_TEMP]) + (reagents_by_phase[key][ATMOSCHEM_MOLES] * reagents_by_phase[key][ATMOSCHEM_TEMP])
+			var/new_temp = total_therm_energy / total_moles
+			src.reagents[phase][key][ATMOSCHEM_MOLES] = total_moles
+			src.reagents[phase][key][ATMOSCHEM_TEMP] = new_temp
+
+
 /datum/chem/mixture/proc/remove_moles(var/moles, var/list/phases = null)
 	phases = list(PHASE_GAS)
 
@@ -37,7 +56,7 @@
 			if (moles_to_remove > data[ATMOSCHEM_MOLES])
 				moles_to_remove = data[ATMOSCHEM_MOLES]
 
-			phase_result[key] =  list(moles_to_remove, ATMOSCHEM_TEMP) // Moles, Temp
+			phase_result[key] =  list(moles_to_remove, data[ATMOSCHEM_TEMP]) // Moles, Temp
 			src.reagents[phase][key][ATMOSCHEM_MOLES] -= moles_to_remove
 
 			// If we have removed all the reagent, remove the association

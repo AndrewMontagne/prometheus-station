@@ -11,6 +11,7 @@
 	. = ..()
 	src.atmos = new /datum/chem/mixture(CUBIC_TILES(1), DEFAULT_GAS_MIX)
 	src.atmos.name = "atmosphere ([src.name])"
+	src.inbound_atmos = list()
 
 /turf/basic/open/floor
 	name = "floor"

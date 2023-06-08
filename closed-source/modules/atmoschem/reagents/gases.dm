@@ -40,7 +40,7 @@
 	density_solid			= GS_PER_LITRE(1.562)
 	density_liquid			= GS_PER_LITRE(0.773)
 
-/datum/chem/reagent/co2
+/datum/chem/reagent/argon
 	name					= "argon"
 	key 					= "argon"
 
