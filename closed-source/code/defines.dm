@@ -169,6 +169,11 @@ Scientific Defines
 #define PHASE_LIQUID				"LIQUID"
 #define PHASE_GAS					"GAS"
 
+#define ALL_PHASES					list(PHASE_SOLID, PHASE_LIQUID, PHASE_GAS)
+
+#define ATMOSCHEM_MOLES				1
+#define ATMOSCHEM_TEMP				2
+
 /**
 * Okay so. There are 41.58 moles per cubic meter of dinitrogen at STP.
 * Each tile is 2m * 2m * 2m, so 8m3, so each tile has about 332 moles.
