@@ -190,13 +190,14 @@ Scientific Defines
 **/
 #define GAS_EXCHANGE_CONST			20
 
-#define IDEAL_GAS_CONSTANT			8.314462
+// The ideal gas constant, or R
+#define IDEAL_GAS_CONSTANT			8.31446261815324
 
 // Mass
-#define MILLIGRAMS(X)				(X / 10E6)
-#define GRAMS(X)					(X / 10E3)
+#define MILLIGRAMS(X)				(X / 1E6)
+#define GRAMS(X)					(X / 1E3)
 #define KILOGRAMS(X)				(X)
-#define TONNES(X)					(X * 1000)
+#define TONNES(X)					(X * 1E3)
 #define EARTH_MASS(X)				(X * 5.974 * 10E24)
 #define SOLAR_MASS(X)				(X * 1.988 * 10E30)
 
@@ -207,51 +208,57 @@ Scientific Defines
 // Pressure
 #define ATM(X)						(X * 101325)
 #define PA(X)						(X)
-#define KPA(X)						(X * 10E3)
-#define MPA(X)						(X * 10E6)
+#define KPA(X)						(X * 1E3)
+#define MPA(X)						(X * 1E6)
 
 // Density
-#define GS_PER_LITRE(X)				(X * 10E-3)
+#define GS_PER_LITRE(X)				(X * 1E-3)
 #define KGS_PER_LITRE(X)			(X)
-#define KGS_PER_M3(X)				(X * 10E3)
+#define KGS_PER_M3(X)				(X * 1E3)
 
 // Length
-#define MILLIMETRES(X)				(X * 10E-3)
-#define CENTIMETRES(X)				(X * 10E-2)
+#define MILLIMETRES(X)				(X * 1E-3)
+#define CENTIMETRES(X)				(X * 1E-2)
 #define METRES(X)					(X)
 #define TILES(X)					(X * 2)
-#define KILOMETERS(X)				(X * 10E3)
-#define MEGAMETERS(X)				(X * 10E6)
-#define ASTRONOMICAL_UNITS(X)		(X * 1.495 * 10E11)
-#define LIGHT_YEAR(X)				(X * 9.361 * 10E15)
+#define KILOMETRES(X)				(X * 1E3)
+#define MEGAMETRES(X)				(X * 1E6)
+#define ASTRONOMICAL_UNITS(X)		(X * 1.495 * 1E11)
+#define LIGHT_YEAR(X)				(X * 9.361 * 1E15)
 
 // Volume
-#define MILLILITRES(X)				(X * 10E-3)
+#define MILLILITRES(X)				(X * 1E-3)
 #define LITRES(X)					(X)
-#define CUBIC_METRES(X)				(X * 10E3)
-#define CUBIC_TILES(X)				(X * 8 * 10E3)
+#define CUBIC_METRES(X)				(X * 1E3)
+#define CUBIC_TILES(X)				(X * 8E3)
 
 // Power
-#define MILLIWATTS(X)				(X * 10E-3)
+#define MILLIWATTS(X)				(X * 1E-3)
 #define WATTS(X)					(X)
-#define KILOWATTS(X)				(X * 10E3)
-#define MEGAWATTS(X)				(X * 10E6)
-#define GIGAWATTS(X)				(X * 10E9)
+#define KILOWATTS(X)				(X * 1E3)
+#define MEGAWATTS(X)				(X * 1E6)
+#define GIGAWATTS(X)				(X * 1E9)
 
 // Energy
 #define JOULES(X)					(X)
-#define KILOJOULES(X)				(X * 10E3)
-#define MEGAJOULES(X)				(X * 10E6)
-#define GIGAJOULES(X)				(X * 10E9)
+#define KILOJOULES(X)				(X * 1E3)
+#define MEGAJOULES(X)				(X * 1E6)
+#define GIGAJOULES(X)				(X * 1E9)
+
+// Moles
+#define MILLIMOLES(X)				(X * 1E-3)
+#define MOLES(X)					(X)			
 
 /**
 Atmoschem Defines
 **/
 
-#define ONE_L_PARTIAL_PRES_MOL		41.57
-#define O2_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.22)
+#define ONE_L_PARTIAL_PRES_MOL		0.04156094001647
+#define O2_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.21)
 #define N2_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.78)
+#define ARGON_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.01)
 #define DEFAULT_GAS_MIX				list(PHASE_GAS = list(\
 	"o2" = list(O2_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)), \
-	"n2" = list(N2_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)) \
+	"n2" = list(N2_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)), \
+	"argon" = list(ARGON_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)) \
 ))

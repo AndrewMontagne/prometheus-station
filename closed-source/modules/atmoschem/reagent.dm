@@ -23,7 +23,7 @@
 
 /// Calculates the volume of a reagent, as a gas
 /datum/chem/reagent/proc/gas_pressure(var/moles, var/temperature, var/container_volume)
-	return (moles * temperature * IDEAL_GAS_CONSTANT) / container_volume
+	return (moles * temperature * IDEAL_GAS_CONSTANT) / (container_volume / CUBIC_METRES(1))
 
 /datum/chem/reagent/proc/melting_point(var/pressure)
 	return src.std_melting_point
