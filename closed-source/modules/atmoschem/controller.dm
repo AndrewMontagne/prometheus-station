@@ -4,7 +4,7 @@ VAR_GLOBAL(controller/atmoschem/atmoschem_controller)
 /// Networks Controller
 /controller/atmoschem
 	priority = PRIORITY_LOW
-	tick_rate = 1
+	tick_rate = 2
 	name = "Atmospherics / Chemistry"
 
 	var/list/reagents = list()
@@ -32,7 +32,7 @@ VAR_GLOBAL(controller/atmoschem/atmoschem_controller)
 		var/turf/basic/open/T = V
 		if (isnull(T))
 			continue
-		var/moles_to_exchange = GAS_EXCHANGE_CONST * (T.atmos.pressure() / ATM(1))
+		var/moles_to_exchange = GAS_EXCHANGE_CONST * (T.atmos.pressure() / ATM(1)) * 4
 		var/total_moles = T.atmos.total_moles()
 		if ((moles_to_exchange * 4) > total_moles)
 			moles_to_exchange = total_moles / 4
