@@ -1,7 +1,7 @@
 
 VAR_GLOBAL(controller/atmoschem/atmoschem_controller)
 
-/// Networks Controller
+/// The Atmos/Chemistry Controller
 /controller/atmoschem
 	priority = PRIORITY_LOW
 	tick_rate = 2
@@ -54,6 +54,9 @@ VAR_GLOBAL(controller/atmoschem/atmoschem_controller)
 		for (var/inbound_packet in T.inbound_atmos)
 			T.atmos.add_reagents(inbound_packet)
 		T.inbound_atmos = list()
+
+	for (var/datum/chem/mixture/M)
+		M.simulate()
 
 
 /world/init_controllers(datum/scheduler/scheduler)

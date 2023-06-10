@@ -20,9 +20,46 @@
 	src.reagents = new_reagents
 
 
-/datum/chem/mixture/proc/test()
-	src.add_reagents(list(PHASE_GAS = list("co2" = list(ATMOSCHEM_MOLES = 1000, ATMOSCHEM_TEMP = CELSIUS(20)))))
+/datum/chem/mixture/proc/test(var/moles)
+	src.add_reagents(list(PHASE_GAS = list("co2" = list(ATMOSCHEM_MOLES = moles, ATMOSCHEM_TEMP = CELSIUS(9999)))))
 
+
+/// Simulates the mixture, performing all relevant calculations
+/datum/chem/mixture/proc/simulate()
+	src.adjust_thermal_energy(0)
+	
+
+/// Adjusts the thermal energy of the mixture
+/datum/chem/mixture/proc/adjust_thermal_energy(var/joules = 0, var/phases = null)
+	if (isnull(phases))
+		phases = ALL_PHASES
+
+	for (var/phase in phases)
+		var/list/reagents_by_phase = src.reagents[phase]
+		if (isnull(reagents_by_phase))
+			continue
+		var/total_therm_energy = 0
+		var/total_specific_capacity = 0
+		for (var/key in reagents_by_phase)
+			var/list/data = reagents_by_phase[key]
+			if (isnull(data))
+				continue
+			var/datum/chem/reagent/R = GLOBALS.atmoschem_controller.reagents[key]
+			total_therm_energy += R.thermal_energy(data[ATMOSCHEM_TEMP], data[ATMOSCHEM_MOLES], phase)
+			total_specific_capacity += R.thermal_energy(KELVINS(100), data[ATMOSCHEM_MOLES], phase)
+
+		for (var/key in reagents_by_phase)
+			var/list/data = reagents_by_phase[key]
+			if (isnull(data))
+				continue
+			var/datum/chem/reagent/R = GLOBALS.atmoschem_controller.reagents[key]
+			var/specific_capacity = R.thermal_energy(KELVINS(100), data[ATMOSCHEM_MOLES], phase)
+			var/ratio = specific_capacity / total_specific_capacity
+			var/temp = R.temperature(total_therm_energy * ratio, data[ATMOSCHEM_MOLES], phase)
+			src.reagents[phase][key][ATMOSCHEM_TEMP] = temp
+
+
+/// Adds reagents to the mixture, takes the same data structure defined in [/datum/chem/mixture/var/reagents]
 /datum/chem/mixture/proc/add_reagents(var/list/reagent_data)
 	for (var/phase in reagent_data)
 		if (islist(src.reagents[phase]) == FALSE)
@@ -39,8 +76,10 @@
 			src.reagents[phase][key][ATMOSCHEM_TEMP] = new_temp
 
 
+/// Removes reagents from the mixture, returns the same data structure as defined in [/datum/chem/mixture/var/reagents]
 /datum/chem/mixture/proc/remove_moles(var/moles, var/list/phases = null)
-	phases = list(PHASE_GAS)
+	if (isnull(phases))
+		phases = ALL_PHASES
 
 	var/list/result = list()
 	var/total_moles = src.total_moles(phases)
@@ -50,6 +89,8 @@
 		var/list/reagents_by_phase = src.reagents[phase]
 		for (var/key in reagents_by_phase)
 			var/list/data = reagents_by_phase[key]
+			if (isnull(data))
+				continue
 			var/reagent_moles_ratio = data[ATMOSCHEM_MOLES] / total_moles
 
 			var/moles_to_remove = reagent_moles_ratio * moles
@@ -67,6 +108,7 @@
 	return result
 			
 
+/// Calulates the total number of moles in a mixture
 /datum/chem/mixture/proc/total_moles(var/list/phases = null)
 	if (isnull(phases))
 		phases = ALL_PHASES
@@ -76,6 +118,8 @@
 		var/list/reagents_by_phase = src.reagents[phase]
 		for (var/key in reagents_by_phase)
 			var/list/data = reagents_by_phase[key]
+			if (isnull(data))
+				continue
 			moles += data[1]
 
 	return moles
@@ -92,6 +136,8 @@
 		for (var/key in reagents_by_phase)
 			var/datum/chem/reagent/R = GLOBALS.atmoschem_controller.reagents[key]
 			var/list/data = reagents_by_phase[key]
+			if (isnull(data))
+				continue
 			var/partial_volume = R.fluid_volume(data[1], phase)
 			volume += partial_volume
 
@@ -109,6 +155,8 @@
 		for (var/key in reagents_by_phase)
 			var/datum/chem/reagent/R = GLOBALS.atmoschem_controller.reagents[key]
 			var/list/data = reagents_by_phase[key]
+			if (isnull(data))
+				continue
 			var/partial_pressure = R.gas_pressure(data[1], data[2], remaining_volume)
 			pressure += partial_pressure
 	
