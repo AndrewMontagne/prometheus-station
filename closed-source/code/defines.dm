@@ -22,15 +22,16 @@
 /// Log an error at the Error logging level
 #define LOG_ADMIN(C,X)				admin_log(C,X)
 
+/// Generates a trace string
 #define TRACE						"[__FILE__]:[__LINE__]"
 
 #define FRAMES_PER_SECOND			10
 /// Seconds to ticks
 #define SECONDS(X)					(X * FRAMES_PER_SECOND)
 /// Minutes to ticks
-#define MINUTES(X)					(X * 600)
+#define MINUTES(X)					(X * FRAMES_PER_SECOND * 60)
 /// Hours to ticks
-#define HOURS(X)					(X * 36000)
+#define HOURS(X)					(X * FRAMES_PER_SECOND * 3600)
 
 /// A list of all cardinal directions
 #define ALL_DIRS					list(NORTH, NORTHEAST, EAST, SOUTHEAST, SOUTH, SOUTHWEST, WEST, NORTHWEST)
@@ -44,18 +45,14 @@
 /// Low task priority
 #define PRIORITY_LOW				4
 
-/**
-Visibility Defines
-**/
+// Custom visibility defines
 
 #define VISIBLITY_ALWAYS			0
 #define VISIBLITY_UNDER_TILE		1
 #define VISIBLITY_SUPER				100
 #define VISIBLITY_NEVER				101
 
-/**
-These are the custom defined planes
-**/
+// Custom plane defines
 
 #define PLANE_SPACE					-55
 #define PLANE_PARALLAX				-50
@@ -63,9 +60,8 @@ These are the custom defined planes
 #define PLANE_DARKNESS				100
 #define PLANE_SCREEN				999
 
-/**
-These are layer definitions
-**/
+// Custom layer defines
+
 #define LAYER_AREA					1
 #define LAYER_TURF					2
 #define LAYER_FLOOR					2.1
@@ -74,19 +70,16 @@ These are layer definitions
 #define LAYER_CEIL					4.9
 #define LAYER_FLY					5
 
-/**
-These are defines for screen anchors
-**/
+// Screen anchor defines
+
 #define ANCHOR_LEFT					"LEFT"
 #define ANCHOR_RIGHT				"RIGHT"
 #define ANCHOR_CENTER				"CENTER"
 #define ANCHOR_TOP					"TOP"
 #define ANCHOR_BOTTOM				"BOTTOM"
 
-/**
-These are the canonical names for inventory slots, 
-so that they can be used for sprites.
-**/
+
+// These are the canonical names for inventory slots, so that they can be used for sprites.
 
 #define SLOT_ID						"id_card"
 #define SLOT_GLOVES					"gloves"
@@ -108,17 +101,26 @@ so that they can be used for sprites.
 #define SLOT_BELT_CLIP_L			"beltclip_l"
 #define SLOT_POCKET					"pocket"
 
-/**
-These are the canonical names for damage type
-**/
+
+// ---------------------------------------------------------------------------
+// Damage defines
+// ---------------------------------------------------------------------------
+
+/// Brute damage
 #define DAMAGE_BRUTE				"brute"
 
-/**
-These are the kinds of tile smoothing
-**/
+
+// ---------------------------------------------------------------------------
+// Tile smoothing defines
+// ---------------------------------------------------------------------------
+
+/// Don't smooth with anything
 #define SMOOTHING_NONE				0
+/// Smooth with anything
 #define SMOOTHING_ALL				1
+/// Smooth only with [/turf]s
 #define SMOOTHING_TURFS				2
+/// Smooth only with [/obj/structure]s
 #define SMOOTHING_STRUCTS			3
 
 #define SMOOTHING_DIR_N				1
@@ -130,10 +132,14 @@ These are the kinds of tile smoothing
 #define SMOOTHING_DIR_SW			4
 #define SMOOTHING_DIR_NW			8
 
-/**
-These define the types of tools
-**/
+
+// ---------------------------------------------------------------------------
+// Tool defines
+// ---------------------------------------------------------------------------
+
+/// This is the "Proper" tool for a job
 #define TOOL_PROPER					1
+/// This is an "Proper" or improvised tool for a job
 #define TOOL_IMPROPER				2
 
 #define TOOL_NONE					0
@@ -144,9 +150,11 @@ These define the types of tools
 #define TOOL_CROWBAR				5
 #define TOOL_MULTITOOL				6
 
-/**
-These define network stuff
-**/
+
+// ---------------------------------------------------------------------------
+// Network defines
+// ---------------------------------------------------------------------------
+
 #define NET_OFFSET_LEFT				0
 #define NET_OFFSET_MIDDLE			1
 #define NET_OFFSET_RIGHT			2
@@ -160,21 +168,27 @@ These define network stuff
 #define NET_KIND_ATMOS				3
 #define NET_KIND_BLOB				4
 
-/**
-Scientific Defines
-**/
+
+// ---------------------------------------------------------------------------
+// Scientific Defines
+// ---------------------------------------------------------------------------
 
 // Matter phase enum
 #define PHASE_SOLID					"SOLID"
 #define PHASE_LIQUID				"LIQUID"
 #define PHASE_GAS					"GAS"
 
+/// A list of all phases of matter
 #define ALL_PHASES					list(PHASE_SOLID, PHASE_LIQUID, PHASE_GAS)
 
+/// The index of moles in the atmoschem data structure
 #define ATMOSCHEM_MOLES				1
+/// The index of temperature in the atmoschem data structure
 #define ATMOSCHEM_TEMP				2
 
 /**
+* The number of moles per square meter that get exchanged per atmosphere per sim cycle.
+*
 * Okay so. There are 41.58 moles per cubic meter of dinitrogen at STP.
 * Each tile is 2m * 2m * 2m, so 8m3, so each tile has about 332 moles.
 * Each "face" of the tile has 4 square meters, if we set this to 20, each
@@ -190,7 +204,7 @@ Scientific Defines
 **/
 #define GAS_EXCHANGE_CONST			20
 
-// The ideal gas constant, or R
+/// The ideal gas constant, or R
 #define IDEAL_GAS_CONSTANT			8.31446261815324
 
 // Mass
@@ -198,8 +212,8 @@ Scientific Defines
 #define GRAMS(X)					(X / 1E3)
 #define KILOGRAMS(X)				(X)
 #define TONNES(X)					(X * 1E3)
-#define EARTH_MASS(X)				(X * 5.974 * 10E24)
-#define SOLAR_MASS(X)				(X * 1.988 * 10E30)
+#define EARTH_MASS(X)				(X * 5.974 * 1E24)
+#define SOLAR_MASS(X)				(X * 1.988 * 1E30)
 
 // Temperature
 #define CELSIUS(X)					(273.15 + X)
@@ -249,14 +263,20 @@ Scientific Defines
 #define MILLIMOLES(X)				(X * 1E-3)
 #define MOLES(X)					(X)			
 
-/**
-Atmoschem Defines
-**/
 
+// ---------------------------------------------------------------------------
+// Atmoschem Defines
+// ---------------------------------------------------------------------------
+
+/// The number of moles of gas in one litre at STP
 #define ONE_L_PARTIAL_PRES_MOL		0.04156094001647
+/// The number of moles of oxygen in one litre of air at STP
 #define O2_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.21)
+/// The number of moles of nitrogen in one litre of air at STP
 #define N2_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.78)
+/// The number of moles of argon in one litre of air at STP
 #define ARGON_1L_PARTIAL_PRES_MOL		(ONE_L_PARTIAL_PRES_MOL * 0.01)
+/// The default gas mix for a tile. See [/datum/chem/mixture/var/reagents]
 #define DEFAULT_GAS_MIX				list(PHASE_GAS = list(\
 	"o2" = list(O2_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)), \
 	"n2" = list(N2_1L_PARTIAL_PRES_MOL * CUBIC_TILES(1), CELSIUS(20)), \
